@@ -7,7 +7,6 @@
 [ext_resource type="Script" uid="uid://dkt77qgurqyjv" path="res://scripts/fog.gd" id="3_fjgn4"]
 [ext_resource type="Shader" uid="uid://b5hj757tnumly" path="res://assets/shaders/fog.gdshader" id="4_00see"]
 [ext_resource type="Texture2D" uid="uid://cgmo2lonvkg14" path="res://assets/parallax backgrounds/tangled far.png" id="5_3mput"]
-[ext_resource type="Script" uid="uid://onbpgd444ymx" path="res://scripts/game_manager.gd" id="6_3mput"]
 [ext_resource type="Texture2D" uid="uid://cshaye6d10lg2" path="res://assets/parallax backgrounds/tangled near.png" id="6_q8mhn"]
 [ext_resource type="Texture2D" uid="uid://b7lieagrgqbvw" path="res://assets/parallax backgrounds/tangled near 1.png" id="7_21h4b"]
 [ext_resource type="PackedScene" uid="uid://npxpcfoo6wdd" path="res://scenes/player.tscn" id="7_q8mhn"]
@@ -826,31 +825,27 @@ offset_bottom = 40.0
 texture = ExtResource("6_q8mhn")
 metadata/_edit_use_anchors_ = true
 
-[node name="GameManager" type="Node" parent="." index="4" unique_id=1321521609]
-unique_name_in_owner = true
-script = ExtResource("6_3mput")
-
-[node name="MovingPlatform" parent="." index="5" unique_id=2144621089 instance=ExtResource("11_pwt0d")]
+[node name="MovingPlatform" parent="." index="4" unique_id=2144621089 instance=ExtResource("11_pwt0d")]
 position = Vector2(1974, -971)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="MovingPlatform" index="2" unique_id=1571524241]
 libraries/ = SubResource("AnimationLibrary_hdgju")
 autoplay = &"RESET"
 
-[node name="Player" parent="." index="6" unique_id=225499307 groups=["Player", "player"] instance=ExtResource("7_q8mhn")]
+[node name="Player" parent="." index="5" unique_id=225499307 groups=["Player", "player"] instance=ExtResource("7_q8mhn")]
 position = Vector2(887, -17)
 floor_constant_speed = true
 floor_max_angle = 0.80285144
 floor_snap_length = 3.5
 max_health = 3
 
-[node name="resetZone" parent="." index="7" unique_id=424939368 instance=ExtResource("11_hdgju")]
+[node name="resetZone" parent="." index="6" unique_id=424939368 instance=ExtResource("11_hdgju")]
 position = Vector2(1216, 1016)
 
 [node name="floor" type="CollisionShape2D" parent="resetZone" index="1" unique_id=999741754]
 shape = SubResource("WorldBoundaryShape2D_x51mi")
 
-[node name="BerryBushes" type="Node2D" parent="." index="8" unique_id=38106965]
+[node name="BerryBushes" type="Node2D" parent="." index="7" unique_id=38106965]
 z_index = 1
 
 [node name="BerryBush" parent="BerryBushes" index="0" unique_id=796169510 instance=ExtResource("29_v4ihg")]
@@ -877,7 +872,7 @@ position = Vector2(1736, -1120)
 [node name="BerryBush8" parent="BerryBushes" index="7" unique_id=805972629 instance=ExtResource("29_v4ihg")]
 position = Vector2(304, 784)
 
-[node name="Tutorials" type="Node" parent="." index="9" unique_id=253064094]
+[node name="Tutorials" type="Node" parent="." index="8" unique_id=253064094]
 
 [node name="WASD" type="TextureRect" parent="Tutorials" index="0" unique_id=60305177]
 offset_left = -1072.0
@@ -1154,7 +1149,7 @@ text = "Screen can be
 resized with
 the '5' key"
 
-[node name="TriggerScene2" parent="." index="10" unique_id=1675772569 instance=ExtResource("29_io5gh")]
+[node name="TriggerScene2" parent="." index="9" unique_id=1675772569 instance=ExtResource("29_io5gh")]
 position = Vector2(3912, -648)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TriggerScene2" index="0" unique_id=211700713]
@@ -1221,7 +1216,7 @@ position = Vector2(-925, -73)
 [node name="Goldfish12" parent="TriggerScene2/FishTrigger/Goldfishes" index="11" unique_id=819927213 instance=ExtResource("33_x51mi")]
 position = Vector2(-1051, -67)
 
-[node name="ParallaxFore" type="Node" parent="." index="11" unique_id=2010830419]
+[node name="ParallaxFore" type="Node" parent="." index="10" unique_id=2010830419]
 
 [node name="GodRaysParallax" type="Parallax2D" parent="ParallaxFore" index="0" unique_id=979206625]
 z_index = 2
@@ -1283,11 +1278,11 @@ offset_top = 59.0
 offset_right = 228.0
 offset_bottom = 99.0
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." index="12" unique_id=1411529391]
+[node name="CanvasLayer" type="CanvasLayer" parent="." index="11" unique_id=1411529391]
 
 [node name="UserInterface" parent="CanvasLayer" index="0" unique_id=4126206 instance=ExtResource("21_5olbu")]
 
-[node name="ground" parent="." index="13" unique_id=16465880 groups=["growable_tiles"]]
+[node name="ground" parent="." index="12" unique_id=16465880 groups=["growable_tiles"]]
 texture_repeat = 1
 tile_set = SubResource("TileSet_e73xf")
 rendering_quadrant_size = 64
@@ -1298,19 +1293,18 @@ stack_atlas_id = Array[int]([3])
 left_alt_bot_tile = Vector2i(0, 2)
 right_alt_bot_tile = Vector2i(2, 2)
 
-[node name="LevelTransition" parent="." index="14" unique_id=817694502 instance=ExtResource("33_b8xjo")]
-position = Vector2(853, 12)
+[node name="LevelTransition" parent="." index="13" unique_id=817694502 instance=ExtResource("33_b8xjo")]
+position = Vector2(880, 16)
 size = 20
 location = 3
 target_level = "uid://bsssooisi2b0i"
 target_area_name = "LevelTransition"
 
-[node name="LevelTransition2" parent="." index="15" unique_id=26530549 instance=ExtResource("33_b8xjo")]
+[node name="LevelTransition2" parent="." index="14" unique_id=26530549 instance=ExtResource("33_b8xjo")]
 position = Vector2(1056, -16)
 size = 20
 target_level = "uid://bsnvh00iswdjn"
 target_area_name = "LevelTransition2"
 
-[connection signal="ready" from="GameManager" to="GameManager" method="_on_ready"]
 [connection signal="health_changed" from="Player" to="CanvasLayer/UserInterface" method="_on_player_health_changed"]
 [connection signal="body_exited" from="TriggerScene2" to="TriggerScene2" method="_on_body_exited"]

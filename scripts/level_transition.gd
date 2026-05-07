@@ -16,6 +16,8 @@ enum SIDE { TOP, RIGHT, BOTTOM, LEFT }
 @export_file("*.tscn") var target_level = ""
 @export var target_area_name = "LevelTransition"
 
+signal player_placed
+
 @onready var area_2d: Area2D = $Area2D
 
 func _ready() -> void:
@@ -37,7 +39,8 @@ func on_new_scene_ready(target_name: String, offset: Vector2i) -> void:
 	if target_name == name:
 		var player = get_tree().get_first_node_in_group("Player")
 		player.global_position = global_position + Vector2(offset)
-	pass
+		player_placed.emit()
+		print("player placed in level_transition.gd")
 
 
 func on_load_scene_finished() -> void:

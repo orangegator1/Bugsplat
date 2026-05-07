@@ -69,11 +69,8 @@ func _ready() -> void:
 	speed = 150.0
 	health = max_health
 
-	# warm particles
+	# populate player particle pools
 	pool = [dirt_falling, dirt_falling_2, dirt_falling_3,]
-	for p in pool:
-		p.emitting = true
-		p.modulate.a = 1.0
 
 	# reparent player node to root
 
@@ -87,6 +84,8 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if not background_set_up:
 		background_set_up = set_background_scroll_y()
+
+	update_label("health:" + str(health))
 
 
 func _physics_process(delta: float) -> void:
@@ -459,9 +458,8 @@ func set_background_scroll_y() -> bool:
 	var _cam_limit_bottom = bot - (screen_h / 2.0)
 
 	#var offset = top - ((top - half_screen) * bg_parallax.scroll_scale.y)
-	#-1 * (target_tex_top - (cam_limit_bottom * bg_parallax.scroll_scale.y))
+	# (bot - texture_h) - ((bot - half_screen) * bg_parallax.scroll_scale.y)
 	#bg_parallax.scroll_offset.y = offset
-	#(bot - texture_h) - ((bot - half_screen) * bg_parallax.scroll_scale.y)
 
 	print("bot: %s, top: %s, height: %s
 	bg_parallax.position: %s

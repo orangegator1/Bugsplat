@@ -166,8 +166,8 @@ sprite_frames = SubResource("SpriteFrames_fm1lg")
 animation = &"3"
 autoplay = "3"
 
-[node name="HealedParticles" parent="HBoxContainer" unique_id=1855964468 instance=ExtResource("8_24e4x")]
+[node name="HealedParticles" parent="HBoxContainer" unique_id=1855964468 groups=["warmup_particles"] instance=ExtResource("8_24e4x")]
 position = Vector2(24, 27)
 
-[node name="HealedParticles2" parent="HBoxContainer" unique_id=1728680959 instance=ExtResource("8_24e4x")]
+[node name="HealedParticles2" parent="HBoxContainer" unique_id=1728680959 groups=["warmup_particles"] instance=ExtResource("8_24e4x")]
 position = Vector2(24, 27)

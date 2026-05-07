@@ -13,7 +13,7 @@ config_version=5
 config/name="Bugsplat"
 run/main_scene="uid://b5tobrceh3joe"
 config/features=PackedStringArray("4.6", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="uid://ch7xqkmg1f0sm"
 
 [audio]
 
@@ -45,6 +45,7 @@ enabled=PackedStringArray("res://addons/YATI/plugin.cfg")
 growable_tiles=""
 camera_area=""
 Player=""
+warmup_particles=""
 
 [gui]
 

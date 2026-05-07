@@ -4,7 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://brvqkjrp8j6bs" path="res://tilesets/tilemap template.png" id="2_b1rdc"]
 [ext_resource type="Texture2D" uid="uid://b4265lnsmr6vf" path="res://assets/parallax backgrounds/background.png" id="2_mbtyw"]
 [ext_resource type="Script" uid="uid://dc2ea5p13ncoo" path="res://scripts/growable_tiles.gd" id="2_ts7to"]
-[ext_resource type="Script" uid="uid://onbpgd444ymx" path="res://scripts/game_manager.gd" id="2_x1y34"]
 [ext_resource type="Shader" uid="uid://bj84mjladf4rh" path="res://assets/shaders/god_rays.gdshader" id="3_ts7to"]
 [ext_resource type="Texture2D" uid="uid://bi2ybrjch8j4f" path="res://tilesets/tileset tangled growth-Sheet.png" id="3_x1y34"]
 [ext_resource type="Texture2D" uid="uid://b2jyrqouhtd0y" path="res://tilesets/tangled stack.png" id="4_3uo4r"]
@@ -561,16 +560,13 @@ visible = false
 [node name="temp" parent="." index="2" unique_id=1739777788]
 visible = false
 
-[node name="GameManager" type="Node" parent="." index="3" unique_id=2027167798]
-script = ExtResource("2_x1y34")
-
-[node name="ground" parent="." index="4" unique_id=1410128699 groups=["growable_tiles"]]
+[node name="ground" parent="." index="3" unique_id=1410128699 groups=["growable_tiles"]]
 tile_set = SubResource("TileSet_da7nb")
 script = ExtResource("2_ts7to")
 preferred_growth = 1
 stack_atlas_id = Array[int]([2])
 
-[node name="BackgroundVerticalParallax" type="Parallax2D" parent="." index="5" unique_id=1326309126]
+[node name="BackgroundVerticalParallax" type="Parallax2D" parent="." index="4" unique_id=1326309126]
 z_index = -1
 scroll_scale = Vector2(0, 0.1)
 screen_offset = Vector2(-631.5, -303.5)
@@ -586,7 +582,7 @@ offset_right = 544.0
 offset_bottom = 604.0
 color = Color(0.29411766, 0.6627451, 0.93333334, 0.42745098)
 
-[node name="Parallax" type="Node2D" parent="." index="6" unique_id=267042863]
+[node name="Parallax" type="Node2D" parent="." index="5" unique_id=267042863]
 z_index = -1
 
 [node name="Parallax_back" type="Parallax2D" parent="Parallax" index="0" unique_id=117917076]
@@ -759,7 +755,7 @@ offset_bottom = 40.0
 texture = ExtResource("9_ofqfn")
 metadata/_edit_use_anchors_ = true
 
-[node name="ParallaxFore" type="Node" parent="." index="7" unique_id=2115441272]
+[node name="ParallaxFore" type="Node" parent="." index="6" unique_id=2115441272]
 
 [node name="GodRaysParallax" type="Parallax2D" parent="ParallaxFore" index="0" unique_id=346665577]
 z_index = 2
@@ -821,26 +817,23 @@ offset_top = 59.0
 offset_right = 228.0
 offset_bottom = 99.0
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." index="8" unique_id=943638345]
+[node name="CanvasLayer" type="CanvasLayer" parent="." index="7" unique_id=943638345]
 
 [node name="UserInterface" parent="CanvasLayer" index="0" unique_id=4126206 instance=ExtResource("11_50mcn")]
 
-[node name="CameraBoundaries" type="Node2D" parent="." index="9" unique_id=287543138]
+[node name="CameraBoundaries" type="Node2D" parent="." index="8" unique_id=287543138]
 
 [node name="CameraArea" type="Node2D" parent="CameraBoundaries" index="0" unique_id=1170489601 groups=["camera_area"]]
 
-[node name="LevelTransition" parent="." index="10" unique_id=817694502 instance=ExtResource("17_3uo4r")]
+[node name="LevelTransition" parent="." index="9" unique_id=817694502 instance=ExtResource("17_3uo4r")]
 position = Vector2(864, -528)
 size = 11
-location = 1
 target_level = "uid://bsssooisi2b0i"
 target_area_name = "LevelTransition2"
 
-[node name="LevelTransition2" parent="." index="11" unique_id=1118098431 instance=ExtResource("17_3uo4r")]
+[node name="LevelTransition2" parent="." index="10" unique_id=1118098431 instance=ExtResource("17_3uo4r")]
 position = Vector2(640, -528)
 size = 4
 location = 3
 target_level = "uid://b5tobrceh3joe"
 target_area_name = "LevelTransition2"
-
-[connection signal="ready" from="GameManager" to="GameManager" method="_on_ready"]

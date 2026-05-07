@@ -19,7 +19,7 @@ func _ready() -> void:
 	jump_y = -21.5 / player.speed
 
 	SceneManager.load_scene_started.connect(on_load_scene_started)
-	SceneManager.load_scene_finished.connect(on_load_scene_finished)
+	SceneManager.new_scene_ready.connect(on_new_scene_ready)
 
 func _process(delta: float) -> void:
 	if not transitioning:
@@ -47,10 +47,13 @@ func on_load_scene_started() -> void:
 	transitioning = true
 
 
-func on_load_scene_finished() -> void:
+func on_new_scene_ready(_target_name: String, _offset: Vector2i) -> void:
+	# allow time for level_transition to place the player
+	await get_tree().process_frame
+
 	transitioning = false
 
 	set_pos_to_player()
-	force_update_scroll()
 	reset_smoothing()
 	reset_smoothing()
+	print("finished camera smoothing")

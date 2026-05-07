@@ -17,16 +17,16 @@ func _ready() -> void:
 			await get_tree().process_frame
 			current_health = player.health
 	pool = [healed_particles, healed_particles_2]
-	for p in pool:
-		p.emitting = true
-		p.modulate.a = 0.0
+	#for p in pool:
+		#p.emitting = true
+		#p.modulate.a = 0.0
 
 func _on_player_health_changed(value: int) -> void:
 	if value <= 0:
 		health_indicator.play("reset")
 	elif current_health < value:
 		var particles = pool[index]
-		particles.modulate.a = 1.0
+		#particles.modulate.a = 1.0
 		index = (index + 1) % pool.size()
 		particles.emitting = true
 		health_indicator.play(str(value))
