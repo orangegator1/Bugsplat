@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://ckdqfvmws5dfc"
+path="res://.godot/imported/zapsplat_impacts_hit_loose_ground_dirt_impact_collapse_fall_009.mp3-09eb23a4a3cdc05e1bf5f2802b596a61.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/dirt and leaves/zapsplat_impacts_hit_loose_ground_dirt_impact_collapse_fall_009.mp3"
+dest_files=["res://.godot/imported/zapsplat_impacts_hit_loose_ground_dirt_impact_collapse_fall_009.mp3-09eb23a4a3cdc05e1bf5f2802b596a61.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

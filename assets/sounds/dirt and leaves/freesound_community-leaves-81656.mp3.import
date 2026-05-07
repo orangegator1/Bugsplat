@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cnotxav5joiwu"
+path="res://.godot/imported/freesound_community-leaves-81656.mp3-9344bf637e35b847d8c112d9b35f69b5.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/dirt and leaves/freesound_community-leaves-81656.mp3"
+dest_files=["res://.godot/imported/freesound_community-leaves-81656.mp3-9344bf637e35b847d8c112d9b35f69b5.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

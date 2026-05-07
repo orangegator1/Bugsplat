@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://vicmoy0xnv82"]
+
+[sub_resource type="Curve" id="Curve_l1hhu"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.41132078, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_wjrdd"]
+curve = SubResource("Curve_l1hhu")
+
+[sub_resource type="Gradient" id="Gradient_wjrdd"]
+colors = PackedColorArray(0.44705883, 0.3647059, 0.29803923, 1, 0.44705883, 0.60784316, 0.63529414, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_6q2m1"]
+gradient = SubResource("Gradient_wjrdd")
+
+[sub_resource type="Gradient" id="Gradient_l1hhu"]
+colors = PackedColorArray(0.44705883, 0.3647059, 0.29803923, 1, 0.44896454, 0.60741407, 0.63659805, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_wjrdd"]
+gradient = SubResource("Gradient_l1hhu")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_l1hhu"]
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(8, -24, 0)
+emission_shape = 1
+emission_sphere_radius = 9.96
+direction = Vector3(-1, 0, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 40.0
+angular_velocity_min = 152.07999
+angular_velocity_max = 430.09998
+gravity = Vector3(0, 98, 0)
+scale_max = 3.0
+color_ramp = SubResource("GradientTexture1D_wjrdd")
+color_initial_ramp = SubResource("GradientTexture1D_6q2m1")
+alpha_curve = SubResource("CurveTexture_wjrdd")
+
+[node name="DirtFalling" type="GPUParticles2D" unique_id=2087690902]
+emitting = false
+amount = 10
+lifetime = 2.0
+one_shot = true
+explosiveness = 0.94
+process_material = SubResource("ParticleProcessMaterial_l1hhu")

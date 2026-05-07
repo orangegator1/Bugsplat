@@ -1,0 +1,570 @@
+[gd_scene format=3 uid="uid://b5tobrceh3joe"]
+
+[ext_resource type="PackedScene" uid="uid://bd7cr2utlb1d5" path="res://tilesets/Tangled/Level 1 - tangled.tmx" id="1_mtsk1"]
+[ext_resource type="Texture2D" uid="uid://dmiklg0i7fcum" path="res://tilesets/parallax backgrounds/tangled.png" id="2_bv7pj"]
+[ext_resource type="Script" uid="uid://dkt77qgurqyjv" path="res://scripts/fog.gd" id="3_fjgn4"]
+[ext_resource type="Shader" uid="uid://b5hj757tnumly" path="res://assets/shaders/fog.gdshader" id="4_00see"]
+[ext_resource type="Texture2D" uid="uid://cgmo2lonvkg14" path="res://tilesets/parallax backgrounds/tangled far.png" id="5_e73xf"]
+[ext_resource type="Script" uid="uid://onbpgd444ymx" path="res://scripts/game_manager.gd" id="6_3mput"]
+[ext_resource type="PackedScene" uid="uid://npxpcfoo6wdd" path="res://scenes/player.tscn" id="7_q8mhn"]
+[ext_resource type="Script" uid="uid://cwvgx55201hrx" path="res://scenes/camera_2d.gd" id="8_21h4b"]
+[ext_resource type="Texture2D" uid="uid://lu1fii7mfudr" path="res://icon.svg" id="9_y2ti1"]
+[ext_resource type="Script" uid="uid://c8qcv1v80vku0" path="res://scripts/center_screen_tracker.gd" id="10_pwt0d"]
+[ext_resource type="Texture2D" uid="uid://brvqkjrp8j6bs" path="res://tilesets/tilemap template.png" id="11_00see"]
+[ext_resource type="PackedScene" uid="uid://cag4gg6j6hwin" path="res://scenes/resetzone.tscn" id="11_hdgju"]
+[ext_resource type="Texture2D" uid="uid://bi2ybrjch8j4f" path="res://tilesets/tileset tangled growth-Sheet.png" id="12_e73xf"]
+[ext_resource type="Texture2D" uid="uid://fkdigdbx43dt" path="res://assets/sprites/static growing plat, two tile.png" id="13_3mput"]
+[ext_resource type="Script" uid="uid://dc2ea5p13ncoo" path="res://scripts/growable_tiles.gd" id="14_e73xf"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_h1l3j"]
+seed = 1
+frequency = 0.0148
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_5dh45"]
+resource_local_to_scene = true
+noise = SubResource("FastNoiseLite_h1l3j")
+seamless = true
+seamless_blend_skirt = 0.741
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qb8b8"]
+resource_local_to_scene = true
+shader = ExtResource("4_00see")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_5dh45")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_etvbi"]
+seed = 2
+frequency = 0.0148
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_io5gh"]
+resource_local_to_scene = true
+noise = SubResource("FastNoiseLite_etvbi")
+seamless = true
+seamless_blend_skirt = 0.741
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b8xjo"]
+resource_local_to_scene = true
+shader = ExtResource("4_00see")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_io5gh")
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_x51mi"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fjgn4"]
+texture = ExtResource("11_00see")
+1:1/0 = 0
+2:1/0 = 0
+5:0/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+4:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_00see"]
+texture = ExtResource("12_e73xf")
+1:2/0 = 0
+2:2/0 = 0
+5:2/0 = 0
+3:14/0 = 0
+6:14/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+2:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+5:3/0 = 0
+5:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:15/0 = 0
+3:15/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, 8, -8, 8)
+4:15/0 = 0
+1:7/0 = 0
+2:7/0 = 0
+2:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:8/0 = 0
+2:8/0 = 0
+11:10/0 = 0
+4:2/0 = 0
+14:6/0 = 0
+15:6/0 = 0
+15:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+5:4/0 = 0
+5:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+6:4/0 = 0
+6:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+7:4/0 = 0
+11:11/0 = 0
+11:11/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+4:3/0 = 0
+4:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+7:14/0 = 0
+6:15/0 = 0
+6:15/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 8, 8, 0, 8, 8)
+7:15/0 = 0
+7:15/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 0, 8, -8, 8, 8, -8, 8)
+8:14/0 = 0
+9:14/0 = 0
+6:16/0 = 0
+6:16/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+7:16/0 = 0
+7:16/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+11:3/0 = 0
+11:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+8:15/0 = 0
+8:15/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, 0, 8, 8, -8, 8)
+9:15/0 = 0
+9:15/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 0, 8, 8, -8, 8)
+14:3/0 = 0
+14:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+15:3/0 = 0
+15:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+11:4/0 = 0
+11:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+4:7/0 = 0
+4:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+7:19/0 = 0
+7:19/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+13:22/0 = 0
+13:22/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+8:16/0 = 0
+8:16/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+9:16/0 = 0
+9:16/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+16:28/0 = 0
+16:28/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+12:3/0 = 0
+12:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+14:4/0 = 0
+15:4/0 = 0
+15:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+11:6/0 = 0
+11:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+4:8/0 = 0
+6:17/0 = 0
+6:17/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, 0, 8, -8)
+7:17/0 = 0
+7:17/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 0, 8, 8, 8, -8, -8, -8)
+17:28/0 = 0
+17:28/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+19:28/0 = 0
+19:28/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+14:23/0 = 0
+14:23/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+12:4/0 = 0
+7:8/0 = 0
+2:5/0 = 0
+2:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+11:7/0 = 0
+11:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+7:18/0 = 0
+8:19/0 = 0
+8:19/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+6:7/0 = 0
+6:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+7:7/0 = 0
+1:5/0 = 0
+13:24/0 = 0
+13:24/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+8:17/0 = 0
+8:17/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, 0, -8, 8, -8, -8, 8, -8)
+9:17/0 = 0
+9:17/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, -8, -8, 0, -8, -8)
+6:8/0 = 0
+1:17/0 = 0
+2:17/0 = 0
+2:17/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, 8, 8, -8)
+1:18/0 = 0
+1:18/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+6:2/0 = 0
+7:2/0 = 0
+6:3/0 = 0
+6:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+7:3/0 = 0
+2:18/0 = 0
+6:5/0 = 0
+6:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+7:5/0 = 0
+12:6/0 = 0
+14:7/0 = 0
+14:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+15:7/0 = 0
+15:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+12:7/0 = 0
+12:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+12:23/0 = 0
+12:23/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+10:25/0 = 0
+10:25/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+11:26/0 = 0
+11:26/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+18:28/0 = 0
+18:28/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:20/0 = 0
+4:20/0 = 0
+5:20/0 = 0
+3:21/0 = 0
+4:21/0 = 0
+4:21/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+5:21/0 = 0
+3:22/0 = 0
+4:22/0 = 0
+4:22/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+5:22/0 = 0
+3:26/0 = 0
+4:26/0 = 0
+4:26/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+5:26/0 = 0
+3:27/0 = 0
+4:27/0 = 0
+4:27/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+5:27/0 = 0
+3:28/0 = 0
+4:28/0 = 0
+5:28/0 = 0
+10:13/0 = 0
+10:13/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+11:13/0 = 0
+11:13/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+16:25/0 = 0
+16:25/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+15:26/0 = 0
+15:26/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+13:9/0 = 0
+13:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+16:8/0 = 0
+16:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+4:5/0 = 0
+16:5/0 = 0
+16:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+10:2/0 = 0
+10:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+10:5/0 = 0
+10:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+4:18/0 = 0
+4:18/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+13:2/0 = 0
+13:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+13:5/0 = 0
+13:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:17/0 = 0
+3:17/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, -8, -8, 8, -8, -8)
+4:17/0 = 0
+8:18/0 = 0
+2:14/0 = 0
+3:23/0 = 0
+4:23/0 = 0
+4:23/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+5:23/0 = 0
+6:23/0 = 0
+7:23/0 = 0
+8:23/0 = 0
+4:14/0 = 0
+4:14/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+10:8/0 = 0
+10:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+16:2/0 = 0
+16:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+10:17/0 = 0
+12:10/0 = 0
+13:10/0 = 0
+12:11/0 = 0
+12:11/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+13:11/0 = 0
+12:12/0 = 0
+12:12/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+13:12/0 = 0
+12:13/0 = 0
+12:13/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:15/0 = 0
+2:15/0 = 0
+2:15/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 8, 8, -8, 8, 8)
+3:24/0 = 0
+3:24/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+6:24/0 = 0
+6:24/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+7:24/0 = 0
+7:24/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+8:24/0 = 0
+1:16/0 = 0
+2:16/0 = 0
+2:16/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:25/0 = 0
+6:25/0 = 0
+7:25/0 = 0
+8:25/0 = 0
+10:10/0 = 0
+10:11/0 = 0
+3:2/0 = 0
+10:12/0 = 0
+11:12/0 = 0
+11:12/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:3/0 = 0
+3:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:4/0 = 0
+2:4/0 = 0
+2:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:4/0 = 0
+3:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+15:8/0 = 0
+15:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+5:17/0 = 0
+0:23/0 = 0
+1:23/0 = 0
+2:23/0 = 0
+0:24/0 = 0
+1:24/0 = 0
+1:24/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:24/0 = 0
+2:24/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:25/0 = 0
+1:25/0 = 0
+2:25/0 = 0
+10:15/0 = 0
+8:13/0 = 0
+8:13/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+10:16/0 = 0
+1:6/0 = 0
+2:6/0 = 0
+2:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:6/0 = 0
+3:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:7/0 = 0
+3:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:8/0 = 0
+3:18/0 = 0
+5:15/0 = 0
+5:16/0 = 0
+7:13/0 = 0
+7:13/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+5:7/0 = 0
+5:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+5:8/0 = 0
+1:14/0 = 0
+1:14/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+5:6/0 = 0
+5:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+6:6/0 = 0
+6:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+7:6/0 = 0
+3:16/0 = 0
+3:16/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+4:16/0 = 0
+13:13/0 = 0
+13:13/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:9/0 = 0
+1:10/0 = 0
+8:11/0 = 0
+8:11/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:9/0 = 0
+3:9/0 = 0
+2:10/0 = 0
+2:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:10/0 = 0
+2:11/0 = 0
+2:11/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:12/0 = 0
+2:12/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+5:24/0 = 0
+5:24/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+4:24/0 = 0
+4:24/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+4:25/0 = 0
+4:25/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+5:25/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_e73xf"]
+texture = ExtResource("13_3mput")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:2/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_e73xf"]
+physics_layer_0/collision_layer = 1
+physics_layer_0/collision_mask = 2
+sources/0 = SubResource("TileSetAtlasSource_fjgn4")
+sources/1 = SubResource("TileSetAtlasSource_00see")
+sources/3 = SubResource("TileSetAtlasSource_e73xf")
+
+[node name="Level 1 - tangled" unique_id=990222573 instance=ExtResource("1_mtsk1")]
+
+[node name="Parallax" type="Node2D" parent="." index="2" unique_id=1541788981]
+
+[node name="Parallax_back" type="Parallax2D" parent="Parallax" index="0" unique_id=2068712954]
+scroll_scale = Vector2(0.1, 0.1)
+scroll_offset = Vector2(-32, -32)
+repeat_size = Vector2(544, 304)
+
+[node name="TextureRect" type="TextureRect" parent="Parallax/Parallax_back" index="0" unique_id=1799133652]
+offset_right = 544.0
+offset_bottom = 304.0
+texture = ExtResource("2_bv7pj")
+
+[node name="fog_far_post" type="Parallax2D" parent="Parallax" index="1" unique_id=727276558]
+scroll_scale = Vector2(1.2, 1.2)
+scroll_offset = Vector2(-32, -32)
+repeat_size = Vector2(544, 304)
+script = ExtResource("3_fjgn4")
+speed_x = 0.00999999999999999
+speed_y = -0.02
+gap_density = 1.0
+
+[node name="fog2" type="ColorRect" parent="Parallax/fog_far_post" index="0" unique_id=866905948]
+material = SubResource("ShaderMaterial_qb8b8")
+instance_shader_parameters/density = 0.25
+instance_shader_parameters/gap_density = 1.0
+instance_shader_parameters/speed_x = 0.01
+instance_shader_parameters/speed_y = -0.02
+offset_right = 544.0
+offset_bottom = 304.0
+
+[node name="fog3" type="ColorRect" parent="Parallax/fog_far_post" index="1" unique_id=1008730220]
+material = SubResource("ShaderMaterial_b8xjo")
+instance_shader_parameters/density = 0.25
+instance_shader_parameters/gap_density = 1.0
+instance_shader_parameters/speed_x = 0.0139999995
+instance_shader_parameters/speed_y = -0.02
+offset_right = 544.0
+offset_bottom = 304.0
+
+[node name="fog4" type="ColorRect" parent="Parallax/fog_far_post" index="2" unique_id=1490180214]
+material = SubResource("ShaderMaterial_qb8b8")
+instance_shader_parameters/density = 0.25
+instance_shader_parameters/gap_density = 1.0
+instance_shader_parameters/speed_x = 0.0196
+instance_shader_parameters/speed_y = -0.02
+offset_right = 544.0
+offset_bottom = 304.0
+
+[node name="Parallax_far" type="Parallax2D" parent="Parallax" index="2" unique_id=1373894533]
+scroll_scale = Vector2(0.4, 0.4)
+scroll_offset = Vector2(-32, -32)
+repeat_size = Vector2(544, 304)
+
+[node name="TextureRect" type="TextureRect" parent="Parallax/Parallax_far" index="0" unique_id=442120867]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("5_e73xf")
+
+[node name="fog_far_pre" type="Parallax2D" parent="Parallax" index="3" unique_id=196522215]
+scroll_scale = Vector2(1.2, 1.2)
+scroll_offset = Vector2(-32, -32)
+repeat_size = Vector2(544, 304)
+script = ExtResource("3_fjgn4")
+speed_x = 0.01999999999999999
+speed_y = -0.03
+gap_density = 1.0
+
+[node name="fog2" type="ColorRect" parent="Parallax/fog_far_pre" index="0" unique_id=1979657674]
+material = SubResource("ShaderMaterial_qb8b8")
+instance_shader_parameters/density = 0.25
+instance_shader_parameters/gap_density = 1.0
+instance_shader_parameters/speed_x = 0.02
+instance_shader_parameters/speed_y = -0.03
+offset_right = 544.0
+offset_bottom = 304.0
+
+[node name="fog3" type="ColorRect" parent="Parallax/fog_far_pre" index="1" unique_id=1096543007]
+material = SubResource("ShaderMaterial_b8xjo")
+instance_shader_parameters/density = 0.25
+instance_shader_parameters/gap_density = 1.0
+instance_shader_parameters/speed_x = 0.027999999
+instance_shader_parameters/speed_y = -0.03
+offset_right = 544.0
+offset_bottom = 304.0
+
+[node name="fog4" type="ColorRect" parent="Parallax/fog_far_pre" index="2" unique_id=245628349]
+material = SubResource("ShaderMaterial_qb8b8")
+instance_shader_parameters/density = 0.25
+instance_shader_parameters/gap_density = 1.0
+instance_shader_parameters/speed_x = 0.0392
+instance_shader_parameters/speed_y = -0.03
+offset_right = 544.0
+offset_bottom = 304.0
+
+[node name="GameManager" type="Node" parent="." index="3" unique_id=1321521609]
+unique_name_in_owner = true
+script = ExtResource("6_3mput")
+
+[node name="Player" parent="." index="4" unique_id=225499307 instance=ExtResource("7_q8mhn")]
+position = Vector2(738, -793)
+floor_constant_speed = true
+floor_max_angle = 0.80285144
+floor_snap_length = 3.0
+height = 40
+
+[node name="Camera2D" type="Camera2D" parent="Player" index="2" unique_id=56651356]
+position = Vector2(2, 0)
+position_smoothing_enabled = true
+position_smoothing_speed = 9.0
+script = ExtResource("8_21h4b")
+
+[node name="center of screen tracker" type="Sprite2D" parent="Player/Camera2D" index="0" unique_id=1117005421]
+visible = false
+z_index = -1
+position = Vector2(-1, -18)
+scale = Vector2(0.09375, 0.09375)
+texture = ExtResource("9_y2ti1")
+script = ExtResource("10_pwt0d")
+
+[node name="resetZone" parent="." index="5" unique_id=424939368 instance=ExtResource("11_hdgju")]
+position = Vector2(1216, 1016)
+
+[node name="floor" type="CollisionShape2D" parent="resetZone" index="1" unique_id=999741754]
+shape = SubResource("WorldBoundaryShape2D_x51mi")
+
+[node name="ground" parent="." index="6" unique_id=1482081809 groups=["growable_tiles"]]
+tile_set = SubResource("TileSet_e73xf")
+script = ExtResource("14_e73xf")
+preferred_growth = 1
+atlas_id = 3
+filler_tile = Vector2i(1, 2)
+stack_atlas_id = Array[int]([3])
+left_alt_bot_tile = Vector2i(0, 2)
+right_alt_bot_tile = Vector2i(2, 2)
+
+[node name="fog_fore" type="Parallax2D" parent="." index="7" unique_id=2036982447]
+scroll_scale = Vector2(1.2, 1.2)
+scroll_offset = Vector2(-32, -32)
+repeat_size = Vector2(544, 304)
+script = ExtResource("3_fjgn4")
+speed_y = -0.02
+gap_density = 1.0
+
+[node name="fog2" type="ColorRect" parent="fog_fore" index="0" unique_id=393997133]
+material = SubResource("ShaderMaterial_qb8b8")
+instance_shader_parameters/density = 0.25
+instance_shader_parameters/gap_density = 1.0
+instance_shader_parameters/speed_x = 0.05
+instance_shader_parameters/speed_y = -0.02
+offset_right = 544.0
+offset_bottom = 304.0
+
+[node name="fog3" type="ColorRect" parent="fog_fore" index="1" unique_id=2068920786]
+material = SubResource("ShaderMaterial_b8xjo")
+instance_shader_parameters/density = 0.25
+instance_shader_parameters/gap_density = 1.0
+instance_shader_parameters/speed_x = 0.07
+instance_shader_parameters/speed_y = -0.02
+offset_right = 544.0
+offset_bottom = 304.0
+
+[node name="fog4" type="ColorRect" parent="fog_fore" index="2" unique_id=1128472147]
+material = SubResource("ShaderMaterial_qb8b8")
+instance_shader_parameters/density = 0.25
+instance_shader_parameters/gap_density = 1.0
+instance_shader_parameters/speed_x = 0.098
+instance_shader_parameters/speed_y = -0.02
+offset_right = 544.0
+offset_bottom = 304.0
+
+[connection signal="ready" from="GameManager" to="GameManager" method="_on_ready"]

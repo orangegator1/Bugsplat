@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.12.0" orientation="orthogonal" renderorder="right-down" width="4" height="4" tilewidth="16" tileheight="16" infinite="0" nextlayerid="3" nextobjectid="1">
+ <tileset firstgid="1" source="../tileset template.tsx"/>
+ <tileset firstgid="51" source=":/automap-tiles.tsx"/>
+ <tileset firstgid="56" source="../tilemap test corner decoration.tsx"/>
+ <layer id="1" name="input_prototype" width="4" height="4" opacity="0.61">
+  <data encoding="csv">
+0,0,0,0,
+0,12,53,0,
+0,53,54,0,
+0,0,0,0
+</data>
+ </layer>
+ <layer id="2" name="output_decoration_se" width="4" height="4">
+  <data encoding="csv">
+0,0,0,0,
+0,62,0,0,
+0,0,0,0,
+0,0,0,0
+</data>
+ </layer>
+</map>

@@ -1,0 +1,7 @@
+Rules\flat autotile rules.tmx
+Rules\corner fixing-SW.tmx
+Rules\corner fixing-NW.tmx
+Rules\corner fixing-NE.tmx
+
+Rules\corner fixing-SE.tmx
+Rules\ramp fixing.tmx

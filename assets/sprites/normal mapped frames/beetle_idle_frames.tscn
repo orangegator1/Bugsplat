@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://bxm3itts81djc"]
+
+[ext_resource type="Texture2D" uid="uid://gw7bn52r0did" path="res://assets/sprites/beetle diffuse idle-Sheet.png" id="1_evs38"]
+[ext_resource type="Texture2D" uid="uid://5fu0qbtjw1yc" path="res://assets/sprites/beetle normal map idle-Sheet.png" id="2_djw1u"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_1d72r"]
+diffuse_texture = ExtResource("1_evs38")
+normal_texture = ExtResource("2_djw1u")
+
+[sub_resource type="Gradient" id="Gradient_j7ry3"]
+offsets = PackedFloat32Array(0, 0.6784452)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_gyywq"]
+gradient = SubResource("Gradient_j7ry3")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="BeetleIdleFrames" type="Sprite2D" unique_id=1202931527]
+texture = SubResource("CanvasTexture_1d72r")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=862892791]
+visible = false
+position = Vector2(1, -18)
+energy = 6.34
+texture = SubResource("GradientTexture2D_gyywq")

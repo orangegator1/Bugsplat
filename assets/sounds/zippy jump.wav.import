@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://ryvrhprt5kvt"
+path="res://.godot/imported/zippy jump.wav-37c53f76b174adc62e0d88bfbabe22be.sample"
+
+[deps]
+
+source_file="res://assets/sounds/zippy jump.wav"
+dest_files=["res://.godot/imported/zippy jump.wav-37c53f76b174adc62e0d88bfbabe22be.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

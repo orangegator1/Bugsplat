@@ -1,0 +1,83 @@
+[gd_scene format=3 uid="uid://dpewaftqj4qui"]
+
+[ext_resource type="Texture2D" uid="uid://cc6qe6dgidvi0" path="res://assets/sprites/floating glowing thing-Sheet.png" id="2_712kt"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5gu41"]
+radius = 7.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ok1n"]
+atlas = ExtResource("2_712kt")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7q4n0"]
+atlas = ExtResource("2_712kt")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gs2s8"]
+atlas = ExtResource("2_712kt")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8yvkb"]
+atlas = ExtResource("2_712kt")
+region = Rect2(0, 100, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r2aya"]
+atlas = ExtResource("2_712kt")
+region = Rect2(100, 100, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dbkgy"]
+atlas = ExtResource("2_712kt")
+region = Rect2(200, 100, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bprym"]
+atlas = ExtResource("2_712kt")
+region = Rect2(0, 200, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aikqf"]
+atlas = ExtResource("2_712kt")
+region = Rect2(100, 200, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wtlut"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ok1n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7q4n0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gs2s8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8yvkb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r2aya")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dbkgy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bprym")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aikqf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[node name="floatyGlowy" type="Area2D" unique_id=1261328820]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=54410104]
+shape = SubResource("CircleShape2D_5gu41")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1190839237]
+sprite_frames = SubResource("SpriteFrames_wtlut")
+autoplay = "default"
+frame_progress = 0.472645
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,0 +1,4 @@
+clear.tmx
+slopes.tmx
+tangled rules.tmx
+interior rules.tmx
