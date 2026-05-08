@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://b2jyrqouhtd0y" path="res://tilesets/tangled stack.png" id="4_5hk2h"]
 [ext_resource type="Script" uid="uid://dc2ea5p13ncoo" path="res://scripts/growable_tiles.gd" id="5_s4nmb"]
 [ext_resource type="PackedScene" uid="uid://6r0tnlqktrqt" path="res://scenes/Controllers/level_transition.tscn" id="6_s4nmb"]
+[ext_resource type="PackedScene" uid="uid://c86qgbo36anj5" path="res://scenes/Controllers/player_spawn.tscn" id="7_jw7li"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_s4nmb"]
 texture = ExtResource("2_gesbs")
@@ -535,3 +536,6 @@ size = 4
 location = 3
 target_level = "uid://bsnvh00iswdjn"
 target_area_name = "LevelTransition"
+
+[node name="PlayerSpawn" parent="." index="5" unique_id=1233805077 instance=ExtResource("7_jw7li")]
+position = Vector2(560, -40)

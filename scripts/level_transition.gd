@@ -23,6 +23,7 @@ signal player_placed
 func _ready() -> void:
 	if Engine.is_editor_hint():
 		return
+	apply_area_settings()
 	SceneManager.new_scene_ready.connect(on_new_scene_ready)
 	SceneManager.load_scene_finished.connect(on_load_scene_finished)
 
@@ -38,9 +39,9 @@ func on_new_scene_ready(target_name: String, offset: Vector2i) -> void:
 	# position player
 	if target_name == name:
 		var player = get_tree().get_first_node_in_group("Player")
-		player.global_position = global_position + Vector2(offset)
-		player_placed.emit()
-		print("player placed in level_transition.gd")
+		if player:
+			player.global_position = global_position + Vector2(offset)
+			player_placed.emit()
 
 
 func on_load_scene_finished() -> void:

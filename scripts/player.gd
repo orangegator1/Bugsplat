@@ -54,13 +54,19 @@ var resetting := false
 @onready var dirt_falling_2: GPUParticles2D = $Particles/DirtFalling2
 @onready var dirt_falling_3: GPUParticles2D = $Particles/DirtFalling3
 
-@onready var bg_parallax: Parallax2D = $"../BackgroundVerticalParallax"
-@onready var ground: TileMapLayer = $"../ground"
-@onready var background_texture: TextureRect = $"../BackgroundVerticalParallax/BackgroundTexture"
+var bg_parallax: Parallax2D
+var ground: TileMapLayer
+var background_texture: TextureRect
+#@onready var bg_parallax: Parallax2D = $"../BackgroundVerticalParallax"
+#@onready var ground: TileMapLayer = $"../ground"
+#@onready var background_texture: TextureRect = $"../BackgroundVerticalParallax/BackgroundTexture"
 
 func _ready() -> void:
 	# delete duplicate players
+	if not get_tree().get_first_node_in_group("Player"):
+		add_to_group("Player")
 	if get_tree().get_first_node_in_group("Player") != self:
+		await get_tree().process_frame
 		self.queue_free()
 
 	(animated_sprites.get_sprite_frames().
@@ -78,7 +84,8 @@ func _ready() -> void:
 	# moving the player in the tree is breaking all references to other objects
 
 	# maybe
-	self.reparent.call_deferred(get_tree().root)
+	if not get_parent() == get_tree().root:
+		self.reparent.call_deferred(get_tree().root)
 
 
 func _process(_delta: float) -> void:
@@ -89,7 +96,6 @@ func _process(_delta: float) -> void:
 
 
 func _physics_process(delta: float) -> void:
-
 	handle_sprite()
 	# fixes camera stutters and unpredictable position
 	# (due to collisions during player position tweens?)
@@ -452,7 +458,6 @@ func set_background_scroll_y() -> bool:
 	bg_parallax.scroll_scale.y = (texture_h - screen_h) / max_camera_travel
 
 	# ensure we start at the bottom of the texture
-	print("bg_parallax.position: %s" % [bg_parallax.position,])
 	bg_parallax.scroll_offset.y = -215
 	var _target_tex_top = bot - texture_h
 	var _cam_limit_bottom = bot - (screen_h / 2.0)

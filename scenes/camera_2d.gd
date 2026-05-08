@@ -23,8 +23,9 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if not transitioning:
-		set_pos_to_player()
-		set_camera_movement_offset(delta)
+		if player:
+			set_pos_to_player()
+			set_camera_movement_offset(delta)
 
 
 func set_pos_to_player() -> void:
@@ -56,4 +57,3 @@ func on_new_scene_ready(_target_name: String, _offset: Vector2i) -> void:
 	set_pos_to_player()
 	reset_smoothing()
 	reset_smoothing()
-	print("finished camera smoothing")

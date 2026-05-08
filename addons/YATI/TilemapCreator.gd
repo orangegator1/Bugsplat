@@ -109,7 +109,7 @@ func set_add_class_as_metadata(value: bool):
 
 func set_add_id_as_metadata(value: bool):
 	_add_id_as_metadata = value
-	
+
 
 func set_no_alternative_tiles(value: bool):
 	_dont_use_alternative_tiles = value
@@ -172,7 +172,7 @@ func create(source_file: String):
 		tileset_creator.set_base_path(source_file)
 		tileset_creator.set_map_parameters(Vector2i(_map_tile_width, _map_tile_height))
 		if _ct != null:
-			tileset_creator.set_custom_types(_ct)	
+			tileset_creator.set_custom_types(_ct)
 		if _map_wangset_to_terrain:
 			tileset_creator.map_wangset_to_terrain()
 		tileset_creator.set_custom_data_prefix(_custom_data_prefix)
@@ -201,7 +201,7 @@ func create(source_file: String):
 			_tileset.tile_shape = TileSet.TILE_SHAPE_HEXAGON
 			_tileset.tile_layout = TileSet.TILE_LAYOUT_STACKED if stagger_index == "odd" else TileSet.TILE_LAYOUT_STACKED_OFFSET
 			_tileset.tile_offset_axis = TileSet.TILE_OFFSET_AXIS_VERTICAL if stagger_axis == "x" else TileSet.TILE_OFFSET_AXIS_HORIZONTAL
-	
+
 	_base_node = Node2D.new()
 	_base_name = source_file.get_file().get_basename()
 	_base_node.name = _base_name
@@ -216,7 +216,7 @@ func create(source_file: String):
 		_base_node.add_child(_background)
 		_background.name = BACKGROUND_COLOR_RECT_NAME
 		_background.owner = _base_node
-	
+
 	if base_dictionary.has("layers"):
 		for layer in base_dictionary["layers"]:
 			handle_layer(layer, _base_node)
@@ -289,7 +289,7 @@ func handle_layer(layer: Dictionary, parent: Node2D):
 
 		if not _use_default_filter:
 			_tilemap_layer.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
-		
+
 		if _infinite and layer.has("chunks"):
 			# Chunks
 			for chunk in layer["chunks"]:
@@ -335,7 +335,7 @@ func handle_layer(layer: Dictionary, parent: Node2D):
 			layer_node = Node2D.new()
 			# Leave the old handling for the time being
 			handle_parallaxes(parent, layer_node, layer)
-		
+
 		if "name" in layer:
 			layer_node.name = layer["name"]
 		if layer_opacity < 1.0 or tint_color != "#ffffff":
@@ -380,7 +380,7 @@ func handle_layer(layer: Dictionary, parent: Node2D):
 		var layer_pos_x = layer.get("x", 0.0)
 		var layer_pos_y = layer.get("y", 0.0)
 		group_node.position = Vector2(layer_pos_x + layer_offset_x, layer_pos_y + layer_offset_y)
-	
+
 		if layer.has("layers"):
 			for child_layer in layer["layers"]:
 				handle_layer(child_layer, group_node)
@@ -452,7 +452,7 @@ func handle_parallaxes(parent: Node, layer_node: Node, layer_dict: Dictionary):
 				_background.reparent(_parallax_background)
 				_background.owner = _base_node
 			_parallax_layer_existing = true
-	
+
 		var par_x = layer_dict.get("parallaxx", 0.0)
 		var par_y = layer_dict.get("parallaxy", 0.0)
 		var parallax_node = ParallaxLayer.new()
@@ -493,7 +493,7 @@ func handle_data(data, map_size):
 						CommonUtils.error_count += 1
 						return []
 				bytes = PackedByteArray(ret)
-			ret = bytes.to_int32_array()	
+			ret = bytes.to_int32_array()
 	return ret
 
 
@@ -584,7 +584,7 @@ func create_polygons_on_alternative_tiles(source_data: TileData, target_data: Ti
 			target_data.set_occluder_polygon(layer_id, 0, occluder_polygon)
 		else:
 			target_data.set_occluder(layer_id, occluder_polygon)
-		
+
 
 func create_map_from_data(layer_data: Array, offset_x: int, offset_y: int, map_width: int):
 	var cell_counter: int = -1
@@ -662,13 +662,13 @@ func create_map_from_data(layer_data: Array, offset_x: int, offset_y: int, map_w
 							diff_y += 1
 						tile_data.texture_origin = Vector2i(-diff_x/2, diff_y/2)
 					tile_data.texture_origin -= tile_offset
-					
+
 					var src_data = atlas_source.get_tile_data(atlas_coords, 0)
 					create_polygons_on_alternative_tiles(src_data, tile_data, alt_id)
 					# Copy metadata to alternative tile
 					for meta_name in src_data.get_meta_list():
 						tile_data.set_meta(meta_name, src_data.get_meta(meta_name))
-		
+
 		_tilemap_layer.set_cell(cell_coords, source_id, atlas_coords, alt_id)
 
 
@@ -824,7 +824,7 @@ func handle_object(obj: Dictionary, layer_node: Node, tileset: TileSet, offset: 
 		if not _add_class_as_metadata and class_string != "" and not godot_node_type_prop_found:
 			print_rich("[color=" + WARNING_COLOR +"] -- Unknown class '" + class_string + "'. -> Assuming Default[/color]")
 			CommonUtils.warning_count += 1
-		elif godot_node_type_prop_found and godot_node_type_property_string != "":	
+		elif godot_node_type_prop_found and godot_node_type_property_string != "":
 			print_rich("[color=" + WARNING_COLOR +"] -- Unknown " + GODOT_NODE_TYPE_PROPERTY + " '" + godot_node_type_property_string + "'. -> Assuming Default[/color]")
 			CommonUtils.warning_count += 1
 		godot_type = _godot_type.BODY
@@ -862,7 +862,7 @@ func handle_object(obj: Dictionary, layer_node: Node, tileset: TileSet, offset: 
 				if obj.has("properties"):
 					if template_obj.has("properties"):
 						# merge obj properties that may have been overridden in the obj instance
-						# and add any additional properties defined in instanced obj that are 
+						# and add any additional properties defined in instanced obj that are
 						# not defined in template
 						for prop in obj["properties"]:
 							var found = false
@@ -937,7 +937,7 @@ func handle_object(obj: Dictionary, layer_node: Node, tileset: TileSet, offset: 
 			printerr("Could not get AtlasSource with id " + source_id + ". -> Skipped")
 			CommonUtils.error_count += 1
 			return
-	
+
 		var gid_source = tileset.get_source(source_id)
 		var obj_sprite = Sprite2D.new()
 		layer_node.add_child(obj_sprite)
@@ -951,7 +951,7 @@ func handle_object(obj: Dictionary, layer_node: Node, tileset: TileSet, offset: 
 		obj_sprite.visible = obj_visible
 		var td
 		if is_partitioned_tileset(source_id):
-			# Object is tile from partitioned tileset 
+			# Object is tile from partitioned tileset
 			var atlas_width: int = gid_source.get_atlas_grid_size().x
 
 			# Can be zero if tileset had an error
@@ -1075,7 +1075,7 @@ func handle_object(obj: Dictionary, layer_node: Node, tileset: TileSet, offset: 
 				add_collision_shapes(parent, get_object_group(idx), obj_width, obj_height, flippedH, flippedV, obj_sprite.scale)
 				if obj.has("properties"):
 					handle_properties(parent, obj["properties"])
-			
+
 		obj_sprite.flip_h = flippedH
 		obj_sprite.flip_v = flippedV
 
@@ -1139,7 +1139,7 @@ func handle_object(obj: Dictionary, layer_node: Node, tileset: TileSet, offset: 
 			if _add_class_as_metadata and class_string != "":
 				marker.set_meta("class", class_string)
 			if _add_id_as_metadata and obj_id != 0:
-				marker.set_meta("id", obj_id)		
+				marker.set_meta("id", obj_id)
 			if obj.has("properties"):
 				handle_properties(marker, obj["properties"])
 		elif obj.has("polygon"):
@@ -1230,7 +1230,7 @@ func handle_object(obj: Dictionary, layer_node: Node, tileset: TileSet, offset: 
 				if _add_id_as_metadata and obj_id != 0:
 					polygon.set_meta("id", obj_id)
 				if obj.has("properties"):
-					handle_properties(polygon, obj["properties"])	
+					handle_properties(polygon, obj["properties"])
 		elif obj.has("polyline"):
 			if godot_type == _godot_type.LINE:
 				var line = Line2D.new()
@@ -1356,7 +1356,7 @@ func handle_object(obj: Dictionary, layer_node: Node, tileset: TileSet, offset: 
 					else:
 						collision_shape.skew = -_iso_skew
 						obj_rot += -90 - _iso_rot
-	
+
 					collision_shape.scale = _iso_scale
 
 				collision_shape.position = transpose_coords(obj_width / 2.0, obj_height / 2.0, true)
@@ -1398,7 +1398,7 @@ func handle_object(obj: Dictionary, layer_node: Node, tileset: TileSet, offset: 
 					if _add_class_as_metadata and class_string != "":
 						nav_region.set_meta("class", class_string)
 					if _add_id_as_metadata and obj_id != 0:
-						nav_region.set_meta("id", obj_id)		
+						nav_region.set_meta("id", obj_id)
 					if obj.has("properties"):
 						handle_properties(nav_region, obj["properties"])
 			elif godot_type == _godot_type.OCCLUDER:
@@ -1444,9 +1444,9 @@ func handle_object(obj: Dictionary, layer_node: Node, tileset: TileSet, offset: 
 					if _add_class_as_metadata and class_string != "":
 						polygon.set_meta("class", class_string)
 					if _add_id_as_metadata and obj_id != 0:
-						polygon.set_meta("id", obj_id)		
+						polygon.set_meta("id", obj_id)
 					if obj.has("properties"):
-						handle_properties(polygon, obj["properties"])	
+						handle_properties(polygon, obj["properties"])
 
 
 func add_collision_shapes(parent: CollisionObject2D, object_group: Dictionary, tile_width: float, tile_height: float, flippedH: bool, flippedV: bool, scale: Vector2):
@@ -1467,7 +1467,7 @@ func add_collision_shapes(parent: CollisionObject2D, object_group: Dictionary, t
 
 		if obj.has("polygon"):
 			var polygon_points = obj["polygon"] as Array
-			var rot = obj.get("rotation", 0.0)			
+			var rot = obj.get("rotation", 0.0)
 			var polygon = []
 			for pt in polygon_points:
 				var p_coord = Vector2(pt["x"], pt["y"]) * scale
@@ -1530,7 +1530,7 @@ func add_collision_shapes(parent: CollisionObject2D, object_group: Dictionary, t
 			elif _map_orientation == "isometric":
 				pos_x -= tile_width / 2.0
 			if flippedH:
-				pos_x = tile_width - pos_x 
+				pos_x = tile_width - pos_x
 				if _map_orientation == "isometric":
 					pos_x -= tile_width
 				rot = -rot
@@ -1581,7 +1581,7 @@ func add_collision_shapes(parent: CollisionObject2D, object_group: Dictionary, t
 				if flippedV:
 					effective_rot = -effective_rot
 					effective_skew = -effective_skew
-	
+
 				collision_shape.skew = effective_skew
 				collision_shape.scale = _iso_scale
 				rot += effective_rot
@@ -1668,36 +1668,36 @@ func get_atlas_source_index(gid: int):
 				return idx
 		elif effective_gid == (assigned_id + 1):
 			return idx
-		
+
 	return -1
-	
-	
+
+
 func get_matching_source_id(gid: int):
 	var idx = get_atlas_source_index(gid)
 	if idx < 0:
 		return -1
 	return _atlas_sources[idx]["sourceId"]
-	
-	
+
+
 func get_tile_offset(gid: int):
 	var idx = get_atlas_source_index(gid)
 	if idx < 0:
 		return Vector2i.ZERO
 	return _atlas_sources[idx]["tileOffset"]
-		
-	
+
+
 func get_tileset_orientation(gid: int):
 	var idx = get_atlas_source_index(gid)
 	if idx < 0:
 		return _map_orientation
 	return _atlas_sources[idx]["tilesetOrientation"]
-		
-	
+
+
 func get_tileset_alignment(gid: int):
 	var idx = get_atlas_source_index(gid)
 	if idx < 0:
 		return DEFAULT_ALIGNMENT
-	return _atlas_sources[idx]["objectAlignment"]	
+	return _atlas_sources[idx]["objectAlignment"]
 
 
 func is_partitioned_tileset(source_id: int) -> bool:
@@ -1724,7 +1724,7 @@ func get_object_group(index: int):
 func handle_properties(target_node: Node, properties: Array):
 	var has_children = false
 	if target_node is StaticBody2D or target_node is Area2D or target_node is CharacterBody2D or target_node is RigidBody2D or target_node is AnimatableBody2D:
-		has_children = target_node.get_child_count() > 0 
+		has_children = target_node.get_child_count() > 0
 	for property in properties:
 		var name: String = property.get("name", "")
 		var type: String = property.get("type", "string")
@@ -1739,7 +1739,7 @@ func handle_properties(target_node: Node, properties: Array):
 			child_props.append(child_prop_dict)
 			for child in target_node.get_children():
 				handle_properties(child, child_props)
-		
+
 		# Node properties
 		# v1.5.4: godot_group property
 		if name.to_lower() == GODOT_GROUP_PROPERTY and type == "string":
@@ -1785,7 +1785,7 @@ func handle_properties(target_node: Node, properties: Array):
 			target_node.material = DataLoader.load_resource_from_file(val, _base_path)
 		elif name.to_lower() == "use_parent_material" and type == "bool":
 			target_node.use_parent_material = val.to_lower() == "true"
-	
+
 		# TileMapLayer properties
 		elif name.to_lower() == "tile_set" and type == "file" and target_node is TileMapLayer:
 			target_node.tile_set = DataLoader.load_resource_from_file(val, _base_path)
@@ -1920,7 +1920,7 @@ func handle_properties(target_node: Node, properties: Array):
 				target_node.angular_damp_space_override = int(val)
 		elif name.to_lower() == "angular_damp" and (type == "float" or type == "int") and target_node is Area2D:
 			target_node.angular_damp = float(val)
-			
+
 		# StaticBody2D properties
 		elif name.to_lower() == "physics_material_override" and type == "file" and target_node is StaticBody2D:
 			target_node.physics_material_override = DataLoader.load_resource_from_file(val, _base_path)
@@ -2027,7 +2027,7 @@ func handle_properties(target_node: Node, properties: Array):
 			target_node.constant_force = Vector2(target_node.constant_force.x, float(val))
 		elif name.to_lower() == "constant_torque" and (type == "float" or type == "int") and target_node is RigidBody2D:
 			target_node.constant_torque = float(val)
-				
+
 		# NavigationRegion2D properties
 		elif name.to_lower() == "navigation_polygon" and type == "file" and target_node is NavigationRegion2D:
 			target_node.navigation_polygon = DataLoader.load_resource_from_file(val, _base_path)

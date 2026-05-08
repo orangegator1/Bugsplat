@@ -674,7 +674,6 @@ z_index = 1
 collision_layer = 2
 collision_mask = 3
 script = ExtResource("1_g2els")
-max_health = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1788276378]
 position = Vector2(2, -12)

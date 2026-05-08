@@ -11,11 +11,11 @@ var pool: Array[GPUParticles2D]
 var index := 0
 
 func _ready() -> void:
-	player = await SceneManager.get_player()
-	while not current_health:
-		if is_inside_tree():
+	while not player:
 			await get_tree().process_frame
-			current_health = player.health
+			player = get_tree().get_first_node_in_group("Player")
+	current_health = player.health
+
 	pool = [healed_particles, healed_particles_2]
 	#for p in pool:
 		#p.emitting = true
