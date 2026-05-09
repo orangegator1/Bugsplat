@@ -23,7 +23,7 @@ func transition_scene( new_scene: String,
 		player_offset: Vector2i,
 		dir: String) -> void:
 
-	load_scene_started.emit(new_scene)
+	load_scene_started.emit()
 	get_tree().paused = true
 
 	var fade_pos = get_fade_position(dir)

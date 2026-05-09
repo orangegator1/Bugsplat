@@ -4,8 +4,8 @@ introduce health system UI with first fall
   2x scale above player, plays blinking animation, shrinks and moves into position
   grace fall, take no damage when switching scenes
     add special decoration to show a cushioned landing
-fix background and create persistent scene
-  load only tileset when switching
+fix background parallax, calculate total height of interconnected levels for scroll_scale
+  also need to align levels orthogonally so that vertical scroll progress is consistent at different y-values
 create save points
 limit growing to certain locations and a consumable
 can quit the game from some menu, "esc"
@@ -13,6 +13,8 @@ title screen
 X
 fix UI, health system and particles
 fix reset zones
+create persistent scene
+  load only tileset when switching
 
 movement
   animation for sweet spot ledge jump
