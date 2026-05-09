@@ -55,7 +55,6 @@ var resetting := false
 @onready var dirt_falling_3: GPUParticles2D = $Particles/DirtFalling3
 
 var bg_parallax: Parallax2D
-var ground: TileMapLayer
 var background_texture: TextureRect
 #@onready var bg_parallax: Parallax2D = $"../Level/BackgroundVerticalParallax"
 #@onready var background_texture: TextureRect = $"../BackgroundVerticalParallax/BackgroundTexture"
@@ -89,8 +88,6 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if not background_set_up:
 		background_set_up = set_background_scroll_y()
-
-	update_label("health:" + str(health))
 
 
 func _physics_process(delta: float) -> void:

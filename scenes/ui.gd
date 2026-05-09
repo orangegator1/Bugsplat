@@ -27,7 +27,7 @@ func _process(_delta: float) -> void:
 func on_player_health_changed(value: int) -> void:
 	if value <= 0:
 		health_indicator.play("reset")
-	elif current_health <= value:
+	elif current_health < value:
 		var particles = pool[index]
 		index = (index + 1) % pool.size()
 		particles.emitting = true
@@ -35,5 +35,7 @@ func on_player_health_changed(value: int) -> void:
 	elif current_health > value:
 		health_indicator.play(str(value) + " hurt")
 		await health_indicator.animation_finished
+		health_indicator.play(str(value))
+	elif current_health == value:
 		health_indicator.play(str(value))
 	current_health = value

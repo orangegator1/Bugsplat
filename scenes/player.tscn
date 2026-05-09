@@ -749,7 +749,6 @@ position = Vector2(2, 0)
 [node name="DirtFalling3" parent="Particles" unique_id=1237897303 groups=["warmup_particles"] instance=ExtResource("18_fulsm")]
 
 [node name="DebugLabel" type="Label" parent="." unique_id=79396993]
-visible = false
 offset_left = -24.0
 offset_top = -72.0
 offset_right = 28.0
