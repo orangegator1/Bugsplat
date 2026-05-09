@@ -66,7 +66,7 @@ func get_fade_position(dir: String) -> Vector2:
 
 
 func get_player() -> CharacterBody2D:
-	var player: CharacterBody2D = null
+	var player: Player = null
 	while not player:
 		if is_inside_tree():
 			await get_tree().process_frame

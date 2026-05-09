@@ -11,10 +11,6 @@ var pool: Array[GPUParticles2D]
 var index := 0
 
 func _ready() -> void:
-	player = await SceneManager.get_player()
-	current_health = player.health
-	player.health_changed.connect(on_player_health_changed)
-
 	pool = [healed_particles, healed_particles_2]
 
 func _process(_delta: float) -> void:
@@ -23,6 +19,7 @@ func _process(_delta: float) -> void:
 	else:
 		# reconnect to new instance of player
 		player = await SceneManager.get_player()
+		current_health = player.health
 		on_player_health_changed(player.health)
 		player.health_changed.connect(on_player_health_changed)
 
@@ -30,7 +27,7 @@ func _process(_delta: float) -> void:
 func on_player_health_changed(value: int) -> void:
 	if value <= 0:
 		health_indicator.play("reset")
-	elif current_health < value:
+	elif current_health <= value:
 		var particles = pool[index]
 		index = (index + 1) % pool.size()
 		particles.emitting = true

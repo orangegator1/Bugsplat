@@ -12,5 +12,3 @@ func _process(_delta: float) -> void:
 		player.add_to_group("Player")
 		get_tree().root.add_child(player)
 		player.global_position = global_position
-	else:
-		return
