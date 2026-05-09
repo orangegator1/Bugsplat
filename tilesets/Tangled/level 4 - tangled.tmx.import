@@ -1,0 +1,23 @@
+[remap]
+
+importer="YATI"
+type="PackedScene"
+uid="uid://d3gl850gqdxv"
+path="res://.godot/imported/level 4 - tangled.tmx-4248f4447e9bebbcae2c4cbcbbc1e1ee.tscn"
+
+[deps]
+
+source_file="res://tilesets/Tangled/level 4 - tangled.tmx"
+dest_files=["res://.godot/imported/level 4 - tangled.tmx-4248f4447e9bebbcae2c4cbcbbc1e1ee.tscn"]
+
+[params]
+
+use_default_filter=false
+add_class_as_metadata=false
+add_id_as_metadata=false
+no_alternative_tiles=false
+map_wangset_to_terrain=false
+custom_data_prefix="data_"
+tiled_project_file=""
+post_processor=""
+save_tileset_to=""

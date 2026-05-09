@@ -147,7 +147,8 @@ _data = {
 &"RESET": SubResource("Animation_1ikuy")
 }
 
-[node name="coin" type="Area2D" unique_id=796169510]
+[node name="BerryBush" type="Area2D" unique_id=796169510]
+z_index = 2
 collision_mask = 2
 script = ExtResource("1_rwqht")
 

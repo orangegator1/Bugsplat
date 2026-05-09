@@ -29,7 +29,6 @@
 [ext_resource type="Texture2D" uid="uid://b54svetoukgg" path="res://assets/sprites/button prompt.png" id="30_b8xjo"]
 [ext_resource type="Texture2D" uid="uid://cpipt2fils4qh" path="res://assets/sprites/goldfish-Sheet.png" id="31_x51mi"]
 [ext_resource type="PackedScene" uid="uid://6r0tnlqktrqt" path="res://scenes/Controllers/level_transition.tscn" id="33_b8xjo"]
-[ext_resource type="Script" uid="uid://5a4krpvnih60" path="res://scripts/fish_trigger.gd" id="33_tf2b2"]
 [ext_resource type="PackedScene" uid="uid://c86qgbo36anj5" path="res://scenes/Controllers/player_spawn.tscn" id="33_wmb0u"]
 [ext_resource type="PackedScene" uid="uid://doqb5251g4xuq" path="res://scenes/goldfish.tscn" id="33_x51mi"]
 
@@ -128,7 +127,7 @@ shader_parameter/hdr = false
 shader_parameter/seed = 5.0
 
 [sub_resource type="Animation" id="Animation_c4fy1"]
-length = 3.0
+length = 2.0
 loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -137,10 +136,10 @@ tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.0009999999, 3),
+"times": PackedFloat32Array(0.38, 1.54),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(1974, -971), Vector2(1974, 958)]
+"values": [Vector2(2294, -1242), Vector2(2391, -1369)]
 }
 
 [sub_resource type="Animation" id="Animation_qqucv"]
@@ -633,15 +632,18 @@ sources/0 = SubResource("TileSetAtlasSource_fjgn4")
 sources/1 = SubResource("TileSetAtlasSource_00see")
 sources/3 = SubResource("TileSetAtlasSource_e73xf")
 
-[node name="Level" unique_id=183653992 instance=ExtResource("1_mtsk1")]
+[node name="Level" unique_id=1109830552 instance=ExtResource("1_mtsk1")]
 
-[node name="template" parent="." index="0" unique_id=589037238]
+[node name="template" parent="." index="0" unique_id=1746213677]
 visible = false
 
-[node name="temp" parent="." index="1" unique_id=1628378746]
+[node name="temp" parent="." index="1" unique_id=965579806]
 visible = false
 
-[node name="BackgroundVerticalParallax" type="Parallax2D" parent="." index="2" unique_id=1935811224]
+[node name="PlayerSpawn" parent="." index="2" unique_id=1233805077 instance=ExtResource("33_wmb0u")]
+position = Vector2(-1012, 675)
+
+[node name="BackgroundVerticalParallax" type="Parallax2D" parent="." index="3" unique_id=1935811224]
 z_index = -1
 scroll_scale = Vector2(0, 0.1)
 scroll_offset = Vector2(0, 334)
@@ -658,7 +660,7 @@ offset_right = 544.0
 offset_bottom = 604.0
 color = Color(0.29411766, 0.6627451, 0.93333334, 0.42745098)
 
-[node name="Parallax" type="Node2D" parent="." index="3" unique_id=1541788981]
+[node name="Parallax" type="Node2D" parent="." index="4" unique_id=1541788981]
 z_index = -1
 
 [node name="Parallax_back" type="Parallax2D" parent="Parallax" index="0" unique_id=2068712954]
@@ -691,6 +693,7 @@ texture = ExtResource("2_3mput")
 metadata/_edit_use_anchors_ = true
 
 [node name="fog_far_post" type="Parallax2D" parent="Parallax" index="1" unique_id=727276558]
+visible = false
 scroll_scale = Vector2(1.2, 1.2)
 scroll_offset = Vector2(-32, -32)
 repeat_size = Vector2(544, 304)
@@ -778,6 +781,7 @@ offset_bottom = 304.0
 metadata/_edit_use_anchors_ = true
 
 [node name="fog4" type="ColorRect" parent="Parallax/fog_far_pre" index="2" unique_id=245628349]
+visible = false
 material = SubResource("ShaderMaterial_qb8b8")
 instance_shader_parameters/density = 0.25
 instance_shader_parameters/gap_density = 1.0
@@ -825,20 +829,28 @@ offset_bottom = 40.0
 texture = ExtResource("6_q8mhn")
 metadata/_edit_use_anchors_ = true
 
-[node name="MovingPlatform" parent="." index="4" unique_id=2144621089 instance=ExtResource("11_pwt0d")]
-position = Vector2(1974, -971)
+[node name="MovingPlatform" parent="." index="5" unique_id=2144621089 instance=ExtResource("11_pwt0d")]
+position = Vector2(2294, -1242)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="MovingPlatform" index="2" unique_id=1571524241]
 libraries/ = SubResource("AnimationLibrary_hdgju")
 autoplay = &"RESET"
 
-[node name="resetZone" parent="." index="5" unique_id=424939368 instance=ExtResource("11_hdgju")]
+[node name="MovingPlatform2" parent="." index="6" unique_id=944574924 instance=ExtResource("11_pwt0d")]
+position = Vector2(2294, -1242)
+collision_mask = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MovingPlatform2" index="2" unique_id=1554870839]
+libraries/ = SubResource("AnimationLibrary_hdgju")
+autoplay = &"RESET"
+
+[node name="resetZone" parent="." index="7" unique_id=424939368 instance=ExtResource("11_hdgju")]
 position = Vector2(1216, 1016)
 
 [node name="floor" type="CollisionShape2D" parent="resetZone" index="1" unique_id=999741754]
 shape = SubResource("WorldBoundaryShape2D_x51mi")
 
-[node name="BerryBushes" type="Node2D" parent="." index="6" unique_id=38106965]
+[node name="BerryBushes" type="Node2D" parent="." index="8" unique_id=38106965]
 z_index = 1
 
 [node name="BerryBush" parent="BerryBushes" index="0" unique_id=796169510 instance=ExtResource("29_v4ihg")]
@@ -865,7 +877,25 @@ position = Vector2(1736, -1120)
 [node name="BerryBush8" parent="BerryBushes" index="7" unique_id=805972629 instance=ExtResource("29_v4ihg")]
 position = Vector2(304, 784)
 
-[node name="Tutorials" type="Node" parent="." index="7" unique_id=253064094]
+[node name="BerryBush9" parent="BerryBushes" index="8" unique_id=1722547748 instance=ExtResource("29_v4ihg")]
+position = Vector2(2744, -176)
+
+[node name="BerryBush10" parent="BerryBushes" index="9" unique_id=1727416832 instance=ExtResource("29_v4ihg")]
+position = Vector2(1880, -1616)
+
+[node name="BerryBush11" parent="BerryBushes" index="10" unique_id=1141893937 instance=ExtResource("29_v4ihg")]
+position = Vector2(-1176, 640)
+
+[node name="BerryBush12" parent="BerryBushes" index="11" unique_id=937295623 instance=ExtResource("29_v4ihg")]
+position = Vector2(336, -1504)
+
+[node name="BerryBush13" parent="BerryBushes" index="12" unique_id=1176265962 instance=ExtResource("29_v4ihg")]
+position = Vector2(8, -1232)
+
+[node name="BerryBush14" parent="BerryBushes" index="13" unique_id=1402923748 instance=ExtResource("29_v4ihg")]
+position = Vector2(-24, -1856)
+
+[node name="Tutorials" type="Node" parent="." index="9" unique_id=253064094]
 
 [node name="WASD" type="TextureRect" parent="Tutorials" index="0" unique_id=60305177]
 offset_left = -1072.0
@@ -1142,7 +1172,7 @@ text = "Screen can be
 resized with
 the '5' key"
 
-[node name="TriggerScene2" parent="." index="8" unique_id=1675772569 instance=ExtResource("29_io5gh")]
+[node name="TriggerScene2" parent="." index="10" unique_id=1675772569 instance=ExtResource("29_io5gh")]
 position = Vector2(3912, -648)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TriggerScene2" index="0" unique_id=211700713]
@@ -1161,63 +1191,59 @@ autoplay = "default"
 frame_progress = 0.8692111
 flip_h = true
 
-[node name="FishTrigger" type="Node2D" parent="TriggerScene2" index="2" unique_id=489071058]
-position = Vector2(251, 53)
-script = ExtResource("33_tf2b2")
-
-[node name="Goldfishes" type="Node2D" parent="TriggerScene2/FishTrigger" index="0" unique_id=1336793830]
+[node name="Goldfishes" type="Node2D" parent="TriggerScene2" index="2" unique_id=1336793830]
 visible = false
-position = Vector2(-51, -29)
+position = Vector2(336, 24)
 
-[node name="Goldfish" parent="TriggerScene2/FishTrigger/Goldfishes" index="0" unique_id=1738647014 instance=ExtResource("33_x51mi")]
+[node name="Goldfish" parent="TriggerScene2/Goldfishes" index="0" unique_id=1738647014 instance=ExtResource("33_x51mi")]
 position = Vector2(-696, -58)
 slow = true
 min_playback_speed = 0.67
 
-[node name="Goldfish2" parent="TriggerScene2/FishTrigger/Goldfishes" index="1" unique_id=1023572742 instance=ExtResource("33_x51mi")]
+[node name="Goldfish2" parent="TriggerScene2/Goldfishes" index="1" unique_id=1023572742 instance=ExtResource("33_x51mi")]
 position = Vector2(-723, -71)
 slow = true
 
-[node name="Goldfish3" parent="TriggerScene2/FishTrigger/Goldfishes" index="2" unique_id=309532019 instance=ExtResource("33_x51mi")]
+[node name="Goldfish3" parent="TriggerScene2/Goldfishes" index="2" unique_id=309532019 instance=ExtResource("33_x51mi")]
 position = Vector2(-761, -48)
 
-[node name="Goldfish4" parent="TriggerScene2/FishTrigger/Goldfishes" index="3" unique_id=359718090 instance=ExtResource("33_x51mi")]
+[node name="Goldfish4" parent="TriggerScene2/Goldfishes" index="3" unique_id=359718090 instance=ExtResource("33_x51mi")]
 position = Vector2(-729, -41)
 slow = true
 
-[node name="Goldfish5" parent="TriggerScene2/FishTrigger/Goldfishes" index="4" unique_id=631427305 instance=ExtResource("33_x51mi")]
+[node name="Goldfish5" parent="TriggerScene2/Goldfishes" index="4" unique_id=631427305 instance=ExtResource("33_x51mi")]
 position = Vector2(-831, -67)
 
-[node name="Goldfish6" parent="TriggerScene2/FishTrigger/Goldfishes" index="5" unique_id=573685896 instance=ExtResource("33_x51mi")]
+[node name="Goldfish6" parent="TriggerScene2/Goldfishes" index="5" unique_id=573685896 instance=ExtResource("33_x51mi")]
 position = Vector2(-791, -63)
 
-[node name="Goldfish7" parent="TriggerScene2/FishTrigger/Goldfishes" index="6" unique_id=2104040845 instance=ExtResource("33_x51mi")]
+[node name="Goldfish7" parent="TriggerScene2/Goldfishes" index="6" unique_id=2104040845 instance=ExtResource("33_x51mi")]
 position = Vector2(-873, -58)
 
-[node name="Goldfish8" parent="TriggerScene2/FishTrigger/Goldfishes" index="7" unique_id=1872187728 instance=ExtResource("33_x51mi")]
+[node name="Goldfish8" parent="TriggerScene2/Goldfishes" index="7" unique_id=1872187728 instance=ExtResource("33_x51mi")]
 position = Vector2(-841, -25)
 
-[node name="Goldfish9" parent="TriggerScene2/FishTrigger/Goldfishes" index="8" unique_id=316729660 instance=ExtResource("33_x51mi")]
+[node name="Goldfish9" parent="TriggerScene2/Goldfishes" index="8" unique_id=316729660 instance=ExtResource("33_x51mi")]
 position = Vector2(-793, -101)
 
-[node name="Goldfish10" parent="TriggerScene2/FishTrigger/Goldfishes" index="9" unique_id=19848933 instance=ExtResource("33_x51mi")]
+[node name="Goldfish10" parent="TriggerScene2/Goldfishes" index="9" unique_id=19848933 instance=ExtResource("33_x51mi")]
 position = Vector2(-853, -89)
 
-[node name="Goldfish11" parent="TriggerScene2/FishTrigger/Goldfishes" index="10" unique_id=1614092985 instance=ExtResource("33_x51mi")]
+[node name="Goldfish11" parent="TriggerScene2/Goldfishes" index="10" unique_id=1614092985 instance=ExtResource("33_x51mi")]
 position = Vector2(-925, -73)
 
-[node name="Goldfish12" parent="TriggerScene2/FishTrigger/Goldfishes" index="11" unique_id=819927213 instance=ExtResource("33_x51mi")]
+[node name="Goldfish12" parent="TriggerScene2/Goldfishes" index="11" unique_id=819927213 instance=ExtResource("33_x51mi")]
 position = Vector2(-1051, -67)
 
-[node name="ParallaxFore" type="Node" parent="." index="9" unique_id=2010830419]
+[node name="ParallaxForeground" type="Node2D" parent="." index="11" unique_id=502899448]
 
-[node name="GodRaysParallax" type="Parallax2D" parent="ParallaxFore" index="0" unique_id=979206625]
+[node name="GodRaysParallax" type="Parallax2D" parent="ParallaxForeground" index="0" unique_id=979206625]
 z_index = 2
 scroll_scale = Vector2(1, 0)
 scroll_offset = Vector2(-32, -32)
 repeat_size = Vector2(544, 304)
 
-[node name="GodRays" type="ColorRect" parent="ParallaxFore/GodRaysParallax" index="0" unique_id=1357668228]
+[node name="GodRays" type="ColorRect" parent="ParallaxForeground/GodRaysParallax" index="0" unique_id=1357668228]
 material = SubResource("ShaderMaterial_3iqno")
 offset_left = 1.0
 offset_top = 2.0
@@ -1225,7 +1251,7 @@ offset_right = 305.0
 offset_bottom = 306.0
 metadata/_edit_use_anchors_ = true
 
-[node name="fog_fore" type="Parallax2D" parent="ParallaxFore" index="1" unique_id=2036982447]
+[node name="fog_fore" type="Parallax2D" parent="ParallaxForeground" index="1" unique_id=2036982447]
 scroll_scale = Vector2(1.2, 1.2)
 scroll_offset = Vector2(-41, -31)
 repeat_size = Vector2(544, 304)
@@ -1233,7 +1259,7 @@ script = ExtResource("3_fjgn4")
 speed_y = -0.02
 gap_density = 1.0
 
-[node name="fog2" type="ColorRect" parent="ParallaxFore/fog_fore" index="0" unique_id=393997133]
+[node name="fog2" type="ColorRect" parent="ParallaxForeground/fog_fore" index="0" unique_id=393997133]
 material = SubResource("ShaderMaterial_qb8b8")
 instance_shader_parameters/density = 0.25
 instance_shader_parameters/gap_density = 1.0
@@ -1243,7 +1269,7 @@ offset_right = 544.0
 offset_bottom = 304.0
 metadata/_edit_use_anchors_ = true
 
-[node name="fog3" type="ColorRect" parent="ParallaxFore/fog_fore" index="1" unique_id=2068920786]
+[node name="fog3" type="ColorRect" parent="ParallaxForeground/fog_fore" index="1" unique_id=2068920786]
 material = SubResource("ShaderMaterial_b8xjo")
 instance_shader_parameters/density = 0.25
 instance_shader_parameters/gap_density = 1.0
@@ -1253,7 +1279,7 @@ offset_right = 544.0
 offset_bottom = 304.0
 metadata/_edit_use_anchors_ = true
 
-[node name="fog4" type="ColorRect" parent="ParallaxFore/fog_fore" index="2" unique_id=1128472147]
+[node name="fog4" type="ColorRect" parent="ParallaxForeground/fog_fore" index="2" unique_id=1128472147]
 material = SubResource("ShaderMaterial_qb8b8")
 instance_shader_parameters/density = 0.25
 instance_shader_parameters/gap_density = 1.0
@@ -1263,7 +1289,7 @@ offset_right = 544.0
 offset_bottom = 304.0
 metadata/_edit_use_anchors_ = true
 
-[node name="GodRaysTemplate" type="ColorRect" parent="ParallaxFore/fog_fore" index="3" unique_id=568532884]
+[node name="GodRaysTemplate" type="ColorRect" parent="ParallaxForeground/fog_fore" index="3" unique_id=568532884]
 visible = false
 material = SubResource("ShaderMaterial_pwt0d")
 offset_left = 188.0
@@ -1271,11 +1297,11 @@ offset_top = 59.0
 offset_right = 228.0
 offset_bottom = 99.0
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." index="10" unique_id=1411529391]
+[node name="CanvasLayer" type="CanvasLayer" parent="." index="12" unique_id=469547869]
 
 [node name="UserInterface" parent="CanvasLayer" index="0" unique_id=4126206 instance=ExtResource("21_5olbu")]
 
-[node name="ground" parent="." index="11" unique_id=16465880 groups=["growable_tiles"]]
+[node name="ground" parent="." index="13" unique_id=594219130 groups=["growable_tiles"]]
 texture_repeat = 1
 tile_set = SubResource("TileSet_e73xf")
 rendering_quadrant_size = 64
@@ -1286,20 +1312,38 @@ stack_atlas_id = Array[int]([3])
 left_alt_bot_tile = Vector2i(0, 2)
 right_alt_bot_tile = Vector2i(2, 2)
 
-[node name="LevelTransition" parent="." index="12" unique_id=817694502 instance=ExtResource("33_b8xjo")]
-position = Vector2(880, 16)
-size = 20
+[node name="LevelTransition" parent="." index="14" unique_id=817694502 instance=ExtResource("33_b8xjo")]
+position = Vector2(-400, 64)
+size = 8
 location = 3
-target_level = "uid://bsssooisi2b0i"
-target_area_name = "LevelTransition"
+target_level = "uid://xw5mdo4mn0on"
+target_area_name = "LevelTransition4"
 
-[node name="LevelTransition2" parent="." index="13" unique_id=26530549 instance=ExtResource("33_b8xjo")]
-position = Vector2(1056, -16)
-size = 20
+[node name="LevelTransition2" parent="." index="15" unique_id=26530549 instance=ExtResource("33_b8xjo")]
+position = Vector2(1728, -2032)
+size = 30
+location = 0
 target_level = "uid://bsnvh00iswdjn"
 target_area_name = "LevelTransition2"
 
-[node name="PlayerSpawn" parent="." index="14" unique_id=1233805077 instance=ExtResource("33_wmb0u")]
-position = Vector2(704, 32)
+[node name="LevelTransition3" parent="." index="16" unique_id=277123985 instance=ExtResource("33_b8xjo")]
+position = Vector2(4144, -456)
+size = 9
+location = 2
+target_level = "uid://xw5mdo4mn0on"
+
+[node name="LevelTransition4" parent="." index="17" unique_id=495481259 instance=ExtResource("33_b8xjo")]
+position = Vector2(3376, -2128)
+size = 10
+location = 2
+target_level = "uid://bsssooisi2b0i"
+target_area_name = "LevelTransition3"
+
+[node name="LevelTransition5" parent="." index="18" unique_id=413893561 instance=ExtResource("33_b8xjo")]
+position = Vector2(-1120, 208)
+size = 5
+location = 0
+target_level = "uid://bsssooisi2b0i"
+target_area_name = "LevelTransition2"
 
 [connection signal="body_exited" from="TriggerScene2" to="TriggerScene2" method="_on_body_exited"]

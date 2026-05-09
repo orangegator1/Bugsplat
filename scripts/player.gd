@@ -1,10 +1,10 @@
-extends CharacterBody2D
+class_name Player extends CharacterBody2D
 
 @export var speed: float = 150.0
 @export var jump_velocity: float = -300.0
 @export var max_health := 3
 
-signal standing_on_new_layer(layer: TileMapLayer)
+signal standing_on_new_growable_layer(layer: TileMapLayer)
 signal health_changed(value: int)
 
 var height = 32
@@ -57,8 +57,7 @@ var resetting := false
 var bg_parallax: Parallax2D
 var ground: TileMapLayer
 var background_texture: TextureRect
-#@onready var bg_parallax: Parallax2D = $"../BackgroundVerticalParallax"
-#@onready var ground: TileMapLayer = $"../ground"
+#@onready var bg_parallax: Parallax2D = $"../Level/BackgroundVerticalParallax"
 #@onready var background_texture: TextureRect = $"../BackgroundVerticalParallax/BackgroundTexture"
 
 func _ready() -> void:
@@ -69,12 +68,6 @@ func _ready() -> void:
 		await get_tree().process_frame
 		self.queue_free()
 
-	(animated_sprites.get_sprite_frames().
-			set_animation_speed("ledge_climb", 13 / ledge_climb_duration))
-	PlatformManager.connect_player_to_platform_manager(self)
-	speed = 150.0
-	health = max_health
-
 	# populate player particle pools
 	pool = [dirt_falling, dirt_falling_2, dirt_falling_3,]
 
@@ -82,10 +75,15 @@ func _ready() -> void:
 
 	# need to reorganize how nodes are found by the player
 	# moving the player in the tree is breaking all references to other objects
-
-	# maybe
 	if not get_parent() == get_tree().root:
 		self.reparent.call_deferred(get_tree().root)
+
+	(animated_sprites.get_sprite_frames().
+			set_animation_speed("ledge_climb", 13 / ledge_climb_duration))
+	PlatformManager.connect_player_to_platform_manager(self)
+	speed = 150.0
+	health = max_health
+	health_changed.emit(health)
 
 
 func _process(_delta: float) -> void:
@@ -407,12 +405,12 @@ func get_layer_under_feet(collision: KinematicCollision2D) -> void:
 	var normal = collision.get_normal()
 
 	# Check if the thing we hit is growable and below the player
-	if (collided is TileMapLayer and
-		collided.is_in_group("growable_tiles") and
-		normal.y < 0):
-		if layer_underfoot != collided:
-			standing_on_new_layer.emit(collided)
+	if (collided is TileMapLayer and normal.y < 0 and not layer_underfoot == collided):
 		layer_underfoot = collided
+		standing_on_new_growable_layer.emit(collided)
+
+		# disable growing on certain terrain?
+		#if (collided.is_in_group("growable_tiles")
 
 
 func set_tween_flags(mode: String, tween: Tween, dir := 0) -> void:
@@ -438,9 +436,9 @@ func set_tween_flags(mode: String, tween: Tween, dir := 0) -> void:
 
 
 func set_background_scroll_y() -> bool:
-	if not ground or not bg_parallax or not camera_2d:
+	if not layer_underfoot or not bg_parallax or not camera_2d:
 		return false
-	var range_y = PlatformManager.get_vertical_bounds(ground)
+	var range_y = PlatformManager.get_vertical_bounds(layer_underfoot)
 	var bot = float(range_y[0])
 	var top = float(range_y[1])
 	#var level_height = abs(bot - top)
@@ -480,17 +478,7 @@ func set_health_check_reset(amount: int = 0) -> void:
 	health = clampi(health + amount, 0, max_health)
 	health_changed.emit(health)
 	if health == 0:
-		reset()
-
-
-func reset() -> void:
-	sound_effect_player.play("bugsplat")
-	Engine.time_scale = 0.3
-	collider.queue_free()
-	var timer = get_tree().create_timer(0.5)
-	await timer.timeout
-	Engine.time_scale = 1
-	get_tree().reload_current_scene()
+		SceneManager.reset()
 
 
 func update_label(text: String) -> void:

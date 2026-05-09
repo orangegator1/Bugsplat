@@ -1,6 +1,5 @@
 extends Node2D
 
-@onready var camera_2d: Camera2D = $"../../Player/Camera2D"
 @onready var goldfishes: Node2D = $Goldfishes
 
 func trigger() -> void:

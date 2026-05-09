@@ -1,27 +1,20 @@
-version control
+priority:
+fix UI, health system and particles
+  introduce health system UI with first fall
+    2x scale above player, plays blinking animation, shrinks and moves into position
+  grace fall, take no damage when switching scenes
+    add special decoration to show a cushioned landing
+fix ledge climb placement
+fix background and create persistent scene
+  load only tileset when switching
+fix reset zones and create save points
+limit growing to certain locations and a consumable
+can quit the game from some menu, "esc"
+title screen
 
 movement
   animation for sweet spot ledge jump
-  implement double jump?
-    -pull out wings for double jump
-      -if early in the DJ animation, fall on your face a bit when landing
-  think about gaps between plats, what distance should you be able to jump?
-    -and think what movement options like the above can be added to make moving through
-     the game feel better
-      -variable jump height
-      -pressing left/right repeatedly while in the air starts helicopter legs?
-        -or this is an interactable maple key, limited to locations with an upward draft
-          -(see ori video https://www.youtube.com/watch?v=BT9NSFWqz1g&t=14203s)
-        -slowly descends, flappy bird jump key to ascend
-        -down to exit
-        -need more height than a normal jump to enter the mode
-        -need to adjust left/right velocity zeroing so that movement is more fluid
-
-lighting, dappled sunlight
-  -foreground lights don't parallax scroll on y, because I can't figure out a way to hide the origin of the rays
-    -but bc of that they jump around with any vertical movement
-player lighting coming from antennae? or belly?
-
+  variable jump height
 
 add random flocks of small flying bugs, just decorative
 
@@ -77,6 +70,7 @@ animation
 sound
   -sound effects
     -overlapping sound effects
+version control
 parallax background(s)
 particle effects
 figure out a way to clean up tileset interiors

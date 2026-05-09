@@ -7,7 +7,7 @@ extends Node2D
 var playback_speed = randf()
 const NUM_FRAMES = 8
 
-@onready var trigger_scene_2: Area2D = $"../../.."
+@onready var trigger_scene_2: Area2D = $"../.."
 @onready var fish_trigger: Node2D = $"../.."
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 var i = 0

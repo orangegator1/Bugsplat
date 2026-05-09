@@ -13,6 +13,11 @@ func _on_ready() -> void:
 		if is_inside_tree():
 			player = get_tree().get_first_node_in_group("Player")
 
+func _process(_delta: float) -> void:
+	if player and get_tree().get_first_node_in_group("Player"):
+		return
+	else:
+		player = await SceneManager.get_player()
 
 func _on_body_entered(_body: Node2D) -> void:
 	player.set_health_check_reset(1)

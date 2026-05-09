@@ -3,7 +3,9 @@
 [ext_resource type="Script" uid="uid://dou5lsld4slq4" path="res://scripts/resetzone.gd" id="1_dqyyu"]
 
 [node name="resetZone" type="Area2D" unique_id=424939368]
+collision_layer = 0
 collision_mask = 2
+monitorable = false
 script = ExtResource("1_dqyyu")
 
 [node name="Timer" type="Timer" parent="." unique_id=2136498358]

@@ -8,7 +8,7 @@ enum grow_mode { GROW, GEN, }
 const GROW_ANIMATION = preload("res://scenes/growing_tiles_sprite.tscn")
 
 func connect_player_to_platform_manager(player_p: CharacterBody2D) -> void:
-	player_p.connect("standing_on_new_layer", set_layer)
+	player_p.connect("standing_on_new_growable_layer", set_layer)
 
 func set_layer(l: TileMapLayer) -> void:
 	layer = l

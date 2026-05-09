@@ -9,6 +9,7 @@ const FADE_DURATION = 0.2
 @onready var fade: Control = $Fade
 
 func _ready() -> void:
+	await get_player()
 	warm_particles()
 
 	fade.visible = false
@@ -77,7 +78,7 @@ func get_player() -> CharacterBody2D:
 func warm_particles() -> void:
 	var particles = get_tree().get_nodes_in_group("warmup_particles")
 
-	for p: GPUParticles2D in particles:
+	for p in particles:
 		p.emitting = true
 		p.modulate.a = 0.001
 
@@ -90,4 +91,13 @@ func warm_particles() -> void:
 	for p in particles:
 		p.emitting = false
 		p.modulate.a = 1.0
-		p.visible = false
+
+
+func reset() -> void:
+	var player = get_tree().get_first_node_in_group("Player")
+	player.sound_effect_player.play("bugsplat")
+	Engine.time_scale = 0.3
+	player.collider.queue_free()
+	await get_tree().create_timer(0.8, true, false, true).timeout
+	Engine.time_scale = 1
+	player.queue_free.call_deferred()
