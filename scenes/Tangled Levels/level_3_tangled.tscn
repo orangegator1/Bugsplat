@@ -553,33 +553,32 @@ script = ExtResource("5_0el0s")
 preferred_growth = 1
 stack_atlas_id = Array[int]([2])
 
-[node name="LevelTransition" parent="." index="3" unique_id=817694502 instance=ExtResource("6_8tmjp")]
+[node name="PlayerSpawn" parent="." index="3" unique_id=1233805077 instance=ExtResource("7_xc622")]
+position = Vector2(1000, 32)
+
+[node name="LevelTransition" parent="." index="4" unique_id=817694502 instance=ExtResource("6_8tmjp")]
 position = Vector2(1592, -336)
 size = 5
 target_level = "uid://xw5mdo4mn0on"
 target_area_name = "LevelTransition3"
-metadata/_edit_group_ = true
 
-[node name="LevelTransition2" parent="." index="4" unique_id=839339086 instance=ExtResource("6_8tmjp")]
+[node name="LevelTransition2" parent="." index="5" unique_id=839339086 instance=ExtResource("6_8tmjp")]
 position = Vector2(800, 192)
 size = 5
 location = 2
 target_level = "uid://b5tobrceh3joe"
 target_area_name = "LevelTransition5"
 
-[node name="LevelTransition3" parent="." index="5" unique_id=1811186813 instance=ExtResource("6_8tmjp")]
+[node name="LevelTransition3" parent="." index="6" unique_id=1811186813 instance=ExtResource("6_8tmjp")]
 position = Vector2(-32, -960)
 size = 4
 location = 0
 target_level = "uid://bsnvh00iswdjn"
 
-[node name="PlayerSpawn" parent="." index="6" unique_id=1233805077 instance=ExtResource("7_xc622")]
-position = Vector2(1000, 32)
-
 [node name="BerryBushes" type="Node2D" parent="." index="7" unique_id=1338289577]
 
 [node name="BerryBush" parent="BerryBushes" index="0" unique_id=796169510 instance=ExtResource("8_c47ob")]
-position = Vector2(216, -240)
+position = Vector2(392, -256)
 
 [node name="resetZone" parent="." index="8" unique_id=424939368 instance=ExtResource("9_bglby")]
 position = Vector2(5, 440)

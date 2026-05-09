@@ -44,7 +44,7 @@ func set_camera_movement_offset(delta: float) -> void:
 			player.velocity.y * jump_y), delta * v)
 
 
-func on_load_scene_started() -> void:
+func on_load_scene_started(_new_level: String) -> void:
 	transitioning = true
 
 

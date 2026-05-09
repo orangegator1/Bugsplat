@@ -1,119 +1,16 @@
 [gd_scene format=3 uid="uid://xw5mdo4mn0on"]
 
-[ext_resource type="PackedScene" uid="uid://d3gl850gqdxv" path="res://tilesets/Tangled/level 4 - tangled.tmx" id="1_xtvpn"]
-[ext_resource type="Texture2D" uid="uid://brvqkjrp8j6bs" path="res://tilesets/tilemap template.png" id="2_chjb4"]
-[ext_resource type="Texture2D" uid="uid://b4265lnsmr6vf" path="res://assets/parallax backgrounds/background.png" id="2_w4a3g"]
-[ext_resource type="Shader" uid="uid://bj84mjladf4rh" path="res://assets/shaders/god_rays.gdshader" id="3_4lh1i"]
-[ext_resource type="Texture2D" uid="uid://bi2ybrjch8j4f" path="res://tilesets/tileset tangled growth-Sheet.png" id="3_cwr2o"]
-[ext_resource type="PackedScene" uid="uid://c86qgbo36anj5" path="res://scenes/Controllers/player_spawn.tscn" id="4_chjb4"]
-[ext_resource type="Script" uid="uid://dc2ea5p13ncoo" path="res://scripts/growable_tiles.gd" id="4_cwr2o"]
-[ext_resource type="Texture2D" uid="uid://dmiklg0i7fcum" path="res://assets/parallax backgrounds/tangled.png" id="4_tqrpi"]
-[ext_resource type="Script" uid="uid://dkt77qgurqyjv" path="res://scripts/fog.gd" id="5_852cb"]
-[ext_resource type="Shader" uid="uid://b5hj757tnumly" path="res://assets/shaders/fog.gdshader" id="6_kbluw"]
-[ext_resource type="PackedScene" uid="uid://6r0tnlqktrqt" path="res://scenes/Controllers/level_transition.tscn" id="6_upyei"]
-[ext_resource type="PackedScene" uid="uid://bdfvwrub43ywh" path="res://scenes/BerryBush.tscn" id="7_1gp8j"]
-[ext_resource type="Texture2D" uid="uid://cgmo2lonvkg14" path="res://assets/parallax backgrounds/tangled far.png" id="7_fqyq2"]
-[ext_resource type="Texture2D" uid="uid://b7lieagrgqbvw" path="res://assets/parallax backgrounds/tangled near 1.png" id="8_px3i1"]
-[ext_resource type="Texture2D" uid="uid://cshaye6d10lg2" path="res://assets/parallax backgrounds/tangled near.png" id="9_kkxsr"]
-[ext_resource type="PackedScene" uid="uid://bjrldslfxfcuc" path="res://scenes/UI.tscn" id="16_pihq3"]
-[ext_resource type="PackedScene" uid="uid://cag4gg6j6hwin" path="res://scenes/resetzone.tscn" id="17_4lh1i"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_21h4b"]
-shader = ExtResource("3_4lh1i")
-shader_parameter/angle = -0.3
-shader_parameter/position = -0.2
-shader_parameter/spread = 0.50000002375
-shader_parameter/cutoff = 0.4090000669275
-shader_parameter/falloff = 1.0
-shader_parameter/edge_fade = 0.09600000456
-shader_parameter/speed = 0.3
-shader_parameter/ray1_density = 60.0
-shader_parameter/ray2_density = 180.0
-shader_parameter/ray2_intensity = 0.3
-shader_parameter/color = Color(1, 0.9, 0.65, 0.8)
-shader_parameter/hdr = false
-shader_parameter/seed = 5.0
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_h1l3j"]
-seed = 1
-frequency = 0.0148
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_umf4e"]
-resource_local_to_scene = true
-noise = SubResource("FastNoiseLite_h1l3j")
-seamless = true
-seamless_blend_skirt = 0.741
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_surf3"]
-resource_local_to_scene = true
-shader = ExtResource("6_kbluw")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_umf4e")
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_etvbi"]
-seed = 2
-frequency = 0.0148
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_d0e5w"]
-resource_local_to_scene = true
-noise = SubResource("FastNoiseLite_etvbi")
-seamless = true
-seamless_blend_skirt = 0.741
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_pd8qb"]
-resource_local_to_scene = true
-shader = ExtResource("6_kbluw")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_d0e5w")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_hdgju"]
-shader = ExtResource("3_4lh1i")
-shader_parameter/angle = -0.3
-shader_parameter/position = -0.2
-shader_parameter/spread = 0.5
-shader_parameter/cutoff = 0.3670000649325
-shader_parameter/falloff = 0.630000029925
-shader_parameter/edge_fade = 0.090000004275
-shader_parameter/speed = 0.5
-shader_parameter/ray1_density = 40.0
-shader_parameter/ray2_density = 120.0
-shader_parameter/ray2_intensity = 0.3
-shader_parameter/color = Color(1, 0.9, 0.65, 0.8)
-shader_parameter/hdr = false
-shader_parameter/seed = 5.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_y2ti1"]
-shader = ExtResource("3_4lh1i")
-shader_parameter/angle = -0.3
-shader_parameter/position = -0.2
-shader_parameter/spread = 0.5
-shader_parameter/cutoff = 0.294000061465
-shader_parameter/falloff = 1.0
-shader_parameter/edge_fade = 0.130000006175
-shader_parameter/speed = 0.75
-shader_parameter/ray1_density = 30.0
-shader_parameter/ray2_density = 90.0
-shader_parameter/ray2_intensity = 0.3
-shader_parameter/color = Color(1, 0.9, 0.65, 0.8)
-shader_parameter/hdr = false
-shader_parameter/seed = 5.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_5olbu"]
-shader = ExtResource("3_4lh1i")
-shader_parameter/angle = -0.3
-shader_parameter/position = -0.2
-shader_parameter/spread = 0.5
-shader_parameter/cutoff = 0.3750000653125001
-shader_parameter/falloff = 1.0
-shader_parameter/edge_fade = 0.1230000058425
-shader_parameter/speed = 0.75
-shader_parameter/ray1_density = 30.0
-shader_parameter/ray2_density = 90.0
-shader_parameter/ray2_intensity = 0.3
-shader_parameter/color = Color(1, 0.9, 0.65, 0.8)
-shader_parameter/hdr = false
-shader_parameter/seed = 5.0
+[ext_resource type="PackedScene" uid="uid://d3gl850gqdxv" path="res://tilesets/Tangled/level 4 - tangled.tmx" id="1_svy4w"]
+[ext_resource type="Texture2D" uid="uid://brvqkjrp8j6bs" path="res://tilesets/tilemap template.png" id="2_sj03c"]
+[ext_resource type="Texture2D" uid="uid://bi2ybrjch8j4f" path="res://tilesets/tileset tangled growth-Sheet.png" id="3_b7se5"]
+[ext_resource type="Script" uid="uid://dc2ea5p13ncoo" path="res://scripts/growable_tiles.gd" id="4_ra7vs"]
+[ext_resource type="PackedScene" uid="uid://c86qgbo36anj5" path="res://scenes/Controllers/player_spawn.tscn" id="5_gvya1"]
+[ext_resource type="PackedScene" uid="uid://6r0tnlqktrqt" path="res://scenes/Controllers/level_transition.tscn" id="6_6x08n"]
+[ext_resource type="PackedScene" uid="uid://bdfvwrub43ywh" path="res://scenes/BerryBush.tscn" id="7_vf87x"]
+[ext_resource type="PackedScene" uid="uid://cag4gg6j6hwin" path="res://scenes/resetzone.tscn" id="8_vl51v"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_upyei"]
-texture = ExtResource("2_chjb4")
+texture = ExtResource("2_sj03c")
 1:1/0 = 0
 4:0/0 = 0
 3:2/0 = 0
@@ -127,7 +24,7 @@ texture = ExtResource("2_chjb4")
 5:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1gp8j"]
-texture = ExtResource("3_cwr2o")
+texture = ExtResource("3_b7se5")
 10:2/0 = 0
 10:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, -8, 8, 8, 8, 8, -8)
 11:2/0 = 0
@@ -531,330 +428,46 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_upyei")
 sources/1 = SubResource("TileSetAtlasSource_1gp8j")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_3iqno"]
-shader = ExtResource("3_4lh1i")
-shader_parameter/angle = -0.3
-shader_parameter/position = -0.2
-shader_parameter/spread = 0.5170000245575
-shader_parameter/cutoff = 0.382000065645
-shader_parameter/falloff = 0.826000039235
-shader_parameter/edge_fade = 0.0890000042275
-shader_parameter/speed = 1.0
-shader_parameter/ray1_density = 20.0
-shader_parameter/ray2_density = 75.0
-shader_parameter/ray2_intensity = 0.3
-shader_parameter/color = Color(1, 0.9, 0.65, 0.8)
-shader_parameter/hdr = false
-shader_parameter/seed = 6.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_pwt0d"]
-shader = ExtResource("3_4lh1i")
-shader_parameter/angle = -0.3
-shader_parameter/position = -0.2
-shader_parameter/spread = 0.5
-shader_parameter/cutoff = 0.1
-shader_parameter/falloff = 0.2
-shader_parameter/edge_fade = 0.15
-shader_parameter/speed = 1.0
-shader_parameter/ray1_density = 8.0
-shader_parameter/ray2_density = 30.0
-shader_parameter/ray2_intensity = 0.3
-shader_parameter/color = Color(1, 0.9, 0.65, 0.8)
-shader_parameter/hdr = false
-shader_parameter/seed = 5.0
-
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_tqrpi"]
 
-[node name="Level" unique_id=1571953458 instance=ExtResource("1_xtvpn")]
+[node name="Level" unique_id=1571953458 instance=ExtResource("1_svy4w")]
 
-[node name="BackgroundVerticalParallax" type="Parallax2D" parent="." index="2" unique_id=927719086]
-z_index = -1
-scroll_scale = Vector2(0, 0.1)
-scroll_offset = Vector2(0, 334)
-repeat_size = Vector2(544, 604)
-
-[node name="BackgroundTexture" type="TextureRect" parent="BackgroundVerticalParallax" index="0" unique_id=1267450041]
-offset_right = 544.0
-offset_bottom = 604.0
-texture = ExtResource("2_w4a3g")
-metadata/_edit_use_anchors_ = true
-
-[node name="ColorRect" type="ColorRect" parent="BackgroundVerticalParallax" index="1" unique_id=1694456273]
-offset_right = 544.0
-offset_bottom = 604.0
-color = Color(0.29411766, 0.6627451, 0.93333334, 0.42745098)
-
-[node name="Parallax" type="Node2D" parent="." index="3" unique_id=808465147]
-z_index = -1
-
-[node name="Parallax_back" type="Parallax2D" parent="Parallax" index="0" unique_id=1082734459]
-scroll_scale = Vector2(0.1, 0.1)
-scroll_offset = Vector2(-32, -32)
-repeat_size = Vector2(544, 304)
-
-[node name="GodRaysBack" type="ColorRect" parent="Parallax/Parallax_back" index="0" unique_id=566835339]
-material = SubResource("ShaderMaterial_21h4b")
-offset_left = 224.0
-offset_top = 173.0
-offset_right = 528.0
-offset_bottom = 477.0
-color = Color(0.67058825, 0.7411765, 0.8352941, 1)
-metadata/_edit_use_anchors_ = true
-
-[node name="GodRaysBack2" type="ColorRect" parent="Parallax/Parallax_back" index="1" unique_id=1205883985]
-material = SubResource("ShaderMaterial_21h4b")
-offset_left = 4.0
-offset_top = 118.0
-offset_right = 308.0
-offset_bottom = 422.0
-color = Color(0.67058825, 0.7411765, 0.8352941, 1)
-metadata/_edit_use_anchors_ = true
-
-[node name="TextureRect" type="TextureRect" parent="Parallax/Parallax_back" index="2" unique_id=1721746389]
-offset_right = 544.0
-offset_bottom = 304.0
-texture = ExtResource("4_tqrpi")
-metadata/_edit_use_anchors_ = true
-
-[node name="fog_far_post" type="Parallax2D" parent="Parallax" index="1" unique_id=2032772265]
-visible = false
-scroll_scale = Vector2(1.2, 1.2)
-scroll_offset = Vector2(-32, -32)
-repeat_size = Vector2(544, 304)
-script = ExtResource("5_852cb")
-speed_x = 0.00999999999999999
-speed_y = -0.02
-gap_density = 1.0
-
-[node name="fog2" type="ColorRect" parent="Parallax/fog_far_post" index="0" unique_id=350176973]
-material = SubResource("ShaderMaterial_surf3")
-instance_shader_parameters/density = 0.25
-instance_shader_parameters/gap_density = 1.0
-instance_shader_parameters/speed_x = 0.01
-instance_shader_parameters/speed_y = -0.02
-offset_right = 544.0
-offset_bottom = 304.0
-metadata/_edit_use_anchors_ = true
-
-[node name="fog3" type="ColorRect" parent="Parallax/fog_far_post" index="1" unique_id=1664982660]
-material = SubResource("ShaderMaterial_pd8qb")
-instance_shader_parameters/density = 0.25
-instance_shader_parameters/gap_density = 1.0
-instance_shader_parameters/speed_x = 0.0139999995
-instance_shader_parameters/speed_y = -0.02
-offset_right = 544.0
-offset_bottom = 304.0
-metadata/_edit_use_anchors_ = true
-
-[node name="fog4" type="ColorRect" parent="Parallax/fog_far_post" index="2" unique_id=1697836384]
-material = SubResource("ShaderMaterial_surf3")
-instance_shader_parameters/density = 0.25
-instance_shader_parameters/gap_density = 1.0
-instance_shader_parameters/speed_x = 0.0196
-instance_shader_parameters/speed_y = -0.02
-offset_right = 544.0
-offset_bottom = 304.0
-metadata/_edit_use_anchors_ = true
-
-[node name="Parallax_far" type="Parallax2D" parent="Parallax" index="2" unique_id=234720326]
-scroll_scale = Vector2(0.25, 0.25)
-scroll_offset = Vector2(-32, -32)
-repeat_size = Vector2(544, 304)
-
-[node name="GodRaysFar" type="ColorRect" parent="Parallax/Parallax_far" index="0" unique_id=841370894]
-material = SubResource("ShaderMaterial_hdgju")
-offset_left = 185.0
-offset_top = 32.0
-offset_right = 489.0
-offset_bottom = 336.0
-metadata/_edit_use_anchors_ = true
-
-[node name="TextureRect" type="TextureRect" parent="Parallax/Parallax_far" index="1" unique_id=1121169355]
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("7_fqyq2")
-metadata/_edit_use_anchors_ = true
-
-[node name="fog_far_pre" type="Parallax2D" parent="Parallax" index="3" unique_id=1924273815]
-scroll_scale = Vector2(1.2, 1.2)
-scroll_offset = Vector2(-32, -32)
-repeat_size = Vector2(544, 304)
-script = ExtResource("5_852cb")
-speed_x = 0.01999999999999999
-speed_y = -0.03
-gap_density = 1.0
-
-[node name="fog2" type="ColorRect" parent="Parallax/fog_far_pre" index="0" unique_id=1423541667]
-material = SubResource("ShaderMaterial_surf3")
-instance_shader_parameters/density = 0.25
-instance_shader_parameters/gap_density = 1.0
-instance_shader_parameters/speed_x = 0.02
-instance_shader_parameters/speed_y = -0.03
-offset_right = 544.0
-offset_bottom = 304.0
-metadata/_edit_use_anchors_ = true
-
-[node name="fog3" type="ColorRect" parent="Parallax/fog_far_pre" index="1" unique_id=1680669899]
-material = SubResource("ShaderMaterial_pd8qb")
-instance_shader_parameters/density = 0.25
-instance_shader_parameters/gap_density = 1.0
-instance_shader_parameters/speed_x = 0.027999999
-instance_shader_parameters/speed_y = -0.03
-offset_right = 544.0
-offset_bottom = 304.0
-metadata/_edit_use_anchors_ = true
-
-[node name="fog4" type="ColorRect" parent="Parallax/fog_far_pre" index="2" unique_id=1984200454]
-visible = false
-material = SubResource("ShaderMaterial_surf3")
-instance_shader_parameters/density = 0.25
-instance_shader_parameters/gap_density = 1.0
-instance_shader_parameters/speed_x = 0.0392
-instance_shader_parameters/speed_y = -0.03
-offset_right = 544.0
-offset_bottom = 304.0
-metadata/_edit_use_anchors_ = true
-
-[node name="Parallax_near1" type="Parallax2D" parent="Parallax" index="4" unique_id=1589009385]
-scroll_scale = Vector2(0.45, 0.45)
-scroll_offset = Vector2(-32, -32)
-repeat_size = Vector2(544, 304)
-
-[node name="GodRaysNear1" type="ColorRect" parent="Parallax/Parallax_near1" index="0" unique_id=1365601757]
-material = SubResource("ShaderMaterial_y2ti1")
-offset_left = 65.0
-offset_top = 15.0
-offset_right = 369.0
-offset_bottom = 319.0
-metadata/_edit_use_anchors_ = true
-
-[node name="TextureRect" type="TextureRect" parent="Parallax/Parallax_near1" index="1" unique_id=706430771]
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("8_px3i1")
-metadata/_edit_use_anchors_ = true
-
-[node name="Parallax_near" type="Parallax2D" parent="Parallax" index="5" unique_id=392253376]
-scroll_scale = Vector2(0.5, 0.5)
-scroll_offset = Vector2(-32, -32)
-repeat_size = Vector2(544, 304)
-
-[node name="GodRaysNear" type="ColorRect" parent="Parallax/Parallax_near" index="0" unique_id=1946740771]
-material = SubResource("ShaderMaterial_5olbu")
-offset_left = 17.0
-offset_top = 13.0
-offset_right = 321.0
-offset_bottom = 317.0
-metadata/_edit_use_anchors_ = true
-
-[node name="TextureRect" type="TextureRect" parent="Parallax/Parallax_near" index="1" unique_id=1512905263]
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("9_kkxsr")
-metadata/_edit_use_anchors_ = true
-
-[node name="ground" parent="." index="4" unique_id=1109125582 groups=["growable_tiles"]]
+[node name="ground" parent="." index="2" unique_id=1109125582 groups=["growable_tiles"]]
 tile_set = SubResource("TileSet_qr8l7")
-script = ExtResource("4_cwr2o")
+script = ExtResource("4_ra7vs")
 
-[node name="PlayerSpawn" parent="." index="5" unique_id=1233805077 instance=ExtResource("4_chjb4")]
+[node name="PlayerSpawn" parent="." index="3" unique_id=1233805077 instance=ExtResource("5_gvya1")]
 position = Vector2(-88, -8)
 
-[node name="LevelTransition" parent="." index="6" unique_id=817694502 instance=ExtResource("6_upyei")]
+[node name="LevelTransition" parent="." index="4" unique_id=817694502 instance=ExtResource("6_6x08n")]
 position = Vector2(0, -640)
 size = 12
 location = 0
 
-[node name="LevelTransition2" parent="." index="7" unique_id=348961848 instance=ExtResource("6_upyei")]
+[node name="LevelTransition2" parent="." index="5" unique_id=348961848 instance=ExtResource("6_6x08n")]
 position = Vector2(-48, 128)
 size = 3
 location = 2
 target_level = "uid://bsnvh00iswdjn"
 target_area_name = "LevelTransition3"
 
-[node name="LevelTransition3" parent="." index="8" unique_id=1280160964 instance=ExtResource("6_upyei")]
+[node name="LevelTransition3" parent="." index="6" unique_id=1280160964 instance=ExtResource("6_6x08n")]
 position = Vector2(-296, -16)
 size = 5
 location = 3
 target_level = "uid://bsssooisi2b0i"
 
-[node name="LevelTransition4" parent="." index="9" unique_id=544551793 instance=ExtResource("6_upyei")]
+[node name="LevelTransition4" parent="." index="7" unique_id=544551793 instance=ExtResource("6_6x08n")]
 position = Vector2(960, -160)
 size = 5
 target_level = "uid://b5tobrceh3joe"
 
-[node name="BerryBushes" type="Node2D" parent="." index="10" unique_id=291787511]
+[node name="BerryBushes" type="Node2D" parent="." index="8" unique_id=291787511]
 
-[node name="BerryBush" parent="BerryBushes" index="0" unique_id=796169510 instance=ExtResource("7_1gp8j")]
+[node name="BerryBush" parent="BerryBushes" index="0" unique_id=796169510 instance=ExtResource("7_vf87x")]
 position = Vector2(120, -32)
 
-[node name="ParallaxFore" type="Node" parent="." index="11" unique_id=388788478]
-
-[node name="GodRaysParallax" type="Parallax2D" parent="ParallaxFore" index="0" unique_id=268785982]
-z_index = 2
-scroll_scale = Vector2(1, 0)
-scroll_offset = Vector2(-32, -32)
-repeat_size = Vector2(544, 304)
-
-[node name="GodRays" type="ColorRect" parent="ParallaxFore/GodRaysParallax" index="0" unique_id=229132453]
-material = SubResource("ShaderMaterial_3iqno")
-offset_left = 1.0
-offset_top = 2.0
-offset_right = 305.0
-offset_bottom = 306.0
-metadata/_edit_use_anchors_ = true
-
-[node name="fog_fore" type="Parallax2D" parent="ParallaxFore" index="1" unique_id=1872470273]
-scroll_scale = Vector2(1.2, 1.2)
-scroll_offset = Vector2(-41, -31)
-repeat_size = Vector2(544, 304)
-script = ExtResource("5_852cb")
-speed_y = -0.02
-gap_density = 1.0
-
-[node name="fog2" type="ColorRect" parent="ParallaxFore/fog_fore" index="0" unique_id=734572890]
-material = SubResource("ShaderMaterial_surf3")
-instance_shader_parameters/density = 0.25
-instance_shader_parameters/gap_density = 1.0
-instance_shader_parameters/speed_x = 0.05
-instance_shader_parameters/speed_y = -0.02
-offset_right = 544.0
-offset_bottom = 304.0
-metadata/_edit_use_anchors_ = true
-
-[node name="fog3" type="ColorRect" parent="ParallaxFore/fog_fore" index="1" unique_id=2131635401]
-material = SubResource("ShaderMaterial_pd8qb")
-instance_shader_parameters/density = 0.25
-instance_shader_parameters/gap_density = 1.0
-instance_shader_parameters/speed_x = 0.07
-instance_shader_parameters/speed_y = -0.02
-offset_right = 544.0
-offset_bottom = 304.0
-metadata/_edit_use_anchors_ = true
-
-[node name="fog4" type="ColorRect" parent="ParallaxFore/fog_fore" index="2" unique_id=1746939091]
-material = SubResource("ShaderMaterial_surf3")
-instance_shader_parameters/density = 0.25
-instance_shader_parameters/gap_density = 1.0
-instance_shader_parameters/speed_x = 0.098
-instance_shader_parameters/speed_y = -0.02
-offset_right = 544.0
-offset_bottom = 304.0
-metadata/_edit_use_anchors_ = true
-
-[node name="GodRaysTemplate" type="ColorRect" parent="ParallaxFore/fog_fore" index="3" unique_id=845424870]
-visible = false
-material = SubResource("ShaderMaterial_pwt0d")
-offset_left = 188.0
-offset_top = 59.0
-offset_right = 228.0
-offset_bottom = 99.0
-
-[node name="CanvasLayer" type="CanvasLayer" parent="." index="12" unique_id=229672848]
-
-[node name="UserInterface" parent="CanvasLayer" index="0" unique_id=4126206 instance=ExtResource("16_pihq3")]
-
-[node name="resetZone" parent="." index="13" unique_id=424939368 instance=ExtResource("17_4lh1i")]
+[node name="resetZone" parent="." index="9" unique_id=424939368 instance=ExtResource("8_vl51v")]
 position = Vector2(4, 351)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="resetZone" index="1" unique_id=1115404089]

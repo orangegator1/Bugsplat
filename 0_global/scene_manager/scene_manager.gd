@@ -23,15 +23,19 @@ func transition_scene( new_scene: String,
 		player_offset: Vector2i,
 		dir: String) -> void:
 
-	load_scene_started.emit()
+	load_scene_started.emit(new_scene)
 	get_tree().paused = true
 
 	var fade_pos = get_fade_position(dir)
 	fade.visible = true
 	await fade_screen(fade_pos, Vector2.ZERO)
 
-	get_tree().change_scene_to_file.call_deferred(new_scene)
-	await get_tree().scene_changed
+	var persistent_scene = get_tree().get_first_node_in_group("PersistentScenes")
+	if persistent_scene:
+		await persistent_scene.load_scene(new_scene)
+	else:
+		get_tree().change_scene_to_file.call_deferred(new_scene)
+		await get_tree().scene_changed
 
 	new_scene_ready.emit(target_area, player_offset)
 
