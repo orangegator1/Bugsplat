@@ -3,8 +3,10 @@ extends CanvasLayer
 signal load_scene_started
 signal new_scene_ready(target_name: String, offset: Vector2i)
 signal load_scene_finished
+signal scene_entered(uid: String)
 
 const FADE_DURATION = 0.25
+var current_scene = "uid://b5tobrceh3joe"
 
 @onready var fade: Control = $Fade
 
@@ -36,6 +38,8 @@ func transition_scene( new_scene: String,
 	else:
 		get_tree().change_scene_to_file.call_deferred(new_scene)
 		await get_tree().scene_changed
+	current_scene = ResourceUID.path_to_uid(new_scene)
+	scene_entered.emit(current_scene)
 
 	new_scene_ready.emit(target_area, player_offset)
 
@@ -69,7 +73,7 @@ func get_fade_position(dir: String) -> Vector2:
 	return fade_pos
 
 
-func get_player() -> CharacterBody2D:
+func get_player() -> Player:
 	var player: Player = null
 	while not player:
 		if is_inside_tree():
