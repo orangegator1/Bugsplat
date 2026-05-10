@@ -4,7 +4,7 @@ signal load_scene_started
 signal new_scene_ready(target_name: String, offset: Vector2i)
 signal load_scene_finished
 
-const FADE_DURATION = 0.2
+const FADE_DURATION = 0.25
 
 @onready var fade: Control = $Fade
 

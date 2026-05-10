@@ -544,7 +544,7 @@ visible = false
 visible = false
 
 [node name="PlayerSpawn" parent="." index="2" unique_id=1233805077 instance=ExtResource("2_s4qud")]
-position = Vector2(2512, -64)
+position = Vector2(3318, -2241)
 
 [node name="MovingPlatforms" type="Node2D" parent="." index="3" unique_id=1539940851]
 

@@ -36,9 +36,8 @@ func _on_player_entered(n: Node2D) -> void:
 func on_new_scene_ready(target_name: String, offset: Vector2i) -> void:
 	# position player
 	if target_name == name:
-		var player = get_tree().get_first_node_in_group("Player")
-		if player:
-			player.global_position = global_position + Vector2(offset)
+		var player = await SceneManager.get_player()
+		player.global_position = global_position + Vector2(offset)
 
 
 func on_load_scene_finished() -> void:
