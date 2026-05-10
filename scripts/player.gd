@@ -282,16 +282,15 @@ func handle_ledge_input() -> void:
 				climbing_most_sloped = abs(angle_difference(normal_rads,
 						PI / 4.0)) < 0.1
 				# if hit a half slope (~23 degrees)
-				climbing_less_sloped = abs(angle_difference(normal_rads,
-						PI * 0.35)) < 0.1
+				climbing_less_sloped = abs(normal_rads - (PI * 0.35)) < 0.1
 
 			var snap_pos := global_position + Vector2(0, -height + 1)
 			snap_pos += Vector2(tile_w * ledge_grab_dir, 0)
 			if climbing_most_sloped:
-				snap_pos += Vector2(tile_w / 2 * -ledge_grab_dir, -tile_w + 8)
+				snap_pos += Vector2(tile_w / 2 * -ledge_grab_dir, -tile_w / 2)
 				climbing_most_sloped = false;
 			elif climbing_less_sloped:
-				snap_pos += Vector2(tile_w / 4 * -ledge_grab_dir, -tile_w / 2 + 8)
+				snap_pos += Vector2(tile_w / 4 * -ledge_grab_dir, -tile_w / 2)
 				climbing_less_sloped = false;
 
 			# check for tile collisions at the new position
