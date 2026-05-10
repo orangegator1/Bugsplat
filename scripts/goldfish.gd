@@ -28,7 +28,6 @@ func _process(delta: float) -> void:
 				playback_speed = tmp
 
 			animated_sprite.play("swim",playback_speed)
-			print("playback speed: " + str(playback_speed) + ", is slow: " + str(slow))
 			var offset = randi() % NUM_FRAMES
 			animated_sprite.frame = offset
 

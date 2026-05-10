@@ -12,6 +12,11 @@ var window_size := window.H_810
 var preferred_size := window.H_810
 var viewport_size := Vector2i(480, 270)
 
+func _ready() -> void:
+	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+	DisplayServer.window_set_size(window_sizes[window_size])
+
+
 func _process(_delta):
 	if Input.is_action_just_pressed("reset_scene"):
 		Engine.time_scale = 1.0
@@ -32,13 +37,11 @@ func _process(_delta):
 func add_possible_point():
 	possible_score += 1
 
+
 func change_scene(scene_name):
 	var scene = "res://scenes/" + scene_name + ".tscn"
 	get_tree().change_scene_to_file.call_deferred(scene)
 
-func _ready() -> void:
-	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
-	DisplayServer.window_set_size(window_sizes[window_size])
 
 func toggle_window_size_and_mode() -> void:
 

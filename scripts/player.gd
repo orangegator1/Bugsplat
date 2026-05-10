@@ -235,8 +235,8 @@ func handle_ledge_grab() -> void:
 		# get top corner position of tile
 		pos += Vector2(tile_size / 2 * -ledge_grab_dir, tile_size / -2)
 		# offsets for the current player collision rect
-		# and account for the fact that player position is at their feet
-		pos += Vector2(collider.shape.size.x / 2 * -ledge_grab_dir, height - 8)
+		# position is at their feet and centered
+		pos += Vector2(5 * -ledge_grab_dir, height - 1)
 
 		# if initial raycast collision was on a slope,
 		# shift the tween position down one tile
@@ -249,7 +249,7 @@ func handle_ledge_grab() -> void:
 
 
 func handle_ledge_input() -> void:
-	# jump up, may not be a necessary mode
+	# jump up
 	if Input.is_action_just_pressed("jump"):
 		velocity.y = jump_velocity
 		is_jumping = true
@@ -278,18 +278,20 @@ func handle_ledge_input() -> void:
 			if ledge_grab_miss.is_colliding():
 				var normal = ledge_grab_miss.get_collision_normal()
 				var normal_rads  = abs(normal).angle()
+				# if hit a full slope ~(45 degrees)
 				climbing_most_sloped = abs(angle_difference(normal_rads,
 						PI / 4.0)) < 0.1
+				# if hit a half slope (~23 degrees)
 				climbing_less_sloped = abs(angle_difference(normal_rads,
 						PI * 0.35)) < 0.1
 
-			var snap_pos := global_position + Vector2(0, -height + 9)
+			var snap_pos := global_position + Vector2(0, -height + 1)
 			snap_pos += Vector2(tile_w * ledge_grab_dir, 0)
 			if climbing_most_sloped:
-				snap_pos += Vector2(tile_w / 2 * -ledge_grab_dir, -tile_w)
+				snap_pos += Vector2(tile_w / 2 * -ledge_grab_dir, -tile_w + 8)
 				climbing_most_sloped = false;
 			elif climbing_less_sloped:
-				snap_pos += Vector2(tile_w / 4 * -ledge_grab_dir, -tile_w / 2)
+				snap_pos += Vector2(tile_w / 4 * -ledge_grab_dir, -tile_w / 2 + 8)
 				climbing_less_sloped = false;
 
 			# check for tile collisions at the new position

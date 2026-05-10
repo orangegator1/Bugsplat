@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Bugsplat"
-run/main_scene="uid://b5tobrceh3joe"
+run/main_scene="uid://uv5kig2w3h2p"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="uid://ch7xqkmg1f0sm"
 

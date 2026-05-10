@@ -99,75 +99,6 @@ _data = {
 &"move": SubResource("Animation_qqucv")
 }
 
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_x51mi"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ec3w0"]
-size = Vector2(96, 35)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dbw3f"]
-atlas = ExtResource("24_w7125")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5eoqb"]
-atlas = ExtResource("24_w7125")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_pf7t0"]
-atlas = ExtResource("24_w7125")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_anoxf"]
-atlas = ExtResource("24_w7125")
-region = Rect2(96, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_sg05v"]
-atlas = ExtResource("24_w7125")
-region = Rect2(128, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_s0dck"]
-atlas = ExtResource("24_w7125")
-region = Rect2(160, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2qo02"]
-atlas = ExtResource("24_w7125")
-region = Rect2(192, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_o4vcr"]
-atlas = ExtResource("24_w7125")
-region = Rect2(224, 0, 32, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_wj65a"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_dbw3f")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5eoqb")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_pf7t0")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_anoxf")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_sg05v")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_s0dck")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2qo02")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_o4vcr")
-}],
-"loop": true,
-"name": &"default",
-"speed": 3.0
-}]
-
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fjgn4"]
 texture = ExtResource("27_507pv")
 1:1/0 = 0
@@ -535,33 +466,104 @@ sources/0 = SubResource("TileSetAtlasSource_fjgn4")
 sources/1 = SubResource("TileSetAtlasSource_00see")
 sources/3 = SubResource("TileSetAtlasSource_e73xf")
 
-[node name="Level" unique_id=1109830552 instance=ExtResource("1_qki4n")]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ec3w0"]
+size = Vector2(96, 35)
 
-[node name="template" parent="." index="0" unique_id=1746213677]
+[sub_resource type="AtlasTexture" id="AtlasTexture_dbw3f"]
+atlas = ExtResource("24_w7125")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5eoqb"]
+atlas = ExtResource("24_w7125")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pf7t0"]
+atlas = ExtResource("24_w7125")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_anoxf"]
+atlas = ExtResource("24_w7125")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sg05v"]
+atlas = ExtResource("24_w7125")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s0dck"]
+atlas = ExtResource("24_w7125")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2qo02"]
+atlas = ExtResource("24_w7125")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o4vcr"]
+atlas = ExtResource("24_w7125")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wj65a"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dbw3f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5eoqb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pf7t0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_anoxf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sg05v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s0dck")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2qo02")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o4vcr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_x51mi"]
+
+[node name="Level" unique_id=1175394390 instance=ExtResource("1_qki4n")]
+
+[node name="template" parent="." index="0" unique_id=1162406254]
 visible = false
 
-[node name="temp" parent="." index="1" unique_id=965579806]
+[node name="temp" parent="." index="1" unique_id=728906758]
 visible = false
 
 [node name="PlayerSpawn" parent="." index="2" unique_id=1233805077 instance=ExtResource("2_s4qud")]
-position = Vector2(2252, -1266)
+position = Vector2(242, 721)
 
-[node name="MovingPlatform" parent="." index="3" unique_id=2144621089 instance=ExtResource("11_fd7bg")]
+[node name="MovingPlatforms" type="Node2D" parent="." index="3" unique_id=1539940851]
+
+[node name="MovingPlatform" parent="MovingPlatforms" index="0" unique_id=2144621089 instance=ExtResource("11_fd7bg")]
 position = Vector2(1979, 561)
 
-[node name="AnimationPlayer2" type="AnimationPlayer" parent="MovingPlatform" index="2" unique_id=988282353]
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="MovingPlatforms/MovingPlatform" index="2" unique_id=988282353]
 libraries/ = SubResource("AnimationLibrary_7dqi1")
 autoplay = &"move"
 
-[node name="MovingPlatform2" parent="." index="4" unique_id=944574924 instance=ExtResource("11_fd7bg")]
+[node name="MovingPlatform2" parent="MovingPlatforms" index="1" unique_id=944574924 instance=ExtResource("11_fd7bg")]
 position = Vector2(2294, -1242)
 collision_mask = 3
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="MovingPlatform2" index="2" unique_id=1554870839]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MovingPlatforms/MovingPlatform2" index="2" unique_id=1554870839]
 libraries/ = SubResource("AnimationLibrary_hdgju")
 autoplay = &"RESET"
 
-[node name="BerryBushes" type="Node2D" parent="." index="5" unique_id=38106965]
+[node name="BerryBushes" type="Node2D" parent="." index="4" unique_id=38106965]
 z_index = 1
 
 [node name="BerryBush" parent="BerryBushes" index="0" unique_id=796169510 instance=ExtResource("13_odn5k")]
@@ -606,7 +608,7 @@ position = Vector2(8, -1232)
 [node name="BerryBush14" parent="BerryBushes" index="13" unique_id=1402923748 instance=ExtResource("13_odn5k")]
 position = Vector2(-24, -1856)
 
-[node name="Tutorials" type="Node" parent="." index="6" unique_id=253064094]
+[node name="Tutorials" type="Node" parent="." index="5" unique_id=253064094]
 
 [node name="WASD" type="TextureRect" parent="Tutorials" index="0" unique_id=60305177]
 offset_left = -1072.0
@@ -883,13 +885,52 @@ text = "Screen can be
 resized with
 the '5' key"
 
-[node name="resetZone" parent="." index="7" unique_id=424939368 instance=ExtResource("12_4w3r3")]
-position = Vector2(1216, 1016)
+[node name="ground" parent="." index="6" unique_id=1079457914 groups=["growable_tiles"]]
+texture_repeat = 1
+tile_set = SubResource("TileSet_e73xf")
+rendering_quadrant_size = 64
+navigation_enabled = false
+script = ExtResource("30_xkptj")
+preferred_growth = 1
+stack_atlas_id = Array[int]([3])
+left_alt_bot_tile = Vector2i(0, 2)
+right_alt_bot_tile = Vector2i(2, 2)
 
-[node name="floor" type="CollisionShape2D" parent="resetZone" index="1" unique_id=999741754]
-shape = SubResource("WorldBoundaryShape2D_x51mi")
+[node name="LevelTransition" parent="." index="7" unique_id=817694502 instance=ExtResource("31_qeg1p")]
+position = Vector2(-400, 64)
+size = 8
+location = 3
+target_level = "uid://xw5mdo4mn0on"
+target_area_name = "LevelTransition4"
 
-[node name="TriggerScene2" parent="." index="8" unique_id=1675772569 instance=ExtResource("22_skght")]
+[node name="LevelTransition2" parent="." index="8" unique_id=26530549 instance=ExtResource("31_qeg1p")]
+position = Vector2(1728, -2032)
+size = 30
+location = 0
+target_level = "uid://bsnvh00iswdjn"
+target_area_name = "LevelTransition2"
+
+[node name="LevelTransition3" parent="." index="9" unique_id=277123985 instance=ExtResource("31_qeg1p")]
+position = Vector2(4144, -456)
+size = 9
+location = 2
+target_level = "uid://xw5mdo4mn0on"
+
+[node name="LevelTransition4" parent="." index="10" unique_id=495481259 instance=ExtResource("31_qeg1p")]
+position = Vector2(3376, -2128)
+size = 10
+location = 2
+target_level = "uid://bsssooisi2b0i"
+target_area_name = "LevelTransition3"
+
+[node name="LevelTransition5" parent="." index="11" unique_id=413893561 instance=ExtResource("31_qeg1p")]
+position = Vector2(-1120, 208)
+size = 5
+location = 0
+target_level = "uid://bsssooisi2b0i"
+target_area_name = "LevelTransition2"
+
+[node name="TriggerScene2" parent="." index="12" unique_id=1675772569 instance=ExtResource("22_skght")]
 position = Vector2(3912, -648)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TriggerScene2" index="0" unique_id=211700713]
@@ -952,49 +993,10 @@ position = Vector2(-925, -73)
 [node name="Goldfish12" parent="TriggerScene2/Goldfishes" index="11" unique_id=819927213 instance=ExtResource("25_d2uhu")]
 position = Vector2(-1051, -67)
 
-[node name="ground" parent="." index="9" unique_id=594219130 groups=["growable_tiles"]]
-texture_repeat = 1
-tile_set = SubResource("TileSet_e73xf")
-rendering_quadrant_size = 64
-navigation_enabled = false
-script = ExtResource("30_xkptj")
-preferred_growth = 1
-stack_atlas_id = Array[int]([3])
-left_alt_bot_tile = Vector2i(0, 2)
-right_alt_bot_tile = Vector2i(2, 2)
+[node name="resetZone" parent="." index="13" unique_id=424939368 instance=ExtResource("12_4w3r3")]
+position = Vector2(1216, 1016)
 
-[node name="LevelTransition" parent="." index="10" unique_id=817694502 instance=ExtResource("31_qeg1p")]
-position = Vector2(-400, 64)
-size = 8
-location = 3
-target_level = "uid://xw5mdo4mn0on"
-target_area_name = "LevelTransition4"
-
-[node name="LevelTransition2" parent="." index="11" unique_id=26530549 instance=ExtResource("31_qeg1p")]
-position = Vector2(1728, -2032)
-size = 30
-location = 0
-target_level = "uid://bsnvh00iswdjn"
-target_area_name = "LevelTransition2"
-
-[node name="LevelTransition3" parent="." index="12" unique_id=277123985 instance=ExtResource("31_qeg1p")]
-position = Vector2(4144, -456)
-size = 9
-location = 2
-target_level = "uid://xw5mdo4mn0on"
-
-[node name="LevelTransition4" parent="." index="13" unique_id=495481259 instance=ExtResource("31_qeg1p")]
-position = Vector2(3376, -2128)
-size = 10
-location = 2
-target_level = "uid://bsssooisi2b0i"
-target_area_name = "LevelTransition3"
-
-[node name="LevelTransition5" parent="." index="14" unique_id=413893561 instance=ExtResource("31_qeg1p")]
-position = Vector2(-1120, 208)
-size = 5
-location = 0
-target_level = "uid://bsssooisi2b0i"
-target_area_name = "LevelTransition2"
+[node name="floor" type="CollisionShape2D" parent="resetZone" index="1" unique_id=999741754]
+shape = SubResource("WorldBoundaryShape2D_x51mi")
 
 [connection signal="body_exited" from="TriggerScene2" to="TriggerScene2" method="_on_body_exited"]
