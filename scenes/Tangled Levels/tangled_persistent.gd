@@ -24,7 +24,10 @@ func _process(_delta: float) -> void:
 
 
 func load_scene(new_level: String) -> void:
-	if not new_level == current_level:
+	if new_level == current_level:
+		level.position = Vector2.ZERO
+		SceneManager.level_offset = level.position
+	else:
 		# allow current level to be unloaded so that correct level_transition
 		# position can be identified to place the player
 		level.position = Vector2.ZERO
@@ -54,7 +57,6 @@ func on_new_scene_ready(_target_name: String, offset: Vector2) -> void:
 			player.global_position -= Vector2(offset.x, 0)
 		else:
 			player.global_position -= Vector2(0, offset.y)
-		print("")
 
 
 func set_background_scroll_y() -> bool:

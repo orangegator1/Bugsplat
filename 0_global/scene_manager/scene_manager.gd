@@ -85,10 +85,8 @@ func get_fade_position(dir: String) -> Vector2:
 func get_player() -> Player:
 	var player: Player = null
 	while not player:
-		if is_inside_tree():
-			await get_tree().process_frame
-		if is_inside_tree():
-			player = get_tree().get_first_node_in_group("Player")
+		player = get_tree().get_first_node_in_group("Player")
+		await get_tree().process_frame
 	return player
 
 

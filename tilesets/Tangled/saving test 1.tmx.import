@@ -1,0 +1,23 @@
+[remap]
+
+importer="YATI"
+type="PackedScene"
+uid="uid://rmpiixwq2qob"
+path="res://.godot/imported/saving test 1.tmx-7ba2f5dbfa4ac74c27c05b244e748d7c.tscn"
+
+[deps]
+
+source_file="res://tilesets/Tangled/saving test 1.tmx"
+dest_files=["res://.godot/imported/saving test 1.tmx-7ba2f5dbfa4ac74c27c05b244e748d7c.tscn"]
+
+[params]
+
+use_default_filter=false
+add_class_as_metadata=false
+add_id_as_metadata=false
+no_alternative_tiles=false
+map_wangset_to_terrain=false
+custom_data_prefix="data_"
+tiled_project_file=""
+post_processor=""
+save_tileset_to=""

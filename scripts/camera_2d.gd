@@ -43,6 +43,8 @@ func set_camera_movement_offset(delta: float) -> void:
 
 func on_new_scene_ready(_target_name: String, _offset: Vector2i) -> void:
 	player.camera_set_up = false
+	limit_top = -10000000
+	limit_bottom = 10000000
 	# allow time for level_transition to place the player
 	await get_tree().process_frame
 

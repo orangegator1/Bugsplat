@@ -16,7 +16,7 @@ var direction: float
 var layer_underfoot: TileMapLayer
 var last_y_veloc: float
 var climb_timer: SceneTreeTimer
-var input_dir
+var input_dir: float
 var ledge_grab_dir: int
 var pool: Array[GPUParticles2D]
 var index := 0
@@ -164,19 +164,22 @@ func handle_movement(delta: float) -> void:
 	input_dir = Input.get_axis("move_left", "move_right")
 
 	# when loading in there is no friction avail. until hitting the ground
-	if (	layer_underfoot and not is_on_ledge
-			and not is_in_y_tween and not is_in_x_tween):
+	if (not is_on_ledge	and not is_in_y_tween and not is_in_x_tween):
+		var friction = 500.0
+		if layer_underfoot:
+			if layer_underfoot is GrowableTile:
+				friction = layer_underfoot.friction
 		# accelerate
 		if input_dir:
 			# make switching directions feel more responsive to input
 			if sign(velocity.x) != sign(input_dir):
 				velocity.x = 0
 			velocity.x = move_toward(velocity.x, input_dir * speed,
-				layer_underfoot.friction * delta)
+				friction * delta)
 		# decelerate
 		else:
 			velocity.x = move_toward(velocity.x, 0,
-				layer_underfoot.friction * delta * 2)
+				friction * delta * 2)
 
 	if not is_on_ledge:
 		handle_ledge_grab()
@@ -396,7 +399,7 @@ func get_layer_under_feet(collision: KinematicCollision2D) -> void:
 	var collided := collision.get_collider()
 	var normal = collision.get_normal()
 
-	# Check if the thing we hit is growable and below the player
+	# Check if the thing we hit is a new tilemaplayer below the player
 	if (collided is TileMapLayer and normal.y < 0 and not layer_underfoot == collided):
 		layer_underfoot = collided
 		standing_on_new_growable_layer.emit(collided)
@@ -435,8 +438,8 @@ func set_camera_limits() -> bool:
 	var top = float(range_y[1])
 	var screen_h = GameManager.viewport_size.y
 	var half_screen = screen_h / 2.0
-	camera_2d.limit_bottom = int(bot) + SceneManager.level_offset.y
-	camera_2d.limit_top = int(top - half_screen) + SceneManager.level_offset.y
+	camera_2d.limit_bottom = int(bot + SceneManager.level_offset.y)
+	camera_2d.limit_top = int(top - half_screen + SceneManager.level_offset.y)
 	return true
 
 

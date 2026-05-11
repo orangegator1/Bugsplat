@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://dxoqe2vu35xd2"]
+
+[ext_resource type="PackedScene" uid="uid://rmpiixwq2qob" path="res://tilesets/Tangled/saving test 1.tmx" id="1_e8gig"]
+[ext_resource type="PackedScene" uid="uid://c86qgbo36anj5" path="res://scenes/Controllers/player_spawn.tscn" id="2_jd6xm"]
+[ext_resource type="Script" uid="uid://dc2ea5p13ncoo" path="res://scripts/growable_tiles.gd" id="2_jfvpt"]
+[ext_resource type="PackedScene" uid="uid://cag4gg6j6hwin" path="res://scenes/resetzone.tscn" id="3_jfvpt"]
+[ext_resource type="PackedScene" uid="uid://6r0tnlqktrqt" path="res://scenes/Controllers/level_transition.tscn" id="3_tp8rq"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_tp8rq"]
+
+[node name="saving test 1" unique_id=1752959790 instance=ExtResource("1_e8gig")]
+
+[node name="template" parent="." index="0" unique_id=379055118]
+visible = false
+
+[node name="temp" parent="." index="1" unique_id=1652450959]
+visible = false
+
+[node name="ground" parent="." index="2" unique_id=2114316701 groups=["growable_tiles"]]
+script = ExtResource("2_jfvpt")
+
+[node name="PlayerSpawn" parent="." index="3" unique_id=1233805077 instance=ExtResource("2_jd6xm")]
+
+[node name="resetZone" parent="." index="4" unique_id=424939368 instance=ExtResource("3_jfvpt")]
+position = Vector2(4, 351)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="resetZone" index="1" unique_id=1743049808]
+shape = SubResource("WorldBoundaryShape2D_tp8rq")
+
+[node name="LevelTransition" parent="." index="5" unique_id=817694502 instance=ExtResource("3_tp8rq")]
+position = Vector2(-32, 0)
+location = 3
+target_level = "uid://y7lsu42evco3"
+target_area_name = "LevelTransition2"
+
+[node name="LevelTransition2" parent="." index="6" unique_id=248982345 instance=ExtResource("3_tp8rq")]
+position = Vector2(32, 0)
+target_level = "uid://bsp0v0je1fuya"

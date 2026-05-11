@@ -31,10 +31,11 @@ func create_new_game_save() -> void:
 
 func save_game() -> void:
 	var player: Player = await SceneManager.get_player()
+	var zeroed_pos = player.global_position - SceneManager.level_offset
 	save_data = {
 		"scene_path" : SceneManager.current_scene,
-		"x" : player.global_position.x,
-		"y" : player.global_position.y,
+		"x" : zeroed_pos.x,
+		"y" : zeroed_pos.y,
 		"health" : player.health,
 		"max_health" : player.max_health,
 		"ability" : false,

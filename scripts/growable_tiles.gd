@@ -1,4 +1,4 @@
-extends TileMapLayer
+class_name GrowableTile extends TileMapLayer
 
 enum grow_mode { GEN, GROW, }
 @export var preferred_growth: grow_mode
