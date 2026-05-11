@@ -1000,6 +1000,7 @@ position = Vector2(1216, 1016)
 shape = SubResource("WorldBoundaryShape2D_x51mi")
 
 [node name="LevelTransition6" parent="." index="14" unique_id=1328726395 instance=ExtResource("31_qeg1p")]
+visible = false
 position = Vector2(-952, 848)
 target_level = "uid://dxoqe2vu35xd2"
 
