@@ -44,6 +44,8 @@ func save_game() -> void:
 	var save_file = FileAccess.open(get_file_name(), FileAccess.WRITE)
 	save_file.store_line(JSON.stringify(save_data))
 
+	print("saved to slot " + str(current_slot + 1))
+
 
 func load_game() -> void:
 	if not FileAccess.file_exists(get_file_name()):
@@ -55,17 +57,18 @@ func load_game() -> void:
 	persistent_data = save_data.get("persistent_data", {})
 	discovered_areas = save_data.get("discovered_areas", [])
 	var scene_path = save_data.get("scene_path", new_game_scene)
-	SceneManager.transition_scene(scene_path, "", Vector2.ZERO, "up")
+	SceneManager.transition_scene(scene_path, "", Vector2.ZERO, "up", false)
 	await SceneManager.new_scene_ready
 	setup_player()
 
 
 func setup_player()-> void:
 	var player: Player = await SceneManager.get_player()
-	player.health = save_data.get("health", 3)
+	player.set_health_check_reset(save_data.get("health", 3))
 	player.max_health = save_data.get("max_health", 3)
 	player.global_position = Vector2(save_data.get("x", 0),
 			save_data.get("y", 0))
+	player.velocity = Vector2.ZERO
 
 
 func _unhandled_key_input(event: InputEvent) -> void:
@@ -74,6 +77,15 @@ func _unhandled_key_input(event: InputEvent) -> void:
 			save_game()
 		elif event.is_action_pressed("load"):
 			load_game()
+		elif event.is_action_pressed("change_slot_1"):
+			current_slot = 0
+			print("save slot set to 1")
+		elif event.is_action_pressed("change_slot_2"):
+			current_slot = 1
+			print("save slot set to 2")
+		elif event.is_action_pressed("change_slot_3"):
+			current_slot = 2
+			print("save slot set to 3")
 
 
 func get_file_name() -> String:

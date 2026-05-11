@@ -544,7 +544,7 @@ visible = false
 visible = false
 
 [node name="PlayerSpawn" parent="." index="2" unique_id=1233805077 instance=ExtResource("2_s4qud")]
-position = Vector2(-1016, 672)
+position = Vector2(-1006.0453, 696.4519)
 
 [node name="MovingPlatforms" type="Node2D" parent="." index="3" unique_id=1539940851]
 
@@ -608,7 +608,18 @@ position = Vector2(8, -1232)
 [node name="BerryBush14" parent="BerryBushes" index="13" unique_id=1402923748 instance=ExtResource("13_odn5k")]
 position = Vector2(-24, -1856)
 
-[node name="Tutorials" type="Node" parent="." index="5" unique_id=253064094]
+[node name="ground" parent="." index="5" unique_id=1079457914 groups=["growable_tiles"]]
+texture_repeat = 1
+tile_set = SubResource("TileSet_e73xf")
+rendering_quadrant_size = 64
+navigation_enabled = false
+script = ExtResource("30_xkptj")
+preferred_growth = 1
+stack_atlas_id = Array[int]([3])
+left_alt_bot_tile = Vector2i(0, 2)
+right_alt_bot_tile = Vector2i(2, 2)
+
+[node name="Tutorials" type="Node2D" parent="." index="6" unique_id=1956977458]
 
 [node name="WASD" type="TextureRect" parent="Tutorials" index="0" unique_id=60305177]
 offset_left = -1072.0
@@ -884,17 +895,6 @@ offset_bottom = 291.0
 text = "Screen can be
 resized with
 the '5' key"
-
-[node name="ground" parent="." index="6" unique_id=1079457914 groups=["growable_tiles"]]
-texture_repeat = 1
-tile_set = SubResource("TileSet_e73xf")
-rendering_quadrant_size = 64
-navigation_enabled = false
-script = ExtResource("30_xkptj")
-preferred_growth = 1
-stack_atlas_id = Array[int]([3])
-left_alt_bot_tile = Vector2i(0, 2)
-right_alt_bot_tile = Vector2i(2, 2)
 
 [node name="LevelTransition" parent="." index="7" unique_id=817694502 instance=ExtResource("31_qeg1p")]
 position = Vector2(-400, 64)

@@ -1,12 +1,19 @@
 extends CanvasLayer
 
 signal load_scene_started
-signal new_scene_ready(target_name: String, offset: Vector2i)
+signal new_scene_ready(target_name: String, offset: Vector2)
 signal load_scene_finished
 signal scene_entered(uid: String)
 
-const FADE_DURATION = 0.25
+# level 1
 var current_scene = "uid://b5tobrceh3joe"
+const FADE_DURATION = 0.25
+var outgoing_position: Vector2
+var incoming_position: Vector2
+var level_offset: Vector2
+enum SIDE { TOP, RIGHT, BOTTOM, LEFT }
+var transition_direction: SIDE
+var shifting_incoming_level = true
 
 @onready var fade: Control = $Fade
 
@@ -22,8 +29,9 @@ func _ready() -> void:
 
 func transition_scene( new_scene: String,
 		target_area: String,
-		player_offset: Vector2i,
-		dir: String) -> void:
+		player_offset: Vector2,
+		dir: String,
+		shift_incoming_level = true) -> void:
 
 	load_scene_started.emit()
 	get_tree().paused = true
@@ -32,6 +40,7 @@ func transition_scene( new_scene: String,
 	fade.visible = true
 	await fade_screen(fade_pos, Vector2.ZERO)
 
+	shifting_incoming_level = shift_incoming_level
 	var persistent_scene = get_tree().get_first_node_in_group("PersistentScenes")
 	if persistent_scene:
 		await persistent_scene.load_scene(new_scene)

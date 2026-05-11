@@ -36,7 +36,7 @@ var climbing_less_sloped := false
 var climbing_most_sloped := false
 var climbing_sloped := false
 var falling_fast := false
-var background_set_up := false
+var camera_set_up := false
 var resetting := false
 
 @onready var animated_sprites: AnimatedSprite2D = $AnimatedSprite2D
@@ -54,10 +54,6 @@ var resetting := false
 @onready var dirt_falling_2: GPUParticles2D = $Particles/DirtFalling2
 @onready var dirt_falling_3: GPUParticles2D = $Particles/DirtFalling3
 
-var bg_parallax: Parallax2D
-var background_texture: TextureRect
-#@onready var bg_parallax: Parallax2D = $"../Level/BackgroundVerticalParallax"
-#@onready var background_texture: TextureRect = $"../BackgroundVerticalParallax/BackgroundTexture"
 
 func _ready() -> void:
 	# delete duplicate players
@@ -67,13 +63,11 @@ func _ready() -> void:
 		await get_tree().process_frame
 		self.queue_free()
 
+
 	# populate player particle pools
 	pool = [dirt_falling, dirt_falling_2, dirt_falling_3,]
 
 	# reparent player node to root
-
-	# need to reorganize how nodes are found by the player
-	# moving the player in the tree is breaking all references to other objects
 	if not get_parent() == get_tree().root:
 		self.reparent.call_deferred(get_tree().root)
 
@@ -86,8 +80,8 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
-	if not background_set_up:
-		background_set_up = set_background_scroll_y()
+	if not camera_set_up:
+		camera_set_up = set_camera_limits()
 
 
 func _physics_process(delta: float) -> void:
@@ -433,42 +427,16 @@ func set_tween_flags(mode: String, tween: Tween, dir := 0) -> void:
 	freefall_timer.start()
 
 
-func set_background_scroll_y() -> bool:
-	if not layer_underfoot or not bg_parallax or not camera_2d:
+func set_camera_limits() -> bool:
+	if not layer_underfoot or not camera_2d:
 		return false
 	var range_y = PlatformManager.get_vertical_bounds(layer_underfoot)
 	var bot = float(range_y[0])
 	var top = float(range_y[1])
-	#var level_height = abs(bot - top)
-	var texture_h = background_texture.size.y
 	var screen_h = GameManager.viewport_size.y
 	var half_screen = screen_h / 2.0
-	camera_2d.limit_bottom = int(bot)
-	camera_2d.limit_top = int(top - half_screen)
-
-	var cam_bot_limit = bot - half_screen
-	var cam_top_limit = top
-	var max_camera_travel = cam_bot_limit - cam_top_limit
-
-	# scroll scale is a ratio of bg texture height over height of the level
-	bg_parallax.scroll_scale.y = (texture_h - screen_h) / max_camera_travel
-
-	# ensure we start at the bottom of the texture
-	bg_parallax.scroll_offset.y = -215
-	var _target_tex_top = bot - texture_h
-	var _cam_limit_bottom = bot - (screen_h / 2.0)
-
-	#var offset = top - ((top - half_screen) * bg_parallax.scroll_scale.y)
-	# (bot - texture_h) - ((bot - half_screen) * bg_parallax.scroll_scale.y)
-	#bg_parallax.scroll_offset.y = offset
-
-	print("bot: %s, top: %s, height: %s
-	bg_parallax.position: %s
-	camera_2d.position: %s
-	scroll_scale.y: %s, scroll_offset.y: %s"
-			% [bot, top, bot-top, bg_parallax.position, camera_2d.position,
-			bg_parallax.scroll_scale.y, bg_parallax.scroll_offset.y])
-	print("get_screen_offset(): %s" % [bg_parallax.get_screen_offset()])
+	camera_2d.limit_bottom = int(bot) + SceneManager.level_offset.y
+	camera_2d.limit_top = int(top - half_screen) + SceneManager.level_offset.y
 	return true
 
 

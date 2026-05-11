@@ -437,11 +437,11 @@ tile_set = SubResource("TileSet_qr8l7")
 script = ExtResource("4_ra7vs")
 
 [node name="PlayerSpawn" parent="." index="3" unique_id=1233805077 instance=ExtResource("5_gvya1")]
-position = Vector2(-276, -26)
+position = Vector2(-269, -21)
 
 [node name="LevelTransition" parent="." index="4" unique_id=817694502 instance=ExtResource("6_6x08n")]
-position = Vector2(0, -640)
-size = 12
+position = Vector2(16, -640)
+size = 9
 location = 0
 
 [node name="LevelTransition2" parent="." index="5" unique_id=348961848 instance=ExtResource("6_6x08n")]

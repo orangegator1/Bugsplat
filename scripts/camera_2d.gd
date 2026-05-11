@@ -12,10 +12,7 @@ var xy: Vector2
 var jump_y: float
 
 func _ready() -> void:
-	while not player:
-		await get_tree().process_frame
-		player = get_parent()
-		print("got a parent")
+	player = await SceneManager.get_player()
 	xy = Vector2(32.5 / player.speed, 13.0 / player.speed)
 	jump_y = -21.5 / player.speed
 
@@ -45,6 +42,7 @@ func set_camera_movement_offset(delta: float) -> void:
 
 
 func on_new_scene_ready(_target_name: String, _offset: Vector2i) -> void:
+	player.camera_set_up = false
 	# allow time for level_transition to place the player
 	await get_tree().process_frame
 

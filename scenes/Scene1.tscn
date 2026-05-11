@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://bk4le26h0e7nb"]
 
 [ext_resource type="PackedScene" uid="uid://npxpcfoo6wdd" path="res://scenes/player.tscn" id="1_2m1p7"]
-[ext_resource type="Script" uid="uid://onbpgd444ymx" path="res://scripts/game_manager.gd" id="1_wjebh"]
+[ext_resource type="Script" uid="uid://onbpgd444ymx" path="res://0_global/game_manager.gd" id="1_wjebh"]
 [ext_resource type="Texture2D" uid="uid://b1djvd6ifcuee" path="res://assets/sprites/world_tileset.png" id="2_er4nq"]
 [ext_resource type="Script" uid="uid://dc2ea5p13ncoo" path="res://scripts/growable_tiles.gd" id="3_5eoqb"]
 [ext_resource type="PackedScene" uid="uid://dyotxgo24oiwk" path="res://scenes/ballv_2.tscn" id="5_cn0na"]

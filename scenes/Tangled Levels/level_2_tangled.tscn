@@ -420,17 +420,18 @@ sources/2 = SubResource("TileSetAtlasSource_50mcn")
 
 [node name="Level" unique_id=1300884299 instance=ExtResource("1_yhnba")]
 
-[node name="template" parent="." index="0" unique_id=311579019]
+[node name="template" parent="." index="0" unique_id=1386088343]
 visible = false
 
-[node name="temp" parent="." index="1" unique_id=1320778529]
+[node name="temp" parent="." index="1" unique_id=1977572770]
 visible = false
 
-[node name="ground" parent="." index="2" unique_id=1565456262 groups=["growable_tiles"]]
+[node name="ground" parent="." index="2" unique_id=1052778088 groups=["growable_tiles"]]
 tile_set = SubResource("TileSet_da7nb")
 script = ExtResource("5_ned8p")
 preferred_growth = 1
 stack_atlas_id = Array[int]([2])
+metadata/_edit_lock_ = true
 
 [node name="PlayerSpawn" parent="." index="3" unique_id=1233805077 instance=ExtResource("7_ubk8n")]
 position = Vector2(-1461, 330)

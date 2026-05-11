@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://ds4iqypmemcmr" path="res://tilesets/test-tangled.png" id="4_ne32l"]
 [ext_resource type="Texture2D" uid="uid://b2jyrqouhtd0y" path="res://tilesets/tangled stack.png" id="5_1uhl1"]
 [ext_resource type="Texture2D" uid="uid://dqqa3nmp8s30k" path="res://tilesets/tangled stack reverse.png" id="6_n11oe"]
-[ext_resource type="Script" uid="uid://onbpgd444ymx" path="res://scripts/game_manager.gd" id="8_linmt"]
+[ext_resource type="Script" uid="uid://onbpgd444ymx" path="res://0_global/game_manager.gd" id="8_linmt"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1uhl1"]
 texture = ExtResource("4_ne32l")

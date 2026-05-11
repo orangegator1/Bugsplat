@@ -38,11 +38,6 @@ func add_possible_point():
 	possible_score += 1
 
 
-func change_scene(scene_name):
-	var scene = "res://scenes/" + scene_name + ".tscn"
-	get_tree().change_scene_to_file.call_deferred(scene)
-
-
 func toggle_window_size_and_mode() -> void:
 
 	if window_size == window.H_1080 or window_size == window.H_810:
