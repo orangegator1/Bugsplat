@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c86qgbo36anj5"]
 
-[ext_resource type="Script" uid="uid://cydpqakh1imju" path="res://scenes/Controllers/player_spawn.gd" id="1_5crq5"]
+[ext_resource type="Script" uid="uid://cydpqakh1imju" path="res://controllers/player_spawn.gd" id="1_5crq5"]
 [ext_resource type="Texture2D" uid="uid://gw7bn52r0did" path="res://assets/sprites/beetle diffuse idle-Sheet.png" id="1_c5npc"]
 
 [node name="PlayerSpawn" type="Node2D" unique_id=1233805077]

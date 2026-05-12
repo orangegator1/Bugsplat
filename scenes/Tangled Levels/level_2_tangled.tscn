@@ -5,8 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://bi2ybrjch8j4f" path="res://tilesets/tileset tangled growth-Sheet.png" id="3_dhk32"]
 [ext_resource type="Texture2D" uid="uid://b2jyrqouhtd0y" path="res://tilesets/tangled stack.png" id="4_u1c2a"]
 [ext_resource type="Script" uid="uid://dc2ea5p13ncoo" path="res://scripts/growable_tiles.gd" id="5_ned8p"]
-[ext_resource type="PackedScene" uid="uid://6r0tnlqktrqt" path="res://scenes/Controllers/level_transition.tscn" id="6_s0gan"]
-[ext_resource type="PackedScene" uid="uid://c86qgbo36anj5" path="res://scenes/Controllers/player_spawn.tscn" id="7_ubk8n"]
+[ext_resource type="PackedScene" uid="uid://6r0tnlqktrqt" path="res://controllers/level_transition.tscn" id="6_s0gan"]
+[ext_resource type="PackedScene" uid="uid://c86qgbo36anj5" path="res://controllers/player_spawn.tscn" id="7_ubk8n"]
 [ext_resource type="PackedScene" uid="uid://bdfvwrub43ywh" path="res://scenes/BerryBush.tscn" id="8_3a53e"]
 [ext_resource type="PackedScene" uid="uid://cag4gg6j6hwin" path="res://scenes/resetzone.tscn" id="9_khcov"]
 

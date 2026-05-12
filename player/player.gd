@@ -9,8 +9,9 @@ signal health_changed(value: int)
 
 var height = 32
 var width = 11
-var ledge_climb_duration = 0.5
+var ledge_climb_duration = 0.4
 var push_force := 80.0
+var friction := 500.0
 var health: int
 var direction: float
 var layer_underfoot: TileMapLayer
@@ -162,12 +163,15 @@ func handle_movement(delta: float) -> void:
 
 	# Get the input direction and handle horiz. movement
 	input_dir = Input.get_axis("move_left", "move_right")
+
+	# deadzone for busted controllers with bad joysticks
+	input_dir = 0.0 if abs(input_dir) < 0.1 else input_dir
+
 	if not input_dir == 0:
 		input_dir = -1 if (input_dir < 0) else 1
 
 	# when loading in there is no friction avail. until hitting the ground
 	if (not is_on_ledge	and not is_in_y_tween and not is_in_x_tween):
-		var friction = 500.0
 		if layer_underfoot:
 			if layer_underfoot is GrowableTile:
 				friction = layer_underfoot.friction
@@ -203,47 +207,12 @@ func handle_ledge_grab() -> void:
 		ledge_grab_hit.target_position.x *= -1
 	if sign(ledge_grab_miss.target_position.x) != sign(input_dir):
 		ledge_grab_miss.target_position.x *= -1
+
 	# no collision on top raycast signals empty space above the ledge
 	if (not ledge_grab_miss.is_colliding()) and ledge_grab_hit.is_colliding():
-		# calculate the position to snap the player to
-		var layer = ledge_grab_hit.get_collider()
-		if not layer is TileMapLayer:
-			return
-		var normal = ledge_grab_hit.get_collision_normal()
-		ledge_grab_dir = sign(ledge_grab_hit.get_collision_point().x - global_position.x)
-
-		# check if there is a slope above the ledge we are grabbing
-		var tile_size = layer.tile_size
-		var pos = ledge_grab_hit.get_collision_point()
-		var tile_above_pos = pos + Vector2(ledge_grab_dir, 0)
-		tile_above_pos = PlatformManager.center_of_tile_at(tile_above_pos, layer)
-		tile_above_pos += Vector2(0, -tile_size)
-		var collider_above = PlatformManager.collider_at(tile_above_pos)
-
-		# different animation for grabbing a 1-tile tall ledge
-		var tile_below_pos = tile_above_pos + Vector2(0, 3 * tile_size)
-		is_on_small_ledge = not PlatformManager.collider_at(tile_below_pos)
-
-		climbing_sloped = normal.y != 0 or collider_above
-		is_on_ledge = true
-		velocity = Vector2.ZERO
-
-		# move the tile detection position into the tile by 1 pixel
-		var tmp = pos + Vector2(ledge_grab_dir, 0)
-		pos = PlatformManager.center_of_tile_at(tmp, layer)
-		# get top corner position of tile
-		pos += Vector2(tile_size / 2 * -ledge_grab_dir, tile_size / -2)
-		# offsets for the current player collision rect
-		# position is at their feet and centered
-		pos += Vector2(5 * -ledge_grab_dir, height - 1)
-
-		# if initial raycast collision was on a slope,
-		# shift the tween position down one tile
-		if normal.y != 0:
-			pos += Vector2(0, tile_size)
-
+		var tween_pos = get_ledge_snap_pos()
 		var tween = create_tween()
-		tween.tween_property(self, "global_position", pos, 0.05)
+		tween.tween_property(self, "global_position", tween_pos, 0.05)
 		set_tween_flags("xy", tween, ledge_grab_dir)
 
 
@@ -331,8 +300,47 @@ func handle_ledge_input() -> void:
 		velocity = Vector2.ZERO
 
 
-func get_ledge_climb_end_pos() -> Vector2:
-	return Vector2.ZERO
+func get_ledge_snap_pos() -> Vector2:
+	# calculate the position to snap the player to
+	var layer = ledge_grab_hit.get_collider()
+	if not layer is TileMapLayer:
+		CustomErrors.push_error_custom("ledge_grab_hit reported hitting
+				something not a TileMapLayer.",0)
+		return Vector2.ZERO
+	var normal = ledge_grab_hit.get_collision_normal()
+	ledge_grab_dir = sign(ledge_grab_hit.get_collision_point().x - global_position.x)
+
+	# check if there is a slope above the ledge we are grabbing
+	var tile_size = layer.tile_size
+	var pos = ledge_grab_hit.get_collision_point()
+	var tile_above_pos = pos + Vector2(ledge_grab_dir, 0)
+	tile_above_pos = PlatformManager.center_of_tile_at(tile_above_pos, layer)
+	tile_above_pos += Vector2(0, -tile_size)
+	var collider_above = PlatformManager.collider_at(tile_above_pos)
+
+	# different animation for grabbing a 1-tile tall ledge
+	var tile_below_pos = tile_above_pos + Vector2(0, 3 * tile_size)
+	is_on_small_ledge = not PlatformManager.collider_at(tile_below_pos)
+
+	climbing_sloped = normal.y != 0 or collider_above
+	is_on_ledge = true
+	velocity = Vector2.ZERO
+
+	# move the tile detection position into the tile by 1 pixel
+	var tmp = pos + Vector2(ledge_grab_dir, 0)
+	pos = PlatformManager.center_of_tile_at(tmp, layer)
+	# get top corner position of tile
+	pos += Vector2(tile_size / 2 * -ledge_grab_dir, tile_size / -2)
+	# offsets for the current player collision rect
+	# position is at their feet and centered
+	pos += Vector2(5 * -ledge_grab_dir, height - 1)
+
+	# if initial raycast collision was on a slope,
+	# shift the tween position down one tile
+	if normal.y != 0:
+		pos += Vector2(0, tile_size)
+
+	return pos
 
 
 func handle_sprite() -> void:
@@ -463,5 +471,7 @@ func reset_flags() -> void:
 	is_on_ledge = false
 	is_jumping = false
 	falling_fast = false
+
+
 func update_label(text: String) -> void:
 	debug_label.text = text

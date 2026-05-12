@@ -13,14 +13,15 @@ var index := 0
 func _ready() -> void:
 	pool = [healed_particles, healed_particles_2]
 
+
 func _process(_delta: float) -> void:
-	if player and get_tree().get_first_node_in_group("Player"):
-		return
-	else:
+	if not player or not get_tree().get_first_node_in_group("Player"):
 		# reconnect to new instance of player
 		player = await SceneManager.get_player()
 		current_health = player.health
 		on_player_health_changed(player.health)
+		if player.health_changed.is_connected(on_player_health_changed):
+			player.health_changed.disconnect(on_player_health_changed)
 		player.health_changed.connect(on_player_health_changed)
 
 
