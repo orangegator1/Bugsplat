@@ -29,11 +29,11 @@ func create_new_game_save() -> void:
 	save_file.store_line(JSON.stringify(save_data))
 
 
-func save_game() -> void:
+func save_game(current_scene: String = SceneManager.current_scene) -> void:
 	var player: Player = await SceneManager.get_player()
 	var zeroed_pos = player.global_position - SceneManager.level_offset
 	save_data = {
-		"scene_path" : SceneManager.current_scene,
+		"scene_path" : current_scene,
 		"x" : zeroed_pos.x,
 		"y" : zeroed_pos.y,
 		"health" : player.health,
@@ -69,7 +69,8 @@ func setup_player()-> void:
 	player.max_health = save_data.get("max_health", 3)
 	player.global_position = Vector2(save_data.get("x", 0),
 			save_data.get("y", 0))
-	player.velocity = Vector2.ZERO
+
+	player.reset_flags()
 
 
 func _unhandled_key_input(event: InputEvent) -> void:

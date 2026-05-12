@@ -1,0 +1,134 @@
+[gd_scene format=3 uid="uid://de6caabpe0c0l"]
+
+[ext_resource type="Script" uid="uid://cm2ajctqtrigt" path="res://general/save_points/save_point.gd" id="1_bhmqj"]
+[ext_resource type="Texture2D" uid="uid://d2n7a3h1ivln4" path="res://general/save_points/fountain-2.png" id="2_wqd8s"]
+[ext_resource type="PackedScene" uid="uid://b8t6hs55f7fot" path="res://general/input_hint/input_hint.tscn" id="3_3yslq"]
+
+[sub_resource type="Animation" id="Animation_bhmqj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-30, -71)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_wqd8s"]
+resource_name = "game_saved"
+length = 3.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.4, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [Vector2(-30.38, -24), Vector2(-31, -73)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1, 2.4, 3),
+"transitions": PackedFloat32Array(0.5, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3yslq"]
+_data = {
+&"RESET": SubResource("Animation_bhmqj"),
+&"game_saved": SubResource("Animation_wqd8s")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7pmvo"]
+size = Vector2(48, 64)
+
+[node name="SavePoint" type="Node2D" unique_id=622196410]
+script = ExtResource("1_bhmqj")
+
+[node name="Node2D" type="Node2D" parent="." unique_id=1443096414]
+
+[node name="Label" type="Label" parent="Node2D" unique_id=2121008260]
+visible = false
+offset_left = -30.0
+offset_top = -71.0
+offset_right = 31.0
+offset_bottom = -48.0
+theme_override_colors/font_color = Color(0.87058824, 0.80784315, 0.92941177, 1)
+theme_override_colors/font_shadow_color = Color(0.11764706, 0.2509804, 0.26666668, 0.78431374)
+theme_override_constants/line_spacing = -3
+theme_override_constants/shadow_offset_x = 1
+text = "Game
+Saved"
+horizontal_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Node2D" unique_id=1854006941]
+root_node = NodePath("../Label")
+libraries/ = SubResource("AnimationLibrary_3yslq")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1911463273]
+position = Vector2(1, -35)
+texture = ExtResource("2_wqd8s")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1281610170]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=924448913]
+position = Vector2(0, -32)
+shape = SubResource("RectangleShape2D_7pmvo")
+debug_color = Color(0, 0.6, 0.69803923, 0)
+
+[node name="InputHint" parent="." unique_id=135935805 instance=ExtResource("3_3yslq")]
+position = Vector2(0, -59)

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bom21vww76jlo"
-path="res://.godot/imported/E key.png-6723d581a65e0bfdc6b29f88bb3bb70f.ctex"
+uid="uid://l40ea7g3ctdl"
+path="res://.godot/imported/input_hints.svg-c376e09ae717ff1a96d1c7b9bb78c111.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/tutorials/E key.png"
-dest_files=["res://.godot/imported/E key.png-6723d581a65e0bfdc6b29f88bb3bb70f.ctex"]
+source_file="res://general/input_hint/input_hints.svg"
+dest_files=["res://.godot/imported/input_hints.svg-c376e09ae717ff1a96d1c7b9bb78c111.ctex"]
 
 [params]
 
@@ -38,3 +38,6 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
+svg/scale=1.0
+editor/scale_with_editor_scale=false
+editor/convert_colors_with_editor_theme=false

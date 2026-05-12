@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://xw5mdo4mn0on"]
 
 [ext_resource type="PackedScene" uid="uid://d3gl850gqdxv" path="res://tilesets/Tangled/level 4 - tangled.tmx" id="1_svy4w"]
+[ext_resource type="PackedScene" uid="uid://de6caabpe0c0l" path="res://general/save_points/save_point.tscn" id="2_b7se5"]
 [ext_resource type="Texture2D" uid="uid://brvqkjrp8j6bs" path="res://tilesets/tilemap template.png" id="2_sj03c"]
 [ext_resource type="Texture2D" uid="uid://bi2ybrjch8j4f" path="res://tilesets/tileset tangled growth-Sheet.png" id="3_b7se5"]
 [ext_resource type="Script" uid="uid://dc2ea5p13ncoo" path="res://scripts/growable_tiles.gd" id="4_ra7vs"]
@@ -430,44 +431,48 @@ sources/1 = SubResource("TileSetAtlasSource_1gp8j")
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_tqrpi"]
 
-[node name="Level" unique_id=1571953458 instance=ExtResource("1_svy4w")]
+[node name="Level" unique_id=370738577 instance=ExtResource("1_svy4w")]
 
-[node name="ground" parent="." index="2" unique_id=1109125582 groups=["growable_tiles"]]
+[node name="SavePoint" parent="." index="2" unique_id=622196410 instance=ExtResource("2_b7se5")]
+z_index = 1
+position = Vector2(-176, -16)
+
+[node name="ground" parent="." index="3" unique_id=124054368 groups=["growable_tiles"]]
 tile_set = SubResource("TileSet_qr8l7")
 script = ExtResource("4_ra7vs")
 
-[node name="PlayerSpawn" parent="." index="3" unique_id=1233805077 instance=ExtResource("5_gvya1")]
+[node name="PlayerSpawn" parent="." index="4" unique_id=1233805077 instance=ExtResource("5_gvya1")]
 position = Vector2(-269, -21)
 
-[node name="LevelTransition" parent="." index="4" unique_id=817694502 instance=ExtResource("6_6x08n")]
+[node name="LevelTransition" parent="." index="5" unique_id=817694502 instance=ExtResource("6_6x08n")]
 position = Vector2(16, -640)
 size = 9
 location = 0
 
-[node name="LevelTransition2" parent="." index="5" unique_id=348961848 instance=ExtResource("6_6x08n")]
+[node name="LevelTransition2" parent="." index="6" unique_id=348961848 instance=ExtResource("6_6x08n")]
 position = Vector2(-48, 128)
 size = 3
 location = 2
 target_level = "uid://bsnvh00iswdjn"
 target_area_name = "LevelTransition3"
 
-[node name="LevelTransition3" parent="." index="6" unique_id=1280160964 instance=ExtResource("6_6x08n")]
+[node name="LevelTransition3" parent="." index="7" unique_id=1280160964 instance=ExtResource("6_6x08n")]
 position = Vector2(-296, -16)
 size = 5
 location = 3
 target_level = "uid://bsssooisi2b0i"
 
-[node name="LevelTransition4" parent="." index="7" unique_id=544551793 instance=ExtResource("6_6x08n")]
+[node name="LevelTransition4" parent="." index="8" unique_id=544551793 instance=ExtResource("6_6x08n")]
 position = Vector2(960, -160)
 size = 5
 target_level = "uid://b5tobrceh3joe"
 
-[node name="BerryBushes" type="Node2D" parent="." index="8" unique_id=291787511]
+[node name="BerryBushes" type="Node2D" parent="." index="9" unique_id=291787511]
 
 [node name="BerryBush" parent="BerryBushes" index="0" unique_id=796169510 instance=ExtResource("7_vf87x")]
 position = Vector2(120, -32)
 
-[node name="resetZone" parent="." index="9" unique_id=424939368 instance=ExtResource("8_vl51v")]
+[node name="resetZone" parent="." index="10" unique_id=424939368 instance=ExtResource("8_vl51v")]
 position = Vector2(4, 351)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="resetZone" index="1" unique_id=1115404089]

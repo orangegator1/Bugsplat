@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://64343si1lqco"
-path="res://.godot/imported/wasd.png-592f0f1e2c16176d40d1c1d0a7b03997.ctex"
+uid="uid://d2n7a3h1ivln4"
+path="res://.godot/imported/fountain-2.png-0b62ff06d29c19c5a361853680323272.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/tutorials/wasd.png"
-dest_files=["res://.godot/imported/wasd.png-592f0f1e2c16176d40d1c1d0a7b03997.ctex"]
+source_file="res://general/save_points/fountain-2.png"
+dest_files=["res://.godot/imported/fountain-2.png-0b62ff06d29c19c5a361853680323272.ctex"]
 
 [params]
 

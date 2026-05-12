@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ihycg7bdoqik"
-path="res://.godot/imported/D key.png-ea1691dcb21815ef150ffe9a352fb82e.ctex"
+uid="uid://bhwh0e1ltx16i"
+path="res://.godot/imported/W.png-59203fa899b69c4e9719c36544139671.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/tutorials/D key.png"
-dest_files=["res://.godot/imported/D key.png-ea1691dcb21815ef150ffe9a352fb82e.ctex"]
+source_file="res://general/input_hint/W.png"
+dest_files=["res://.godot/imported/W.png-59203fa899b69c4e9719c36544139671.ctex"]
 
 [params]
 

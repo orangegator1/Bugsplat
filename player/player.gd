@@ -156,12 +156,14 @@ func handle_movement(delta: float) -> void:
 		velocity.y = jump_velocity
 		is_jumping = true
 		jumped = true
-	elif is_on_floor():
+	elif is_on_floor() or is_on_ledge:
 		is_jumping = false
 
 
 	# Get the input direction and handle horiz. movement
 	input_dir = Input.get_axis("move_left", "move_right")
+	if not input_dir == 0:
+		input_dir = -1 if (input_dir < 0) else 1
 
 	# when loading in there is no friction avail. until hitting the ground
 	if (not is_on_ledge	and not is_in_y_tween and not is_in_x_tween):
@@ -355,10 +357,11 @@ func handle_sprite() -> void:
 		else:
 			animated_sprites.play("ledge_hang")
 	elif ledge_climbing:
+		animated_sprites.play("ledge_climb")
 		if started_climb and climb_timer.time_left > 0:
 			started_climb = false
 			# animation is 16px taller than base 48px, and is centered
-			animated_sprites.position.y -= 8
+			animated_sprites.offset.y -= 8
 
 			var particles = pool[index]
 			index = (index + 1) % pool.size()
@@ -370,8 +373,8 @@ func handle_sprite() -> void:
 			particles.emitting = true
 
 			await climb_timer.timeout
-			animated_sprites.position.y += 8
-		animated_sprites.play("ledge_climb")
+			animated_sprites.play("idle")
+			animated_sprites.offset.y += 8
 	elif is_on_floor():
 		if velocity.x != 0 or is_in_x_tween:
 			animated_sprites.play("run")
@@ -381,12 +384,17 @@ func handle_sprite() -> void:
 		animated_sprites.play("jump")
 		await animated_sprites.animation_finished
 		jumped = false
-	elif is_jumping or (!is_jumping and freefall_timer.is_stopped()):
+	elif not ledge_climbing and (is_jumping or (!is_jumping and freefall_timer.is_stopped())):
 		animated_sprites.play("falling")
 	elif climb_timer:
 		animated_sprites.play("idle")
 	else:
 		animated_sprites.play("idle")
+
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("interact"):
+		MessageBus.player_interacted.emit(self)
 
 
 func push_objects(collision: KinematicCollision2D) -> void:
@@ -450,5 +458,10 @@ func set_health_check_reset(amount: int = 0) -> void:
 		SceneManager.reset()
 
 
+func reset_flags() -> void:
+	velocity = Vector2.ZERO
+	is_on_ledge = false
+	is_jumping = false
+	falling_fast = false
 func update_label(text: String) -> void:
 	debug_label.text = text

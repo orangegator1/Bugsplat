@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://di34htu0m8qsv"
-path="res://.godot/imported/up arrow.png-1ca9215bd4147c3ce5f58db23dd646ce.ctex"
+uid="uid://n5bt0atf2wwt"
+path="res://.godot/imported/D.png-b956d75e29ed1cf235781901d5064bc0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/tutorials/up arrow.png"
-dest_files=["res://.godot/imported/up arrow.png-1ca9215bd4147c3ce5f58db23dd646ce.ctex"]
+source_file="res://general/input_hint/D.png"
+dest_files=["res://.godot/imported/D.png-b956d75e29ed1cf235781901d5064bc0.ctex"]
 
 [params]
 

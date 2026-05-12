@@ -4,27 +4,14 @@ increase gravity at jump apex
   -if so need to retest
     -max gap you can jump
     -max ledge_jump gap
-theres a loaded game positioning bug coupled with an extra offset when transitioning between levels
-  -recreate by jumping all the way right at level1->4 transition
-    - i think the offset it getting added twice somewhere
-  -load level 4 save once spawned out of bounds
 introduce health system UI with first fall
   2x scale above player, plays blinking animation, shrinks and moves into position
   grace fall, take no damage when switching scenes
     add special decoration to show a cushioned landing
-fix background parallax, calculate total height of interconnected levels for scroll_scale
-  cant align levels orthogonally so that vertical scroll progress is consistent at different y-values
-    -maybe I can spawn new levels at the same global position
-create save points
+fix background parallax, calculate total height of interconnected levels for scroll_scale?
 limit growing to certain locations and a consumable
 can quit the game from some menu, "esc"
 title screen
-X
-fix ledge climb placement
-fix UI, health system and particles
-fix reset zones
-create persistent scene
-  load only tileset when switching
 
 movement
   animation for sweet spot ledge jump
@@ -47,13 +34,6 @@ grow:
     -side, indicator over impacted tiles?
   limited growing, seed packet pickups
   sitting or planting animation when growing
-
-ledge climb
-  -idle animation pops up before the animated_sprites transform is reset
-  -flipped ledge hang sprite
-    -fixed by not relying on the raycast direction, which is fickle? but why is that
-  -may need to check for colliders a third tile up when climbing up onto a slope
-  -redo ledge climb animation
 
 camera deadzone, edit lerping, add camera boundaries when theres nothing to see
 
