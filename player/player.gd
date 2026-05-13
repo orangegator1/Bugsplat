@@ -138,9 +138,12 @@ func handle_movement(delta: float) -> void:
 		if last_y_veloc <= 0 and velocity.y > 0 and not is_jumping:
 			freefall_timer.start()
 		last_y_veloc = velocity.y
+
+	# take damage when falling too fast
 	if is_on_floor() and falling_fast:
 		falling_fast = false
 		input_locked = true
+		# zero x velocity during animation
 		velocity = Vector2.ZERO
 		animation_player.play("heavy_landing")
 		sound_effect_player.play_sound(SFX.heavy_landing, global_position)
@@ -459,8 +462,11 @@ func set_camera_limits() -> bool:
 	return true
 
 
-func set_health_check_reset(amount: int = 0) -> void:
-	health = clampi(health + amount, 0, max_health)
+func set_health_check_reset(amount: int = 0, incrementing = true) -> void:
+	if incrementing:
+		health = clampi(health + amount, 0, max_health)
+	else:
+		health = clampi(amount, 0, max_health)
 	health_changed.emit(health)
 	if health == 0:
 		SceneManager.reset()

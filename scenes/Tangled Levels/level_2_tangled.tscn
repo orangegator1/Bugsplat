@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bsnvh00iswdjn"]
 
-[ext_resource type="PackedScene" uid="uid://dno2lgxhbajy4" path="res://tilesets/Tangled/level 2 - tangled.tmx" id="1_yhnba"]
+[ext_resource type="PackedScene" uid="uid://dno2lgxhbajy4" path="res://tilesets/Tiled - Tangled/level 2 - tangled.tmx" id="1_yhnba"]
 [ext_resource type="Texture2D" uid="uid://brvqkjrp8j6bs" path="res://tilesets/tilemap template.png" id="2_nulmt"]
 [ext_resource type="Texture2D" uid="uid://bi2ybrjch8j4f" path="res://tilesets/tileset tangled growth-Sheet.png" id="3_dhk32"]
 [ext_resource type="Texture2D" uid="uid://b2jyrqouhtd0y" path="res://tilesets/tangled stack.png" id="4_u1c2a"]

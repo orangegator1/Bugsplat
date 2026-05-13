@@ -14,7 +14,7 @@
 [ext_resource type="AudioStream" uid="uid://d2nhpjdd8udiu" path="res://assets/sounds/zippy_jump_1.wav" id="8_smehm"]
 [ext_resource type="AudioStream" uid="uid://5xqaln1jo0jd" path="res://assets/sounds/ledge_climb_crumble.wav" id="8_ur7pv"]
 [ext_resource type="AudioStream" uid="uid://582quqnrjakn" path="res://assets/sounds/dirt and leaves/dry-dirt-crumble-impact.wav" id="8_y4r1p"]
-[ext_resource type="Script" uid="uid://cetgq324jeowg" path="res://scripts/sound_effect_player.gd" id="14_f1ej7"]
+[ext_resource type="Script" uid="uid://cetgq324jeowg" path="res://player/sound_effect_player.gd" id="14_f1ej7"]
 [ext_resource type="Script" uid="uid://cwvgx55201hrx" path="res://scripts/camera_2d.gd" id="15_qfm1y"]
 [ext_resource type="Texture2D" uid="uid://lu1fii7mfudr" path="res://icon.svg" id="16_fulsm"]
 [ext_resource type="Script" uid="uid://c8qcv1v80vku0" path="res://scripts/center_screen_tracker.gd" id="17_4r5pv"]

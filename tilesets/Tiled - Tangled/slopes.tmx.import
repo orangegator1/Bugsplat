@@ -3,12 +3,12 @@
 importer="YATI"
 type="PackedScene"
 uid="uid://b7pi0st4rlljs"
-path="res://.godot/imported/slopes.tmx-af28b4d50abd60e7415552ef6da4ed11.tscn"
+path="res://.godot/imported/slopes.tmx-a0a156153b6c94a17e8ea3cc82db771a.tscn"
 
 [deps]
 
-source_file="res://tilesets/Tangled/slopes.tmx"
-dest_files=["res://.godot/imported/slopes.tmx-af28b4d50abd60e7415552ef6da4ed11.tscn"]
+source_file="res://tilesets/Tiled - Tangled/slopes.tmx"
+dest_files=["res://.godot/imported/slopes.tmx-a0a156153b6c94a17e8ea3cc82db771a.tscn"]
 
 [params]
 

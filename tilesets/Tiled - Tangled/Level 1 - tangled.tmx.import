@@ -2,13 +2,13 @@
 
 importer="YATI"
 type="PackedScene"
-uid="uid://d1dtgd1648c8d"
-path="res://.godot/imported/clear.tmx-1226d5ba880a45fda36417e948037913.tscn"
+uid="uid://bd7cr2utlb1d5"
+path="res://.godot/imported/Level 1 - tangled.tmx-aff179a033c25d151d2707ceacd249d4.tscn"
 
 [deps]
 
-source_file="res://tilesets/Tangled/clear.tmx"
-dest_files=["res://.godot/imported/clear.tmx-1226d5ba880a45fda36417e948037913.tscn"]
+source_file="res://tilesets/Tiled - Tangled/Level 1 - tangled.tmx"
+dest_files=["res://.godot/imported/Level 1 - tangled.tmx-aff179a033c25d151d2707ceacd249d4.tscn"]
 
 [params]
 

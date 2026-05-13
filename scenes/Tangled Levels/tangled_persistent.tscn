@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://cgmo2lonvkg14" path="res://assets/parallax backgrounds/tangled far.png" id="6_0ye7a"]
 [ext_resource type="Texture2D" uid="uid://b7lieagrgqbvw" path="res://assets/parallax backgrounds/tangled near 1.png" id="7_s4nh1"]
 [ext_resource type="Texture2D" uid="uid://cshaye6d10lg2" path="res://assets/parallax backgrounds/tangled near.png" id="8_sm8sy"]
-[ext_resource type="PackedScene" uid="uid://bjrldslfxfcuc" path="res://scenes/UI.tscn" id="9_fl8c6"]
+[ext_resource type="PackedScene" uid="uid://bjrldslfxfcuc" path="res://0_user interface/UI.tscn" id="9_fl8c6"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dv7vy"]
 shader = ExtResource("2_j38e0")

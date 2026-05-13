@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b5tobrceh3joe"]
 
-[ext_resource type="PackedScene" uid="uid://bd7cr2utlb1d5" path="res://tilesets/Tangled/Level 1 - tangled.tmx" id="1_qki4n"]
+[ext_resource type="PackedScene" uid="uid://bd7cr2utlb1d5" path="res://tilesets/Tiled - Tangled/Level 1 - tangled.tmx" id="1_qki4n"]
 [ext_resource type="PackedScene" uid="uid://c86qgbo36anj5" path="res://controllers/player_spawn.tscn" id="2_s4qud"]
 [ext_resource type="PackedScene" uid="uid://b8t6hs55f7fot" path="res://general/input_hint/input_hint.tscn" id="9_y7sqq"]
 [ext_resource type="PackedScene" uid="uid://nfybjojpdmav" path="res://general/input_hint/input_hint_text.tscn" id="10_rpsbk"]
@@ -689,27 +689,27 @@ position = Vector2(-88, -24)
 scale = Vector2(6, 3)
 metadata/_edit_group_ = true
 
-[node name="InputHint_Grab2" parent="Tutorials" index="5" unique_id=1595537870 instance=ExtResource("9_y7sqq")]
+[node name="InputHint_Grab" parent="Tutorials" index="5" unique_id=1595537870 instance=ExtResource("9_y7sqq")]
 position = Vector2(-495, 937)
 owns_collision = true
 action = "move_right"
 width = 6
 height = 3
 
-[node name="Area2D" parent="Tutorials/InputHint_Grab2" index="0" unique_id=704134575]
+[node name="Area2D" parent="Tutorials/InputHint_Grab" index="0" unique_id=704134575]
 position = Vector2(5, -98)
 scale = Vector2(6, 3)
 
-[node name="InputHintText" parent="Tutorials/InputHint_Grab2" index="3" unique_id=1498569732 instance=ExtResource("10_rpsbk")]
+[node name="InputHintText" parent="Tutorials/InputHint_Grab" index="3" unique_id=1498569732 instance=ExtResource("10_rpsbk")]
 
-[node name="text" parent="Tutorials/InputHint_Grab2/InputHintText/Label" parent_id_path=PackedInt32Array(1498569732, 1593154665) index="0" unique_id=1111124433]
+[node name="text" parent="Tutorials/InputHint_Grab/InputHintText/Label" parent_id_path=PackedInt32Array(1498569732, 1593154665) index="0" unique_id=1111124433]
 offset_left = -33.49585
 offset_top = -4.155945
 offset_right = 145.50415
 offset_bottom = 40.844055
 text = "Hold     (towards the ledge)
 mid-air to grab a ledge that you 
-can't quite jump over.w"
+can't quite jump over."
 
 [node name="LedgeGrabInstructions" type="Node2D" parent="Tutorials" index="6" unique_id=2056838014]
 visible = false
@@ -1065,5 +1065,5 @@ shape = SubResource("WorldBoundaryShape2D_x51mi")
 [editable path="Tutorials/InputHint_S"]
 [editable path="Tutorials/InputHint_D"]
 [editable path="Tutorials/InputHint_Jump"]
-[editable path="Tutorials/InputHint_Grab2"]
-[editable path="Tutorials/InputHint_Grab2/InputHintText"]
+[editable path="Tutorials/InputHint_Grab"]
+[editable path="Tutorials/InputHint_Grab/InputHintText"]

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://y7lsu42evco3"]
 
-[ext_resource type="PackedScene" uid="uid://0btqbypwq2yy" path="res://tilesets/Tangled/saving test 3.tmx" id="1_y5lc0"]
+[ext_resource type="PackedScene" uid="uid://0btqbypwq2yy" path="res://tilesets/Tiled - Tangled/saving test 3.tmx" id="1_y5lc0"]
 [ext_resource type="Script" uid="uid://dc2ea5p13ncoo" path="res://scripts/growable_tiles.gd" id="2_v1uup"]
 [ext_resource type="PackedScene" uid="uid://c86qgbo36anj5" path="res://controllers/player_spawn.tscn" id="3_rthgb"]
 [ext_resource type="PackedScene" uid="uid://cag4gg6j6hwin" path="res://scenes/resetzone.tscn" id="4_1vqcs"]

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://o7on3npe6o43"
-path="res://.godot/imported/hurt 1 of 3.png-d56550e37a29f552c085497f50e4cbe6.ctex"
+uid="uid://ch7xqkmg1f0sm"
+path="res://.godot/imported/3 full.png-4ebaa7b19d76da1305c4a13f1854d5d0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/health indicator/hurt 1 of 3.png"
-dest_files=["res://.godot/imported/hurt 1 of 3.png-d56550e37a29f552c085497f50e4cbe6.ctex"]
+source_file="res://0_user interface/health indicator/3 full.png"
+dest_files=["res://.godot/imported/3 full.png-4ebaa7b19d76da1305c4a13f1854d5d0.ctex"]
 
 [params]
 

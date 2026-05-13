@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cag4gg6j6hwin"]
 
-[ext_resource type="Script" uid="uid://dou5lsld4slq4" path="res://scripts/resetzone.gd" id="1_dqyyu"]
+[ext_resource type="Script" uid="uid://dou5lsld4slq4" path="res://controllers/resetzone.gd" id="1_dqyyu"]
 
 [node name="resetZone" type="Area2D" unique_id=424939368]
 collision_layer = 0

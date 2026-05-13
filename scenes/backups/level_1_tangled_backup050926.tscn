@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b76y3fiwmsmjk"]
 
-[ext_resource type="PackedScene" uid="uid://bd7cr2utlb1d5" path="res://tilesets/Tangled/Level 1 - tangled.tmx" id="1_ekj47"]
+[ext_resource type="PackedScene" uid="uid://bd7cr2utlb1d5" path="res://tilesets/Tiled - Tangled/Level 1 - tangled.tmx" id="1_ekj47"]
 [ext_resource type="PackedScene" uid="uid://c86qgbo36anj5" path="res://controllers/player_spawn.tscn" id="2_132cc"]
 [ext_resource type="Texture2D" uid="uid://b4265lnsmr6vf" path="res://assets/parallax backgrounds/background.png" id="3_fq34x"]
 [ext_resource type="Shader" uid="uid://bj84mjladf4rh" path="res://assets/shaders/god_rays.gdshader" id="4_t0hoo"]
@@ -25,7 +25,7 @@
 [ext_resource type="Texture2D" uid="uid://b54svetoukgg" path="res://assets/sprites/button prompt.png" id="23_iqgal"]
 [ext_resource type="Texture2D" uid="uid://cpipt2fils4qh" path="res://assets/sprites/goldfish-Sheet.png" id="24_fss34"]
 [ext_resource type="PackedScene" uid="uid://doqb5251g4xuq" path="res://scenes/goldfish.tscn" id="25_kgq0q"]
-[ext_resource type="PackedScene" uid="uid://bjrldslfxfcuc" path="res://scenes/UI.tscn" id="26_bidee"]
+[ext_resource type="PackedScene" uid="uid://bjrldslfxfcuc" path="res://0_user interface/UI.tscn" id="26_bidee"]
 [ext_resource type="Texture2D" uid="uid://brvqkjrp8j6bs" path="res://tilesets/tilemap template.png" id="27_fq52b"]
 [ext_resource type="Texture2D" uid="uid://bi2ybrjch8j4f" path="res://tilesets/tileset tangled growth-Sheet.png" id="28_4fhw7"]
 [ext_resource type="Texture2D" uid="uid://fkdigdbx43dt" path="res://assets/sprites/static growing plat, two tile.png" id="29_k1nda"]
