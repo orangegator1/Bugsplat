@@ -108,6 +108,7 @@ monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=166673712]
 shape = SubResource("RectangleShape2D_bpwrl")
+debug_color = Color(0, 0.6, 0.69803923, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=94812308]
 texture = ExtResource("2_7b3w5")
