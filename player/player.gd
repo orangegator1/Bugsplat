@@ -12,6 +12,8 @@ var width = 11
 var ledge_climb_duration = 0.4
 var push_force := 80.0
 var friction := 500.0
+var gravity_mod := 1.0
+var fall_gravity := 1.165
 var health: int
 var direction: float
 var layer_underfoot: TileMapLayer
@@ -131,8 +133,12 @@ func grow_listener() -> void:
 
 func handle_movement(delta: float) -> void:
 	# Add the gravity.
+	if velocity.y > 0:
+		gravity_mod = fall_gravity
+	else:
+		gravity_mod = 1.0
 	if not (is_on_floor() or is_in_y_tween or is_on_ledge):
-		velocity += get_gravity() * delta
+		velocity += get_gravity() * delta * gravity_mod
 		falling_fast = velocity.y > 650
 		# don't play falling animation for small drops
 		if last_y_veloc <= 0 and velocity.y > 0 and not is_jumping:
@@ -164,12 +170,11 @@ func handle_movement(delta: float) -> void:
 		is_jumping = false
 
 
-	# Get the input direction and handle horiz. movement
+	# Get the input direction and handle horiz. movement mapped to -1, 0, or 1
 	input_dir = Input.get_axis("move_left", "move_right")
-
 	# deadzone for busted controllers with bad joysticks
-	input_dir = 0.0 if abs(input_dir) < 0.1 else input_dir
-
+	if abs(input_dir) < 0.1:
+		input_dir = 0.0
 	if not input_dir == 0:
 		input_dir = -1 if (input_dir < 0) else 1
 

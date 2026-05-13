@@ -65,7 +65,7 @@ func load_game() -> void:
 
 func setup_player()-> void:
 	var player: Player = await SceneManager.get_player()
-	player.set_health_check_reset(save_data.get("health", 3))
+	player.set_health_check_reset(save_data.get("health", 3), false)
 	player.max_health = save_data.get("max_health", 3)
 	player.global_position = Vector2(save_data.get("x", 0),
 			save_data.get("y", 0))

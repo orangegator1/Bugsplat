@@ -41,7 +41,7 @@ const HINT_MAP : Dictionary = {
 
 var controller_type: String = "keyboard"
 
-@onready var sprite_2d: Sprite2D = $Sprite2D
+@onready var sprite_2d: Sprite2D = $Sprite/Sprite2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var collision_shape_2d: CollisionShape2D = $Area2D/CollisionShape2D
 @onready var area_2d: Area2D = $Area2D
