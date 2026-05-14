@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://dc2ea5p13ncoo" path="res://scripts/growable_tiles.gd" id="3_5eoqb"]
 [ext_resource type="PackedScene" uid="uid://dyotxgo24oiwk" path="res://scenes/ballv_2.tscn" id="5_cn0na"]
 [ext_resource type="PackedScene" uid="uid://b60cedeans37p" path="res://scenes/platform.tscn" id="5_qqucv"]
-[ext_resource type="PackedScene" uid="uid://bdfvwrub43ywh" path="res://scenes/BerryBush.tscn" id="5_w572q"]
+[ext_resource type="PackedScene" uid="uid://bdfvwrub43ywh" path="res://pickups/berry_bush/BerryBush.tscn" id="5_w572q"]
 [ext_resource type="PackedScene" uid="uid://cag4gg6j6hwin" path="res://scenes/resetzone.tscn" id="6_w572q"]
 [ext_resource type="PackedScene" uid="uid://dpewaftqj4qui" path="res://scenes/glowing thing.tscn" id="7_v7t0e"]
 [ext_resource type="PackedScene" uid="uid://8ppluy4pblb1" path="res://scenes/purple_slime.tscn" id="8_5ugfv"]

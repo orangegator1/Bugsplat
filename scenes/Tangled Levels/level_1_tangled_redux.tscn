@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://nfybjojpdmav" path="res://general/input_hint/input_hint_text.tscn" id="10_rpsbk"]
 [ext_resource type="PackedScene" uid="uid://b60cedeans37p" path="res://scenes/platform.tscn" id="11_fd7bg"]
 [ext_resource type="PackedScene" uid="uid://cag4gg6j6hwin" path="res://scenes/resetzone.tscn" id="12_4w3r3"]
-[ext_resource type="PackedScene" uid="uid://bdfvwrub43ywh" path="res://scenes/BerryBush.tscn" id="13_odn5k"]
+[ext_resource type="PackedScene" uid="uid://bdfvwrub43ywh" path="res://pickups/berry_bush/BerryBush.tscn" id="13_odn5k"]
 [ext_resource type="PackedScene" uid="uid://dohx57d4togfn" path="res://scenes/trigger_scene2.tscn" id="22_skght"]
 [ext_resource type="Texture2D" uid="uid://b54svetoukgg" path="res://assets/sprites/button prompt.png" id="23_y1hys"]
 [ext_resource type="Texture2D" uid="uid://cpipt2fils4qh" path="res://assets/sprites/goldfish-Sheet.png" id="24_w7125"]
