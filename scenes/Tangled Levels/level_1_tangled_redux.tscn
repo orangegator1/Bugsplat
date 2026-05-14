@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://b60cedeans37p" path="res://scenes/platform.tscn" id="11_fd7bg"]
 [ext_resource type="PackedScene" uid="uid://cag4gg6j6hwin" path="res://scenes/resetzone.tscn" id="12_4w3r3"]
 [ext_resource type="PackedScene" uid="uid://bdfvwrub43ywh" path="res://scenes/BerryBush.tscn" id="13_odn5k"]
-[ext_resource type="Texture2D" uid="uid://bom21vww76jlo" path="res://general/input_hint/E key.png" id="18_ivueu"]
 [ext_resource type="PackedScene" uid="uid://dohx57d4togfn" path="res://scenes/trigger_scene2.tscn" id="22_skght"]
 [ext_resource type="Texture2D" uid="uid://b54svetoukgg" path="res://assets/sprites/button prompt.png" id="23_y1hys"]
 [ext_resource type="Texture2D" uid="uid://cpipt2fils4qh" path="res://assets/sprites/goldfish-Sheet.png" id="24_w7125"]
@@ -539,7 +538,7 @@ visible = false
 visible = false
 
 [node name="PlayerSpawn" parent="." index="2" unique_id=1233805077 instance=ExtResource("2_s4qud")]
-position = Vector2(-1007.75415, 700)
+position = Vector2(3634, -391.5)
 
 [node name="MovingPlatforms" type="Node2D" parent="." index="3" unique_id=1539940851]
 
@@ -602,6 +601,9 @@ position = Vector2(8, -1232)
 
 [node name="BerryBush14" parent="BerryBushes" index="13" unique_id=1402923748 instance=ExtResource("13_odn5k")]
 position = Vector2(-24, -1856)
+
+[node name="BerryBush15" parent="BerryBushes" index="14" unique_id=1693460776 instance=ExtResource("13_odn5k")]
+position = Vector2(8, 256)
 
 [node name="ground" parent="." index="5" unique_id=876559580 groups=["growable_tiles"]]
 texture_repeat = 1
@@ -866,146 +868,178 @@ text = "With the right timing you can
 get a more powerful jump
 from the ledge."
 
-[node name="FallDmgInstrFar" type="Label" parent="Tutorials" index="12" unique_id=791698477]
-offset_left = 3680.0
-offset_top = -320.0
-offset_right = 3842.0
-offset_bottom = -252.0
+[node name="ScreenResize" parent="Tutorials" index="12" unique_id=1966346738 instance=ExtResource("9_y7sqq")]
+position = Vector2(348, 410)
+owns_collision = true
+action = "toggle_fullscreen"
+width = 9
+height = 6
+
+[node name="Area2D" parent="Tutorials/ScreenResize" index="0" unique_id=704134575]
+position = Vector2(9, 8)
+scale = Vector2(9, 6)
+
+[node name="Sprite2D" parent="Tutorials/ScreenResize/Sprite" parent_id_path=PackedInt32Array(1966346738, 390392380) index="0" unique_id=94812308]
+position = Vector2(34, 37)
+
+[node name="InputHintText" parent="Tutorials/ScreenResize" index="3" unique_id=43334934 instance=ExtResource("10_rpsbk")]
+
+[node name="text" parent="Tutorials/ScreenResize/InputHintText/Label" parent_id_path=PackedInt32Array(43334934, 1593154665) index="0" unique_id=1111124433]
+text = "Screen can
+be resized
+with"
+
+[node name="GrowHint" parent="Tutorials" index="13" unique_id=2097942033 instance=ExtResource("9_y7sqq")]
+position = Vector2(3746, -318)
+owns_collision = true
+width = 11
+height = 5
+
+[node name="Area2D" parent="Tutorials/GrowHint" index="0" unique_id=704134575]
+position = Vector2(36, -95)
+scale = Vector2(11, 5)
+
+[node name="Sprite2D" parent="Tutorials/GrowHint/Sprite" parent_id_path=PackedInt32Array(2097942033, 390392380) index="0" unique_id=94812308]
+position = Vector2(-22, 52)
+
+[node name="InputHintText" parent="Tutorials/GrowHint" index="3" unique_id=245442379 instance=ExtResource("10_rpsbk")]
+
+[node name="text" parent="Tutorials/GrowHint/InputHintText/Label" parent_id_path=PackedInt32Array(245442379, 1593154665) index="0" unique_id=1111124433]
+offset_left = -64.0
+offset_top = -2.0
+offset_right = 91.0
+offset_bottom = 59.0
 text = "With the right timing you can
 get a more powerful jump
 from the ledge.
 Press     for a boost here."
 
-[node name="BerryParadiseNote" type="Label" parent="Tutorials" index="13" unique_id=1794180886]
-offset_left = 2046.0
-offset_top = -964.0
-offset_right = 2208.0
-offset_bottom = -896.0
+[node name="BerryParadise" parent="Tutorials" index="14" unique_id=1756727038 instance=ExtResource("9_y7sqq")]
+position = Vector2(2032, -963)
+owns_collision = true
+width = 9
+height = 7
+
+[node name="Area2D" parent="Tutorials/BerryParadise" index="0" unique_id=704134575]
+position = Vector2(58, -53)
+scale = Vector2(9, 7)
+
+[node name="Sprite2D" parent="Tutorials/BerryParadise/Sprite" parent_id_path=PackedInt32Array(1756727038, 390392380) index="0" unique_id=94812308]
+visible = false
+
+[node name="InputHintText" parent="Tutorials/BerryParadise" index="3" unique_id=2128529461 instance=ExtResource("10_rpsbk")]
+
+[node name="text" parent="Tutorials/BerryParadise/InputHintText/Label" parent_id_path=PackedInt32Array(2128529461, 1593154665) index="0" unique_id=1111124433]
 text = "Got any ideas for these
 springy platforms?
 Let me know."
 
-[node name="EKey" type="TextureRect" parent="Tutorials" index="14" unique_id=1321479541]
-offset_left = 3714.0
-offset_top = -272.0
-offset_right = 3762.0
-offset_bottom = -232.0
-texture = ExtResource("18_ivueu")
-stretch_mode = 2
+[node name="LevelTransitions" type="Node2D" parent="." index="7" unique_id=1157512185]
 
-[node name="ScreenResizeTutorial" type="Label" parent="Tutorials" index="15" unique_id=869707719]
-offset_left = 1219.0
-offset_top = 223.0
-offset_right = 1381.0
-offset_bottom = 291.0
-text = "Screen can be
-resized with
-the '5' key"
-
-[node name="LevelTransition" parent="." index="7" unique_id=817694502 instance=ExtResource("31_qeg1p")]
+[node name="LevelTransition" parent="LevelTransitions" index="0" unique_id=817694502 instance=ExtResource("31_qeg1p")]
 position = Vector2(-400, 64)
 size = 8
 location = 3
 target_level = "uid://xw5mdo4mn0on"
 target_area_name = "LevelTransition4"
 
-[node name="LevelTransition2" parent="." index="8" unique_id=26530549 instance=ExtResource("31_qeg1p")]
+[node name="LevelTransition2" parent="LevelTransitions" index="1" unique_id=26530549 instance=ExtResource("31_qeg1p")]
 position = Vector2(1728, -2032)
 size = 30
 location = 0
 target_level = "uid://bsnvh00iswdjn"
 target_area_name = "LevelTransition2"
 
-[node name="LevelTransition3" parent="." index="9" unique_id=277123985 instance=ExtResource("31_qeg1p")]
+[node name="LevelTransition3" parent="LevelTransitions" index="2" unique_id=277123985 instance=ExtResource("31_qeg1p")]
 position = Vector2(4144, -456)
 size = 9
 location = 2
 target_level = "uid://xw5mdo4mn0on"
 
-[node name="LevelTransition4" parent="." index="10" unique_id=495481259 instance=ExtResource("31_qeg1p")]
+[node name="LevelTransition4" parent="LevelTransitions" index="3" unique_id=495481259 instance=ExtResource("31_qeg1p")]
 position = Vector2(3376, -2128)
 size = 10
 location = 2
 target_level = "uid://bsssooisi2b0i"
 target_area_name = "LevelTransition3"
 
-[node name="LevelTransition5" parent="." index="11" unique_id=413893561 instance=ExtResource("31_qeg1p")]
+[node name="LevelTransition5" parent="LevelTransitions" index="4" unique_id=413893561 instance=ExtResource("31_qeg1p")]
 position = Vector2(-1120, 208)
 size = 5
 location = 0
 target_level = "uid://bsssooisi2b0i"
 target_area_name = "LevelTransition2"
 
-[node name="TriggerScene2" parent="." index="12" unique_id=1675772569 instance=ExtResource("22_skght")]
+[node name="FishTrigger" parent="." index="8" unique_id=1675772569 instance=ExtResource("22_skght")]
 position = Vector2(3912, -648)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TriggerScene2" index="0" unique_id=211700713]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FishTrigger" index="0" unique_id=211700713]
 position = Vector2(-38, 7.5)
 shape = SubResource("RectangleShape2D_ec3w0")
 
-[node name="E prompt" type="Sprite2D" parent="TriggerScene2/CollisionShape2D" index="0" unique_id=641868162]
+[node name="E prompt" type="Sprite2D" parent="FishTrigger/CollisionShape2D" index="0" unique_id=641868162]
 visible = false
 position = Vector2(57, -9.5)
 texture = ExtResource("23_y1hys")
 offset = Vector2(-22, -24)
 
-[node name="BigFish" type="AnimatedSprite2D" parent="TriggerScene2" index="1" unique_id=1575222869]
+[node name="BigFish" type="AnimatedSprite2D" parent="FishTrigger" index="1" unique_id=1575222869]
 sprite_frames = SubResource("SpriteFrames_wj65a")
 autoplay = "default"
 frame_progress = 0.8692111
 flip_h = true
 
-[node name="Goldfishes" type="Node2D" parent="TriggerScene2" index="2" unique_id=1336793830]
+[node name="Goldfishes" type="Node2D" parent="FishTrigger" index="2" unique_id=1336793830]
 visible = false
 position = Vector2(336, 24)
 
-[node name="Goldfish" parent="TriggerScene2/Goldfishes" index="0" unique_id=1738647014 instance=ExtResource("25_d2uhu")]
+[node name="Goldfish" parent="FishTrigger/Goldfishes" index="0" unique_id=1738647014 instance=ExtResource("25_d2uhu")]
 position = Vector2(-696, -58)
 slow = true
 min_playback_speed = 0.67
 
-[node name="Goldfish2" parent="TriggerScene2/Goldfishes" index="1" unique_id=1023572742 instance=ExtResource("25_d2uhu")]
+[node name="Goldfish2" parent="FishTrigger/Goldfishes" index="1" unique_id=1023572742 instance=ExtResource("25_d2uhu")]
 position = Vector2(-723, -71)
 slow = true
 
-[node name="Goldfish3" parent="TriggerScene2/Goldfishes" index="2" unique_id=309532019 instance=ExtResource("25_d2uhu")]
+[node name="Goldfish3" parent="FishTrigger/Goldfishes" index="2" unique_id=309532019 instance=ExtResource("25_d2uhu")]
 position = Vector2(-761, -48)
 
-[node name="Goldfish4" parent="TriggerScene2/Goldfishes" index="3" unique_id=359718090 instance=ExtResource("25_d2uhu")]
+[node name="Goldfish4" parent="FishTrigger/Goldfishes" index="3" unique_id=359718090 instance=ExtResource("25_d2uhu")]
 position = Vector2(-729, -41)
 slow = true
 
-[node name="Goldfish5" parent="TriggerScene2/Goldfishes" index="4" unique_id=631427305 instance=ExtResource("25_d2uhu")]
+[node name="Goldfish5" parent="FishTrigger/Goldfishes" index="4" unique_id=631427305 instance=ExtResource("25_d2uhu")]
 position = Vector2(-831, -67)
 
-[node name="Goldfish6" parent="TriggerScene2/Goldfishes" index="5" unique_id=573685896 instance=ExtResource("25_d2uhu")]
+[node name="Goldfish6" parent="FishTrigger/Goldfishes" index="5" unique_id=573685896 instance=ExtResource("25_d2uhu")]
 position = Vector2(-791, -63)
 
-[node name="Goldfish7" parent="TriggerScene2/Goldfishes" index="6" unique_id=2104040845 instance=ExtResource("25_d2uhu")]
+[node name="Goldfish7" parent="FishTrigger/Goldfishes" index="6" unique_id=2104040845 instance=ExtResource("25_d2uhu")]
 position = Vector2(-873, -58)
 
-[node name="Goldfish8" parent="TriggerScene2/Goldfishes" index="7" unique_id=1872187728 instance=ExtResource("25_d2uhu")]
+[node name="Goldfish8" parent="FishTrigger/Goldfishes" index="7" unique_id=1872187728 instance=ExtResource("25_d2uhu")]
 position = Vector2(-841, -25)
 
-[node name="Goldfish9" parent="TriggerScene2/Goldfishes" index="8" unique_id=316729660 instance=ExtResource("25_d2uhu")]
+[node name="Goldfish9" parent="FishTrigger/Goldfishes" index="8" unique_id=316729660 instance=ExtResource("25_d2uhu")]
 position = Vector2(-793, -101)
 
-[node name="Goldfish10" parent="TriggerScene2/Goldfishes" index="9" unique_id=19848933 instance=ExtResource("25_d2uhu")]
+[node name="Goldfish10" parent="FishTrigger/Goldfishes" index="9" unique_id=19848933 instance=ExtResource("25_d2uhu")]
 position = Vector2(-853, -89)
 
-[node name="Goldfish11" parent="TriggerScene2/Goldfishes" index="10" unique_id=1614092985 instance=ExtResource("25_d2uhu")]
+[node name="Goldfish11" parent="FishTrigger/Goldfishes" index="10" unique_id=1614092985 instance=ExtResource("25_d2uhu")]
 position = Vector2(-925, -73)
 
-[node name="Goldfish12" parent="TriggerScene2/Goldfishes" index="11" unique_id=819927213 instance=ExtResource("25_d2uhu")]
+[node name="Goldfish12" parent="FishTrigger/Goldfishes" index="11" unique_id=819927213 instance=ExtResource("25_d2uhu")]
 position = Vector2(-1051, -67)
 
-[node name="resetZone" parent="." index="13" unique_id=424939368 instance=ExtResource("12_4w3r3")]
+[node name="resetZone" parent="." index="9" unique_id=424939368 instance=ExtResource("12_4w3r3")]
 position = Vector2(1216, 1016)
 
 [node name="floor" type="CollisionShape2D" parent="resetZone" index="1" unique_id=999741754]
 shape = SubResource("WorldBoundaryShape2D_x51mi")
 
-[connection signal="body_exited" from="TriggerScene2" to="TriggerScene2" method="_on_body_exited"]
+[connection signal="body_exited" from="FishTrigger" to="FishTrigger" method="_on_body_exited"]
 
 [editable path="Tutorials/InputHint_W"]
 [editable path="Tutorials/InputHint_A"]
@@ -1026,3 +1060,9 @@ shape = SubResource("WorldBoundaryShape2D_x51mi")
 [editable path="Tutorials/BerryBush/InputHintText"]
 [editable path="Tutorials/SuperLedgeJump"]
 [editable path="Tutorials/SuperLedgeJump/InputHintText"]
+[editable path="Tutorials/ScreenResize"]
+[editable path="Tutorials/ScreenResize/InputHintText"]
+[editable path="Tutorials/GrowHint"]
+[editable path="Tutorials/GrowHint/InputHintText"]
+[editable path="Tutorials/BerryParadise"]
+[editable path="Tutorials/BerryParadise/InputHintText"]

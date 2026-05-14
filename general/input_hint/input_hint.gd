@@ -10,6 +10,7 @@ const HINT_MAP : Dictionary = {
 		"down" : 2,
 		"move_right" : 3,
 		"interact" : 4,
+		"toggle_fullscreen" : 17
 	},
 	"playstation" : {
 		"jump" : 5,
@@ -17,6 +18,7 @@ const HINT_MAP : Dictionary = {
 		"down" : 15,
 		"move_right" : 14,
 		"interact" : 6,
+		"toggle_fullscreen" : 12
 	},
 	"xbox" : {
 		"jump" : 11,
@@ -24,6 +26,7 @@ const HINT_MAP : Dictionary = {
 		"down" : 15,
 		"move_right" : 14,
 		"interact" : 9,
+		"toggle_fullscreen" : 12
 	},
 }
 

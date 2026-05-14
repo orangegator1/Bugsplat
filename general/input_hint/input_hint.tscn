@@ -115,7 +115,7 @@ debug_color = Color(0, 0.6, 0.69803923, 0)
 [node name="Sprite2D" type="Sprite2D" parent="Sprite" unique_id=94812308]
 position = Vector2(0, 2)
 texture = ExtResource("2_7b3w5")
-hframes = 17
+hframes = 19
 frame = 4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=36755593]
