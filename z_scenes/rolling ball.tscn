@@ -1,0 +1,79 @@
+[gd_scene format=3 uid="uid://cqlxfij726kvx"]
+
+[ext_resource type="Script" uid="uid://caq16n4ke3urr" path="res://scripts/rolling_ball.gd" id="1_5gu41"]
+[ext_resource type="Texture2D" uid="uid://c1k4646v5xgbo" path="res://z_assets/sprites/ball-Sprite-Sheet.png" id="1_865ab"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5gu41"]
+radius = 7.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_865ab"]
+atlas = ExtResource("1_865ab")
+region = Rect2(0, 0, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5gu41"]
+atlas = ExtResource("1_865ab")
+region = Rect2(18, 0, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w352e"]
+atlas = ExtResource("1_865ab")
+region = Rect2(36, 0, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u2ffs"]
+atlas = ExtResource("1_865ab")
+region = Rect2(54, 0, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rtnm8"]
+atlas = ExtResource("1_865ab")
+region = Rect2(72, 0, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vi4bj"]
+atlas = ExtResource("1_865ab")
+region = Rect2(90, 0, 18, 18)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fgy33"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_865ab")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5gu41")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w352e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u2ffs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rtnm8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vi4bj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="rollingBall" type="RigidBody2D" unique_id=1804075105]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_5gu41")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=54410104]
+shape = SubResource("CircleShape2D_5gu41")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2053649046]
+sprite_frames = SubResource("SpriteFrames_fgy33")
+frame_progress = 0.46265572
+
+[node name="RayCastRight" type="RayCast2D" parent="." unique_id=1957001039]
+position = Vector2(1, 0)
+target_position = Vector2(10, 0)
+collision_mask = 2
+
+[node name="RayCastLeft" type="RayCast2D" parent="." unique_id=50878046]
+position = Vector2(-1, 0)
+target_position = Vector2(-10, 0)
+collision_mask = 2

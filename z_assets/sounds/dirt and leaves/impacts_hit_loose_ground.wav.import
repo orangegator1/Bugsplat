@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://d2d4o4qhr7lf4"
+path="res://.godot/imported/impacts_hit_loose_ground.wav-9ae136ffbd0e709af936d7db24e94361.sample"
+
+[deps]
+
+source_file="res://z_assets/sounds/dirt and leaves/impacts_hit_loose_ground.wav"
+dest_files=["res://.godot/imported/impacts_hit_loose_ground.wav-9ae136ffbd0e709af936d7db24e94361.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

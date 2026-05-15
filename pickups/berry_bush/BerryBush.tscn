@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://bdfvwrub43ywh"]
 
 [ext_resource type="Script" uid="uid://culjsgnbupctx" path="res://pickups/berry_bush/BerryBush.gd" id="1_rwqht"]
-[ext_resource type="Texture2D" uid="uid://hidvc35yr6rb" path="res://assets/sprites/berry bush.png" id="2_11l1o"]
-[ext_resource type="AudioStream" uid="uid://dh01ybj7sy53m" path="res://assets/sounds/coin.wav" id="3_11l1o"]
+[ext_resource type="Texture2D" uid="uid://hidvc35yr6rb" path="res://z_assets/sprites/berry bush.png" id="2_11l1o"]
+[ext_resource type="AudioStream" uid="uid://dh01ybj7sy53m" path="res://z_assets/sounds/coin.wav" id="3_11l1o"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ssuvv"]
 radius = 5.0

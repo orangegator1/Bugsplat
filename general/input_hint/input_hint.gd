@@ -28,6 +28,14 @@ const HINT_MAP : Dictionary = {
 		"interact" : 9,
 		"toggle_fullscreen" : 12
 	},
+	"nintendo" : {
+		"jump" : 10,
+		"move_left" : 16,
+		"down" : 15,
+		"move_right" : 14,
+		"interact" : 5,
+		"toggle_fullscreen" : 12
+	},
 }
 
 @export var owns_collision := false
@@ -69,8 +77,10 @@ func _ready() -> void:
 func on_player_entered(_player: Player) -> void:
 	on_input_hint_changed(action)
 
+
 func on_player_exited(_player: Player) -> void:
 	on_input_hint_changed("")
+
 
 func _input(event)-> void:
 	if event is InputEventMouseButton or event is InputEventKey:
@@ -85,8 +95,8 @@ func get_controller_type(device_id: int) -> void:
 		controller_type = "playstation"
 	elif "xbox" in n or "xinput" in n:
 		controller_type = "xbox"
-	#elif "nintendo" in n or "switch" in n:
-		#controller_type = "xbox"
+	elif "nintendo" in n or "switch" in n:
+		controller_type = "nintendo"
 	else:
 		controller_type = "xbox"
 

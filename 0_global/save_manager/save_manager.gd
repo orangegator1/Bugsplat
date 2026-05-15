@@ -13,7 +13,10 @@ func _ready() -> void:
 	pass
 
 
-func create_new_game_save() -> void:
+func create_new_game_save(slot: int = current_slot) -> void:
+	current_slot = slot
+	persistent_data.clear()
+	discovered_areas.clear()
 	discovered_areas.append(new_game_scene)
 	save_data = {
 		"scene_path" : new_game_scene,
@@ -48,7 +51,9 @@ func save_game(current_scene: String = SceneManager.current_scene) -> void:
 	print("saved to slot " + str(current_slot + 1))
 
 
-func load_game() -> void:
+func load_game(slot: int = current_slot) -> void:
+	current_slot = slot
+
 	if not FileAccess.file_exists(get_file_name()):
 		return
 
@@ -90,5 +95,9 @@ func _unhandled_key_input(event: InputEvent) -> void:
 			print("save slot set to 3")
 
 
-func get_file_name() -> String:
-	return "user://" + SLOTS[current_slot] + ".sav"
+func get_file_name(slot: int = current_slot) -> String:
+	return "user://" + SLOTS[slot] + ".sav"
+
+
+func save_file_exists(slot: int) -> bool:
+	return FileAccess.file_exists(get_file_name(slot))

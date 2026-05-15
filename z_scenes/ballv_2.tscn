@@ -1,0 +1,71 @@
+[gd_scene format=3 uid="uid://dyotxgo24oiwk"]
+
+[ext_resource type="Texture2D" uid="uid://c1k4646v5xgbo" path="res://z_assets/sprites/ball-Sprite-Sheet.png" id="1_iibyj"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_iibyj"]
+bounce = 0.2
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6u3ot"]
+atlas = ExtResource("1_iibyj")
+region = Rect2(0, 0, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_popxx"]
+atlas = ExtResource("1_iibyj")
+region = Rect2(18, 0, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6x072"]
+atlas = ExtResource("1_iibyj")
+region = Rect2(36, 0, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u74op"]
+atlas = ExtResource("1_iibyj")
+region = Rect2(54, 0, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5qyoh"]
+atlas = ExtResource("1_iibyj")
+region = Rect2(72, 0, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iaqhg"]
+atlas = ExtResource("1_iibyj")
+region = Rect2(90, 0, 18, 18)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xw2xx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6u3ot")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_popxx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6x072")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u74op")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5qyoh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iaqhg")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_iibyj"]
+radius = 8.0
+
+[node name="Ballv2" type="RigidBody2D" unique_id=1058244603]
+collision_mask = 3
+mass = 20.0
+physics_material_override = SubResource("PhysicsMaterial_iibyj")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1941561537]
+sprite_frames = SubResource("SpriteFrames_xw2xx")
+frame_progress = 0.8911185
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=800340716]
+shape = SubResource("CircleShape2D_iibyj")

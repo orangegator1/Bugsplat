@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://d3uv70tht4wm6"
+path="res://.godot/imported/freesound_community-rustling_plant-64639.mp3-567f17a1e7b65d9cbeb2b40c52b3a05a.mp3str"
+
+[deps]
+
+source_file="res://z_assets/sounds/dirt and leaves/freesound_community-rustling_plant-64639.mp3"
+dest_files=["res://.godot/imported/freesound_community-rustling_plant-64639.mp3-567f17a1e7b65d9cbeb2b40c52b3a05a.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

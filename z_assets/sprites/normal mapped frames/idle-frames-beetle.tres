@@ -1,0 +1,8 @@
+[gd_resource type="CanvasTexture" format=3 uid="uid://cr5c3ndlxjjhm"]
+
+[ext_resource type="Texture2D" uid="uid://gw7bn52r0did" path="res://z_assets/sprites/beetle diffuse idle-Sheet.png" id="1_kn6tw"]
+[ext_resource type="Texture2D" uid="uid://5fu0qbtjw1yc" path="res://z_assets/sprites/beetle normal map idle-Sheet.png" id="2_vlqyj"]
+
+[resource]
+diffuse_texture = ExtResource("1_kn6tw")
+normal_texture = ExtResource("2_vlqyj")

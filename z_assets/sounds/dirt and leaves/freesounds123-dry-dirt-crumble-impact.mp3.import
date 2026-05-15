@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bm36rvs7dtk3v"
+path="res://.godot/imported/freesounds123-dry-dirt-crumble-impact.mp3-87336056b50548bbb5de77bc1062d284.mp3str"
+
+[deps]
+
+source_file="res://z_assets/sounds/dirt and leaves/freesounds123-dry-dirt-crumble-impact.mp3"
+dest_files=["res://.godot/imported/freesounds123-dry-dirt-crumble-impact.mp3-87336056b50548bbb5de77bc1062d284.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

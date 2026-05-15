@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://6r0tnlqktrqt" path="res://controllers/level_transition.tscn" id="6_8tmjp"]
 [ext_resource type="PackedScene" uid="uid://c86qgbo36anj5" path="res://controllers/player_spawn.tscn" id="7_xc622"]
 [ext_resource type="PackedScene" uid="uid://bdfvwrub43ywh" path="res://pickups/berry_bush/BerryBush.tscn" id="8_c47ob"]
-[ext_resource type="PackedScene" uid="uid://cag4gg6j6hwin" path="res://scenes/resetzone.tscn" id="9_bglby"]
+[ext_resource type="PackedScene" uid="uid://cag4gg6j6hwin" path="res://z_scenes/resetzone.tscn" id="9_bglby"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_s4nmb"]
 texture = ExtResource("2_af8f4")
@@ -541,13 +541,13 @@ sources/2 = SubResource("TileSetAtlasSource_8c1i1")
 
 [node name="Level" unique_id=1167020136 instance=ExtResource("1_h8pwi")]
 
-[node name="template" parent="." index="0" unique_id=202836327]
+[node name="template" parent="." index="0" unique_id=439080696]
 visible = false
 
-[node name="temp" parent="." index="1" unique_id=895315228]
+[node name="temp" parent="." index="1" unique_id=2139688844]
 visible = false
 
-[node name="ground" parent="." index="2" unique_id=1844428966 groups=["growable_tiles"]]
+[node name="ground" parent="." index="2" unique_id=1781367432 groups=["growable_tiles"]]
 tile_set = SubResource("TileSet_8c1i1")
 script = ExtResource("5_0el0s")
 preferred_growth = 1

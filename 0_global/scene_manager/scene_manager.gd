@@ -13,7 +13,7 @@ var incoming_position: Vector2
 var level_offset: Vector2
 enum SIDE { TOP, RIGHT, BOTTOM, LEFT }
 var transition_direction: SIDE
-var shifting_incoming_level = true
+var shifting_incoming_level = false
 
 @onready var fade: Control = $Fade
 
@@ -25,6 +25,10 @@ func _ready() -> void:
 
 	await get_tree().process_frame
 	load_scene_finished.emit()
+
+	var current_scene_path: String = get_tree().current_scene.scene_file_path
+	current_scene = ResourceUID.path_to_uid(current_scene_path)
+	print("current_scene: " + current_scene)
 
 
 func transition_scene( new_scene: String,
@@ -41,6 +45,7 @@ func transition_scene( new_scene: String,
 	await fade_screen(fade_pos, Vector2.ZERO)
 
 	shifting_incoming_level = shift_incoming_level
+	print("shifting_incoming_level: " + str(shifting_incoming_level))
 	var persistent_scene = get_tree().get_first_node_in_group("PersistentScenes")
 	if persistent_scene:
 		await persistent_scene.load_scene(new_scene)

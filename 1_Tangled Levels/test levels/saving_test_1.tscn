@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://rmpiixwq2qob" path="res://tilesets/Tiled - Tangled/saving test 1.tmx" id="1_e8gig"]
 [ext_resource type="PackedScene" uid="uid://c86qgbo36anj5" path="res://controllers/player_spawn.tscn" id="2_jd6xm"]
 [ext_resource type="Script" uid="uid://dc2ea5p13ncoo" path="res://scripts/growable_tiles.gd" id="2_jfvpt"]
-[ext_resource type="PackedScene" uid="uid://cag4gg6j6hwin" path="res://scenes/resetzone.tscn" id="3_jfvpt"]
+[ext_resource type="PackedScene" uid="uid://cag4gg6j6hwin" path="res://z_scenes/resetzone.tscn" id="3_jfvpt"]
 [ext_resource type="PackedScene" uid="uid://6r0tnlqktrqt" path="res://controllers/level_transition.tscn" id="3_tp8rq"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_tp8rq"]
