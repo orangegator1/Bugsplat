@@ -14,6 +14,8 @@ var push_force := 80.0
 var friction := 500.0
 var gravity_mod := 1.0
 var fall_gravity := 1.165
+var jump_buffer_time := 0.15
+var jump_buffer_timer: float = 0
 var health: int
 var direction: float
 var layer_underfoot: TileMapLayer
@@ -82,9 +84,11 @@ func _ready() -> void:
 	health_changed.emit(health)
 
 
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
 	if not camera_set_up:
 		camera_set_up = set_camera_limits()
+
+	jump_buffer_timer -= delta
 
 
 func _physics_process(delta: float) -> void:
@@ -108,13 +112,14 @@ func _physics_process(delta: float) -> void:
 	# Coyote time
 	if was_on_floor and not is_on_floor() and not is_jumping:
 		coyote_timer.start()
+		# don't play falling animation for small drops
+		freefall_timer.start()
 
 	handle_input()
 
 
 func handle_input() -> void:
 	grow_listener()
-	# other input listeners here
 
 
 func grow_listener() -> void:
@@ -140,9 +145,7 @@ func handle_movement(delta: float) -> void:
 	if not (is_on_floor() or is_in_y_tween or is_on_ledge):
 		velocity += get_gravity() * delta * gravity_mod
 		falling_fast = velocity.y > 650
-		# don't play falling animation for small drops
-		if last_y_veloc <= 0 and velocity.y > 0 and not is_jumping:
-			freefall_timer.start()
+
 		last_y_veloc = velocity.y
 
 	# take damage when falling too fast
@@ -161,12 +164,24 @@ func handle_movement(delta: float) -> void:
 
 
 	# Handle jump
-	if Input.is_action_just_pressed("jump") and (is_on_floor() or
-		not coyote_timer.is_stopped()):
+	if Input.is_action_just_pressed("jump"):
+		if is_on_floor() or not coyote_timer.is_stopped():
+			velocity.y = jump_velocity
+			is_jumping = true
+			jumped = true
+		else:
+			jump_buffer_timer = jump_buffer_time
+	elif is_on_floor() and jump_buffer_timer > 0:
 		velocity.y = jump_velocity
 		is_jumping = true
 		jumped = true
+	elif Input.is_action_just_released("jump"):
+		if velocity.y < -120:
+			velocity.y *= 0.7
+		else:
+			velocity.y *= 0.5
 	elif is_on_floor() or is_on_ledge:
+
 		is_jumping = false
 
 

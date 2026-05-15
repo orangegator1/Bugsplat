@@ -2,13 +2,13 @@
 
 importer="YATI"
 type="PackedScene"
-uid="uid://df3dlm520pc2i"
-path="res://.godot/imported/corner fixing-SW.tmx-daa7bc5241e8f54a05f6717e9569cf3c.tscn"
+uid="uid://ckcc4a1mobk2u"
+path="res://.godot/imported/corner fixing-SE.tmx-85cdafc96fbfabe541c9aa6fffd5b505.tscn"
 
 [deps]
 
-source_file="res://tilesets/Rules/corner fixing-SW.tmx"
-dest_files=["res://.godot/imported/corner fixing-SW.tmx-daa7bc5241e8f54a05f6717e9569cf3c.tscn"]
+source_file="res://tilesets/unused/Rules/corner fixing-SE.tmx"
+dest_files=["res://.godot/imported/corner fixing-SE.tmx-85cdafc96fbfabe541c9aa6fffd5b505.tscn"]
 
 [params]
 

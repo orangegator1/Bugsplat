@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d0l5ovguvaoyw"
-path="res://.godot/imported/tilemap test.png-74e26ecf092714837c0b2e771c374ded.ctex"
+uid="uid://w4ifqlymwjfr"
+path="res://.godot/imported/tilemap test corner decoration.png-176714cd78fba7d8f4d61986f45b4d2f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://tilesets/tilemap test.png"
-dest_files=["res://.godot/imported/tilemap test.png-74e26ecf092714837c0b2e771c374ded.ctex"]
+source_file="res://tilesets/unused/tilemap test corner decoration.png"
+dest_files=["res://.godot/imported/tilemap test corner decoration.png-176714cd78fba7d8f4d61986f45b4d2f.ctex"]
 
 [params]
 

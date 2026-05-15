@@ -1,21 +1,21 @@
 [gd_scene format=3 uid="uid://b5tobrceh3joe"]
 
-[ext_resource type="PackedScene" uid="uid://bd7cr2utlb1d5" path="res://tilesets/Tiled - Tangled/Level 1 - tangled.tmx" id="1_qki4n"]
-[ext_resource type="PackedScene" uid="uid://c86qgbo36anj5" path="res://controllers/player_spawn.tscn" id="2_s4qud"]
-[ext_resource type="PackedScene" uid="uid://b8t6hs55f7fot" path="res://general/input_hint/input_hint.tscn" id="9_y7sqq"]
-[ext_resource type="PackedScene" uid="uid://nfybjojpdmav" path="res://general/input_hint/input_hint_text.tscn" id="10_rpsbk"]
-[ext_resource type="PackedScene" uid="uid://b60cedeans37p" path="res://scenes/platform.tscn" id="11_fd7bg"]
-[ext_resource type="PackedScene" uid="uid://cag4gg6j6hwin" path="res://scenes/resetzone.tscn" id="12_4w3r3"]
-[ext_resource type="PackedScene" uid="uid://bdfvwrub43ywh" path="res://pickups/berry_bush/BerryBush.tscn" id="13_odn5k"]
-[ext_resource type="PackedScene" uid="uid://dohx57d4togfn" path="res://scenes/trigger_scene2.tscn" id="22_skght"]
-[ext_resource type="Texture2D" uid="uid://b54svetoukgg" path="res://assets/sprites/button prompt.png" id="23_y1hys"]
-[ext_resource type="Texture2D" uid="uid://cpipt2fils4qh" path="res://assets/sprites/goldfish-Sheet.png" id="24_w7125"]
-[ext_resource type="PackedScene" uid="uid://doqb5251g4xuq" path="res://scenes/goldfish.tscn" id="25_d2uhu"]
-[ext_resource type="Texture2D" uid="uid://brvqkjrp8j6bs" path="res://tilesets/tilemap template.png" id="27_507pv"]
-[ext_resource type="Texture2D" uid="uid://bi2ybrjch8j4f" path="res://tilesets/tileset tangled growth-Sheet.png" id="28_hscud"]
-[ext_resource type="Texture2D" uid="uid://fkdigdbx43dt" path="res://assets/sprites/static growing plat, two tile.png" id="29_5mof4"]
-[ext_resource type="Script" uid="uid://dc2ea5p13ncoo" path="res://scripts/growable_tiles.gd" id="30_xkptj"]
-[ext_resource type="PackedScene" uid="uid://6r0tnlqktrqt" path="res://controllers/level_transition.tscn" id="31_qeg1p"]
+[ext_resource type="PackedScene" uid="uid://bd7cr2utlb1d5" path="res://tilesets/Tiled - Tangled/Level 1 - tangled.tmx" id="1_050qy"]
+[ext_resource type="PackedScene" uid="uid://c86qgbo36anj5" path="res://controllers/player_spawn.tscn" id="2_5dn02"]
+[ext_resource type="PackedScene" uid="uid://b60cedeans37p" path="res://scenes/platform.tscn" id="3_4u4i5"]
+[ext_resource type="PackedScene" uid="uid://bdfvwrub43ywh" path="res://pickups/berry_bush/BerryBush.tscn" id="4_72ulp"]
+[ext_resource type="Texture2D" uid="uid://brvqkjrp8j6bs" path="res://tilesets/tilemap template.png" id="5_f6ngm"]
+[ext_resource type="Texture2D" uid="uid://bi2ybrjch8j4f" path="res://tilesets/tileset tangled growth-Sheet.png" id="6_fftif"]
+[ext_resource type="Texture2D" uid="uid://fkdigdbx43dt" path="res://assets/sprites/static growing plat, two tile.png" id="7_vpjh6"]
+[ext_resource type="Script" uid="uid://dc2ea5p13ncoo" path="res://scripts/growable_tiles.gd" id="8_lt1vd"]
+[ext_resource type="PackedScene" uid="uid://b8t6hs55f7fot" path="res://general/input_hint/input_hint.tscn" id="9_vmr1m"]
+[ext_resource type="PackedScene" uid="uid://nfybjojpdmav" path="res://general/input_hint/input_hint_text.tscn" id="10_b78jc"]
+[ext_resource type="PackedScene" uid="uid://6r0tnlqktrqt" path="res://controllers/level_transition.tscn" id="11_v05tn"]
+[ext_resource type="PackedScene" uid="uid://dohx57d4togfn" path="res://scenes/trigger_scene2.tscn" id="12_kmrg3"]
+[ext_resource type="Texture2D" uid="uid://b54svetoukgg" path="res://assets/sprites/button prompt.png" id="13_voqy7"]
+[ext_resource type="Texture2D" uid="uid://cpipt2fils4qh" path="res://assets/sprites/goldfish-Sheet.png" id="14_4cqm4"]
+[ext_resource type="PackedScene" uid="uid://doqb5251g4xuq" path="res://scenes/goldfish.tscn" id="15_1hwjs"]
+[ext_resource type="PackedScene" uid="uid://cag4gg6j6hwin" path="res://scenes/resetzone.tscn" id="16_ujags"]
 
 [sub_resource type="Animation" id="Animation_rpsbk"]
 length = 0.001
@@ -94,7 +94,7 @@ _data = {
 }
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fjgn4"]
-texture = ExtResource("27_507pv")
+texture = ExtResource("5_f6ngm")
 1:1/0 = 0
 2:1/0 = 0
 5:0/0 = 0
@@ -111,7 +111,7 @@ texture = ExtResource("27_507pv")
 4:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_00see"]
-texture = ExtResource("28_hscud")
+texture = ExtResource("6_fftif")
 1:2/0 = 0
 2:2/0 = 0
 5:2/0 = 0
@@ -440,7 +440,7 @@ texture = ExtResource("28_hscud")
 13:6/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_e73xf"]
-texture = ExtResource("29_5mof4")
+texture = ExtResource("7_vpjh6")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -464,35 +464,35 @@ sources/3 = SubResource("TileSetAtlasSource_e73xf")
 size = Vector2(96, 35)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dbw3f"]
-atlas = ExtResource("24_w7125")
+atlas = ExtResource("14_4cqm4")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5eoqb"]
-atlas = ExtResource("24_w7125")
+atlas = ExtResource("14_4cqm4")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pf7t0"]
-atlas = ExtResource("24_w7125")
+atlas = ExtResource("14_4cqm4")
 region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_anoxf"]
-atlas = ExtResource("24_w7125")
+atlas = ExtResource("14_4cqm4")
 region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sg05v"]
-atlas = ExtResource("24_w7125")
+atlas = ExtResource("14_4cqm4")
 region = Rect2(128, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s0dck"]
-atlas = ExtResource("24_w7125")
+atlas = ExtResource("14_4cqm4")
 region = Rect2(160, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2qo02"]
-atlas = ExtResource("24_w7125")
+atlas = ExtResource("14_4cqm4")
 region = Rect2(192, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o4vcr"]
-atlas = ExtResource("24_w7125")
+atlas = ExtResource("14_4cqm4")
 region = Rect2(224, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wj65a"]
@@ -529,27 +529,27 @@ animations = [{
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_x51mi"]
 
-[node name="Level" unique_id=45017823 instance=ExtResource("1_qki4n")]
+[node name="Level" unique_id=100286297 instance=ExtResource("1_050qy")]
 
-[node name="template" parent="." index="0" unique_id=60196544]
+[node name="template" parent="." index="0" unique_id=453311639]
 visible = false
 
-[node name="temp" parent="." index="1" unique_id=49259440]
+[node name="temp" parent="." index="1" unique_id=681609982]
 visible = false
 
-[node name="PlayerSpawn" parent="." index="2" unique_id=1233805077 instance=ExtResource("2_s4qud")]
-position = Vector2(3634, -391.5)
+[node name="PlayerSpawn" parent="." index="2" unique_id=1233805077 instance=ExtResource("2_5dn02")]
+position = Vector2(-968, 689)
 
 [node name="MovingPlatforms" type="Node2D" parent="." index="3" unique_id=1539940851]
 
-[node name="MovingPlatform" parent="MovingPlatforms" index="0" unique_id=2144621089 instance=ExtResource("11_fd7bg")]
+[node name="MovingPlatform" parent="MovingPlatforms" index="0" unique_id=2144621089 instance=ExtResource("3_4u4i5")]
 position = Vector2(1979, 561)
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="MovingPlatforms/MovingPlatform" index="2" unique_id=988282353]
 libraries/ = SubResource("AnimationLibrary_7dqi1")
 autoplay = &"move"
 
-[node name="MovingPlatform2" parent="MovingPlatforms" index="1" unique_id=944574924 instance=ExtResource("11_fd7bg")]
+[node name="MovingPlatform2" parent="MovingPlatforms" index="1" unique_id=944574924 instance=ExtResource("3_4u4i5")]
 position = Vector2(2294, -1242)
 collision_mask = 3
 
@@ -560,57 +560,57 @@ autoplay = &"RESET"
 [node name="BerryBushes" type="Node2D" parent="." index="4" unique_id=38106965]
 z_index = 1
 
-[node name="BerryBush" parent="BerryBushes" index="0" unique_id=796169510 instance=ExtResource("13_odn5k")]
+[node name="BerryBush" parent="BerryBushes" index="0" unique_id=796169510 instance=ExtResource("4_72ulp")]
 position = Vector2(2070, -992)
 
-[node name="BerryBush2" parent="BerryBushes" index="1" unique_id=1170723643 instance=ExtResource("13_odn5k")]
+[node name="BerryBush2" parent="BerryBushes" index="1" unique_id=1170723643 instance=ExtResource("4_72ulp")]
 position = Vector2(2144, -1040)
 
-[node name="BerryBush3" parent="BerryBushes" index="2" unique_id=22457410 instance=ExtResource("13_odn5k")]
+[node name="BerryBush3" parent="BerryBushes" index="2" unique_id=22457410 instance=ExtResource("4_72ulp")]
 position = Vector2(2240, -1264)
 
-[node name="BerryBush4" parent="BerryBushes" index="3" unique_id=1912843301 instance=ExtResource("13_odn5k")]
+[node name="BerryBush4" parent="BerryBushes" index="3" unique_id=1912843301 instance=ExtResource("4_72ulp")]
 position = Vector2(2256, -1264)
 
-[node name="BerryBush5" parent="BerryBushes" index="4" unique_id=1080050888 instance=ExtResource("13_odn5k")]
+[node name="BerryBush5" parent="BerryBushes" index="4" unique_id=1080050888 instance=ExtResource("4_72ulp")]
 position = Vector2(1768, -1040)
 
-[node name="BerryBush6" parent="BerryBushes" index="5" unique_id=1145736369 instance=ExtResource("13_odn5k")]
+[node name="BerryBush6" parent="BerryBushes" index="5" unique_id=1145736369 instance=ExtResource("4_72ulp")]
 position = Vector2(1720, -1120)
 
-[node name="BerryBush7" parent="BerryBushes" index="6" unique_id=1775547164 instance=ExtResource("13_odn5k")]
+[node name="BerryBush7" parent="BerryBushes" index="6" unique_id=1775547164 instance=ExtResource("4_72ulp")]
 position = Vector2(1736, -1120)
 
-[node name="BerryBush8" parent="BerryBushes" index="7" unique_id=805972629 instance=ExtResource("13_odn5k")]
+[node name="BerryBush8" parent="BerryBushes" index="7" unique_id=805972629 instance=ExtResource("4_72ulp")]
 position = Vector2(304, 784)
 
-[node name="BerryBush9" parent="BerryBushes" index="8" unique_id=1722547748 instance=ExtResource("13_odn5k")]
+[node name="BerryBush9" parent="BerryBushes" index="8" unique_id=1722547748 instance=ExtResource("4_72ulp")]
 position = Vector2(2744, -176)
 
-[node name="BerryBush10" parent="BerryBushes" index="9" unique_id=1727416832 instance=ExtResource("13_odn5k")]
+[node name="BerryBush10" parent="BerryBushes" index="9" unique_id=1727416832 instance=ExtResource("4_72ulp")]
 position = Vector2(1880, -1616)
 
-[node name="BerryBush11" parent="BerryBushes" index="10" unique_id=1141893937 instance=ExtResource("13_odn5k")]
+[node name="BerryBush11" parent="BerryBushes" index="10" unique_id=1141893937 instance=ExtResource("4_72ulp")]
 position = Vector2(-1176, 640)
 
-[node name="BerryBush12" parent="BerryBushes" index="11" unique_id=937295623 instance=ExtResource("13_odn5k")]
+[node name="BerryBush12" parent="BerryBushes" index="11" unique_id=937295623 instance=ExtResource("4_72ulp")]
 position = Vector2(336, -1504)
 
-[node name="BerryBush13" parent="BerryBushes" index="12" unique_id=1176265962 instance=ExtResource("13_odn5k")]
+[node name="BerryBush13" parent="BerryBushes" index="12" unique_id=1176265962 instance=ExtResource("4_72ulp")]
 position = Vector2(8, -1232)
 
-[node name="BerryBush14" parent="BerryBushes" index="13" unique_id=1402923748 instance=ExtResource("13_odn5k")]
+[node name="BerryBush14" parent="BerryBushes" index="13" unique_id=1402923748 instance=ExtResource("4_72ulp")]
 position = Vector2(-24, -1856)
 
-[node name="BerryBush15" parent="BerryBushes" index="14" unique_id=1693460776 instance=ExtResource("13_odn5k")]
+[node name="BerryBush15" parent="BerryBushes" index="14" unique_id=1693460776 instance=ExtResource("4_72ulp")]
 position = Vector2(8, 256)
 
-[node name="ground" parent="." index="5" unique_id=876559580 groups=["growable_tiles"]]
+[node name="ground" parent="." index="5" unique_id=378267237 groups=["growable_tiles"]]
 texture_repeat = 1
 tile_set = SubResource("TileSet_e73xf")
 rendering_quadrant_size = 64
 navigation_enabled = false
-script = ExtResource("30_xkptj")
+script = ExtResource("8_lt1vd")
 preferred_growth = 1
 stack_atlas_id = Array[int]([3])
 left_alt_bot_tile = Vector2i(0, 2)
@@ -618,7 +618,7 @@ right_alt_bot_tile = Vector2i(2, 2)
 
 [node name="Tutorials" type="Node2D" parent="." index="6" unique_id=1956977458]
 
-[node name="InputHint_W" parent="Tutorials" index="0" unique_id=135935805 instance=ExtResource("9_y7sqq")]
+[node name="InputHint_W" parent="Tutorials" index="0" unique_id=135935805 instance=ExtResource("9_vmr1m")]
 position = Vector2(-1064, 872)
 owns_collision = true
 action = "jump"
@@ -632,7 +632,7 @@ scale = Vector2(5, 3)
 [node name="CollisionShape2D" parent="Tutorials/InputHint_W/Area2D" index="0" unique_id=166673712]
 position = Vector2(-4, -66)
 
-[node name="InputHint_A" parent="Tutorials" index="1" unique_id=531548890 instance=ExtResource("9_y7sqq")]
+[node name="InputHint_A" parent="Tutorials" index="1" unique_id=531548890 instance=ExtResource("9_vmr1m")]
 position = Vector2(-1080, 888)
 owns_collision = true
 action = "move_left"
@@ -646,7 +646,7 @@ scale = Vector2(5, 3)
 [node name="CollisionShape2D" parent="Tutorials/InputHint_A/Area2D" index="0" unique_id=166673712]
 position = Vector2(-3.1999998, -66.666664)
 
-[node name="InputHint_S" parent="Tutorials" index="2" unique_id=1758175245 instance=ExtResource("9_y7sqq")]
+[node name="InputHint_S" parent="Tutorials" index="2" unique_id=1758175245 instance=ExtResource("9_vmr1m")]
 position = Vector2(-1064, 888)
 owns_collision = true
 action = "down"
@@ -660,7 +660,7 @@ scale = Vector2(5, 3)
 [node name="CollisionShape2D" parent="Tutorials/InputHint_S/Area2D" index="0" unique_id=166673712]
 position = Vector2(-4, -66)
 
-[node name="InputHint_D" parent="Tutorials" index="3" unique_id=1349117343 instance=ExtResource("9_y7sqq")]
+[node name="InputHint_D" parent="Tutorials" index="3" unique_id=1349117343 instance=ExtResource("9_vmr1m")]
 position = Vector2(-1048, 888)
 owns_collision = true
 action = "move_right"
@@ -674,7 +674,7 @@ scale = Vector2(5, 3)
 [node name="CollisionShape2D" parent="Tutorials/InputHint_D/Area2D" index="0" unique_id=166673712]
 position = Vector2(-4, -66)
 
-[node name="Jump" parent="Tutorials" index="4" unique_id=795782634 instance=ExtResource("9_y7sqq")]
+[node name="Jump" parent="Tutorials" index="4" unique_id=795782634 instance=ExtResource("9_vmr1m")]
 position = Vector2(-680, 872)
 owns_collision = true
 action = "jump"
@@ -686,7 +686,7 @@ position = Vector2(-88, -24)
 scale = Vector2(6, 3)
 metadata/_edit_group_ = true
 
-[node name="LedgeGrab" parent="Tutorials" index="5" unique_id=1595537870 instance=ExtResource("9_y7sqq")]
+[node name="LedgeGrab" parent="Tutorials" index="5" unique_id=1595537870 instance=ExtResource("9_vmr1m")]
 position = Vector2(-495, 937)
 owns_collision = true
 action = "move_right"
@@ -697,7 +697,7 @@ height = 3
 position = Vector2(5, -98)
 scale = Vector2(6, 3)
 
-[node name="InputHintText" parent="Tutorials/LedgeGrab" index="3" unique_id=1498569732 instance=ExtResource("10_rpsbk")]
+[node name="InputHintText" parent="Tutorials/LedgeGrab" index="3" unique_id=1498569732 instance=ExtResource("10_b78jc")]
 
 [node name="text" parent="Tutorials/LedgeGrab/InputHintText/Label" parent_id_path=PackedInt32Array(1498569732, 1593154665) index="0" unique_id=1111124433]
 offset_left = -33.49585
@@ -708,7 +708,7 @@ text = "Hold     (towards the ledge)
 mid-air to grab a ledge that you 
 can't quite jump over."
 
-[node name="LedgeClimb" parent="Tutorials" index="6" unique_id=897338471 instance=ExtResource("9_y7sqq")]
+[node name="LedgeClimb" parent="Tutorials" index="6" unique_id=897338471 instance=ExtResource("9_vmr1m")]
 position = Vector2(-46, 799)
 owns_collision = true
 action = "move_right"
@@ -721,7 +721,7 @@ scale = Vector2(4, 4)
 [node name="Sprite2D" parent="Tutorials/LedgeClimb/Sprite" parent_id_path=PackedInt32Array(897338471, 390392380) index="0" unique_id=94812308]
 position = Vector2(-4, -2)
 
-[node name="InputHintText" parent="Tutorials/LedgeClimb" index="3" unique_id=1686754312 instance=ExtResource("10_rpsbk")]
+[node name="InputHintText" parent="Tutorials/LedgeClimb" index="3" unique_id=1686754312 instance=ExtResource("10_b78jc")]
 
 [node name="text" parent="Tutorials/LedgeClimb/InputHintText/Label" parent_id_path=PackedInt32Array(1686754312, 1593154665) index="0" unique_id=1111124433]
 offset_left = -18.0
@@ -741,9 +741,9 @@ offset_bottom = 142.0
 text = "Press any directional key
 to perform a different 
 action once you've grabbed
-the ledge.w"
+the ledge."
 
-[node name="LedgeJumpUp" parent="Tutorials" index="7" unique_id=1161356456 instance=ExtResource("9_y7sqq")]
+[node name="LedgeJumpUp" parent="Tutorials" index="7" unique_id=1161356456 instance=ExtResource("9_vmr1m")]
 position = Vector2(-376, 580)
 owns_collision = true
 action = "jump"
@@ -756,7 +756,7 @@ scale = Vector2(4, 6)
 [node name="Sprite2D" parent="Tutorials/LedgeJumpUp/Sprite" parent_id_path=PackedInt32Array(1161356456, 390392380) index="0" unique_id=94812308]
 position = Vector2(32, 22)
 
-[node name="InputHintText" parent="Tutorials/LedgeJumpUp" index="3" unique_id=1819271182 instance=ExtResource("10_rpsbk")]
+[node name="InputHintText" parent="Tutorials/LedgeJumpUp" index="3" unique_id=1819271182 instance=ExtResource("10_b78jc")]
 
 [node name="text" parent="Tutorials/LedgeJumpUp/InputHintText/Label" parent_id_path=PackedInt32Array(1819271182, 1593154665) index="0" unique_id=1111124433]
 text = " Jump up
@@ -771,7 +771,7 @@ text = "and grab
 the next
 ledges"
 
-[node name="LedgeJumpSide" parent="Tutorials" index="8" unique_id=307881503 instance=ExtResource("9_y7sqq")]
+[node name="LedgeJumpSide" parent="Tutorials" index="8" unique_id=307881503 instance=ExtResource("9_vmr1m")]
 position = Vector2(-284, 415)
 owns_collision = true
 action = "move_right"
@@ -786,7 +786,7 @@ scale = Vector2(3, 4)
 position = Vector2(20, 1)
 metadata/_edit_group_ = true
 
-[node name="InputHintText" parent="Tutorials/LedgeJumpSide" index="3" unique_id=3926253 instance=ExtResource("10_rpsbk")]
+[node name="InputHintText" parent="Tutorials/LedgeJumpSide" index="3" unique_id=3926253 instance=ExtResource("10_b78jc")]
 
 [node name="text" parent="Tutorials/LedgeJumpSide/InputHintText/Label" parent_id_path=PackedInt32Array(3926253, 1593154665) index="0" unique_id=1111124433]
 offset_left = -36.0
@@ -796,7 +796,7 @@ offset_bottom = 9.0
 text = "Jump off with (away from
                 the ledge)"
 
-[node name="FallDamage" parent="Tutorials" index="9" unique_id=1583232433 instance=ExtResource("9_y7sqq")]
+[node name="FallDamage" parent="Tutorials" index="9" unique_id=1583232433 instance=ExtResource("9_vmr1m")]
 position = Vector2(49.94742, 972.2013)
 owns_collision = true
 width = 7
@@ -809,7 +809,7 @@ scale = Vector2(7, 4)
 [node name="Sprite2D" parent="Tutorials/FallDamage/Sprite" parent_id_path=PackedInt32Array(1583232433, 390392380) index="0" unique_id=94812308]
 visible = false
 
-[node name="InputHintText" parent="Tutorials/FallDamage" index="3" unique_id=923139240 instance=ExtResource("10_rpsbk")]
+[node name="InputHintText" parent="Tutorials/FallDamage" index="3" unique_id=923139240 instance=ExtResource("10_b78jc")]
 
 [node name="text" parent="Tutorials/FallDamage/InputHintText/Label" parent_id_path=PackedInt32Array(923139240, 1593154665) index="0" unique_id=1111124433]
 offset_left = -31.947418
@@ -820,7 +820,7 @@ text = "Look before you leap!
 You could get hurt if you
 can't see the bottom."
 
-[node name="BerryBush" parent="Tutorials" index="10" unique_id=1000942723 instance=ExtResource("9_y7sqq")]
+[node name="BerryBush" parent="Tutorials" index="10" unique_id=1000942723 instance=ExtResource("9_vmr1m")]
 position = Vector2(274, 833)
 owns_collision = true
 width = 2
@@ -833,7 +833,7 @@ scale = Vector2(2, 3)
 [node name="Sprite2D" parent="Tutorials/BerryBush/Sprite" parent_id_path=PackedInt32Array(1000942723, 390392380) index="0" unique_id=94812308]
 visible = false
 
-[node name="InputHintText" parent="Tutorials/BerryBush" index="3" unique_id=1756982833 instance=ExtResource("10_rpsbk")]
+[node name="InputHintText" parent="Tutorials/BerryBush" index="3" unique_id=1756982833 instance=ExtResource("10_b78jc")]
 
 [node name="text" parent="Tutorials/BerryBush/InputHintText/Label" parent_id_path=PackedInt32Array(1756982833, 1593154665) index="0" unique_id=1111124433]
 offset_left = -1.0
@@ -843,7 +843,7 @@ offset_bottom = 29.0
 text = "   But a 
 snack helps"
 
-[node name="SuperLedgeJump" parent="Tutorials" index="11" unique_id=1972999875 instance=ExtResource("9_y7sqq")]
+[node name="SuperLedgeJump" parent="Tutorials" index="11" unique_id=1972999875 instance=ExtResource("9_vmr1m")]
 position = Vector2(-291, 303)
 owns_collision = true
 action = "toggle_fullscreen"
@@ -857,7 +857,7 @@ scale = Vector2(23, 8)
 [node name="Sprite2D" parent="Tutorials/SuperLedgeJump/Sprite" parent_id_path=PackedInt32Array(1972999875, 390392380) index="0" unique_id=94812308]
 position = Vector2(299, 3)
 
-[node name="InputHintText" parent="Tutorials/SuperLedgeJump" index="3" unique_id=1355114326 instance=ExtResource("10_rpsbk")]
+[node name="InputHintText" parent="Tutorials/SuperLedgeJump" index="3" unique_id=1355114326 instance=ExtResource("10_b78jc")]
 
 [node name="text" parent="Tutorials/SuperLedgeJump/InputHintText/Label" parent_id_path=PackedInt32Array(1355114326, 1593154665) index="0" unique_id=1111124433]
 offset_left = -22.0
@@ -868,7 +868,7 @@ text = "With the right timing you can
 get a more powerful jump
 from the ledge."
 
-[node name="ScreenResize" parent="Tutorials" index="12" unique_id=1966346738 instance=ExtResource("9_y7sqq")]
+[node name="ScreenResize" parent="Tutorials" index="12" unique_id=1966346738 instance=ExtResource("9_vmr1m")]
 position = Vector2(348, 410)
 owns_collision = true
 action = "toggle_fullscreen"
@@ -882,14 +882,14 @@ scale = Vector2(9, 6)
 [node name="Sprite2D" parent="Tutorials/ScreenResize/Sprite" parent_id_path=PackedInt32Array(1966346738, 390392380) index="0" unique_id=94812308]
 position = Vector2(34, 37)
 
-[node name="InputHintText" parent="Tutorials/ScreenResize" index="3" unique_id=43334934 instance=ExtResource("10_rpsbk")]
+[node name="InputHintText" parent="Tutorials/ScreenResize" index="3" unique_id=43334934 instance=ExtResource("10_b78jc")]
 
 [node name="text" parent="Tutorials/ScreenResize/InputHintText/Label" parent_id_path=PackedInt32Array(43334934, 1593154665) index="0" unique_id=1111124433]
 text = "Screen can
 be resized
 with"
 
-[node name="GrowHint" parent="Tutorials" index="13" unique_id=2097942033 instance=ExtResource("9_y7sqq")]
+[node name="GrowHint" parent="Tutorials" index="13" unique_id=2097942033 instance=ExtResource("9_vmr1m")]
 position = Vector2(3746, -318)
 owns_collision = true
 width = 11
@@ -902,7 +902,7 @@ scale = Vector2(11, 5)
 [node name="Sprite2D" parent="Tutorials/GrowHint/Sprite" parent_id_path=PackedInt32Array(2097942033, 390392380) index="0" unique_id=94812308]
 position = Vector2(-22, 52)
 
-[node name="InputHintText" parent="Tutorials/GrowHint" index="3" unique_id=245442379 instance=ExtResource("10_rpsbk")]
+[node name="InputHintText" parent="Tutorials/GrowHint" index="3" unique_id=245442379 instance=ExtResource("10_b78jc")]
 
 [node name="text" parent="Tutorials/GrowHint/InputHintText/Label" parent_id_path=PackedInt32Array(245442379, 1593154665) index="0" unique_id=1111124433]
 offset_left = -64.0
@@ -914,7 +914,7 @@ get a more powerful jump
 from the ledge.
 Press     for a boost here."
 
-[node name="BerryParadise" parent="Tutorials" index="14" unique_id=1756727038 instance=ExtResource("9_y7sqq")]
+[node name="BerryParadise" parent="Tutorials" index="14" unique_id=1756727038 instance=ExtResource("9_vmr1m")]
 position = Vector2(2032, -963)
 owns_collision = true
 width = 9
@@ -927,7 +927,7 @@ scale = Vector2(9, 7)
 [node name="Sprite2D" parent="Tutorials/BerryParadise/Sprite" parent_id_path=PackedInt32Array(1756727038, 390392380) index="0" unique_id=94812308]
 visible = false
 
-[node name="InputHintText" parent="Tutorials/BerryParadise" index="3" unique_id=2128529461 instance=ExtResource("10_rpsbk")]
+[node name="InputHintText" parent="Tutorials/BerryParadise" index="3" unique_id=2128529461 instance=ExtResource("10_b78jc")]
 
 [node name="text" parent="Tutorials/BerryParadise/InputHintText/Label" parent_id_path=PackedInt32Array(2128529461, 1593154665) index="0" unique_id=1111124433]
 text = "Got any ideas for these
@@ -936,41 +936,41 @@ Let me know."
 
 [node name="LevelTransitions" type="Node2D" parent="." index="7" unique_id=1157512185]
 
-[node name="LevelTransition" parent="LevelTransitions" index="0" unique_id=817694502 instance=ExtResource("31_qeg1p")]
+[node name="LevelTransition" parent="LevelTransitions" index="0" unique_id=817694502 instance=ExtResource("11_v05tn")]
 position = Vector2(-400, 64)
 size = 8
 location = 3
 target_level = "uid://xw5mdo4mn0on"
 target_area_name = "LevelTransition4"
 
-[node name="LevelTransition2" parent="LevelTransitions" index="1" unique_id=26530549 instance=ExtResource("31_qeg1p")]
+[node name="LevelTransition2" parent="LevelTransitions" index="1" unique_id=26530549 instance=ExtResource("11_v05tn")]
 position = Vector2(1728, -2032)
 size = 30
 location = 0
 target_level = "uid://bsnvh00iswdjn"
 target_area_name = "LevelTransition2"
 
-[node name="LevelTransition3" parent="LevelTransitions" index="2" unique_id=277123985 instance=ExtResource("31_qeg1p")]
+[node name="LevelTransition3" parent="LevelTransitions" index="2" unique_id=277123985 instance=ExtResource("11_v05tn")]
 position = Vector2(4144, -456)
 size = 9
 location = 2
 target_level = "uid://xw5mdo4mn0on"
 
-[node name="LevelTransition4" parent="LevelTransitions" index="3" unique_id=495481259 instance=ExtResource("31_qeg1p")]
+[node name="LevelTransition4" parent="LevelTransitions" index="3" unique_id=495481259 instance=ExtResource("11_v05tn")]
 position = Vector2(3376, -2128)
 size = 10
 location = 2
 target_level = "uid://bsssooisi2b0i"
 target_area_name = "LevelTransition3"
 
-[node name="LevelTransition5" parent="LevelTransitions" index="4" unique_id=413893561 instance=ExtResource("31_qeg1p")]
+[node name="LevelTransition5" parent="LevelTransitions" index="4" unique_id=413893561 instance=ExtResource("11_v05tn")]
 position = Vector2(-1120, 208)
 size = 5
 location = 0
 target_level = "uid://bsssooisi2b0i"
 target_area_name = "LevelTransition2"
 
-[node name="FishTrigger" parent="." index="8" unique_id=1675772569 instance=ExtResource("22_skght")]
+[node name="FishTrigger" parent="." index="8" unique_id=1675772569 instance=ExtResource("12_kmrg3")]
 position = Vector2(3912, -648)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FishTrigger" index="0" unique_id=211700713]
@@ -980,7 +980,7 @@ shape = SubResource("RectangleShape2D_ec3w0")
 [node name="E prompt" type="Sprite2D" parent="FishTrigger/CollisionShape2D" index="0" unique_id=641868162]
 visible = false
 position = Vector2(57, -9.5)
-texture = ExtResource("23_y1hys")
+texture = ExtResource("13_voqy7")
 offset = Vector2(-22, -24)
 
 [node name="BigFish" type="AnimatedSprite2D" parent="FishTrigger" index="1" unique_id=1575222869]
@@ -993,47 +993,47 @@ flip_h = true
 visible = false
 position = Vector2(336, 24)
 
-[node name="Goldfish" parent="FishTrigger/Goldfishes" index="0" unique_id=1738647014 instance=ExtResource("25_d2uhu")]
+[node name="Goldfish" parent="FishTrigger/Goldfishes" index="0" unique_id=1738647014 instance=ExtResource("15_1hwjs")]
 position = Vector2(-696, -58)
 slow = true
 min_playback_speed = 0.67
 
-[node name="Goldfish2" parent="FishTrigger/Goldfishes" index="1" unique_id=1023572742 instance=ExtResource("25_d2uhu")]
+[node name="Goldfish2" parent="FishTrigger/Goldfishes" index="1" unique_id=1023572742 instance=ExtResource("15_1hwjs")]
 position = Vector2(-723, -71)
 slow = true
 
-[node name="Goldfish3" parent="FishTrigger/Goldfishes" index="2" unique_id=309532019 instance=ExtResource("25_d2uhu")]
+[node name="Goldfish3" parent="FishTrigger/Goldfishes" index="2" unique_id=309532019 instance=ExtResource("15_1hwjs")]
 position = Vector2(-761, -48)
 
-[node name="Goldfish4" parent="FishTrigger/Goldfishes" index="3" unique_id=359718090 instance=ExtResource("25_d2uhu")]
+[node name="Goldfish4" parent="FishTrigger/Goldfishes" index="3" unique_id=359718090 instance=ExtResource("15_1hwjs")]
 position = Vector2(-729, -41)
 slow = true
 
-[node name="Goldfish5" parent="FishTrigger/Goldfishes" index="4" unique_id=631427305 instance=ExtResource("25_d2uhu")]
+[node name="Goldfish5" parent="FishTrigger/Goldfishes" index="4" unique_id=631427305 instance=ExtResource("15_1hwjs")]
 position = Vector2(-831, -67)
 
-[node name="Goldfish6" parent="FishTrigger/Goldfishes" index="5" unique_id=573685896 instance=ExtResource("25_d2uhu")]
+[node name="Goldfish6" parent="FishTrigger/Goldfishes" index="5" unique_id=573685896 instance=ExtResource("15_1hwjs")]
 position = Vector2(-791, -63)
 
-[node name="Goldfish7" parent="FishTrigger/Goldfishes" index="6" unique_id=2104040845 instance=ExtResource("25_d2uhu")]
+[node name="Goldfish7" parent="FishTrigger/Goldfishes" index="6" unique_id=2104040845 instance=ExtResource("15_1hwjs")]
 position = Vector2(-873, -58)
 
-[node name="Goldfish8" parent="FishTrigger/Goldfishes" index="7" unique_id=1872187728 instance=ExtResource("25_d2uhu")]
+[node name="Goldfish8" parent="FishTrigger/Goldfishes" index="7" unique_id=1872187728 instance=ExtResource("15_1hwjs")]
 position = Vector2(-841, -25)
 
-[node name="Goldfish9" parent="FishTrigger/Goldfishes" index="8" unique_id=316729660 instance=ExtResource("25_d2uhu")]
+[node name="Goldfish9" parent="FishTrigger/Goldfishes" index="8" unique_id=316729660 instance=ExtResource("15_1hwjs")]
 position = Vector2(-793, -101)
 
-[node name="Goldfish10" parent="FishTrigger/Goldfishes" index="9" unique_id=19848933 instance=ExtResource("25_d2uhu")]
+[node name="Goldfish10" parent="FishTrigger/Goldfishes" index="9" unique_id=19848933 instance=ExtResource("15_1hwjs")]
 position = Vector2(-853, -89)
 
-[node name="Goldfish11" parent="FishTrigger/Goldfishes" index="10" unique_id=1614092985 instance=ExtResource("25_d2uhu")]
+[node name="Goldfish11" parent="FishTrigger/Goldfishes" index="10" unique_id=1614092985 instance=ExtResource("15_1hwjs")]
 position = Vector2(-925, -73)
 
-[node name="Goldfish12" parent="FishTrigger/Goldfishes" index="11" unique_id=819927213 instance=ExtResource("25_d2uhu")]
+[node name="Goldfish12" parent="FishTrigger/Goldfishes" index="11" unique_id=819927213 instance=ExtResource("15_1hwjs")]
 position = Vector2(-1051, -67)
 
-[node name="resetZone" parent="." index="9" unique_id=424939368 instance=ExtResource("12_4w3r3")]
+[node name="resetZone" parent="." index="9" unique_id=424939368 instance=ExtResource("16_ujags")]
 position = Vector2(1216, 1016)
 
 [node name="floor" type="CollisionShape2D" parent="resetZone" index="1" unique_id=999741754]

@@ -2,13 +2,13 @@
 
 importer="YATI"
 type="PackedScene"
-uid="uid://cd88fu07601sd"
-path="res://.godot/imported/autotile rules.tmx-9d3cc48141fa6bb789044acc866898a2.tscn"
+uid="uid://betec1rlig070"
+path="res://.godot/imported/interior rules.tmx-08c66ee82952989f459acf0b846b7416.tscn"
 
 [deps]
 
-source_file="res://tilesets/Rules/autotile rules.tmx"
-dest_files=["res://.godot/imported/autotile rules.tmx-9d3cc48141fa6bb789044acc866898a2.tscn"]
+source_file="res://tilesets/unused/interior rules.tmx"
+dest_files=["res://.godot/imported/interior rules.tmx-08c66ee82952989f459acf0b846b7416.tscn"]
 
 [params]
 

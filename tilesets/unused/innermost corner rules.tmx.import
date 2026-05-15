@@ -3,12 +3,12 @@
 importer="YATI"
 type="PackedScene"
 uid="uid://dw71lj5h7r1jm"
-path="res://.godot/imported/innermost corner rules.tmx-9c56a83e733e09a4a65c9e02b76b300a.tscn"
+path="res://.godot/imported/innermost corner rules.tmx-5d427c54a6c98ee4b22f9ccee37a9b07.tscn"
 
 [deps]
 
-source_file="res://tilesets/Tiled - Tangled/unused/innermost corner rules.tmx"
-dest_files=["res://.godot/imported/innermost corner rules.tmx-9c56a83e733e09a4a65c9e02b76b300a.tscn"]
+source_file="res://tilesets/unused/innermost corner rules.tmx"
+dest_files=["res://.godot/imported/innermost corner rules.tmx-5d427c54a6c98ee4b22f9ccee37a9b07.tscn"]
 
 [params]
 

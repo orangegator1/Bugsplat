@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dh1mxp1ka1w4r"
-path="res://.godot/imported/light_stream.jpg-525c9f2f4e6339872903895043e47bd2.ctex"
+uid="uid://d0l5ovguvaoyw"
+path="res://.godot/imported/tilemap test.png-2cabd63644989260bef0c515e87e3c20.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/lighting/light_stream.jpg"
-dest_files=["res://.godot/imported/light_stream.jpg-525c9f2f4e6339872903895043e47bd2.ctex"]
+source_file="res://tilesets/unused/tilemap test.png"
+dest_files=["res://.godot/imported/tilemap test.png-2cabd63644989260bef0c515e87e3c20.ctex"]
 
 [params]
 

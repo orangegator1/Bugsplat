@@ -2,13 +2,13 @@
 
 importer="YATI"
 type="PackedScene"
-uid="uid://cry1wnaa0lnjs"
-path="res://.godot/imported/ramp fixing.tmx-6929ed12dcbc1f76e76969fa39f4d0c8.tscn"
+uid="uid://cd88fu07601sd"
+path="res://.godot/imported/autotile rules.tmx-8fb63975ab801ff1a56d89065a6f66a4.tscn"
 
 [deps]
 
-source_file="res://tilesets/Rules/ramp fixing.tmx"
-dest_files=["res://.godot/imported/ramp fixing.tmx-6929ed12dcbc1f76e76969fa39f4d0c8.tscn"]
+source_file="res://tilesets/unused/Rules/autotile rules.tmx"
+dest_files=["res://.godot/imported/autotile rules.tmx-8fb63975ab801ff1a56d89065a6f66a4.tscn"]
 
 [params]
 

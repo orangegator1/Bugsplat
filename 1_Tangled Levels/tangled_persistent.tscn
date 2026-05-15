@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://uv5kig2w3h2p"]
 
 [ext_resource type="Texture2D" uid="uid://b4265lnsmr6vf" path="res://assets/parallax backgrounds/background.png" id="1_85ijv"]
-[ext_resource type="Script" uid="uid://7ofv8q2pue0e" path="res://scenes/Tangled Levels/tangled_persistent.gd" id="1_j38e0"]
+[ext_resource type="Script" uid="uid://7ofv8q2pue0e" path="res://1_Tangled Levels/tangled_persistent.gd" id="1_j38e0"]
 [ext_resource type="Shader" uid="uid://bj84mjladf4rh" path="res://assets/shaders/god_rays.gdshader" id="2_j38e0"]
 [ext_resource type="Texture2D" uid="uid://dmiklg0i7fcum" path="res://assets/parallax backgrounds/tangled.png" id="3_s0tyh"]
 [ext_resource type="Script" uid="uid://dkt77qgurqyjv" path="res://scripts/fog.gd" id="4_ku71t"]
@@ -307,6 +307,7 @@ texture = ExtResource("7_s4nh1")
 metadata/_edit_use_anchors_ = true
 
 [node name="Parallax_near" type="Parallax2D" parent="Parallax" unique_id=978224251]
+visible = false
 scroll_scale = Vector2(0.5, 0.5)
 scroll_offset = Vector2(-32, -32)
 repeat_size = Vector2(544, 304)
