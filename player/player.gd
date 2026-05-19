@@ -82,6 +82,8 @@ func _ready() -> void:
 	health = max_health
 	health_changed.emit(health)
 
+	MessageBus.player_health_changed.connect(set_health_check_reset)
+
 
 func _process(delta: float) -> void:
 	if not camera_set_up:

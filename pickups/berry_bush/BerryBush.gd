@@ -5,22 +5,6 @@ extends Area2D
 
 var picked := false
 
-func _on_ready() -> void:
-
-	GameManager.add_possible_point()
-	while not player:
-		if is_inside_tree():
-			await get_tree().process_frame
-		if is_inside_tree():
-			player = get_tree().get_first_node_in_group("Player")
-
-func _process(_delta: float) -> void:
-	if player and get_tree().get_first_node_in_group("Player"):
-		return
-	else:
-		player = await SceneManager.get_player()
-
 func _on_body_entered(_body: Node2D) -> void:
-	if player:
-		player.set_health_check_reset(1)
+	MessageBus.player_health_changed.emit(1)
 	animation_player.play("Pickup")

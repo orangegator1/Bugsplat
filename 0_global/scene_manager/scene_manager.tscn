@@ -16,6 +16,7 @@ fill_to = Vector2(1, 0.5)
 
 [node name="SceneManager" type="CanvasLayer" unique_id=284415315]
 process_mode = 3
+layer = 3
 script = ExtResource("1_tyxup")
 
 [node name="Fade" type="Control" parent="." unique_id=1521584442]
@@ -25,6 +26,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 
 [node name="TextureRect" type="TextureRect" parent="Fade" unique_id=991303749]
 modulate = Color(0.09411765, 0.45882353, 0.27058825, 1)

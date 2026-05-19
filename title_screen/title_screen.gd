@@ -28,6 +28,8 @@ func _ready() -> void:
 	load_slot_02.pressed.connect(_on_load_game_pressed.bind(1))
 	load_slot_03.pressed.connect(_on_load_game_pressed.bind(2))
 
+	SceneManager.new_scene_ready.connect(free_self)
+
 	show_main_menu()
 	animation_player.animation_finished.connect(_on_animation_finished)
 
@@ -35,12 +37,11 @@ func _ready() -> void:
 func _on_new_game_pressed(slot: int)-> void:
 	SaveManager.create_new_game_save(slot)
 	SaveManager.load_game(slot)
-	self.queue_free.call_deferred()
 
 
 func _on_load_game_pressed(slot: int)-> void:
 	SaveManager.load_game(slot)
-	self.queue_free.call_deferred()
+
 
 
 func show_main_menu() -> void:
@@ -84,3 +85,7 @@ func _unhandled_input(event: InputEvent) -> void:
 func _on_animation_finished(anim_name: String) -> void:
 	if anim_name == "fall_in":
 		animation_player.play("bob")
+
+
+func free_self(_target_area, _player_offset) -> void:
+	self.queue_free.call_deferred()

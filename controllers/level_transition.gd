@@ -38,6 +38,7 @@ func on_new_scene_ready(target_name: String, offset: Vector2) -> void:
 			SceneManager.incoming_position = global_position + offset
 			SceneManager.offset = offset
 		else:
+			# for editor level testing with F6
 			var player = await SceneManager.get_player()
 			player.global_position = global_position + offset
 
@@ -47,6 +48,7 @@ func on_load_scene_finished() -> void:
 	# if reloading a save in the current level, dont reconnect
 	if not area_2d.body_entered.is_connected(_on_player_entered):
 		area_2d.body_entered.connect(_on_player_entered)
+	# wait until things are settled to monitor for player entering
 	await get_tree().physics_frame
 	await get_tree().physics_frame
 	area_2d.monitoring = true

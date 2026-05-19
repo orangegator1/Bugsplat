@@ -22,10 +22,11 @@ var level: Node2D
 @onready var fade: Control = $Fade
 
 func _ready() -> void:
+	fade.visible = false
+
 	await get_player()
 	warm_particles()
 
-	fade.visible = false
 
 	await get_tree().process_frame
 	load_scene_finished.emit()
@@ -42,13 +43,13 @@ func transition_scene( new_scene: String,
 
 	var fade_pos = get_fade_position(dir)
 	fade.visible = true
+	print("fade in")
 	await fade_screen(fade_pos, Vector2.ZERO)
 
 	shifting_incoming_level = shift_incoming_level
-	print("shifting_incoming_level: " + str(shifting_incoming_level))
 	persistent_scene = get_tree().get_first_node_in_group("PersistentScene")
 	if persistent_scene:
-		await load_scene(new_scene)
+		load_scene(new_scene)
 	else:
 		# for testing levels with F6
 		shifting_incoming_level = false
@@ -60,13 +61,19 @@ func transition_scene( new_scene: String,
 	new_scene_ready.emit(target_area, player_offset)
 	on_new_scene_ready(target_area, player_offset)
 
+	# allow time for player and camera to be positioned
+	# before showing the new scene
+	await get_player()
+	await get_tree().process_frame
+	print("fade out")
 	await fade_screen(Vector2.ZERO, -fade_pos)
 
 	get_tree().paused = false
 	fade.visible = false
 	load_scene_finished.emit()
 
-func on_new_scene_ready(_target_name: String, offset: Vector2) -> void:
+
+func on_new_scene_ready(_target_name: String, player_offset: Vector2) -> void:
 	# shift new level to match exit pos of old level to maintain parallax scroll
 	# need to wait exactly two frames and then incoming position
 	# will have been set by the LevelTransition node
@@ -77,9 +84,9 @@ func on_new_scene_ready(_target_name: String, offset: Vector2) -> void:
 		level_offset = level.position
 		var player = await get_player()
 		if (transition_direction == SIDE.TOP or transition_direction == SIDE.BOTTOM):
-			player.global_position -= Vector2(offset.x, 0)
+			player.global_position -= Vector2(player_offset.x, 0)
 		else:
-			player.global_position -= Vector2(0, offset.y)
+			player.global_position -= Vector2(0, player_offset.y)
 
 
 func load_scene(new_level: String) -> void:
@@ -93,7 +100,6 @@ func load_scene(new_level: String) -> void:
 		# position can be identified to place the player
 		if level:
 			level.queue_free.call_deferred()
-		await get_tree().process_frame
 
 		# add new level as child of persistent scene
 		current_level = new_level
@@ -102,7 +108,9 @@ func load_scene(new_level: String) -> void:
 
 
 func fade_screen(from: Vector2, to: Vector2) -> Signal:
+	print("fade.position pre: %s" % [fade.position])
 	fade.position = from
+	print("fade.position post: %s" % [to])
 	var tween = create_tween()
 	tween.tween_property(fade, "position", to, FADE_DURATION)
 	return tween.finished

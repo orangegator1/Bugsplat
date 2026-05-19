@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://gw7bn52r0did" path="res://z_assets/sprites/beetle diffuse idle-Sheet.png" id="1_c5npc"]
 
 [node name="PlayerSpawn" type="Node2D" unique_id=1233805077]
+process_mode = 3
 z_index = 1
 script = ExtResource("1_5crq5")
 
