@@ -7,6 +7,7 @@ signal scene_entered(uid: String)
 
 # level 1
 var current_scene = "uid://b5tobrceh3joe"
+
 const FADE_DURATION = 0.25
 var outgoing_position: Vector2
 var incoming_position: Vector2
@@ -14,6 +15,9 @@ var level_offset: Vector2
 enum SIDE { TOP, RIGHT, BOTTOM, LEFT }
 var transition_direction: SIDE
 var shifting_incoming_level := false
+var current_level := ""
+var persistent_scene: Node2D
+var level: Node2D
 
 @onready var fade: Control = $Fade
 
@@ -42,22 +46,59 @@ func transition_scene( new_scene: String,
 
 	shifting_incoming_level = shift_incoming_level
 	print("shifting_incoming_level: " + str(shifting_incoming_level))
-	var persistent_scene = get_tree().get_first_node_in_group("PersistentScene")
+	persistent_scene = get_tree().get_first_node_in_group("PersistentScene")
 	if persistent_scene:
-		await persistent_scene.load_scene(new_scene)
+		await load_scene(new_scene)
 	else:
+		# for testing levels with F6
+		shifting_incoming_level = false
 		get_tree().change_scene_to_file.call_deferred(new_scene)
 		await get_tree().scene_changed
 	current_scene = ResourceUID.path_to_uid(new_scene)
 	scene_entered.emit(current_scene)
 
 	new_scene_ready.emit(target_area, player_offset)
+	on_new_scene_ready(target_area, player_offset)
 
 	await fade_screen(Vector2.ZERO, -fade_pos)
 
 	get_tree().paused = false
 	fade.visible = false
 	load_scene_finished.emit()
+
+func on_new_scene_ready(_target_name: String, offset: Vector2) -> void:
+	# shift new level to match exit pos of old level to maintain parallax scroll
+	# need to wait exactly two frames and then incoming position
+	# will have been set by the LevelTransition node
+	if shifting_incoming_level:
+		await get_tree().process_frame
+		await get_tree().process_frame
+		level.position = (outgoing_position - incoming_position)
+		level_offset = level.position
+		var player = await get_player()
+		if (transition_direction == SIDE.TOP or transition_direction == SIDE.BOTTOM):
+			player.global_position -= Vector2(offset.x, 0)
+		else:
+			player.global_position -= Vector2(0, offset.y)
+
+
+func load_scene(new_level: String) -> void:
+	# return level to origin and reset level_offset
+	if level:
+		level.position = Vector2.ZERO
+		level_offset = level.position
+
+	if not new_level == current_level:
+		# allow current level to be unloaded so that correct LevelTransition
+		# position can be identified to place the player
+		if level:
+			level.queue_free.call_deferred()
+		await get_tree().process_frame
+
+		# add new level as child of persistent scene
+		current_level = new_level
+		level = load(current_level).instantiate()
+		persistent_scene.add_child(level)
 
 
 func fade_screen(from: Vector2, to: Vector2) -> Signal:

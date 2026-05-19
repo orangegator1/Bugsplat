@@ -1,66 +1,14 @@
 extends Node2D
 
-# level 1
-var current_level := "uid://b5tobrceh3joe"
-var level: Node2D
 var scroll_scale_set := false
-var player
 
 @onready var bg_parallax: Parallax2D = $BackgroundVerticalParallax
 @onready var bg_texture: TextureRect = $BackgroundVerticalParallax/BackgroundTexture
 
 func _ready() -> void:
-	SceneManager.new_scene_ready.connect(on_new_scene_ready)
-	# level load wasn't working without waiting a frame
-	await get_tree().process_frame
-
-	# on load_scene() I want to instantiate the scene saved in the save data
-	# I could empty out current_level and wait for the save manager to write its value to current_level
-	# i should load this scene in the save manager's load function
-	# this still doesn't solve the issue of testing levels without properly running the game
-	level = load(current_level).instantiate()
-	get_tree().root.add_child(level)
-
-
-func _process(_delta: float) -> void:
-	if not scroll_scale_set:
+	while not scroll_scale_set:
+		await get_tree().process_frame
 		scroll_scale_set = set_background_scroll_y()
-
-
-func load_scene(new_level: String) -> void:
-	if new_level == current_level:
-		level.position = Vector2.ZERO
-		SceneManager.level_offset = level.position
-	else:
-		# allow current level to be unloaded so that correct level_transition
-		# position can be identified to place the player
-		level.position = Vector2.ZERO
-		SceneManager.level_offset = level.position
-		level.queue_free.call_deferred()
-		await get_tree().process_frame
-
-		current_level = new_level
-		level = load(current_level).instantiate()
-		get_tree().root.add_child(level)
-
-
-func on_new_scene_ready(_target_name: String, offset: Vector2) -> void:
-	# shift new level to match exit pos of old level to maintain parallax scroll
-	# need to wait exactly two frames and then incoming position
-	# will have been set by the level_transition node
-	if SceneManager.shifting_incoming_level:
-		await get_tree().process_frame
-		await get_tree().process_frame
-		level.position = (SceneManager.outgoing_position
-				- SceneManager.incoming_position)
-		SceneManager.level_offset = level.position
-		if not player:
-			player = await SceneManager.get_player()
-		if (SceneManager.transition_direction == SceneManager.SIDE.TOP
-				or SceneManager.transition_direction == SceneManager.SIDE.BOTTOM):
-			player.global_position -= Vector2(offset.x, 0)
-		else:
-			player.global_position -= Vector2(0, offset.y)
 
 
 func set_background_scroll_y() -> bool:
@@ -96,7 +44,3 @@ func set_background_scroll_y() -> bool:
 			bg_parallax.scroll_scale.y, bg_parallax.scroll_offset.y])
 	print("get_screen_offset(): %s" % [bg_parallax.get_screen_offset()])
 	return true
-
-
-func set_current_level(new_level: String) -> void:
-	current_level = new_level

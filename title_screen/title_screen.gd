@@ -37,6 +37,7 @@ func _on_new_game_pressed(slot: int)-> void:
 	SaveManager.load_game(slot)
 	self.queue_free.call_deferred()
 
+
 func _on_load_game_pressed(slot: int)-> void:
 	SaveManager.load_game(slot)
 	self.queue_free.call_deferred()
