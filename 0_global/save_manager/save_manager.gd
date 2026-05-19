@@ -7,6 +7,7 @@ var save_data: Dictionary
 var discovered_areas: Array = []
 var persistent_data: Dictionary
 
+var new_game_persistent_scene: String = "uid://uv5kig2w3h2p"
 var new_game_scene: String = "uid://b5tobrceh3joe"
 
 func _ready() -> void:
@@ -20,6 +21,7 @@ func create_new_game_save(slot: int = current_slot) -> void:
 	discovered_areas.append(new_game_scene)
 	save_data = {
 		"scene_path" : new_game_scene,
+		"persistent_scene_path" : new_game_persistent_scene,
 		"x" : -1010,
 		"y" : 724,
 		"health" : 3,
@@ -35,8 +37,11 @@ func create_new_game_save(slot: int = current_slot) -> void:
 func save_game(current_scene: String = SceneManager.current_scene) -> void:
 	var player: Player = await SceneManager.get_player()
 	var zeroed_pos = player.global_position - SceneManager.level_offset
+	var persistent_scene = get_tree().get_first_node_in_group("PersistentScene")
+	persistent_scene = ResourceUID.path_to_uid(persistent_scene.scene_file_path)
 	save_data = {
 		"scene_path" : current_scene,
+		"persistent_scene_path" : persistent_scene,
 		"x" : zeroed_pos.x,
 		"y" : zeroed_pos.y,
 		"health" : player.health,
@@ -63,7 +68,17 @@ func load_game(slot: int = current_slot) -> void:
 	persistent_data = save_data.get("persistent_data", {})
 	discovered_areas = save_data.get("discovered_areas", [])
 	var scene_path = save_data.get("scene_path", new_game_scene)
-	SceneManager.transition_scene(scene_path, "", Vector2.ZERO, "up", false)
+
+	# load persistent scene if one exists in the save file
+	# the persistent scene will add the scene at the scene_path above as a
+	# child and only load/unload necessary components to improve load time
+	var persistent_scene_path = save_data.get("persistent_scene_path", "")
+	var persistent_scene = get_tree().get_first_node_in_group("PersistentScene")
+	if not persistent_scene:
+		persistent_scene = load(persistent_scene_path).instantiate()
+		get_tree().root.add_child(persistent_scene)
+
+	SceneManager.transition_scene(scene_path, "", Vector2.ZERO, "up")
 	await SceneManager.new_scene_ready
 	setup_player()
 

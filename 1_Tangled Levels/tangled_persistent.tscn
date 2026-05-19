@@ -136,7 +136,7 @@ shader_parameter/color = Color(1, 0.9, 0.65, 0.8)
 shader_parameter/hdr = false
 shader_parameter/seed = 5.0
 
-[node name="Tangled" type="Node2D" unique_id=1064258523 groups=["PersistentScenes"]]
+[node name="Tangled" type="Node2D" unique_id=1064258523 groups=["PersistentScene"]]
 script = ExtResource("1_j38e0")
 
 [node name="BackgroundVerticalParallax" type="Parallax2D" parent="." unique_id=2021915177]
@@ -326,6 +326,7 @@ texture = ExtResource("8_sm8sy")
 metadata/_edit_use_anchors_ = true
 
 [node name="ParallaxForeground" type="Node2D" parent="." unique_id=1198936891]
+z_index = 3
 
 [node name="GodRaysParallax" type="Parallax2D" parent="ParallaxForeground" unique_id=1150518014]
 z_index = 2

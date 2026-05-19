@@ -35,9 +35,11 @@ func _ready() -> void:
 func _on_new_game_pressed(slot: int)-> void:
 	SaveManager.create_new_game_save(slot)
 	SaveManager.load_game(slot)
+	self.queue_free.call_deferred()
 
 func _on_load_game_pressed(slot: int)-> void:
 	SaveManager.load_game(slot)
+	self.queue_free.call_deferred()
 
 
 func show_main_menu() -> void:

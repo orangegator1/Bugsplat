@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Bugsplat"
-run/main_scene="uid://uv5kig2w3h2p"
+run/main_scene="uid://bvkv1sl64xdva"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="uid://ch7xqkmg1f0sm"
 
@@ -46,9 +46,9 @@ enabled=PackedStringArray("res://addons/YATI/plugin.cfg")
 [global_group]
 
 growable_tiles=""
-camera_area=""
 Player=""
 warmup_particles=""
+PersistentScene=""
 
 [gui]
 

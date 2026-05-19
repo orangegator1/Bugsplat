@@ -14,6 +14,10 @@ func _ready() -> void:
 	# level load wasn't working without waiting a frame
 	await get_tree().process_frame
 
+	# on load_scene() I want to instantiate the scene saved in the save data
+	# I could empty out current_level and wait for the save manager to write its value to current_level
+	# i should load this scene in the save manager's load function
+	# this still doesn't solve the issue of testing levels without properly running the game
 	level = load(current_level).instantiate()
 	get_tree().root.add_child(level)
 
@@ -92,3 +96,7 @@ func set_background_scroll_y() -> bool:
 			bg_parallax.scroll_scale.y, bg_parallax.scroll_offset.y])
 	print("get_screen_offset(): %s" % [bg_parallax.get_screen_offset()])
 	return true
+
+
+func set_current_level(new_level: String) -> void:
+	current_level = new_level

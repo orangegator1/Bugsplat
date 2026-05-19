@@ -49,7 +49,6 @@ var resetting := false
 @onready var collider: CollisionShape2D = $CollisionShape2D
 @onready var ledge_grab_miss: RayCast2D = $ledgeGrabMiss
 @onready var ledge_grab_hit: RayCast2D = $ledgeGrabHit
-@onready var freefall_timer: Timer = $freefallTimer
 @onready var ledge_climb_lockout: Timer = $ledgeClimbLockout
 @onready var camera_2d: Camera2D = $Camera2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
@@ -112,8 +111,7 @@ func _physics_process(delta: float) -> void:
 	# Coyote time
 	if was_on_floor and not is_on_floor() and not is_jumping:
 		coyote_timer.start()
-		# don't play falling animation for small drops
-		freefall_timer.start()
+
 
 	handle_input()
 
@@ -368,7 +366,7 @@ func get_ledge_snap_pos() -> Vector2:
 
 func handle_sprite() -> void:
 	# fix for ledge sprite that would fail to flip if
-	# inputting into a tile and velocity x is not changing
+	# inputting towards a tile and velocity x was not changing
 	if is_on_ledge:
 		animated_sprites.flip_h = ledge_grab_dir == -1
 	elif velocity.x > 0:
@@ -415,10 +413,10 @@ func handle_sprite() -> void:
 		animated_sprites.play("jump")
 		await animated_sprites.animation_finished
 		jumped = false
-	elif not ledge_climbing and (is_jumping or (!is_jumping and freefall_timer.is_stopped())):
+	elif not ledge_climbing and is_jumping:
 		animated_sprites.play("falling")
-	elif climb_timer:
-		animated_sprites.play("idle")
+	elif velocity.y > 0:
+		animated_sprites.play("falling")
 	else:
 		animated_sprites.play("idle")
 
@@ -466,7 +464,6 @@ func set_tween_flags(mode: String, tween: Tween, dir := 0) -> void:
 		is_in_x_tween = false
 	if mode.contains("y"):
 		is_in_y_tween = false
-	freefall_timer.start()
 
 
 func set_camera_limits() -> bool:

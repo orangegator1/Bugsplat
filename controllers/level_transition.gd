@@ -27,20 +27,19 @@ func _ready() -> void:
 
 func _on_player_entered(n: Node2D) -> void:
 	SceneManager.transition_scene(target_level, target_area_name,
-			get_offset(n),
-			get_transition_direction())
+			get_offset(n), get_transition_direction(), true)
 	SceneManager.outgoing_position = global_position
 
 
 func on_new_scene_ready(target_name: String, offset: Vector2) -> void:
-	# set position to place new scene at
+	# set position to place either scene or player at
 	if target_name == name:
-		if not SceneManager.shifting_incoming_level:
-			var player = await SceneManager.get_player()
-			player.global_position = global_position + offset
-		else:
+		if SceneManager.shifting_incoming_level:
 			SceneManager.incoming_position = global_position + offset
 			SceneManager.offset = offset
+		else:
+			var player = await SceneManager.get_player()
+			player.global_position = global_position + offset
 
 
 func on_load_scene_finished() -> void:

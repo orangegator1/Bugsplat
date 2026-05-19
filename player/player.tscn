@@ -706,10 +706,6 @@ one_shot = true
 wait_time = 0.15
 one_shot = true
 
-[node name="freefallTimer" type="Timer" parent="." unique_id=932767238]
-wait_time = 0.4
-one_shot = true
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2128019200]
 libraries/ = SubResource("AnimationLibrary_fjrip")
 

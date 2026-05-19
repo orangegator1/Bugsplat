@@ -509,6 +509,7 @@ _data = {
 }
 
 [node name="TitleScreen" type="CanvasLayer" unique_id=654211250]
+layer = 2
 script = ExtResource("1_37ufg")
 
 [node name="Control" type="Control" parent="." unique_id=1661557297]
