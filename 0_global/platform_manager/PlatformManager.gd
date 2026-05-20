@@ -3,12 +3,12 @@ extends Node
 var layer: TileMapLayer
 var atlas_id: int
 var filler_tile: Vector2
-enum grow_mode { GROW, GEN, }
+enum grow_mode { GEN, GROW, }
 
 const GROW_ANIMATION = preload("uid://dktop08srvo7l")
 
 func connect_player_to_platform_manager(player_p: CharacterBody2D) -> void:
-	player_p.connect("standing_on_new_growable_layer", set_layer)
+	player_p.standing_on_new_growable_layer.connect(set_layer)
 
 func set_layer(l: TileMapLayer) -> void:
 	layer = l
@@ -31,6 +31,7 @@ func grow(layer_p: TileMapLayer,
 	var below = result["below"]
 
 	var num_tiles = 0
+
 	if layer.preferred_growth == grow_mode.GEN:
 		num_tiles = gen_stack(top_pos, below)
 	else:

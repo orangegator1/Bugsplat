@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dktop08srvo7l"]
 
 [ext_resource type="Texture2D" uid="uid://tcul4wsypojp" path="res://z_assets/sprites/growing platform, two tile-Sheet.png" id="1_7d1gw"]
-[ext_resource type="Script" uid="uid://q7dhug7kvggw" path="res://scripts/growing_tiles_sprite.gd" id="2_aenie"]
+[ext_resource type="Script" uid="uid://q7dhug7kvggw" path="res://0_global/platform_manager/growing_tiles_sprite.gd" id="2_aenie"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h13xv"]
 atlas = ExtResource("1_7d1gw")

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://hidvc35yr6rb"
-path="res://.godot/imported/berry bush.png-4c6a0998559d60c2fb4cde5efdbf1e86.ctex"
+uid="uid://cshaye6d10lg2"
+path="res://.godot/imported/tangled near.png-d54847138f51995d9795920640273568.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://z_assets/sprites/berry bush.png"
-dest_files=["res://.godot/imported/berry bush.png-4c6a0998559d60c2fb4cde5efdbf1e86.ctex"]
+source_file="res://1_Tangled Levels/parallax backgrounds/tangled near.png"
+dest_files=["res://.godot/imported/tangled near.png-d54847138f51995d9795920640273568.ctex"]
 
 [params]
 

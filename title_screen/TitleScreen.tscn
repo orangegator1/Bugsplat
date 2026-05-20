@@ -1,11 +1,11 @@
 [gd_scene format=4 uid="uid://bvkv1sl64xdva"]
 
-[ext_resource type="Texture2D" uid="uid://b4265lnsmr6vf" path="res://z_assets/parallax backgrounds/background.png" id="1_7dd68"]
+[ext_resource type="Texture2D" uid="uid://b4265lnsmr6vf" path="res://1_Tangled Levels/parallax backgrounds/background.png" id="1_7dd68"]
 [ext_resource type="Script" uid="uid://cmgrbb6an874x" path="res://title_screen/title_screen.gd" id="1_37ufg"]
 [ext_resource type="Texture2D" uid="uid://brvqkjrp8j6bs" path="res://tilesets/tilemap template.png" id="1_270lm"]
-[ext_resource type="Texture2D" uid="uid://dmiklg0i7fcum" path="res://z_assets/parallax backgrounds/tangled.png" id="1_vtq85"]
+[ext_resource type="Texture2D" uid="uid://dmiklg0i7fcum" path="res://1_Tangled Levels/parallax backgrounds/tangled.png" id="1_vtq85"]
 [ext_resource type="Texture2D" uid="uid://bi2ybrjch8j4f" path="res://tilesets/tileset tangled growth-Sheet.png" id="2_vtq85"]
-[ext_resource type="Texture2D" uid="uid://cgmo2lonvkg14" path="res://z_assets/parallax backgrounds/tangled far.png" id="3_tdprj"]
+[ext_resource type="Texture2D" uid="uid://cgmo2lonvkg14" path="res://1_Tangled Levels/parallax backgrounds/tangled far.png" id="3_tdprj"]
 [ext_resource type="Shader" uid="uid://bj84mjladf4rh" path="res://z_assets/shaders/god_rays.gdshader" id="4_77lx7"]
 [ext_resource type="Texture2D" uid="uid://cxe7veg0w5n04" path="res://title_screen/bugsplat-logo.png" id="7_eluts"]
 

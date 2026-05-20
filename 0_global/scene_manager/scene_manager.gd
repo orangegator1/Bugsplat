@@ -43,7 +43,6 @@ func transition_scene( new_scene: String,
 
 	var fade_pos = get_fade_position(dir)
 	fade.visible = true
-	print("fade in")
 	await fade_screen(fade_pos, Vector2.ZERO)
 
 	shifting_incoming_level = shift_incoming_level
@@ -65,7 +64,6 @@ func transition_scene( new_scene: String,
 	# before showing the new scene
 	await get_player()
 	await get_tree().process_frame
-	print("fade out")
 	await fade_screen(Vector2.ZERO, -fade_pos)
 
 	get_tree().paused = false
@@ -108,9 +106,7 @@ func load_scene(new_level: String) -> void:
 
 
 func fade_screen(from: Vector2, to: Vector2) -> Signal:
-	print("fade.position pre: %s" % [fade.position])
 	fade.position = from
-	print("fade.position post: %s" % [to])
 	var tween = create_tween()
 	tween.tween_property(fade, "position", to, FADE_DURATION)
 	return tween.finished

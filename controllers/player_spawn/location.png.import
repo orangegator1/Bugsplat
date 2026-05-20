@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://fkdigdbx43dt"
-path="res://.godot/imported/static growing plat, two tile.png-c6c1a153b5533a5e707ca1c2c1b19c52.ctex"
+uid="uid://cbh2s2me8kj8o"
+path="res://.godot/imported/location.png-2f95e415b6c9493c2eade1db441de058.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://z_assets/sprites/static growing plat, two tile.png"
-dest_files=["res://.godot/imported/static growing plat, two tile.png-c6c1a153b5533a5e707ca1c2c1b19c52.ctex"]
+source_file="res://controllers/player_spawn/location.png"
+dest_files=["res://.godot/imported/location.png-2f95e415b6c9493c2eade1db441de058.ctex"]
 
 [params]
 

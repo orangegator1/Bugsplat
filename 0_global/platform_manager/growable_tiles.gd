@@ -1,11 +1,11 @@
-class_name GrowableTile extends TileMapLayer
+class_name GrowableTileset extends TileMapLayer
 
 enum grow_mode { GEN, GROW, }
-@export var preferred_growth: grow_mode
+@export var preferred_growth := grow_mode.GEN
 @export var tile_size := 16
 @export var friction := 500
 @export var atlas_id := 1
-@export var filler_tile := Vector2i(0,0)
+@export var filler_tile := Vector2i(4,5)
 
 # pre-fab stacks of tiles, can be any height, filled from bottom up
 @export var stack_atlas_id: Array[int] = [ 1, 2, ]

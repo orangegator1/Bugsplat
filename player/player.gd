@@ -196,7 +196,7 @@ func handle_movement(delta: float) -> void:
 	# when loading in there is no friction avail. until hitting the ground
 	if (not is_on_ledge	and not is_in_y_tween and not is_in_x_tween):
 		if layer_underfoot:
-			if layer_underfoot is GrowableTile:
+			if layer_underfoot is GrowableTileset:
 				friction = layer_underfoot.friction
 		# accelerate
 		if input_dir:
