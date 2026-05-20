@@ -535,6 +535,8 @@ texture = ExtResource("1_7dd68")
 [node name="Parallax2D" type="Parallax2D" parent="Control/TangledElements" unique_id=1259770256]
 scroll_offset = Vector2(-32, -32)
 repeat_size = Vector2(544, 304)
+follow_viewport = false
+ignore_camera_scroll = true
 
 [node name="far" type="Sprite2D" parent="Control/TangledElements/Parallax2D" unique_id=864707498]
 position = Vector2(236, -47)
@@ -543,6 +545,7 @@ texture = ExtResource("1_vtq85")
 [node name="near" type="Sprite2D" parent="Control/TangledElements/Parallax2D" unique_id=545386051]
 position = Vector2(107, 30)
 texture = ExtResource("3_tdprj")
+region_rect = Rect2(0, 0, 544, 304)
 
 [node name="ground" type="TileMapLayer" parent="Control/TangledElements" unique_id=1378001737]
 texture_filter = 1

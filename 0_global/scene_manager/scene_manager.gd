@@ -17,7 +17,8 @@ var transition_direction: SIDE
 var shifting_incoming_level := false
 var current_level := ""
 var persistent_scene: Node2D
-var level: Node2D
+var level
+var initiated_from_pause_menu := false
 
 @onready var fade: Control = $Fade
 
@@ -59,6 +60,43 @@ func transition_scene( new_scene: String,
 
 	new_scene_ready.emit(target_area, player_offset)
 	on_new_scene_ready(target_area, player_offset)
+
+	# allow time for player and camera to be positioned
+	# before showing the new scene
+	await get_player()
+	await get_tree().process_frame
+	await fade_screen(Vector2.ZERO, -fade_pos)
+
+	get_tree().paused = false
+	fade.visible = false
+	load_scene_finished.emit()
+
+
+func transition_scene_to_title( new_scene: String, dir: String) -> void:
+	load_scene_started.emit()
+	get_tree().paused = true
+
+	var fade_pos = get_fade_position(dir)
+	fade.visible = true
+	await fade_screen(fade_pos, Vector2.ZERO)
+
+	shifting_incoming_level = false
+	if persistent_scene:
+		persistent_scene.queue_free.call_deferred()
+		await persistent_scene.tree_exited
+		persistent_scene = null
+
+	if level:
+		level.position = Vector2.ZERO
+		level_offset = level.position
+		print("")
+
+	get_tree().change_scene_to_file.call_deferred(new_scene)
+	await get_tree().scene_changed
+	scene_entered.emit(current_scene)
+
+	new_scene_ready.emit("LevelTransition", Vector2.ZERO)
+	on_new_scene_ready("LevelTransition", Vector2.ZERO)
 
 	# allow time for player and camera to be positioned
 	# before showing the new scene

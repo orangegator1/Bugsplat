@@ -6,40 +6,40 @@ class_name InputHint extends Node2D
 const HINT_MAP : Dictionary = {
 	"keyboard" : {
 		"jump" : 0,
-		"move_left" : 1,
+		"left" : 1,
 		"down" : 2,
-		"move_right" : 3,
+		"right" : 3,
 		"interact" : 4,
 		"toggle_fullscreen" : 17
 	},
 	"playstation" : {
 		"jump" : 5,
-		"move_left" : 16,
+		"left" : 16,
 		"down" : 15,
-		"move_right" : 14,
+		"right" : 14,
 		"interact" : 6,
 		"toggle_fullscreen" : 12
 	},
 	"xbox" : {
 		"jump" : 11,
-		"move_left" : 16,
+		"left" : 16,
 		"down" : 15,
-		"move_right" : 14,
+		"right" : 14,
 		"interact" : 9,
 		"toggle_fullscreen" : 12
 	},
 	"nintendo" : {
 		"jump" : 10,
-		"move_left" : 16,
+		"left" : 16,
 		"down" : 15,
-		"move_right" : 14,
+		"right" : 14,
 		"interact" : 5,
 		"toggle_fullscreen" : 12
 	},
 }
 
 @export var owns_collision := false
-@export_enum("jump", "move_left", "move_right", "down", "toggle_fullscreen",
+@export_enum("jump", "left", "right", "down", "toggle_fullscreen",
 		"interact") var action := "interact"
 @export var width := 4 :
 	set(value):

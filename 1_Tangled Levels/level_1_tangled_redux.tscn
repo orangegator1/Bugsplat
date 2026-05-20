@@ -611,7 +611,6 @@ tile_set = SubResource("TileSet_e73xf")
 rendering_quadrant_size = 64
 navigation_enabled = false
 script = ExtResource("8_lt1vd")
-preferred_growth = 1
 stack_atlas_id = Array[int]([3])
 left_alt_bot_tile = Vector2i(0, 2)
 right_alt_bot_tile = Vector2i(2, 2)

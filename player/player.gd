@@ -186,7 +186,7 @@ func handle_movement(delta: float) -> void:
 
 
 	# Get the input direction and handle horiz. movement mapped to -1, 0, or 1
-	input_dir = Input.get_axis("move_left", "move_right")
+	input_dir = Input.get_axis("left", "right")
 	# deadzone for busted controllers with bad joysticks
 	if abs(input_dir) < 0.1:
 		input_dir = 0.0
@@ -426,6 +426,11 @@ func handle_sprite() -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("interact"):
 		MessageBus.player_interacted.emit(self)
+	elif event.is_action_pressed("pause"):
+		get_tree().paused = true
+		var pause_menu: PauseMenu = load("res://pause_menu/pause_menu.tscn").instantiate()
+		add_child(pause_menu)
+		return
 
 
 func push_objects(collision: KinematicCollision2D) -> void:

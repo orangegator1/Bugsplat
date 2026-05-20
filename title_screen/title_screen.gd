@@ -28,10 +28,9 @@ func _ready() -> void:
 	load_slot_02.pressed.connect(_on_load_game_pressed.bind(1))
 	load_slot_03.pressed.connect(_on_load_game_pressed.bind(2))
 
-	SceneManager.new_scene_ready.connect(free_self)
-
 	show_main_menu()
 	animation_player.animation_finished.connect(_on_animation_finished)
+	SceneManager.new_scene_ready.connect(free_self)
 
 
 func _on_new_game_pressed(slot: int)-> void:
@@ -41,7 +40,6 @@ func _on_new_game_pressed(slot: int)-> void:
 
 func _on_load_game_pressed(slot: int)-> void:
 	SaveManager.load_game(slot)
-
 
 
 func show_main_menu() -> void:
@@ -88,4 +86,5 @@ func _on_animation_finished(anim_name: String) -> void:
 
 
 func free_self(_target_area, _player_offset) -> void:
-	self.queue_free.call_deferred()
+	if not SceneManager.initiated_from_pause_menu:
+		self.queue_free.call_deferred()
