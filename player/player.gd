@@ -173,6 +173,15 @@ func handle_movement(delta: float) -> void:
 			jump_buffer_timer = jump_buffer_time
 	elif is_on_floor() and jump_buffer_timer > 0:
 		velocity.y = jump_velocity
+
+		# if the jump was buffered, need to check if the jump button has already
+		# been released, to get a variable jump height and decelleration
+		if not Input.is_action_pressed("jump"):
+			if velocity.y < -120:
+				velocity.y *= 0.7
+			else:
+				velocity.y *= 0.5
+
 		is_jumping = true
 		jumped = true
 	elif Input.is_action_just_released("jump"):

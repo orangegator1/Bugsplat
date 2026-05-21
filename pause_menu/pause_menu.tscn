@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://b7x4dgp7d67dl"]
 
 [ext_resource type="Script" uid="uid://4ec0vu7phicx" path="res://pause_menu/scripts/pause_menu.gd" id="1_5hbt6"]
+[ext_resource type="PackedScene" uid="uid://bbn4ciobob4wn" path="res://pause_menu/map_node.tscn" id="2_rd7dy"]
+[ext_resource type="Texture2D" uid="uid://cc3w1lqaayhf7" path="res://pause_menu/mini levels/1-tangled.png" id="3_uwtdo"]
 
 [sub_resource type="FontVariation" id="FontVariation_5hbt6"]
 spacing_glyph = 2
@@ -29,7 +31,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.07450981, 0.2, 0.15294118, 0.5254902)
+color = Color(0.07450981, 0.2, 0.15294118, 1)
 
 [node name="ColorRectTopBar" type="ColorRect" parent="Control" unique_id=1716556769]
 custom_minimum_size = Vector2(0, 36)
@@ -59,7 +61,6 @@ text = "PAUSED"
 
 [node name="PauseScreen" type="Control" parent="." unique_id=1365690807]
 unique_name_in_owner = true
-visible = false
 layout_mode = 3
 anchors_preset = 0
 
@@ -92,9 +93,59 @@ text = "Map"
 [node name="Map" type="Control" parent="PauseScreen" unique_id=1035519575]
 anchors_preset = 0
 offset_left = 96.0
-offset_top = 55.0
+offset_top = 65.0
 offset_right = 461.0
 offset_bottom = 251.0
+
+[node name="MapNode" parent="PauseScreen/Map" unique_id=794718223 instance=ExtResource("2_rd7dy")]
+layout_mode = 1
+offset_left = 5.0
+offset_top = 57.0
+offset_right = 147.0
+offset_bottom = 142.0
+linked_scene = "uid://b5tobrceh3joe"
+entrances_top = Array[float]([43.2, 2.0])
+entrances_bottom = Array[float]([103.6, 84.4])
+entrances_left = Array[float]([83.0])
+
+[node name="TextureRect2" type="TextureRect" parent="PauseScreen/Map/MapNode" unique_id=1841257092]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("3_uwtdo")
+
+[node name="MapNode2" parent="PauseScreen/Map" unique_id=419053178 instance=ExtResource("2_rd7dy")]
+layout_mode = 1
+offset_left = -3.0
+offset_top = 2.0
+offset_right = 111.0
+offset_bottom = 56.0
+linked_scene = "uid://bsnvh00iswdjn"
+entrances_top = Array[float]([2.0])
+entrances_bottom = Array[float]([22.4])
+
+[node name="MapNode3" parent="PauseScreen/Map" unique_id=2037800754 instance=ExtResource("2_rd7dy")]
+layout_mode = 1
+offset_left = 112.0
+offset_top = 10.0
+offset_right = 170.0
+offset_bottom = 56.0
+linked_scene = "uid://bsssooisi2b0i"
+entrances_top = Array[float]([2.0])
+entrances_right = Array[float]([44.0])
+entrances_bottom = Array[float]([20.0])
+
+[node name="MapNode4" parent="PauseScreen/Map" unique_id=1952530402 instance=ExtResource("2_rd7dy")]
+layout_mode = 1
+offset_left = 148.0
+offset_top = 83.0
+offset_right = 200.0
+offset_bottom = 112.0
+linked_scene = "uid://xw5mdo4mn0on"
+entrances_top = Array[float]([2.0])
+entrances_right = Array[float]([27.0])
+entrances_bottom = Array[float]([2.0])
+entrances_left = Array[float]([27.0])
 
 [node name="SystemMenuButton" type="Button" parent="PauseScreen" unique_id=1336105863]
 unique_name_in_owner = true
@@ -108,6 +159,7 @@ text = "Settings"
 
 [node name="System" type="Control" parent="." unique_id=1326734413]
 unique_name_in_owner = true
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

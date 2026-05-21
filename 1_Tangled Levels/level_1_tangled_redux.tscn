@@ -933,43 +933,41 @@ text = "Got any ideas for these
 springy platforms?
 Let me know."
 
-[node name="LevelTransitions" type="Node2D" parent="." index="7" unique_id=1157512185]
-
-[node name="LevelTransition" parent="LevelTransitions" index="0" unique_id=817694502 instance=ExtResource("11_v05tn")]
+[node name="LevelTransition" parent="." index="7" unique_id=817694502 instance=ExtResource("11_v05tn")]
 position = Vector2(-400, 64)
 size = 8
 location = 3
 target_level = "uid://xw5mdo4mn0on"
 target_area_name = "LevelTransition4"
 
-[node name="LevelTransition2" parent="LevelTransitions" index="1" unique_id=26530549 instance=ExtResource("11_v05tn")]
+[node name="LevelTransition2" parent="." index="8" unique_id=26530549 instance=ExtResource("11_v05tn")]
 position = Vector2(1728, -2032)
 size = 30
 location = 0
 target_level = "uid://bsnvh00iswdjn"
 target_area_name = "LevelTransition2"
 
-[node name="LevelTransition3" parent="LevelTransitions" index="2" unique_id=277123985 instance=ExtResource("11_v05tn")]
+[node name="LevelTransition3" parent="." index="9" unique_id=277123985 instance=ExtResource("11_v05tn")]
 position = Vector2(4144, -456)
 size = 9
 location = 2
 target_level = "uid://xw5mdo4mn0on"
 
-[node name="LevelTransition4" parent="LevelTransitions" index="3" unique_id=495481259 instance=ExtResource("11_v05tn")]
+[node name="LevelTransition4" parent="." index="10" unique_id=495481259 instance=ExtResource("11_v05tn")]
 position = Vector2(3376, -2128)
 size = 10
 location = 2
 target_level = "uid://bsssooisi2b0i"
 target_area_name = "LevelTransition3"
 
-[node name="LevelTransition5" parent="LevelTransitions" index="4" unique_id=413893561 instance=ExtResource("11_v05tn")]
+[node name="LevelTransition5" parent="." index="11" unique_id=413893561 instance=ExtResource("11_v05tn")]
 position = Vector2(-1120, 208)
 size = 5
 location = 0
 target_level = "uid://bsssooisi2b0i"
 target_area_name = "LevelTransition2"
 
-[node name="FishTrigger" parent="." index="8" unique_id=1675772569 instance=ExtResource("12_kmrg3")]
+[node name="FishTrigger" parent="." index="12" unique_id=1675772569 instance=ExtResource("12_kmrg3")]
 position = Vector2(3912, -648)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FishTrigger" index="0" unique_id=211700713]
@@ -1032,7 +1030,7 @@ position = Vector2(-925, -73)
 [node name="Goldfish12" parent="FishTrigger/Goldfishes" index="11" unique_id=819927213 instance=ExtResource("15_1hwjs")]
 position = Vector2(-1051, -67)
 
-[node name="resetZone" parent="." index="9" unique_id=424939368 instance=ExtResource("16_ujags")]
+[node name="resetZone" parent="." index="13" unique_id=424939368 instance=ExtResource("16_ujags")]
 position = Vector2(1216, 1016)
 
 [node name="floor" type="CollisionShape2D" parent="resetZone" index="1" unique_id=999741754]

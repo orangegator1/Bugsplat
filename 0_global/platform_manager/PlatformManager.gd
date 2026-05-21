@@ -1,3 +1,5 @@
+@tool
+
 extends Node
 
 var layer: TileMapLayer
@@ -193,3 +195,14 @@ func get_vertical_bounds(tml: TileMapLayer) -> Array:
 	var top = rect.position.y * tml.tile_size
 	var bot = rect.end.y * tml.tile_size
 	return [bot, top]
+
+func get_dimensions(tml: GrowableTileset) -> Vector2:
+	var rect = tml.get_used_rect()
+	var height = rect.end.y - rect.position.y
+	var width = rect.end.x - rect.position.x
+	return Vector2(width, height) * tml.tile_size
+
+
+func get_position(tml: GrowableTileset) -> Vector2:
+	var rect = tml.get_used_rect()
+	return Vector2(rect.position.x, rect.position.y)
