@@ -1,4 +1,4 @@
-extends AnimationPlayer
+class_name SoundPlayer extends AnimationPlayer
 
 func play_sound(audio: AudioStream, pos: Vector2) -> void:
 	# Check if a primary player exists and is playing
@@ -13,3 +13,11 @@ func play_sound(audio: AudioStream, pos: Vector2) -> void:
 		audio_player.play()
 	else:
 		play()
+
+func play_sound_global(audio: AudioStream) -> void:
+	var audio_player  = AudioStreamPlayer2D.new()
+	add_child(audio_player)
+	audio_player.bus = "UI"
+	audio_player.stream = audio
+	audio_player.finished.connect(audio_player.queue_free)
+	audio_player.play()

@@ -8,10 +8,10 @@ const SCALE_FACTOR := 40.0
 @export_file("*.tscn") var linked_scene: String: set = on_scene_set
 @export_tool_button("Update") var update_node_action = update_node
 
-@export var entrances_top: Array[float] = []
-@export var entrances_right: Array[float] = []
-@export var entrances_bottom: Array[float] = []
-@export var entrances_left: Array[float] = []
+@export var entrances_top: Array[Vector2] = []
+@export var entrances_right: Array[Vector2] = []
+@export var entrances_bottom: Array[Vector2] = []
+@export var entrances_left: Array[Vector2] = []
 
 var indicator_offset: Vector2 = Vector2.ZERO
 
@@ -24,7 +24,13 @@ func _ready() -> void:
 	else:
 		label.queue_free()
 		create_transition_blocks()
-		# check if discovered by player
+
+		# hide the whole level on the minimap if not discovered
+		# TODO uncover chunks of large levels one at a time
+		if not SaveManager.is_area_discovered(linked_scene):
+			visible = false
+		elif SceneManager.current_scene == linked_scene:
+			display_player_location()
 
 
 func on_scene_set(value: String) -> void:
@@ -48,7 +54,8 @@ func update_node() -> void:
 					if c is GrowableTileset:
 						new_size = PlatformManager.get_dimensions(c)
 						# offset representing the top-left corner position of the tilemaplayer
-						indicator_offset = PlatformManager.get_position(c)
+						indicator_offset = PlatformManager.get_position(c) * c.tile_size
+						print("indicator_offset: " + str(indicator_offset))
 					elif c is LevelTransition:
 						transitions.append(c)
 				instance.queue_free()
@@ -56,7 +63,10 @@ func update_node() -> void:
 	size = new_size / SCALE_FACTOR
 	size = size.round()
 	create_entrance_data(transitions)
+
+	print("before")
 	create_transition_blocks()
+	print("after")
 
 
 func update_node_label(scene: Node) -> void:
@@ -76,31 +86,25 @@ func create_entrance_data(transitions: Array[LevelTransition]) -> void:
 	entrances_left.clear()
 
 	for t in transitions:
+		var pos: Vector2 = (t.position - indicator_offset) / SCALE_FACTOR
+		var pos_offset = clamp(
+					pos, Vector2(2.0, 2.0),
+					Vector2(self.size.x - 2.0, self.size.y - 2.0)
+				)
+		# subtract 3 because transition indicators are drawn top down
+		# and level_transitions are the opposite
+		if (t.location == SceneManager.SIDE.LEFT
+				or t.location == SceneManager.SIDE.RIGHT):
+			pos_offset.y += -3.0
+
 		if t.location == SceneManager.SIDE.LEFT:
-			var offset = clampf(
-					self.size.y + (-t.global_position.y / SCALE_FACTOR),
-					2.0, self.size.y - 2.0
-				)
-			entrances_left.append(offset)
+			entrances_left.append(Vector2(pos_offset))
 		elif t.location == SceneManager.SIDE.RIGHT:
-			var offset = clampf(
-					self.size.y + (-t.global_position.y / SCALE_FACTOR),
-					2.0, self.size.y - 2.0
-				)
-			entrances_right.append(offset)
+			entrances_right.append(Vector2(pos_offset))
 		elif t.location == SceneManager.SIDE.TOP:
-			var offset = clampf(
-					t.global_position.x / SCALE_FACTOR,
-					2.0, self.size.x - 2.0
-				)
-			entrances_top.append(offset)
+			entrances_top.append(Vector2(pos_offset))
 		elif t.location == SceneManager.SIDE.BOTTOM:
-			print("bottom")
-			var offset = clampf(
-					t.global_position.x / SCALE_FACTOR,
-					2.0, self.size.x - 2.0
-				)
-			entrances_bottom.append(offset)
+			entrances_bottom.append(Vector2(pos_offset))
 
 
 func create_transition_blocks() -> void:
@@ -113,26 +117,23 @@ func create_transition_blocks() -> void:
 	for e in entrances_left:
 		var block := add_block()
 		block.size.y = 3
-		block.position.x = 0
-		block.position.y = e
+		block.position = e
 
 	for e in entrances_right:
 		var block := add_block()
 		block.size.y = 3
-		block.position.x = self.size.x - 1
-		block.position.y = e
+		block.position = e
 
 	for e in entrances_top:
 		var block := add_block()
 		block.size.x = 3
-		block.position.x = e
-		block.position.y = 0
+		block.position = e
 
 	for e in entrances_bottom:
 		var block := add_block()
 		block.size.x = 3
-		block.position.x = e
-		block.position.y = self.size.y - 1
+		block.position = e
+
 
 func add_block() -> ColorRect:
 	var block: ColorRect = ColorRect.new()
@@ -140,3 +141,17 @@ func add_block() -> ColorRect:
 	block.custom_minimum_size.x = 1
 	block.custom_minimum_size.y = 1
 	return block
+
+
+func display_player_location() -> void:
+	var player := await SceneManager.get_player()
+	var indicator: Control = %PlayerIndicator
+	var pos = position
+	pos += ((player.position - indicator_offset) / SCALE_FACTOR)
+
+	var clamp_val := Vector2(4.0, 4.0)
+	# clamp position to 4px inside top left and bottom right corners
+	#pos = pos.clamp(position + clamp_val, position + size - clamp_val)
+
+	indicator.position = pos
+	pass

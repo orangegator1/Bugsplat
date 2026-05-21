@@ -53,6 +53,7 @@ text = "Level name"
 
 [node name="TransitionBlocks" type="Control" parent="." unique_id=391521372]
 modulate = Color(0, 0, 0, 1)
+z_index = 1
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

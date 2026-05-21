@@ -1,17 +1,20 @@
 extends Node
 
 const SLOTS: Array[String] = ["save_01", "save_02", "save_03", ]
+const CONFIG_FILE_PATH := "user://settings.cfg"
 
 var current_slot: int = 0
 var save_data: Dictionary
 var discovered_areas: Array = []
 var persistent_data: Dictionary
+signal config_loaded
 
 var new_game_persistent_scene: String = "uid://uv5kig2w3h2p"
 var new_game_scene: String = "uid://b5tobrceh3joe"
 
 func _ready() -> void:
-	pass
+	load_config()
+	SceneManager.scene_entered.connect(on_scene_entered)
 
 
 func create_new_game_save(slot: int = current_slot) -> void:
@@ -77,7 +80,6 @@ func load_game(slot: int = current_slot) -> void:
 	if not persistent_scene:
 		persistent_scene = load(persistent_scene_path).instantiate()
 		get_tree().root.add_child(persistent_scene)
-
 	SceneManager.transition_scene(scene_path, "", Vector2.ZERO, "up")
 	await SceneManager.new_scene_ready
 	setup_player()
@@ -116,3 +118,40 @@ func get_file_name(slot: int = current_slot) -> String:
 
 func save_file_exists(slot: int) -> bool:
 	return FileAccess.file_exists(get_file_name(slot))
+
+
+func is_area_discovered(scene_uid: String) -> bool:
+	return discovered_areas.has(scene_uid)
+
+
+func on_scene_entered(scene_uid: String) -> void:
+	if not is_area_discovered(scene_uid):
+		discovered_areas.append(scene_uid)
+
+
+func save_config() -> void:
+	var config := ConfigFile.new()
+	config.set_value("audio", "music", AudioServer.get_bus_volume_linear(1))
+	config.set_value("audio", "sfx", AudioServer.get_bus_volume_linear(2))
+	config.set_value("audio", "ui", AudioServer.get_bus_volume_linear(3))
+	config.set_value("window", "size", GameManager.preferred_size)
+	config.save(CONFIG_FILE_PATH)
+
+
+func load_config() -> void:
+	var config := ConfigFile.new()
+	var err = config.load(CONFIG_FILE_PATH)
+	if err != OK:
+		AudioServer.set_bus_volume_linear(1, 0.5)
+		AudioServer.set_bus_volume_linear(2, 0.5)
+		AudioServer.set_bus_volume_linear(3, 0.5)
+		return
+
+	AudioServer.set_bus_volume_linear(1,
+			config.get_value("audio", "music", 0.5))
+	AudioServer.set_bus_volume_linear(2,
+			config.get_value("audio", "sfx", 0.5))
+	AudioServer.set_bus_volume_linear(3,
+			config.get_value("audio", "ui", 0.5))
+	GameManager.preferred_size = config.get_value("window", "size", 1)
+	config_loaded.emit()

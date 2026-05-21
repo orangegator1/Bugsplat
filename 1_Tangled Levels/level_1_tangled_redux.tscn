@@ -529,12 +529,12 @@ animations = [{
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_x51mi"]
 
-[node name="Level" unique_id=100286297 instance=ExtResource("1_050qy")]
+[node name="Level" unique_id=1249978240 instance=ExtResource("1_050qy")]
 
-[node name="template" parent="." index="0" unique_id=453311639]
+[node name="template" parent="." index="0" unique_id=401439442]
 visible = false
 
-[node name="temp" parent="." index="1" unique_id=681609982]
+[node name="temp" parent="." index="1" unique_id=957574626]
 visible = false
 
 [node name="PlayerSpawn" parent="." index="2" unique_id=1233805077 instance=ExtResource("2_5dn02")]
@@ -605,7 +605,7 @@ position = Vector2(-24, -1856)
 [node name="BerryBush15" parent="BerryBushes" index="14" unique_id=1693460776 instance=ExtResource("4_72ulp")]
 position = Vector2(8, 256)
 
-[node name="ground" parent="." index="5" unique_id=378267237 groups=["growable_tiles"]]
+[node name="ground" parent="." index="5" unique_id=2022349774 groups=["growable_tiles"]]
 texture_repeat = 1
 tile_set = SubResource("TileSet_e73xf")
 rendering_quadrant_size = 64

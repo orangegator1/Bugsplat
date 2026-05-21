@@ -28,9 +28,10 @@ func _ready() -> void:
 	await get_player()
 	warm_particles()
 
-
 	await get_tree().process_frame
+	scene_entered.emit(current_scene)
 	load_scene_finished.emit()
+
 
 
 func transition_scene( new_scene: String,
@@ -63,7 +64,9 @@ func transition_scene( new_scene: String,
 
 	# allow time for player and camera to be positioned
 	# before showing the new scene
+	print("before")
 	await get_player()
+	print("got player in transition_scene")
 	await get_tree().process_frame
 	await fade_screen(Vector2.ZERO, -fade_pos)
 
@@ -81,15 +84,16 @@ func transition_scene_to_title( new_scene: String, dir: String) -> void:
 	await fade_screen(fade_pos, Vector2.ZERO)
 
 	shifting_incoming_level = false
+	if level:
+		level.position = Vector2.ZERO
+		level_offset = level.position
+		current_level = new_scene
+		current_scene = ""
+
 	if persistent_scene:
 		persistent_scene.queue_free.call_deferred()
 		await persistent_scene.tree_exited
 		persistent_scene = null
-
-	if level:
-		level.position = Vector2.ZERO
-		level_offset = level.position
-		print("")
 
 	get_tree().change_scene_to_file.call_deferred(new_scene)
 	await get_tree().scene_changed
@@ -107,6 +111,7 @@ func transition_scene_to_title( new_scene: String, dir: String) -> void:
 	get_tree().paused = false
 	fade.visible = false
 	load_scene_finished.emit()
+
 
 
 func on_new_scene_ready(_target_name: String, player_offset: Vector2) -> void:

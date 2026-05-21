@@ -10,6 +10,7 @@ class_name PauseMenu extends CanvasLayer
 @onready var music_slider: HSlider = %MusicSlider
 @onready var sfx_slider: HSlider = %SFXSlider
 @onready var ui_slider: HSlider = %UISlider
+@onready var sound_effect_player: SoundPlayer = $System/SoundEffectPlayer
 
 var title_path := "res://title_screen/TitleScreen.tscn"
 var player: Player
@@ -34,6 +35,14 @@ func show_system_menu() -> void:
 
 
 func setup_system_menu() -> void:
+	music_slider.value = AudioServer.get_bus_volume_linear(1)
+	sfx_slider.value = AudioServer.get_bus_volume_linear(2)
+	ui_slider.value = AudioServer.get_bus_volume_linear(3)
+
+	music_slider.value_changed.connect(on_music_slider_changed)
+	sfx_slider.value_changed.connect(on_sfx_slider_changed)
+	ui_slider.value_changed.connect(on_ui_slider_changed)
+
 	back_to_map_button.pressed.connect(show_pause_screen)
 	back_to_title_button.pressed.connect(on_back_to_title_pressed)
 
@@ -57,3 +66,20 @@ func _unhandled_input(event: InputEvent) -> void:
 	if pause_screen.visible == true:
 		if event.is_action_pressed("right"):
 			system_menu_button.grab_focus()
+
+
+func on_music_slider_changed(value: float) -> void:
+	AudioServer.set_bus_volume_linear(1, value)
+	SaveManager.save_config()
+
+
+func on_sfx_slider_changed(value: float) -> void:
+	AudioServer.set_bus_volume_linear(2, value)
+	sound_effect_player.play_sound(SFX.bugsplat, player.global_position)
+	SaveManager.save_config()
+
+
+func on_ui_slider_changed(value: float) -> void:
+	AudioServer.set_bus_volume_linear(3, value)
+	sound_effect_player.play_sound_global(SFX.bugsplat)
+	SaveManager.save_config()

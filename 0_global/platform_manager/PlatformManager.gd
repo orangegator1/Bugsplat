@@ -204,5 +204,5 @@ func get_dimensions(tml: GrowableTileset) -> Vector2:
 
 
 func get_position(tml: GrowableTileset) -> Vector2:
-	var rect = tml.get_used_rect()
-	return Vector2(rect.position.x, rect.position.y)
+	var rect := tml.get_used_rect()
+	return rect.position
