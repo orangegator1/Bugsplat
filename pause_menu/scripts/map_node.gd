@@ -63,20 +63,15 @@ func update_node() -> void:
 	size = new_size / SCALE_FACTOR
 	size = size.round()
 	create_entrance_data(transitions)
-
-	print("before")
 	create_transition_blocks()
-	print("after")
 
 
 func update_node_label(scene: Node) -> void:
 	if not label:
 		label = $Label
 	var t: String = scene.scene_file_path
-	print("initial t: " + t)
 	t = t.replace("res://1_Tangled Levels/","")
 	t = t.replace(".tscn","")
-	label.text = t
 
 
 func create_entrance_data(transitions: Array[LevelTransition]) -> void:
@@ -146,12 +141,11 @@ func add_block() -> ColorRect:
 func display_player_location() -> void:
 	var player := await SceneManager.get_player()
 	var indicator: Control = %PlayerIndicator
+	var tml = PlatformManager.layer
+	indicator_offset = PlatformManager.get_position(tml) * tml.tile_size
 	var pos = position
-	pos += ((player.position - indicator_offset) / SCALE_FACTOR)
-
-	var clamp_val := Vector2(4.0, 4.0)
-	# clamp position to 4px inside top left and bottom right corners
-	#pos = pos.clamp(position + clamp_val, position + size - clamp_val)
+	var offsets = indicator_offset + SceneManager.level_offset
+	pos += ((player.position - offsets) / SCALE_FACTOR)
 
 	indicator.position = pos
 	pass

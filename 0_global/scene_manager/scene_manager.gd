@@ -64,9 +64,7 @@ func transition_scene( new_scene: String,
 
 	# allow time for player and camera to be positioned
 	# before showing the new scene
-	print("before")
 	await get_player()
-	print("got player in transition_scene")
 	await get_tree().process_frame
 	await fade_screen(Vector2.ZERO, -fade_pos)
 

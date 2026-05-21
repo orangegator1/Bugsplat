@@ -56,8 +56,6 @@ func save_game(current_scene: String = SceneManager.current_scene) -> void:
 	var save_file = FileAccess.open(get_file_name(), FileAccess.WRITE)
 	save_file.store_line(JSON.stringify(save_data))
 
-	print("saved to slot " + str(current_slot + 1))
-
 
 func load_game(slot: int = current_slot) -> void:
 	current_slot = slot
@@ -103,13 +101,10 @@ func _unhandled_key_input(event: InputEvent) -> void:
 			load_game()
 		elif event.is_action_pressed("change_slot_1"):
 			current_slot = 0
-			print("save slot set to 1")
 		elif event.is_action_pressed("change_slot_2"):
 			current_slot = 1
-			print("save slot set to 2")
 		elif event.is_action_pressed("change_slot_3"):
 			current_slot = 2
-			print("save slot set to 3")
 
 
 func get_file_name(slot: int = current_slot) -> String:
