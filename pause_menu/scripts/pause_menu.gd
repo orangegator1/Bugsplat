@@ -35,8 +35,10 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	map_scroll_velocity = map_scroll_velocity.clamp(Vector2(-SCROLL_V, -SCROLL_V),
-			Vector2(SCROLL_V, SCROLL_V))
+	map_scroll_velocity = map_scroll_velocity.clamp(
+			Vector2(-SCROLL_V, -SCROLL_V),
+			Vector2(SCROLL_V, SCROLL_V)
+		)
 	map.position += map_scroll_velocity * delta
 	print(map_scroll_velocity)
 
@@ -69,6 +71,8 @@ func on_back_to_title_pressed() -> void:
 	SceneManager.initiated_from_pause_menu = true
 	SceneManager.transition_scene_to_title(title_path, "down")
 	get_tree().paused = false
+	await SceneManager.new_scene_ready
+	self.visible = false
 	await SceneManager.load_scene_finished
 	SceneManager.initiated_from_pause_menu = false
 	self.queue_free()

@@ -8,6 +8,7 @@ extends CanvasLayer
 # buttons
 @onready var new_game_button: Button = %NewGameButton
 @onready var load_game_button: Button = %LoadGameButton
+@onready var quit_button: Button = %QuitButton
 @onready var new_slot_01: Button = %NewSlot_01
 @onready var new_slot_02: Button = %NewSlot_02
 @onready var new_slot_03: Button = %NewSlot_03
@@ -19,6 +20,7 @@ extends CanvasLayer
 func _ready() -> void:
 	new_game_button.pressed.connect(show_new_game_menu)
 	load_game_button.pressed.connect(show_load_game_menu)
+	quit_button.pressed.connect(get_tree().quit)
 
 	new_slot_01.pressed.connect(_on_new_game_pressed.bind(0))
 	new_slot_02.pressed.connect(_on_new_game_pressed.bind(1))

@@ -111,7 +111,6 @@ func transition_scene_to_title( new_scene: String, dir: String) -> void:
 	load_scene_finished.emit()
 
 
-
 func on_new_scene_ready(_target_name: String, player_offset: Vector2) -> void:
 	# shift new level to match exit pos of old level to maintain parallax scroll
 	# need to wait exactly two frames and then incoming position

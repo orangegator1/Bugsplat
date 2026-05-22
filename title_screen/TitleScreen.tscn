@@ -577,17 +577,15 @@ tile_set = SubResource("TileSet_77lx7")
 [node name="MainMenu" type="VBoxContainer" parent="Control" unique_id=2040848580]
 unique_name_in_owner = true
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -33.0
-offset_top = -69.0
-offset_right = 48.0
-offset_bottom = 29.0
+offset_left = -40.5
+offset_top = 47.0
+offset_right = 40.5
+offset_bottom = 170.0
 grow_horizontal = 2
-grow_vertical = 2
+theme_override_constants/separation = 3
 
 [node name="Logo" type="Control" parent="Control/MainMenu" unique_id=352001954]
 custom_minimum_size = Vector2(0, 48)
@@ -597,6 +595,7 @@ size_flags_horizontal = 4
 [node name="Sprite2D" type="Sprite2D" parent="Control/MainMenu/Logo" unique_id=491039328]
 position = Vector2(0, 19)
 texture = ExtResource("7_eluts")
+metadata/_edit_group_ = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Control/MainMenu/Logo" unique_id=1576316238]
 libraries/ = SubResource("AnimationLibrary_k2kbh")
@@ -612,6 +611,11 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "Load Game
 "
+
+[node name="QuitButton" type="Button" parent="Control/MainMenu" unique_id=853230052]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Quit"
 
 [node name="NewGameMenu" type="VBoxContainer" parent="Control" unique_id=1490766193]
 unique_name_in_owner = true
