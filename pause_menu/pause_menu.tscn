@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b7x4dgp7d67dl"]
 
 [ext_resource type="Script" uid="uid://4ec0vu7phicx" path="res://pause_menu/scripts/pause_menu.gd" id="1_5hbt6"]
-[ext_resource type="PackedScene" path="res://pause_menu/map_node.tscn" id="2_rd7dy"]
+[ext_resource type="PackedScene" uid="uid://bbn4ciobob4wn" path="res://pause_menu/map_node.tscn" id="2_rd7dy"]
 [ext_resource type="Texture2D" uid="uid://c2uthh7oo08c0" path="res://pause_menu/mini levels/1-full-tangled.png" id="3_uwtdo"]
 [ext_resource type="PackedScene" uid="uid://co70v5wo02weh" path="res://pause_menu/mini levels/map_level_texture.tscn" id="3_wn31l"]
 [ext_resource type="Texture2D" uid="uid://bd6ph72kb7ihb" path="res://pause_menu/player_indicator.png" id="4_b4s0c"]
@@ -263,6 +263,7 @@ theme_override_fonts/font = SubResource("FontVariation_rd7dy")
 text = "Back"
 
 [node name="Inventory" type="Label" parent="PauseScreen" unique_id=757733072]
+unique_name_in_owner = true
 layout_mode = 0
 offset_left = 16.0
 offset_top = 48.0
@@ -271,6 +272,7 @@ offset_bottom = 61.0
 text = "Inventory"
 
 [node name="MapLabel" type="Label" parent="PauseScreen" unique_id=1540879402]
+unique_name_in_owner = true
 layout_mode = 0
 offset_left = 96.0
 offset_top = 48.0
@@ -278,14 +280,24 @@ offset_right = 136.0
 offset_bottom = 61.0
 text = "Map"
 
-[node name="Map" type="Control" parent="PauseScreen" unique_id=1035519575]
+[node name="Control" type="Control" parent="PauseScreen" unique_id=1654695580]
+clip_children = 1
+clip_contents = true
+anchors_preset = 0
+offset_top = 36.0
+offset_right = 480.0
+offset_bottom = 270.0
+
+[node name="Map" type="Control" parent="PauseScreen/Control" unique_id=1035519575]
+unique_name_in_owner = true
 anchors_preset = 0
 offset_left = 96.0
-offset_top = 65.0
+offset_top = 29.0
 offset_right = 461.0
-offset_bottom = 251.0
+offset_bottom = 215.0
+focus_mode = 2
 
-[node name="MapNode" parent="PauseScreen/Map" unique_id=794718223 instance=ExtResource("2_rd7dy")]
+[node name="MapNode" parent="PauseScreen/Control/Map" unique_id=794718223 instance=ExtResource("2_rd7dy")]
 layout_mode = 1
 offset_left = 5.0
 offset_top = 57.0
@@ -296,13 +308,13 @@ entrances_top = Array[Vector2]([Vector2(75.2, 4.4), Vector2(4, 60.4)])
 entrances_bottom = Array[Vector2]([Vector2(135.6, 43.8), Vector2(116.4, 2)])
 entrances_left = Array[Vector2]([Vector2(22, 53.8)])
 
-[node name="MapLevelTexture" parent="PauseScreen/Map/MapNode" unique_id=1104475451 instance=ExtResource("3_wn31l")]
+[node name="MapLevelTexture" parent="PauseScreen/Control/Map/MapNode" unique_id=1104475451 instance=ExtResource("3_wn31l")]
 layout_mode = 1
 
-[node name="TextureRect" parent="PauseScreen/Map/MapNode/MapLevelTexture" index="0" unique_id=942146988]
+[node name="TextureRect" parent="PauseScreen/Control/Map/MapNode/MapLevelTexture" index="0" unique_id=942146988]
 texture = ExtResource("3_uwtdo")
 
-[node name="MapNode2" parent="PauseScreen/Map" unique_id=419053178 instance=ExtResource("2_rd7dy")]
+[node name="MapNode2" parent="PauseScreen/Control/Map" unique_id=419053178 instance=ExtResource("2_rd7dy")]
 layout_mode = 1
 offset_left = -3.0
 offset_top = 2.0
@@ -312,13 +324,13 @@ linked_scene = "uid://bsnvh00iswdjn"
 entrances_top = Array[Vector2]([Vector2(18, 4.4)])
 entrances_bottom = Array[Vector2]([Vector2(83.2, 29.6)])
 
-[node name="MapLevelTexture" parent="PauseScreen/Map/MapNode2" unique_id=1070508890 instance=ExtResource("3_wn31l")]
+[node name="MapLevelTexture" parent="PauseScreen/Control/Map/MapNode2" unique_id=1070508890 instance=ExtResource("3_wn31l")]
 layout_mode = 1
 
-[node name="TextureRect" parent="PauseScreen/Map/MapNode2/MapLevelTexture" index="0" unique_id=942146988]
+[node name="TextureRect" parent="PauseScreen/Control/Map/MapNode2/MapLevelTexture" index="0" unique_id=942146988]
 texture = ExtResource("4_wn31l")
 
-[node name="MapNode3" parent="PauseScreen/Map" unique_id=2037800754 instance=ExtResource("2_rd7dy")]
+[node name="MapNode3" parent="PauseScreen/Control/Map" unique_id=2037800754 instance=ExtResource("2_rd7dy")]
 layout_mode = 1
 offset_left = 112.0
 offset_top = 10.0
@@ -329,13 +341,13 @@ entrances_top = Array[Vector2]([Vector2(10.8, 2)])
 entrances_right = Array[Vector2]([Vector2(51.4, 14.6)])
 entrances_bottom = Array[Vector2]([Vector2(31.6, 30.8)])
 
-[node name="MapLevelTexture" parent="PauseScreen/Map/MapNode3" unique_id=1503012262 instance=ExtResource("3_wn31l")]
+[node name="MapLevelTexture" parent="PauseScreen/Control/Map/MapNode3" unique_id=1503012262 instance=ExtResource("3_wn31l")]
 layout_mode = 1
 
-[node name="TextureRect" parent="PauseScreen/Map/MapNode3/MapLevelTexture" index="0" unique_id=942146988]
+[node name="TextureRect" parent="PauseScreen/Control/Map/MapNode3/MapLevelTexture" index="0" unique_id=942146988]
 texture = ExtResource("5_b0obc")
 
-[node name="MapNode4" parent="PauseScreen/Map" unique_id=1952530402 instance=ExtResource("2_rd7dy")]
+[node name="MapNode4" parent="PauseScreen/Control/Map" unique_id=1952530402 instance=ExtResource("2_rd7dy")]
 layout_mode = 1
 offset_left = 148.0
 offset_top = 83.0
@@ -347,13 +359,13 @@ entrances_right = Array[Vector2]([Vector2(44.4, 13.4)])
 entrances_bottom = Array[Vector2]([Vector2(19.2, 23.6)])
 entrances_left = Array[Vector2]([Vector2(13, 17)])
 
-[node name="MapLevelTexture" parent="PauseScreen/Map/MapNode4" unique_id=1356217480 instance=ExtResource("3_wn31l")]
+[node name="MapLevelTexture" parent="PauseScreen/Control/Map/MapNode4" unique_id=1356217480 instance=ExtResource("3_wn31l")]
 layout_mode = 1
 
-[node name="TextureRect" parent="PauseScreen/Map/MapNode4/MapLevelTexture" index="0" unique_id=942146988]
+[node name="TextureRect" parent="PauseScreen/Control/Map/MapNode4/MapLevelTexture" index="0" unique_id=942146988]
 texture = ExtResource("7_cux0y")
 
-[node name="PlayerIndicator" type="Control" parent="PauseScreen/Map" unique_id=1660589971]
+[node name="PlayerIndicator" type="Control" parent="PauseScreen/Control/Map" unique_id=1660589971]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 0
@@ -362,7 +374,8 @@ offset_top = 33.0
 offset_right = 199.0
 offset_bottom = 33.0
 
-[node name="TextureRect" type="TextureRect" parent="PauseScreen/Map/PlayerIndicator" unique_id=1754855087]
+[node name="TextureRect" type="TextureRect" parent="PauseScreen/Control/Map/PlayerIndicator" unique_id=1754855087]
+unique_name_in_owner = true
 layout_mode = 0
 offset_left = -3.0
 offset_top = -3.0
@@ -370,7 +383,7 @@ offset_right = 3.0
 offset_bottom = 3.0
 texture = ExtResource("4_b4s0c")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="PauseScreen/Map/PlayerIndicator" unique_id=288147317]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PauseScreen/Control/Map/PlayerIndicator" unique_id=288147317]
 libraries/ = SubResource("AnimationLibrary_wn31l")
 autoplay = &"default"
 
@@ -492,7 +505,7 @@ max_value = 1.0
 step = 0.05
 value = 1.0
 
-[editable path="PauseScreen/Map/MapNode/MapLevelTexture"]
-[editable path="PauseScreen/Map/MapNode2/MapLevelTexture"]
-[editable path="PauseScreen/Map/MapNode3/MapLevelTexture"]
-[editable path="PauseScreen/Map/MapNode4/MapLevelTexture"]
+[editable path="PauseScreen/Control/Map/MapNode/MapLevelTexture"]
+[editable path="PauseScreen/Control/Map/MapNode2/MapLevelTexture"]
+[editable path="PauseScreen/Control/Map/MapNode3/MapLevelTexture"]
+[editable path="PauseScreen/Control/Map/MapNode4/MapLevelTexture"]

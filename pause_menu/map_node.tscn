@@ -14,6 +14,7 @@ layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
 grow_horizontal = 2
+color = Color(0.16470589, 0.45490196, 0.38039216, 1)
 
 [node name="ColorRect2" type="ColorRect" parent="." unique_id=874189680]
 custom_minimum_size = Vector2(1, 1)
@@ -24,6 +25,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
+color = Color(0.16470589, 0.45490196, 0.38039216, 1)
 
 [node name="ColorRect3" type="ColorRect" parent="." unique_id=1592194049]
 custom_minimum_size = Vector2(1, 1)
@@ -31,6 +33,7 @@ layout_mode = 1
 anchors_preset = 9
 anchor_bottom = 1.0
 grow_vertical = 2
+color = Color(0.16470589, 0.45490196, 0.38039216, 1)
 
 [node name="ColorRect4" type="ColorRect" parent="." unique_id=638757303]
 custom_minimum_size = Vector2(1, 1)
@@ -41,6 +44,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 0
 grow_vertical = 2
+color = Color(0.16470589, 0.45490196, 0.38039216, 1)
 
 [node name="Label" type="Label" parent="." unique_id=2035792318]
 modulate = Color(1, 1, 1, 0.5294118)

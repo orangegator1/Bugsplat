@@ -5,6 +5,11 @@ class_name PauseMenu extends CanvasLayer
 
 @onready var back_button: Button = %BackButton
 @onready var system_menu_button: Button = %SystemMenuButton
+@onready var map: Control = %Map
+@onready var inventory: Label = %Inventory
+@onready var map_label: Label = %MapLabel
+
+@onready var system_back_button: Button = %SystemBackButton
 @onready var back_to_map_button: Button = %BackToMapButton
 @onready var back_to_title_button: Button = %BackToTitleButton
 @onready var music_slider: HSlider = %MusicSlider
@@ -14,14 +19,22 @@ class_name PauseMenu extends CanvasLayer
 
 var title_path := "res://title_screen/TitleScreen.tscn"
 var player: Player
+var map_focused: bool = false
+var initial_map_pos: Vector2
+var map_scroll_velocity: Vector2
 
 func _ready() -> void:
 	player = await SceneManager.get_player()
 	show_pause_screen()
+	initial_map_pos = map.position
 	system_menu_button.pressed.connect(show_system_menu)
+	back_button.pressed.connect(unpause)
 
 	setup_system_menu()
 
+
+func _process(delta: float) -> void:
+	map.position += map_scroll_velocity * delta
 
 func show_pause_screen() -> void:
 	pause_screen.visible = true
@@ -45,6 +58,7 @@ func setup_system_menu() -> void:
 
 	back_to_map_button.pressed.connect(show_pause_screen)
 	back_to_title_button.pressed.connect(on_back_to_title_pressed)
+	system_back_button.pressed.connect(unpause)
 
 
 func on_back_to_title_pressed() -> void:
@@ -59,13 +73,38 @@ func on_back_to_title_pressed() -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause"):
-		get_viewport().set_input_as_handled()
-		get_tree().paused = false
-		self.queue_free.call_deferred()
+		unpause()
+	if not map_focused:
+		if pause_screen.visible == true:
+			if event.is_action_pressed("right"):
+				system_menu_button.grab_focus()
+			elif (event.is_action_pressed("left")
+					or event.is_action_pressed("ui_up")):
+				back_button.grab_focus()
+			elif event.is_action_pressed("down"):
+				get_viewport().set_input_as_handled()
+				focus_map()
+	else:
+		if (event.is_action_pressed("ui_cancel")):
+			unfocus_map()
+		elif event.is_action_pressed("right"):
+			map.position += Vector2(-5, 0)
+		elif event.is_action_pressed("left"):
+			map.position += Vector2(5, 0)
+		elif event.is_action_pressed("down"):
+			map.position += Vector2(0, -5)
+		elif event.is_action_pressed("ui_up"):
+			map.position += Vector2(0, 5)
+		elif event.is_action_pressed("interact"):
+			zoom()
+		elif event.is_action_pressed("jump"):
+			zoom(false)
+		elif (event.is_action_released("right")
+				or event.is_action_released("left")
+				or event.is_action_released("down")
+				or event.is_action_released("ui_up")):
+			map_scroll_velocity = Vector2.ZERO
 
-	if pause_screen.visible == true:
-		if event.is_action_pressed("right"):
-			system_menu_button.grab_focus()
 
 
 func on_music_slider_changed(value: float) -> void:
@@ -83,3 +122,42 @@ func on_ui_slider_changed(value: float) -> void:
 	AudioServer.set_bus_volume_linear(3, value)
 	sound_effect_player.play_sound_global(SFX.bugsplat)
 	SaveManager.save_config()
+
+
+func unpause() -> void:
+	get_viewport().set_input_as_handled()
+	get_tree().paused = false
+	self.queue_free.call_deferred()
+
+
+func focus_map() -> void:
+	if not map_focused:
+		inventory.visible = false
+		map_label.visible = false
+		system_menu_button.visible = false
+
+		map_focused = true
+		map.grab_focus()
+		zoom()
+
+func unfocus_map() -> void:
+	if map_focused:
+		inventory.visible = true
+		map_label.visible = true
+		system_menu_button.visible = true
+
+		map_focused = false
+		map.scale = Vector2.ONE
+		map.pivot_offset = Vector2.ZERO
+		map.position = initial_map_pos
+		%PlayerIndicator.scale = Vector2.ONE
+
+func zoom(zoom_in := true) -> void:
+	# TODO pivot instead on center of visible map
+	if zoom_in and map.scale.y < 16:
+		map.scale *= 2
+		map.pivot_offset = %PlayerIndicator.position
+	elif not zoom_in and map.scale.y > 0.13:
+		map.scale /= 2
+		map.pivot_offset = %PlayerIndicator.position
+	%PlayerIndicator.scale = Vector2.ONE / map.scale
