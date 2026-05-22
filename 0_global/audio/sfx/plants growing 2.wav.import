@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://0luclghebtcu"
-path="res://.godot/imported/plants growing 2.wav-c2e7844baa948a1596cfde2e3a00f7e3.sample"
+path="res://.godot/imported/plants growing 2.wav-d3821c6f68272c331acfd1ce4e7523f7.sample"
 
 [deps]
 
-source_file="res://z_assets/sounds/plants growing 2.wav"
-dest_files=["res://.godot/imported/plants growing 2.wav-c2e7844baa948a1596cfde2e3a00f7e3.sample"]
+source_file="res://0_global/audio/sfx/plants growing 2.wav"
+dest_files=["res://.godot/imported/plants growing 2.wav-d3821c6f68272c331acfd1ce4e7523f7.sample"]
 
 [params]
 

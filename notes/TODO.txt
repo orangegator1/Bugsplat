@@ -1,21 +1,13 @@
 priority:
-add jump buffer, so jump can be input slightly before hitting the ground
-increase gravity at jump apex
-  -if so need to retest
-    -max gap you can jump
-    -max ledge_jump gap
 introduce health system UI with first fall
   2x scale above player, plays blinking animation, shrinks and moves into position
-  grace fall, take no damage when switching scenes
-    add special decoration to show a cushioned landing
+grace fall, take no damage when switching scenes
+  add special decoration to show a cushioned landing
 fix background parallax, calculate total height of interconnected levels for scroll_scale?
 limit growing to certain locations and a consumable
-can quit the game from some menu, "esc"
-title screen
 
 movement
   animation for sweet spot ledge jump
-  variable jump height
 
 add random flocks of small flying bugs, just decorative
 
@@ -42,40 +34,4 @@ parallax foreground
 COSMETICS -willah
   -UV mapping all player sprites?
 
-bug:
-  -freefall timer is working when ledge climbing and immediately dropping back down
-  -not working to regular walking off a ledge to a large drop
-
-done:
-movement
-  think about increasing max speed
-  ledge grab + ledge actions
-    -clean up snap position and climb up for slopes
-    -bug where ledge hang sprite is flipped
-  coyote time double jump bug
-  prevent ledge climb if no room
-animation
-  idle animation
-  tween grow/player movement
-  grow animation
-  there should a difference between jumping and falling animation
-  sitting or planting animation when growing
-    -tween time to center position should be relative to distance travelled
-sound
-  -sound effects
-    -overlapping sound effects
-version control
-parallax background(s)
-particle effects
-figure out a way to clean up tileset interiors
-  -just got rid of the edges (added them back with another rules files)
-    X-now needs a different color scheme?-X
-smooth camera move that moves ahead of player direction
-check collisions above when growing
-angled platforms automatically created by Tiled
-figure out a way to clean up tileset interiors
-  -need to draw 2-tall and 3-tall plats
-handle multiple sound effects playing on the same animation player at once
-bugs
-  growing tween/vertical issue
-  ledge vault on jump input within a small window, maintains horiz. momentum
+-freefall timer for a panicked falling animation, to indicate when you'll take damage

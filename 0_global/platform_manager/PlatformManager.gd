@@ -9,15 +9,26 @@ enum grow_mode { GEN, GROW, }
 
 const GROW_ANIMATION = preload("uid://dktop08srvo7l")
 
-func connect_player_to_platform_manager(player_p: CharacterBody2D) -> void:
-	player_p.standing_on_new_growable_layer.connect(set_layer)
+func _ready() -> void:
+	SceneManager.scene_entered.connect(clear_layer)
+
+
+func _process(_delta: float) -> void:
+	while not layer:
+		layer = get_tree().get_first_node_in_group("growable_tiles")
+		await get_tree().process_frame
+
 
 func set_layer(l: TileMapLayer) -> void:
 	layer = l
 
-func grow(layer_p: TileMapLayer,
-	atlas_id_p: int,
-	filler_tile_p: Vector2, player: CharacterBody2D) -> bool:
+
+func grow(
+		player: CharacterBody2D,
+		layer_p: TileMapLayer = layer,
+		atlas_id_p: int = layer.atlas_id,
+		filler_tile_p: Vector2 = layer.filler_tile
+	) -> bool:
 
 	layer = layer_p
 	atlas_id = atlas_id_p
@@ -151,6 +162,10 @@ func grow_stack(top_pos: Vector2i, draw := false) -> int:
 	return height
 
 
+func clear_layer(_p) -> void:
+	layer = null
+
+
 func search_nearby(pos: Vector2i) -> Dictionary:
 	# if on a slope or decoration tile there will be
 	# a tile coinciding with the player
@@ -183,6 +198,7 @@ func decorative_tile_or_empty_at(pos: Vector2i) -> bool:
 	else:
 		return tile_data.get_collision_polygons_count(0) == 0
 
+
 # takes global position as parameter
 func center_of_tile_at(global_pos: Vector2, tml: TileMapLayer) -> Vector2:
 	# convert to local layer coords
@@ -195,11 +211,12 @@ func center_of_tile_at(global_pos: Vector2, tml: TileMapLayer) -> Vector2:
 	return tml.to_global(pos)
 
 
-func get_vertical_bounds(tml: TileMapLayer) -> Array:
-	var rect = tml.get_used_rect()
-	var top = rect.position.y * tml.tile_size
-	var bot = rect.end.y * tml.tile_size
+func get_vertical_bounds() -> Array:
+	var rect = layer.get_used_rect()
+	var top = rect.position.y * layer.tile_size
+	var bot = rect.end.y * layer.tile_size
 	return [bot, top]
+
 
 func get_dimensions(tml: GrowableTileset) -> Vector2:
 	var rect = tml.get_used_rect()

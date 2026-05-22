@@ -10,12 +10,14 @@
 [ext_resource type="Script" uid="uid://dc2ea5p13ncoo" path="res://0_global/platform_manager/growable_tiles.gd" id="8_lt1vd"]
 [ext_resource type="PackedScene" uid="uid://b8t6hs55f7fot" path="res://general/input_hint/input_hint.tscn" id="9_vmr1m"]
 [ext_resource type="PackedScene" uid="uid://nfybjojpdmav" path="res://general/input_hint/input_hint_text.tscn" id="10_b78jc"]
-[ext_resource type="PackedScene" uid="uid://6r0tnlqktrqt" path="res://controllers/level_transition.tscn" id="11_v05tn"]
+[ext_resource type="PackedScene" uid="uid://6r0tnlqktrqt" path="res://controllers/level_transition/level_transition.tscn" id="11_v05tn"]
 [ext_resource type="PackedScene" uid="uid://dohx57d4togfn" path="res://z_scenes/trigger_scene2.tscn" id="12_kmrg3"]
 [ext_resource type="Texture2D" uid="uid://b54svetoukgg" path="res://z_assets/sprites/button prompt.png" id="13_voqy7"]
 [ext_resource type="Texture2D" uid="uid://cpipt2fils4qh" path="res://z_assets/sprites/goldfish-Sheet.png" id="14_4cqm4"]
 [ext_resource type="PackedScene" uid="uid://doqb5251g4xuq" path="res://z_scenes/goldfish.tscn" id="15_1hwjs"]
 [ext_resource type="PackedScene" uid="uid://cag4gg6j6hwin" path="res://z_scenes/resetzone.tscn" id="16_ujags"]
+[ext_resource type="Script" uid="uid://dkkdjk7qaen6r" path="res://music/music_auto_trigger.gd" id="17_e5evl"]
+[ext_resource type="AudioStream" uid="uid://4esm6cvs6jmj" path="res://music/time_for_adventure.mp3" id="18_k37tv"]
 
 [sub_resource type="Animation" id="Animation_rpsbk"]
 length = 0.001
@@ -1035,6 +1037,11 @@ position = Vector2(1216, 1016)
 
 [node name="floor" type="CollisionShape2D" parent="resetZone" index="1" unique_id=999741754]
 shape = SubResource("WorldBoundaryShape2D_x51mi")
+
+[node name="MusicAutoTrigger" type="Node" parent="." index="14" unique_id=674689677]
+script = ExtResource("17_e5evl")
+track = ExtResource("18_k37tv")
+metadata/_custom_type_script = "uid://dkkdjk7qaen6r"
 
 [connection signal="body_exited" from="FishTrigger" to="FishTrigger" method="_on_body_exited"]
 

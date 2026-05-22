@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://5xqaln1jo0jd"
-path="res://.godot/imported/ledge_climb_crumble.wav-a7f7dce869d77b4ed90554adb91c0994.sample"
+path="res://.godot/imported/ledge_climb_crumble.wav-1f16453443c89b043c66882a405494cf.sample"
 
 [deps]
 
-source_file="res://z_assets/sounds/ledge_climb_crumble.wav"
-dest_files=["res://.godot/imported/ledge_climb_crumble.wav-a7f7dce869d77b4ed90554adb91c0994.sample"]
+source_file="res://0_global/audio/sfx/ledge_climb_crumble.wav"
+dest_files=["res://.godot/imported/ledge_climb_crumble.wav-1f16453443c89b043c66882a405494cf.sample"]
 
 [params]
 

@@ -5,9 +5,11 @@
 [ext_resource type="TileSet" uid="uid://bnv78k4hype0d" path="res://0_global/platform_manager/two tile growing plat.tres" id="3_1qttq"]
 [ext_resource type="Script" uid="uid://dc2ea5p13ncoo" path="res://0_global/platform_manager/growable_tiles.gd" id="4_ra7vs"]
 [ext_resource type="PackedScene" uid="uid://c86qgbo36anj5" path="res://controllers/player_spawn/player_spawn.tscn" id="5_gvya1"]
-[ext_resource type="PackedScene" uid="uid://6r0tnlqktrqt" path="res://controllers/level_transition.tscn" id="6_6x08n"]
+[ext_resource type="PackedScene" uid="uid://6r0tnlqktrqt" path="res://controllers/level_transition/level_transition.tscn" id="6_6x08n"]
 [ext_resource type="PackedScene" uid="uid://bdfvwrub43ywh" path="res://pickups/berry_bush/BerryBush.tscn" id="7_vf87x"]
 [ext_resource type="PackedScene" uid="uid://cag4gg6j6hwin" path="res://z_scenes/resetzone.tscn" id="8_vl51v"]
+[ext_resource type="Script" uid="uid://dkkdjk7qaen6r" path="res://music/music_auto_trigger.gd" id="9_nkxbl"]
+[ext_resource type="AudioStream" uid="uid://c40jduvrf2pbs" path="res://music/forest_01.ogg" id="10_xvd6m"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_tqrpi"]
 
@@ -59,3 +61,8 @@ position = Vector2(4, 351)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="resetZone" index="1" unique_id=1115404089]
 shape = SubResource("WorldBoundaryShape2D_tqrpi")
+
+[node name="MusicAutoTrigger" type="Node" parent="." index="11" unique_id=1968798719]
+script = ExtResource("9_nkxbl")
+track = ExtResource("10_xvd6m")
+metadata/_custom_type_script = "uid://dkkdjk7qaen6r"

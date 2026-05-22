@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://cgmo2lonvkg14" path="res://1_Tangled Levels/parallax backgrounds/tangled far.png" id="3_tdprj"]
 [ext_resource type="Shader" uid="uid://bj84mjladf4rh" path="res://z_assets/shaders/god_rays.gdshader" id="4_77lx7"]
 [ext_resource type="Texture2D" uid="uid://cxe7veg0w5n04" path="res://title_screen/bugsplat-logo.png" id="7_eluts"]
+[ext_resource type="Script" uid="uid://dkkdjk7qaen6r" path="res://music/music_auto_trigger.gd" id="9_k2kbh"]
+[ext_resource type="AudioStream" uid="uid://4esm6cvs6jmj" path="res://music/time_for_adventure.mp3" id="10_1ly6i"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_270lm"]
 texture = ExtResource("1_270lm")
@@ -714,3 +716,8 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "Slot 3
 "
+
+[node name="MusicAutoTrigger" type="Node" parent="." unique_id=398374364]
+script = ExtResource("9_k2kbh")
+track = ExtResource("10_1ly6i")
+metadata/_custom_type_script = "uid://dkkdjk7qaen6r"

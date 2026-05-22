@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://dntq5lwfpst2y"
-path="res://.godot/imported/snd_splat.wav-ab3145454d1a9fb516f88a3df5d04339.sample"
+path="res://.godot/imported/snd_splat.wav-f364f28300afb1659711634511811425.sample"
 
 [deps]
 
-source_file="res://z_assets/sounds/snd_splat.wav"
-dest_files=["res://.godot/imported/snd_splat.wav-ab3145454d1a9fb516f88a3df5d04339.sample"]
+source_file="res://0_global/audio/sfx/snd_splat.wav"
+dest_files=["res://.godot/imported/snd_splat.wav-f364f28300afb1659711634511811425.sample"]
 
 [params]
 

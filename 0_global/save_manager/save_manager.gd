@@ -126,9 +126,9 @@ func on_scene_entered(scene_uid: String) -> void:
 
 func save_config() -> void:
 	var config := ConfigFile.new()
-	config.set_value("audio", "music", AudioServer.get_bus_volume_linear(1))
-	config.set_value("audio", "sfx", AudioServer.get_bus_volume_linear(2))
-	config.set_value("audio", "ui", AudioServer.get_bus_volume_linear(3))
+	config.set_value("audio", "music", AudioServer.get_bus_volume_linear(2))
+	config.set_value("audio", "sfx", AudioServer.get_bus_volume_linear(3))
+	config.set_value("audio", "ui", AudioServer.get_bus_volume_linear(4))
 	config.set_value("window", "size", GameManager.preferred_size)
 	config.save(CONFIG_FILE_PATH)
 
@@ -137,16 +137,16 @@ func load_config() -> void:
 	var config := ConfigFile.new()
 	var err = config.load(CONFIG_FILE_PATH)
 	if err != OK:
-		AudioServer.set_bus_volume_linear(1, 0.5)
 		AudioServer.set_bus_volume_linear(2, 0.5)
 		AudioServer.set_bus_volume_linear(3, 0.5)
+		AudioServer.set_bus_volume_linear(4, 0.5)
 		return
 
-	AudioServer.set_bus_volume_linear(1,
-			config.get_value("audio", "music", 0.5))
 	AudioServer.set_bus_volume_linear(2,
-			config.get_value("audio", "sfx", 0.5))
+			config.get_value("audio", "music", 0.5))
 	AudioServer.set_bus_volume_linear(3,
+			config.get_value("audio", "sfx", 0.5))
+	AudioServer.set_bus_volume_linear(4,
 			config.get_value("audio", "ui", 0.5))
 	GameManager.preferred_size = config.get_value("window", "size", 1)
 	config_loaded.emit()

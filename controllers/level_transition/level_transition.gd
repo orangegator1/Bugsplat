@@ -1,5 +1,5 @@
 @tool
-@icon("uid://xarc5lty5hwy")
+@icon("uid://ymb1m200f303")
 
 class_name LevelTransition extends Node2D
 

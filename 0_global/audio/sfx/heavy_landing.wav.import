@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://cc27w3uva0g43"
-path="res://.godot/imported/heavy_landing.wav-cc9c5ed3b63383f5efa06c9a4ad87688.sample"
+path="res://.godot/imported/heavy_landing.wav-30fded324821d3084728f65a551f9252.sample"
 
 [deps]
 
-source_file="res://z_assets/sounds/heavy_landing.wav"
-dest_files=["res://.godot/imported/heavy_landing.wav-cc9c5ed3b63383f5efa06c9a4ad87688.sample"]
+source_file="res://0_global/audio/sfx/heavy_landing.wav"
+dest_files=["res://.godot/imported/heavy_landing.wav-30fded324821d3084728f65a551f9252.sample"]
 
 [params]
 

@@ -30,7 +30,7 @@
 [ext_resource type="Texture2D" uid="uid://bi2ybrjch8j4f" path="res://tilesets/tileset tangled growth-Sheet.png" id="28_4fhw7"]
 [ext_resource type="Texture2D" uid="uid://fkdigdbx43dt" path="res://0_global/platform_manager/static growing plat, two tile.png" id="29_k1nda"]
 [ext_resource type="Script" uid="uid://dc2ea5p13ncoo" path="res://0_global/platform_manager/growable_tiles.gd" id="30_gfkph"]
-[ext_resource type="PackedScene" uid="uid://6r0tnlqktrqt" path="res://controllers/level_transition.tscn" id="31_pucfk"]
+[ext_resource type="PackedScene" uid="uid://6r0tnlqktrqt" path="res://controllers/level_transition/level_transition.tscn" id="31_pucfk"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_21h4b"]
 shader = ExtResource("4_t0hoo")

@@ -31,6 +31,8 @@ func _ready() -> void:
 	system_menu_button.pressed.connect(show_system_menu)
 	back_button.pressed.connect(unpause)
 
+	Audio.setup_button_audio(self)
+
 	setup_system_menu()
 
 
@@ -40,7 +42,7 @@ func _process(delta: float) -> void:
 			Vector2(SCROLL_V, SCROLL_V)
 		)
 	map.position += map_scroll_velocity * delta
-	print(map_scroll_velocity)
+
 
 func show_pause_screen() -> void:
 	pause_screen.visible = true
@@ -54,9 +56,9 @@ func show_system_menu() -> void:
 
 
 func setup_system_menu() -> void:
-	music_slider.value = AudioServer.get_bus_volume_linear(1)
-	sfx_slider.value = AudioServer.get_bus_volume_linear(2)
-	ui_slider.value = AudioServer.get_bus_volume_linear(3)
+	music_slider.value = AudioServer.get_bus_volume_linear(2)
+	sfx_slider.value = AudioServer.get_bus_volume_linear(3)
+	ui_slider.value = AudioServer.get_bus_volume_linear(4)
 
 	music_slider.value_changed.connect(on_music_slider_changed)
 	sfx_slider.value_changed.connect(on_sfx_slider_changed)
@@ -116,19 +118,19 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func on_music_slider_changed(value: float) -> void:
-	AudioServer.set_bus_volume_linear(1, value)
+	AudioServer.set_bus_volume_linear(2, value)
 	SaveManager.save_config()
 
 
 func on_sfx_slider_changed(value: float) -> void:
-	AudioServer.set_bus_volume_linear(2, value)
-	sound_effect_player.play_sound(SFX.bugsplat, player.global_position)
+	AudioServer.set_bus_volume_linear(3, value)
+	Audio.play_sound(Audio.bugsplat, player.global_position)
 	SaveManager.save_config()
 
 
 func on_ui_slider_changed(value: float) -> void:
-	AudioServer.set_bus_volume_linear(3, value)
-	sound_effect_player.play_sound_global(SFX.bugsplat)
+	AudioServer.set_bus_volume_linear(4, value)
+	Audio.play_sound_global(Audio.bugsplat)
 	SaveManager.save_config()
 
 
@@ -144,6 +146,7 @@ func focus_map() -> void:
 		map_label.visible = false
 		system_menu_button.visible = false
 
+		Audio.play_ui_audio(Audio.ui_focus_audio)
 		map_focused = true
 		map.grab_focus()
 		zoom()
@@ -151,6 +154,7 @@ func focus_map() -> void:
 
 func unfocus_map() -> void:
 	if map_focused:
+		Audio.play_ui_audio(Audio.ui_cancel_audio)
 		inventory.visible = true
 		map_label.visible = true
 		system_menu_button.visible = true

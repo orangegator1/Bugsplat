@@ -14,7 +14,7 @@ func _ready() -> void:
 func set_background_scroll_y() -> bool:
 	if not bg_parallax or not PlatformManager.layer:
 		return false
-	var range_y = PlatformManager.get_vertical_bounds(PlatformManager.layer)
+	var range_y = PlatformManager.get_vertical_bounds()
 	var bot = float(range_y[0])
 	var top = float(range_y[1])
 	var texture_h = bg_texture.size.y

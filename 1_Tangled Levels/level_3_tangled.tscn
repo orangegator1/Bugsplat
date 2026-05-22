@@ -3,10 +3,12 @@
 [ext_resource type="PackedScene" uid="uid://b1dqc3l0nlifm" path="res://tilesets/Tiled - Tangled/level 3 - tangled.tmx" id="1_h8pwi"]
 [ext_resource type="TileSet" uid="uid://bnv78k4hype0d" path="res://0_global/platform_manager/two tile growing plat.tres" id="2_cy45q"]
 [ext_resource type="Script" uid="uid://dc2ea5p13ncoo" path="res://0_global/platform_manager/growable_tiles.gd" id="5_0el0s"]
-[ext_resource type="PackedScene" uid="uid://6r0tnlqktrqt" path="res://controllers/level_transition.tscn" id="6_8tmjp"]
+[ext_resource type="PackedScene" uid="uid://6r0tnlqktrqt" path="res://controllers/level_transition/level_transition.tscn" id="6_8tmjp"]
 [ext_resource type="PackedScene" uid="uid://c86qgbo36anj5" path="res://controllers/player_spawn/player_spawn.tscn" id="7_xc622"]
 [ext_resource type="PackedScene" uid="uid://bdfvwrub43ywh" path="res://pickups/berry_bush/BerryBush.tscn" id="8_c47ob"]
+[ext_resource type="Script" uid="uid://dkkdjk7qaen6r" path="res://music/music_auto_trigger.gd" id="8_sx41u"]
 [ext_resource type="PackedScene" uid="uid://cag4gg6j6hwin" path="res://z_scenes/resetzone.tscn" id="9_bglby"]
+[ext_resource type="AudioStream" uid="uid://4esm6cvs6jmj" path="res://music/time_for_adventure.mp3" id="9_l6my5"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_qkylx"]
 
@@ -55,3 +57,8 @@ position = Vector2(5, 440)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="resetZone" index="1" unique_id=798528147]
 shape = SubResource("WorldBoundaryShape2D_qkylx")
+
+[node name="MusicAutoTrigger" type="Node" parent="." index="9" unique_id=551741966]
+script = ExtResource("8_sx41u")
+track = ExtResource("9_l6my5")
+metadata/_custom_type_script = "uid://dkkdjk7qaen6r"

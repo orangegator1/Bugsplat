@@ -4,7 +4,6 @@ class_name Player extends CharacterBody2D
 @export var jump_velocity: float = -300.0
 @export var max_health := 3
 
-signal standing_on_new_growable_layer(layer: TileMapLayer)
 signal health_changed(value: int)
 
 var height = 32
@@ -18,7 +17,6 @@ var jump_buffer_time := 0.15
 var jump_buffer_timer: float = 0
 var health: int
 var direction: float
-var layer_underfoot: TileMapLayer
 var last_y_veloc: float
 var climb_timer: SceneTreeTimer
 var input_dir: float
@@ -77,7 +75,6 @@ func _ready() -> void:
 
 	(animated_sprites.get_sprite_frames().
 			set_animation_speed("ledge_climb", 13 / ledge_climb_duration))
-	PlatformManager.connect_player_to_platform_manager(self)
 	speed = 150.0
 	health = max_health
 	health_changed.emit(health)
@@ -100,7 +97,6 @@ func _physics_process(delta: float) -> void:
 		return
 
 	for i in get_slide_collision_count():
-		get_layer_under_feet(get_slide_collision(i))
 		push_objects(get_slide_collision(i))
 
 	handle_movement(delta)
@@ -125,12 +121,10 @@ func handle_input() -> void:
 func grow_listener() -> void:
 	var grew = false
 	if Input.is_action_just_pressed("interact") and is_on_floor():
-		if layer_underfoot:
-			grew = await PlatformManager.grow(layer_underfoot,
-				layer_underfoot.atlas_id,
-				layer_underfoot.filler_tile, self)
+		if PlatformManager.layer:
+			grew = await PlatformManager.grow(self)
 	if grew:
-		sound_effect_player.play_sound(SFX.grow_up, global_position)
+		Audio.play_sound(Audio.grow_up, global_position)
 		#var time = sound_effect_player.current_animation_length
 		#if not Music.fading:
 			#Music.fade_music_out_in(time + 1)
@@ -155,7 +149,7 @@ func handle_movement(delta: float) -> void:
 		# zero x velocity during animation
 		velocity = Vector2.ZERO
 		animation_player.play("heavy_landing")
-		sound_effect_player.play_sound(SFX.heavy_landing, global_position)
+		Audio.play_sound(Audio.heavy_landing, global_position)
 		set_health_check_reset(-1)
 		var t = animation_player.get_animation("heavy_landing").length
 		var lock_out_timer = get_tree().create_timer(t)
@@ -204,9 +198,8 @@ func handle_movement(delta: float) -> void:
 
 	# when loading in there is no friction avail. until hitting the ground
 	if (not is_on_ledge	and not is_in_y_tween and not is_in_x_tween):
-		if layer_underfoot:
-			if layer_underfoot is GrowableTileset:
-				friction = layer_underfoot.friction
+		if PlatformManager.layer and PlatformManager.layer is GrowableTileset:
+				friction = PlatformManager.layer.friction
 		# accelerate
 		if input_dir:
 			# make switching directions feel more responsive to input
@@ -246,6 +239,8 @@ func handle_ledge_grab() -> void:
 		var tween = create_tween()
 		tween.tween_property(self, "global_position", tween_pos, 0.05)
 		set_tween_flags("xy", tween, ledge_grab_dir)
+		is_on_ledge = true
+		falling_fast = false
 
 
 func handle_ledge_input() -> void:
@@ -271,7 +266,7 @@ func handle_ledge_input() -> void:
 		# climb up, input into the wall
 		elif not is_in_y_tween:
 			# offsets specifically for the idle sprite
-			var tile_w = layer_underfoot.tile_size
+			var tile_w = PlatformManager.layer.tile_size
 
 			# set flags that determine tween position for ledge climb
 			# when hanging from ledge, top raycast hits sloped tiles above
@@ -296,18 +291,16 @@ func handle_ledge_input() -> void:
 			# check for tile collisions at the new position
 			var player_col_check_bot = snap_pos + Vector2(0, -tile_w / 2)
 			var player_col_check_top = snap_pos + Vector2(0, -tile_w * 1.5)
-			var collider_bot = PlatformManager \
-					.collider_at(player_col_check_bot)
+			var collider_bot = PlatformManager.collider_at(player_col_check_bot)
 			var vacant_bot = climbing_sloped or not collider_bot
 			climbing_sloped = false;
-			var vacant_top = not PlatformManager \
-					.collider_at(player_col_check_top)
+			var vacant_top = not PlatformManager.collider_at(player_col_check_top)
 			if vacant_bot and vacant_top:
 				var tween = create_tween()
 				tween.set_trans(Tween.TRANS_CIRC)
 				tween.tween_property(self, "global_position", snap_pos,
 					ledge_climb_duration)
-				sound_effect_player.play_sound(SFX.ledge_climb,
+				Audio.play_sound(Audio.ledge_climb,
 						global_position)
 
 				set_tween_flags("xy", tween, ledge_grab_dir)
@@ -324,7 +317,7 @@ func handle_ledge_input() -> void:
 		if ledge_grab_dir != input_dir:
 			velocity = Vector2(jump_velocity * ledge_grab_dir,
 					jump_velocity)
-			sound_effect_player.play_sound(SFX.ledge_jump, global_position)
+			Audio.play_sound(Audio.ledge_jump, global_position)
 			is_jumping = true
 			jumped = true
 			is_on_ledge = false
@@ -355,7 +348,6 @@ func get_ledge_snap_pos() -> Vector2:
 	is_on_small_ledge = not PlatformManager.collider_at(tile_below_pos)
 
 	climbing_sloped = normal.y != 0 or collider_above
-	is_on_ledge = true
 	velocity = Vector2.ZERO
 
 	# move the tile detection position into the tile by 1 pixel
@@ -447,20 +439,6 @@ func push_objects(collision: KinematicCollision2D) -> void:
 		collision.get_collider().apply_central_impulse(-collision.get_normal() * push_force)
 
 
-func get_layer_under_feet(collision: KinematicCollision2D) -> void:
-	# Check all collisions from the last movement
-	var collided := collision.get_collider()
-	var normal = collision.get_normal()
-
-	# Check if the thing we hit is a new tilemaplayer below the player
-	if (collided is TileMapLayer and normal.y < 0 and not layer_underfoot == collided):
-		layer_underfoot = collided
-		standing_on_new_growable_layer.emit(collided)
-
-		# disable growing on certain terrain?
-		#if (collided.is_in_group("growable_tiles")
-
-
 func set_tween_flags(mode: String, tween: Tween, dir := 0) -> void:
 	# print linked error to output
 	if (mode.contains("x") and is_in_x_tween
@@ -483,9 +461,9 @@ func set_tween_flags(mode: String, tween: Tween, dir := 0) -> void:
 
 
 func set_camera_limits() -> bool:
-	if not layer_underfoot or not camera_2d:
+	if not camera_2d:
 		return false
-	var range_y = PlatformManager.get_vertical_bounds(layer_underfoot)
+	var range_y = PlatformManager.get_vertical_bounds()
 	var bot = float(range_y[0])
 	var top = float(range_y[1])
 	var screen_h = GameManager.viewport_size.y

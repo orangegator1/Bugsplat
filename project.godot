@@ -23,13 +23,12 @@ buses/default_bus_layout="uid://call2a5402do5"
 
 PlatformManager="*uid://dfg1obpblo8rj"
 CustomErrors="*uid://lpm5etmqwbgu"
-SFX="*uid://ccj5oje5x2ftn"
 SceneManager="*uid://b8bcwim3yl6vu"
 GameManager="*uid://onbpgd444ymx"
 SaveManager="*uid://bl4vjepm2y78a"
 MessageBus="*uid://cjl85v1f0g178"
-MusicPlayer="*uid://tcar224h5tkw"
 UI="*uid://bjrldslfxfcuc"
+Audio="*uid://kcnqa2dmv1hd"
 
 [display]
 

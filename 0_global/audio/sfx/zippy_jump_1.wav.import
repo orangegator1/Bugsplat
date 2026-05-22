@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://d2nhpjdd8udiu"
-path="res://.godot/imported/zippy_jump_1.wav-418dac9df9b3619237d43b64f2c94e82.sample"
+path="res://.godot/imported/zippy_jump_1.wav-a1a83de1698fded69c86fbbfdfeb5de6.sample"
 
 [deps]
 
-source_file="res://z_assets/sounds/zippy_jump_1.wav"
-dest_files=["res://.godot/imported/zippy_jump_1.wav-418dac9df9b3619237d43b64f2c94e82.sample"]
+source_file="res://0_global/audio/sfx/zippy_jump_1.wav"
+dest_files=["res://.godot/imported/zippy_jump_1.wav-a1a83de1698fded69c86fbbfdfeb5de6.sample"]
 
 [params]
 
