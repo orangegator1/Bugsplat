@@ -22,6 +22,7 @@ var player: Player
 var map_focused: bool = false
 var initial_map_pos: Vector2
 var map_scroll_velocity: Vector2
+const SCROLL_V := 120.0
 
 func _ready() -> void:
 	player = await SceneManager.get_player()
@@ -34,7 +35,10 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
+	map_scroll_velocity = map_scroll_velocity.clamp(Vector2(-SCROLL_V, -SCROLL_V),
+			Vector2(SCROLL_V, SCROLL_V))
 	map.position += map_scroll_velocity * delta
+	print(map_scroll_velocity)
 
 func show_pause_screen() -> void:
 	pause_screen.visible = true
@@ -88,23 +92,23 @@ func _unhandled_input(event: InputEvent) -> void:
 		if (event.is_action_pressed("ui_cancel")):
 			unfocus_map()
 		elif event.is_action_pressed("right"):
-			map.position += Vector2(-5, 0)
+			map_scroll_velocity += Vector2(-SCROLL_V,0)
 		elif event.is_action_pressed("left"):
-			map.position += Vector2(5, 0)
+			map_scroll_velocity += Vector2(SCROLL_V,0)
 		elif event.is_action_pressed("down"):
-			map.position += Vector2(0, -5)
+			map_scroll_velocity += Vector2(0,-SCROLL_V)
 		elif event.is_action_pressed("ui_up"):
-			map.position += Vector2(0, 5)
+			map_scroll_velocity += Vector2(0,SCROLL_V)
 		elif event.is_action_pressed("interact"):
 			zoom()
 		elif event.is_action_pressed("jump"):
 			zoom(false)
 		elif (event.is_action_released("right")
-				or event.is_action_released("left")
-				or event.is_action_released("down")
+				or event.is_action_released("left")):
+			map_scroll_velocity.x = 0
+		elif (event.is_action_released("down")
 				or event.is_action_released("ui_up")):
-			map_scroll_velocity = Vector2.ZERO
-
+			map_scroll_velocity.y = 0
 
 
 func on_music_slider_changed(value: float) -> void:
@@ -140,6 +144,7 @@ func focus_map() -> void:
 		map.grab_focus()
 		zoom()
 
+
 func unfocus_map() -> void:
 	if map_focused:
 		inventory.visible = true
@@ -152,12 +157,13 @@ func unfocus_map() -> void:
 		map.position = initial_map_pos
 		%PlayerIndicator.scale = Vector2.ONE
 
+
 func zoom(zoom_in := true) -> void:
 	# TODO pivot instead on center of visible map
 	if zoom_in and map.scale.y < 16:
 		map.scale *= 2
 		map.pivot_offset = %PlayerIndicator.position
-	elif not zoom_in and map.scale.y > 0.13:
+	elif not zoom_in and map.scale.y > 1 / 2.0:
 		map.scale /= 2
 		map.pivot_offset = %PlayerIndicator.position
 	%PlayerIndicator.scale = Vector2.ONE / map.scale

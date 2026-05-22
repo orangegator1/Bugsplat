@@ -54,8 +54,12 @@ func grow(layer_p: TileMapLayer,
 		player.velocity.x = 0
 		# align player to tile grid
 		# gives coords at center of tile, need to drop half a tile
-		var snap = layer.map_to_local(top_pos) + Vector2(0, layer.tile_size / 2)
-		var x_delta = snap.x - player_local_pos.x
+		var snap = (layer.map_to_local(top_pos)
+				+ Vector2(0, layer.tile_size / 2)
+				+ SceneManager.level_offset)
+
+		var x_delta = snap.x - player.global_position.x
+
 		# change sprite direction if changing direction
 		# tween player x to tile grid
 		var dir = sign(x_delta) if abs(x_delta) > layer.tile_size / 4 else 0
@@ -72,7 +76,8 @@ func grow(layer_p: TileMapLayer,
 		# growing animation
 		var anim = GROW_ANIMATION.instantiate()
 		get_parent().add_child(anim)
-		anim.global_position = layer.map_to_local(new_height + Vector2i(0, num_tiles))
+		anim.global_position = (SceneManager.level_offset
+				+ layer.map_to_local(new_height + Vector2i(0, num_tiles)))
 
 		# consider as a coding exercise, instead of calling the whole function again
 		# use 'await tween.finished' in each function to set_cell and draw the tiles

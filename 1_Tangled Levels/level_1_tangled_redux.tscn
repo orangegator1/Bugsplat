@@ -634,7 +634,7 @@ position = Vector2(-4, -66)
 [node name="InputHint_A" parent="Tutorials" index="1" unique_id=531548890 instance=ExtResource("9_vmr1m")]
 position = Vector2(-1080, 888)
 owns_collision = true
-action = "move_left"
+action = "left"
 width = 5
 height = 3
 
@@ -662,7 +662,7 @@ position = Vector2(-4, -66)
 [node name="InputHint_D" parent="Tutorials" index="3" unique_id=1349117343 instance=ExtResource("9_vmr1m")]
 position = Vector2(-1048, 888)
 owns_collision = true
-action = "move_right"
+action = "right"
 width = 5
 height = 3
 
@@ -688,7 +688,7 @@ metadata/_edit_group_ = true
 [node name="LedgeGrab" parent="Tutorials" index="5" unique_id=1595537870 instance=ExtResource("9_vmr1m")]
 position = Vector2(-495, 937)
 owns_collision = true
-action = "move_right"
+action = "right"
 width = 6
 height = 3
 
@@ -710,7 +710,7 @@ can't quite jump over."
 [node name="LedgeClimb" parent="Tutorials" index="6" unique_id=897338471 instance=ExtResource("9_vmr1m")]
 position = Vector2(-46, 799)
 owns_collision = true
-action = "move_right"
+action = "right"
 height = 4
 
 [node name="Area2D" parent="Tutorials/LedgeClimb" index="0" unique_id=704134575]
@@ -773,7 +773,7 @@ ledges"
 [node name="LedgeJumpSide" parent="Tutorials" index="8" unique_id=307881503 instance=ExtResource("9_vmr1m")]
 position = Vector2(-284, 415)
 owns_collision = true
-action = "move_right"
+action = "right"
 width = 3
 height = 4
 
