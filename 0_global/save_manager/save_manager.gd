@@ -26,7 +26,7 @@ func create_new_game_save(slot: int = current_slot) -> void:
 		"scene_path" : new_game_scene,
 		"persistent_scene_path" : new_game_persistent_scene,
 		"x" : -1010,
-		"y" : 524,
+		"y" : 724,
 		"health" : 3,
 		"max_health" : 3,
 		"ability" : false,

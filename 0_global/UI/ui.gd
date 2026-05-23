@@ -54,3 +54,4 @@ func new_game_tutorial(i: int) -> void:
 		animation_player.play("tutorial")
 	else:
 		animation_player.play("tutorial_done")
+		new_game = false

@@ -34,5 +34,4 @@ grow:
 
 camera deadzone, edit lerping, add camera boundaries when theres nothing to see
 
-
 -freefall timer for a panicked falling animation, to indicate when you'll take damage

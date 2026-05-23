@@ -42,7 +42,8 @@ var falling_fast := false
 var camera_set_up := false
 var resetting := false
 
-@onready var animated_sprites: AnimatedSprite2D = $AnimatedSprite2D
+@onready var animated_sprites: AnimatedSprite2D = $Node2D/AnimatedSprite2D
+@onready var cosmetics: AnimatedSprite2D = $Node2D/Cosmetics
 @onready var coyote_timer: Timer = $CoyoteTimer
 @onready var collider: CollisionShape2D = $CollisionShape2D
 @onready var ledge_grab_miss: RayCast2D = $ledgeGrabMiss
@@ -50,7 +51,6 @@ var resetting := false
 @onready var ledge_climb_lockout: Timer = $ledgeClimbLockout
 @onready var camera_2d: Camera2D = $Camera2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
-@onready var sound_effect_player: AnimationPlayer = $SoundEffectPlayer
 @onready var debug_label: Label = $DebugLabel
 @onready var dirt_falling: GPUParticles2D = $Particles/DirtFalling
 @onready var dirt_falling_2: GPUParticles2D = $Particles/DirtFalling2
@@ -110,7 +110,6 @@ func _physics_process(delta: float) -> void:
 	if was_on_floor and not is_on_floor() and not is_jumping:
 		coyote_timer.start()
 
-
 	handle_input()
 
 
@@ -125,9 +124,6 @@ func grow_listener() -> void:
 			grew = await PlatformManager.grow(self)
 	if grew:
 		Audio.play_sound(Audio.grow_up, global_position)
-		#var time = sound_effect_player.current_animation_length
-		#if not Music.fading:
-			#Music.fade_music_out_in(time + 1)
 
 
 func handle_movement(delta: float) -> void:
@@ -377,18 +373,24 @@ func handle_sprite() -> void:
 	elif velocity.x < 0:
 		animated_sprites.flip_h = true
 
+	var current_animation := ""
+
 	if health <= 0:
 		if not animated_sprites.animation == "reset" and not resetting:
 			resetting = true
+			current_animation = "reset"
 			animated_sprites.play("reset")
 	elif animation_player.is_playing():
 		pass
 	elif is_on_ledge:
 		if is_on_small_ledge:
+			current_animation = "ledge_hang_small"
 			animated_sprites.play("ledge_hang_small")
 		else:
+			current_animation = "ledge_hang"
 			animated_sprites.play("ledge_hang")
 	elif ledge_climbing:
+		current_animation = "ledge_climb"
 		animated_sprites.play("ledge_climb")
 		if started_climb and climb_timer.time_left > 0:
 			started_climb = false
@@ -405,23 +407,30 @@ func handle_sprite() -> void:
 			particles.emitting = true
 
 			await climb_timer.timeout
+			current_animation = "idle"
 			animated_sprites.play("idle")
 			animated_sprites.offset.y += 8
 	elif is_on_floor():
 		if velocity.x != 0 or is_in_x_tween:
+			current_animation = "run"
 			animated_sprites.play("run")
 		else:
+			current_animation = "idle"
 			animated_sprites.play("idle")
 	elif jumped:
+		current_animation = "jump"
 		animated_sprites.play("jump")
 		await animated_sprites.animation_finished
 		jumped = false
-	elif not ledge_climbing and is_jumping:
-		animated_sprites.play("falling")
-	elif velocity.y > 0:
+	elif (not ledge_climbing and is_jumping) or velocity.y > 0:
+		current_animation = "falling"
 		animated_sprites.play("falling")
 	else:
+		current_animation = "idle"
 		animated_sprites.play("idle")
+
+	cosmetics.play(current_animation)
+	cosmetics.flip_h = animated_sprites.flip_h
 
 
 func _unhandled_input(event: InputEvent) -> void:
