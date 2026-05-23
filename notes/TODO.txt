@@ -1,6 +1,4 @@
 priority:
-introduce health system UI with first fall
-  2x scale above player, plays blinking animation, shrinks and moves into position
 grace fall, take no damage when switching scenes
   add special decoration to show a cushioned landing
 
