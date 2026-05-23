@@ -65,4 +65,5 @@ shape = SubResource("WorldBoundaryShape2D_tqrpi")
 [node name="MusicAutoTrigger" type="Node" parent="." index="11" unique_id=1968798719]
 script = ExtResource("9_nkxbl")
 track = ExtResource("10_xvd6m")
+reverb = 1
 metadata/_custom_type_script = "uid://dkkdjk7qaen6r"

@@ -540,7 +540,7 @@ visible = false
 visible = false
 
 [node name="PlayerSpawn" parent="." index="2" unique_id=1233805077 instance=ExtResource("2_5dn02")]
-position = Vector2(-1040, 668)
+position = Vector2(-89, 552)
 
 [node name="MovingPlatforms" type="Node2D" parent="." index="3" unique_id=1539940851]
 
@@ -565,46 +565,49 @@ z_index = 1
 [node name="BerryBush" parent="BerryBushes" index="0" unique_id=796169510 instance=ExtResource("4_72ulp")]
 position = Vector2(2070, -992)
 
-[node name="BerryBush2" parent="BerryBushes" index="1" unique_id=1170723643 instance=ExtResource("4_72ulp")]
+[node name="BerryBush16" parent="BerryBushes" index="1" unique_id=392459704 instance=ExtResource("4_72ulp")]
+position = Vector2(-927.317, 825.1696)
+
+[node name="BerryBush2" parent="BerryBushes" index="2" unique_id=1170723643 instance=ExtResource("4_72ulp")]
 position = Vector2(2144, -1040)
 
-[node name="BerryBush3" parent="BerryBushes" index="2" unique_id=22457410 instance=ExtResource("4_72ulp")]
+[node name="BerryBush3" parent="BerryBushes" index="3" unique_id=22457410 instance=ExtResource("4_72ulp")]
 position = Vector2(2240, -1264)
 
-[node name="BerryBush4" parent="BerryBushes" index="3" unique_id=1912843301 instance=ExtResource("4_72ulp")]
+[node name="BerryBush4" parent="BerryBushes" index="4" unique_id=1912843301 instance=ExtResource("4_72ulp")]
 position = Vector2(2256, -1264)
 
-[node name="BerryBush5" parent="BerryBushes" index="4" unique_id=1080050888 instance=ExtResource("4_72ulp")]
+[node name="BerryBush5" parent="BerryBushes" index="5" unique_id=1080050888 instance=ExtResource("4_72ulp")]
 position = Vector2(1768, -1040)
 
-[node name="BerryBush6" parent="BerryBushes" index="5" unique_id=1145736369 instance=ExtResource("4_72ulp")]
+[node name="BerryBush6" parent="BerryBushes" index="6" unique_id=1145736369 instance=ExtResource("4_72ulp")]
 position = Vector2(1720, -1120)
 
-[node name="BerryBush7" parent="BerryBushes" index="6" unique_id=1775547164 instance=ExtResource("4_72ulp")]
+[node name="BerryBush7" parent="BerryBushes" index="7" unique_id=1775547164 instance=ExtResource("4_72ulp")]
 position = Vector2(1736, -1120)
 
-[node name="BerryBush8" parent="BerryBushes" index="7" unique_id=805972629 instance=ExtResource("4_72ulp")]
+[node name="BerryBush8" parent="BerryBushes" index="8" unique_id=805972629 instance=ExtResource("4_72ulp")]
 position = Vector2(304, 784)
 
-[node name="BerryBush9" parent="BerryBushes" index="8" unique_id=1722547748 instance=ExtResource("4_72ulp")]
+[node name="BerryBush9" parent="BerryBushes" index="9" unique_id=1722547748 instance=ExtResource("4_72ulp")]
 position = Vector2(2744, -176)
 
-[node name="BerryBush10" parent="BerryBushes" index="9" unique_id=1727416832 instance=ExtResource("4_72ulp")]
+[node name="BerryBush10" parent="BerryBushes" index="10" unique_id=1727416832 instance=ExtResource("4_72ulp")]
 position = Vector2(1880, -1616)
 
-[node name="BerryBush11" parent="BerryBushes" index="10" unique_id=1141893937 instance=ExtResource("4_72ulp")]
+[node name="BerryBush11" parent="BerryBushes" index="11" unique_id=1141893937 instance=ExtResource("4_72ulp")]
 position = Vector2(-1176, 640)
 
-[node name="BerryBush12" parent="BerryBushes" index="11" unique_id=937295623 instance=ExtResource("4_72ulp")]
+[node name="BerryBush12" parent="BerryBushes" index="12" unique_id=937295623 instance=ExtResource("4_72ulp")]
 position = Vector2(336, -1504)
 
-[node name="BerryBush13" parent="BerryBushes" index="12" unique_id=1176265962 instance=ExtResource("4_72ulp")]
+[node name="BerryBush13" parent="BerryBushes" index="13" unique_id=1176265962 instance=ExtResource("4_72ulp")]
 position = Vector2(8, -1232)
 
-[node name="BerryBush14" parent="BerryBushes" index="13" unique_id=1402923748 instance=ExtResource("4_72ulp")]
+[node name="BerryBush14" parent="BerryBushes" index="14" unique_id=1402923748 instance=ExtResource("4_72ulp")]
 position = Vector2(-24, -1856)
 
-[node name="BerryBush15" parent="BerryBushes" index="14" unique_id=1693460776 instance=ExtResource("4_72ulp")]
+[node name="BerryBush15" parent="BerryBushes" index="15" unique_id=1693460776 instance=ExtResource("4_72ulp")]
 position = Vector2(8, 256)
 
 [node name="ground" parent="." index="5" unique_id=2022349774 groups=["growable_tiles"]]

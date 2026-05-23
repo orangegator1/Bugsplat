@@ -212,6 +212,8 @@ func center_of_tile_at(global_pos: Vector2, tml: TileMapLayer) -> Vector2:
 
 
 func get_vertical_bounds() -> Array:
+	if not layer:
+		return [0, 0]
 	var rect = layer.get_used_rect()
 	var top = rect.position.y * layer.tile_size
 	var bot = rect.end.y * layer.tile_size

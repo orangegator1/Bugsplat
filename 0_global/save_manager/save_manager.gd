@@ -26,7 +26,7 @@ func create_new_game_save(slot: int = current_slot) -> void:
 		"scene_path" : new_game_scene,
 		"persistent_scene_path" : new_game_persistent_scene,
 		"x" : -1010,
-		"y" : 724,
+		"y" : 524,
 		"health" : 3,
 		"max_health" : 3,
 		"ability" : false,
@@ -35,6 +35,10 @@ func create_new_game_save(slot: int = current_slot) -> void:
 	}
 	var save_file = FileAccess.open(get_file_name(), FileAccess.WRITE)
 	save_file.store_line(JSON.stringify(save_data))
+
+	# tutorialize HUD
+	UI.new_game = true
+	UI.visible = false
 
 
 func save_game(current_scene: String = SceneManager.current_scene) -> void:
@@ -73,9 +77,9 @@ func load_game(slot: int = current_slot) -> void:
 	# load persistent scene if one exists in the save file
 	# the persistent scene will add the scene at the scene_path above as a
 	# child and only load/unload necessary components to improve load time
-	var persistent_scene_path = save_data.get("persistent_scene_path", "")
 	var persistent_scene = get_tree().get_first_node_in_group("PersistentScene")
 	if not persistent_scene:
+		var persistent_scene_path = save_data.get("persistent_scene_path", "")
 		persistent_scene = load(persistent_scene_path).instantiate()
 		get_tree().root.add_child(persistent_scene)
 	SceneManager.transition_scene(scene_path, "", Vector2.ZERO, "up")

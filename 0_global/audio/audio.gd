@@ -70,7 +70,20 @@ func get_music_player(i: int) -> AudioStreamPlayer:
 
 
 func set_reverb(type: REVERB_TYPE) -> void:
-	print(type)
+	var reverb_fx: AudioEffectReverb = AudioServer.get_bus_effect(1, 0)
+	if not reverb_fx:
+		return
+
+	AudioServer.set_bus_effect_enabled(1, 0, true)
+	match type:
+		REVERB_TYPE.NONE:
+			AudioServer.set_bus_effect_enabled(1, 0, false)
+		REVERB_TYPE.SMALL:
+			reverb_fx.room_size = 0.2
+		REVERB_TYPE.MEDIUM:
+			reverb_fx.room_size = 0.5
+		REVERB_TYPE.LARGE:
+			reverb_fx.room_size = 0.8
 
 
 func play_sound(audio: AudioStream, pos: Vector2) -> void:
