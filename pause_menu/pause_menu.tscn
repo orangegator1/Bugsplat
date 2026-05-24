@@ -9,13 +9,15 @@
 [ext_resource type="Texture2D" uid="uid://bv50p6ch6lyld" path="res://pause_menu/mini levels/3-tangled.png" id="5_b0obc"]
 [ext_resource type="Texture2D" uid="uid://0414246kjuvp" path="res://pause_menu/mini levels/4-tangled.png" id="7_cux0y"]
 [ext_resource type="AudioStream" uid="uid://dntq5lwfpst2y" path="res://0_global/audio/sfx/snd_splat.wav" id="9_aj446"]
+[ext_resource type="Script" uid="uid://b851ni85n5v2l" path="res://pause_menu/scripts/inventory_menu.gd" id="9_y6n36"]
+[ext_resource type="Texture2D" uid="uid://dxxnleamq5wm0" path="res://player/beetle, master-Sheet.png" id="10_xvc88"]
 [ext_resource type="AudioStream" uid="uid://0luclghebtcu" path="res://0_global/audio/sfx/plants growing 2.wav" id="10_y6n36"]
+[ext_resource type="Texture2D" uid="uid://bp0bw80m88smy" path="res://player/cosmetics/propeller-hat.png" id="11_5u3lt"]
 [ext_resource type="AudioStream" uid="uid://do66uc6f1rwqk" path="res://z_assets/sounds/impact-2.wav" id="11_xvc88"]
 [ext_resource type="AudioStream" uid="uid://582quqnrjakn" path="res://z_assets/sounds/dirt and leaves/dry-dirt-crumble-impact.wav" id="12_5u3lt"]
 [ext_resource type="AudioStream" uid="uid://cixbdrkipnpso" path="res://z_assets/sounds/hurt_quiet.wav" id="13_gm4du"]
 [ext_resource type="AudioStream" uid="uid://5xqaln1jo0jd" path="res://0_global/audio/sfx/ledge_climb_crumble.wav" id="14_etxg4"]
 [ext_resource type="AudioStream" uid="uid://d2nhpjdd8udiu" path="res://0_global/audio/sfx/zippy_jump_1.wav" id="15_nsdwt"]
-[ext_resource type="Script" uid="uid://cetgq324jeowg" path="res://player/sound_effect_player.gd" id="16_plusc"]
 
 [sub_resource type="FontVariation" id="FontVariation_5hbt6"]
 spacing_glyph = 2
@@ -199,6 +201,32 @@ _data = {
 &"ledge_jump": SubResource("Animation_smehm")
 }
 
+[sub_resource type="GDScript" id="GDScript_sp6kg"]
+script/source = "class_name SoundPlayer extends AnimationPlayer
+
+func play_sound(audio: AudioStream, pos: Vector2) -> void:
+	# Check if a primary player exists and is playing
+	# Create a new, temporary player
+	if is_playing:
+		var audio_player  = AudioStreamPlayer2D.new()
+		add_child(audio_player)
+		audio_player.bus = \"SFX\"
+		audio_player.global_position = pos
+		audio_player.stream = audio
+		audio_player.finished.connect(audio_player.queue_free)
+		audio_player.play()
+	else:
+		play()
+
+func play_sound_global(audio: AudioStream) -> void:
+	var audio_player  = AudioStreamPlayer2D.new()
+	add_child(audio_player)
+	audio_player.bus = \"UI\"
+	audio_player.stream = audio
+	audio_player.finished.connect(audio_player.queue_free)
+	audio_player.play()
+"
+
 [node name="PauseMenu" type="CanvasLayer" unique_id=812449675]
 process_mode = 3
 layer = 2
@@ -259,10 +287,12 @@ offset_left = 8.0
 offset_top = 8.0
 offset_right = 79.0
 offset_bottom = 29.0
+focus_neighbor_right = NodePath("../SystemMenuButton")
+focus_neighbor_bottom = NodePath("../Control/InventoryMenu")
 theme_override_fonts/font = SubResource("FontVariation_rd7dy")
 text = "Back"
 
-[node name="Inventory" type="Label" parent="PauseScreen" unique_id=757733072]
+[node name="InventoryLabel" type="Label" parent="PauseScreen" unique_id=757733072]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 16.0
@@ -292,16 +322,18 @@ offset_bottom = 270.0
 unique_name_in_owner = true
 anchors_preset = 0
 offset_left = 96.0
-offset_top = 29.0
+offset_top = 32.0
 offset_right = 461.0
-offset_bottom = 215.0
+offset_bottom = 218.0
+focus_neighbor_left = NodePath("../InventoryMenu")
+focus_neighbor_top = NodePath("../../SystemMenuButton")
 focus_mode = 2
 
 [node name="MapNode" parent="PauseScreen/Control/Map" unique_id=794718223 instance=ExtResource("2_rd7dy")]
 layout_mode = 1
-offset_left = 5.0
+offset_left = 8.0
 offset_top = 57.0
-offset_right = 147.0
+offset_right = 150.0
 offset_bottom = 142.0
 linked_scene = "uid://b5tobrceh3joe"
 entrances_top = Array[Vector2]([Vector2(75.2, 4.4), Vector2(4, 60.4)])
@@ -316,9 +348,8 @@ texture = ExtResource("3_uwtdo")
 
 [node name="MapNode2" parent="PauseScreen/Control/Map" unique_id=419053178 instance=ExtResource("2_rd7dy")]
 layout_mode = 1
-offset_left = -3.0
 offset_top = 2.0
-offset_right = 111.0
+offset_right = 114.0
 offset_bottom = 56.0
 linked_scene = "uid://bsnvh00iswdjn"
 entrances_top = Array[Vector2]([Vector2(18, 4.4)])
@@ -332,9 +363,9 @@ texture = ExtResource("4_wn31l")
 
 [node name="MapNode3" parent="PauseScreen/Control/Map" unique_id=2037800754 instance=ExtResource("2_rd7dy")]
 layout_mode = 1
-offset_left = 112.0
+offset_left = 115.0
 offset_top = 10.0
-offset_right = 170.0
+offset_right = 173.0
 offset_bottom = 56.0
 linked_scene = "uid://bsssooisi2b0i"
 entrances_top = Array[Vector2]([Vector2(10.8, 2)])
@@ -349,9 +380,9 @@ texture = ExtResource("5_b0obc")
 
 [node name="MapNode4" parent="PauseScreen/Control/Map" unique_id=1952530402 instance=ExtResource("2_rd7dy")]
 layout_mode = 1
-offset_left = 148.0
+offset_left = 151.0
 offset_top = 83.0
-offset_right = 200.0
+offset_right = 203.0
 offset_bottom = 112.0
 linked_scene = "uid://xw5mdo4mn0on"
 entrances_top = Array[Vector2]([Vector2(20.8, 4.4)])
@@ -387,6 +418,79 @@ texture = ExtResource("4_b4s0c")
 libraries/ = SubResource("AnimationLibrary_wn31l")
 autoplay = &"default"
 
+[node name="MapOverlay" type="ColorRect" parent="PauseScreen/Control/Map" unique_id=1503242618]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="InventoryMenu" type="Control" parent="PauseScreen/Control" unique_id=797705105]
+unique_name_in_owner = true
+anchors_preset = 0
+offset_left = 14.0
+offset_top = 32.0
+offset_right = 87.0
+offset_bottom = 217.0
+focus_neighbor_top = NodePath("../../BackButton")
+focus_neighbor_right = NodePath("../Map")
+focus_mode = 2
+script = ExtResource("9_y6n36")
+
+[node name="InventoryOverlay" type="ColorRect" parent="PauseScreen/Control/InventoryMenu" unique_id=990802591]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="InventoryFull" type="Control" parent="PauseScreen/Control/InventoryMenu" unique_id=1996355735]
+unique_name_in_owner = true
+anchors_preset = 0
+offset_top = -18.0
+offset_right = 448.0
+offset_bottom = 185.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PauseScreen/Control/InventoryMenu/InventoryFull" unique_id=936428860]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -170.0
+offset_right = 170.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PlayerRepresentation" type="Control" parent="PauseScreen/Control/InventoryMenu/InventoryFull/HBoxContainer" unique_id=892067548]
+custom_minimum_size = Vector2(96, 0)
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="PauseScreen/Control/InventoryMenu/InventoryFull/HBoxContainer/PlayerRepresentation" unique_id=728543005]
+position = Vector2(0, 11.999996)
+scale = Vector2(3, 3)
+texture = ExtResource("10_xvc88")
+centered = false
+hframes = 7
+vframes = 7
+
+[node name="HatSlot" type="Sprite2D" parent="PauseScreen/Control/InventoryMenu/InventoryFull/HBoxContainer/PlayerRepresentation" unique_id=1120005260]
+position = Vector2(0, 12)
+scale = Vector2(3, 3)
+texture = ExtResource("11_5u3lt")
+centered = false
+hframes = 7
+vframes = 11
+
+[node name="InventoryItems" type="VBoxContainer" parent="PauseScreen/Control/InventoryMenu/InventoryFull/HBoxContainer" unique_id=514016766]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
 [node name="SystemMenuButton" type="Button" parent="PauseScreen" unique_id=1336105863]
 unique_name_in_owner = true
 layout_mode = 0
@@ -394,6 +498,8 @@ offset_left = 392.0
 offset_top = 45.0
 offset_right = 463.0
 offset_bottom = 66.0
+focus_neighbor_left = NodePath("../BackButton")
+focus_neighbor_bottom = NodePath("../Control/Map")
 theme_override_fonts/font = SubResource("FontVariation_rd7dy")
 text = "Settings"
 
@@ -410,7 +516,7 @@ grow_vertical = 2
 
 [node name="SoundEffectPlayer" type="AnimationPlayer" parent="System" unique_id=1115295440]
 libraries/ = SubResource("AnimationLibrary_htrey")
-script = ExtResource("16_plusc")
+script = SubResource("GDScript_sp6kg")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="System/SoundEffectPlayer" unique_id=1005160065]
 bus = &"SFX"

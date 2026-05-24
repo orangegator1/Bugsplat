@@ -196,7 +196,7 @@ func warm_particles() -> void:
 
 func reset() -> void:
 	var player = get_tree().get_first_node_in_group("Player")
-	player.sound_effect_player.play("bugsplat")
+	Audio.play_sound(Audio.bugsplat, player.global_position)
 	Engine.time_scale = 0.3
 	player.collider.queue_free()
 	await get_tree().create_timer(0.8, true, false, true).timeout

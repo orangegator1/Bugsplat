@@ -107,6 +107,12 @@ func setup_button_audio(node: Node) -> void:
 		c.focus_entered.connect(ui_focus_change)
 
 
+func setup_button_audio_manual(node: Control) -> void:
+	if node is Button:
+		node.pressed.connect(ui_select)
+	node.focus_entered.connect(ui_focus_change)
+
+
 func ui_focus_change() -> void:
 	play_ui_audio(ui_focus_audio)
 

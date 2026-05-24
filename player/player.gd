@@ -42,15 +42,30 @@ var falling_fast := false
 var camera_set_up := false
 var resetting := false
 
+enum a {
+	IDLE, RUN, JUMP, FALLING, LEDGE_CLIMB,
+	LEDGE_HANG, LEDGE_HANG_SMALL, RESET, LANDING,
+}
+var anims: Array[String] = [
+	"idle", "run", "jump", "falling", "ledge_climb",
+	"ledge_hang", "ledge_hang_small", "reset", "landing",
+]
+var equipped_cosmetics: Array[String] = [ "propeller_hat", ]
+var owned_cosmetics: Array[String] = [ "propeller_hat", ]
+var items: Array[String] = []
+var inventory = {
+	"cosmetics" : owned_cosmetics,
+	"items" : items
+	}
+
 @onready var animated_sprites: AnimatedSprite2D = $Node2D/AnimatedSprite2D
-@onready var cosmetics: AnimatedSprite2D = $Node2D/Cosmetics
+@onready var cosmetics: Node2D = $Node2D/Cosmetics
 @onready var coyote_timer: Timer = $CoyoteTimer
 @onready var collider: CollisionShape2D = $CollisionShape2D
 @onready var ledge_grab_miss: RayCast2D = $ledgeGrabMiss
 @onready var ledge_grab_hit: RayCast2D = $ledgeGrabHit
 @onready var ledge_climb_lockout: Timer = $ledgeClimbLockout
 @onready var camera_2d: Camera2D = $Camera2D
-@onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var debug_label: Label = $DebugLabel
 @onready var dirt_falling: GPUParticles2D = $Particles/DirtFalling
 @onready var dirt_falling_2: GPUParticles2D = $Particles/DirtFalling2
@@ -73,8 +88,7 @@ func _ready() -> void:
 	if not get_parent() == get_tree().root:
 		self.reparent.call_deferred(get_tree().root)
 
-	(animated_sprites.get_sprite_frames().
-			set_animation_speed("ledge_climb", 13 / ledge_climb_duration))
+	#(animated_sprites.get_sprite_frames().set_animation_speed("ledge_climb", 13 / ledge_climb_duration))
 	speed = 150.0
 	health = max_health
 	health_changed.emit(health)
@@ -144,12 +158,22 @@ func handle_movement(delta: float) -> void:
 		input_locked = true
 		# zero x velocity during animation
 		velocity = Vector2.ZERO
-		animation_player.play("heavy_landing")
+		animated_sprites.play(anims[a.LANDING])
 		Audio.play_sound(Audio.heavy_landing, global_position)
 		set_health_check_reset(-1)
-		var t = animation_player.get_animation("heavy_landing").length
-		var lock_out_timer = get_tree().create_timer(t)
-		await lock_out_timer.timeout
+
+		var cosmetic: AnimatedSprite2D
+		for c in equipped_cosmetics:
+			cosmetic = cosmetics.get_node_or_null(c)
+			if cosmetic:
+				cosmetic.flip_h = animated_sprites.flip_h
+				cosmetic.play(anims[a.LANDING])
+
+		await animated_sprites.animation_finished
+		animated_sprites.play(anims[a.IDLE])
+		if cosmetic:
+			cosmetic.play(anims[a.IDLE])
+		await get_tree().create_timer(0.1).timeout
 		input_locked = false
 
 
@@ -373,29 +397,33 @@ func handle_sprite() -> void:
 	elif velocity.x < 0:
 		animated_sprites.flip_h = true
 
-	var current_animation := ""
+	var curr_anim := ""
 
 	if health <= 0:
-		if not animated_sprites.animation == "reset" and not resetting:
+		if not animated_sprites.animation == anims[a.RESET] and not resetting:
 			resetting = true
-			current_animation = "reset"
-			animated_sprites.play("reset")
-	elif animation_player.is_playing():
+			curr_anim = anims[a.RESET]
+			animated_sprites.play(curr_anim)
+	elif input_locked:
 		pass
 	elif is_on_ledge:
 		if is_on_small_ledge:
-			current_animation = "ledge_hang_small"
-			animated_sprites.play("ledge_hang_small")
+			curr_anim = anims[a.LEDGE_HANG_SMALL]
+			animated_sprites.play(curr_anim)
 		else:
-			current_animation = "ledge_hang"
-			animated_sprites.play("ledge_hang")
+			curr_anim = anims[a.LEDGE_HANG]
+			animated_sprites.play(curr_anim)
 	elif ledge_climbing:
-		current_animation = "ledge_climb"
-		animated_sprites.play("ledge_climb")
+		curr_anim = anims[a.LEDGE_CLIMB]
+		animated_sprites.play(curr_anim)
 		if started_climb and climb_timer.time_left > 0:
+
+			#Engine.time_scale = 0.1
+
 			started_climb = false
 			# animation is 16px taller than base 48px, and is centered
 			animated_sprites.offset.y -= 8
+			cosmetics.position.y -= 8
 
 			var particles = pool[index]
 			index = (index + 1) % pool.size()
@@ -407,30 +435,37 @@ func handle_sprite() -> void:
 			particles.emitting = true
 
 			await climb_timer.timeout
-			current_animation = "idle"
-			animated_sprites.play("idle")
+			curr_anim = anims[a.IDLE]
+			animated_sprites.play(curr_anim)
 			animated_sprites.offset.y += 8
+			cosmetics.position.y += 8
+
+			Engine.time_scale = 1.0
+
 	elif is_on_floor():
 		if velocity.x != 0 or is_in_x_tween:
-			current_animation = "run"
-			animated_sprites.play("run")
+			curr_anim = anims[a.RUN]
+			animated_sprites.play(curr_anim)
 		else:
-			current_animation = "idle"
-			animated_sprites.play("idle")
+			curr_anim = anims[a.IDLE]
+			animated_sprites.play(curr_anim)
 	elif jumped:
-		current_animation = "jump"
-		animated_sprites.play("jump")
+		curr_anim = anims[a.JUMP]
+		animated_sprites.play(curr_anim)
 		await animated_sprites.animation_finished
 		jumped = false
 	elif (not ledge_climbing and is_jumping) or velocity.y > 0:
-		current_animation = "falling"
-		animated_sprites.play("falling")
+		curr_anim = anims[a.FALLING]
+		animated_sprites.play(curr_anim)
 	else:
-		current_animation = "idle"
-		animated_sprites.play("idle")
+		curr_anim = anims[a.IDLE]
+		animated_sprites.play(curr_anim)
 
-	cosmetics.play(current_animation)
-	cosmetics.flip_h = animated_sprites.flip_h
+	for c in equipped_cosmetics:
+		var cosmetic = cosmetics.get_node_or_null(c)
+		if cosmetic:
+			cosmetic.play(curr_anim)
+			cosmetic.flip_h = animated_sprites.flip_h
 
 
 func _unhandled_input(event: InputEvent) -> void:
