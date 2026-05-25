@@ -26,7 +26,7 @@ atlas_id = 2
 stack_atlas_id = Array[int]([2])
 
 [node name="PlayerSpawn" parent="." index="4" unique_id=1233805077 instance=ExtResource("5_gvya1")]
-position = Vector2(-269, -21)
+position = Vector2(69, -17)
 
 [node name="LevelTransition" parent="." index="5" unique_id=817694502 instance=ExtResource("6_6x08n")]
 position = Vector2(16, -640)

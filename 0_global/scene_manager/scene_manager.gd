@@ -202,3 +202,5 @@ func reset() -> void:
 	await get_tree().create_timer(0.8, true, false, true).timeout
 	Engine.time_scale = 1
 	player.queue_free.call_deferred()
+	await get_tree().process_frame
+	SaveManager.load_game()

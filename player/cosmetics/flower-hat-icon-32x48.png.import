@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://2vy1ywgq71tr"
-path="res://.godot/imported/propeller-hat-icon-48x48.png-d432178eb5dac4d5fddeff6116353fda.ctex"
+uid="uid://be41ixjkx7sj6"
+path="res://.godot/imported/flower-hat-icon-32x48.png-c5f0a2de8dbd31133973a0e3ef21ccdc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://player/cosmetics/propeller-hat-icon-48x48.png"
-dest_files=["res://.godot/imported/propeller-hat-icon-48x48.png-d432178eb5dac4d5fddeff6116353fda.ctex"]
+source_file="res://player/cosmetics/flower-hat-icon-32x48.png"
+dest_files=["res://.godot/imported/flower-hat-icon-32x48.png-c5f0a2de8dbd31133973a0e3ef21ccdc.ctex"]
 
 [params]
 

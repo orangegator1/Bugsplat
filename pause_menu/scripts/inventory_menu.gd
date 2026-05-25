@@ -18,15 +18,18 @@ var inventory_item = "uid://dm8vuumm2brxc"
 
 var icons: Dictionary = {
 	"propeller_hat" : "uid://bx4c8hpovj3vo",
-	"metroidvania_hair" : "uid://l8nift5jpxmk"
+	"metroidvania_hair" : "uid://l8nift5jpxmk",
+	"flower_hat" : "uid://dngyp1mkfg00q",
 }
 var repr_icons: Dictionary = {
 	"propeller_hat" : "uid://d4381us58oj4",
-	"metroidvania_hair" : "uid://ckm4cfp3uap7s"
+	"metroidvania_hair" : "uid://ckm4cfp3uap7s",
+	"flower_hat" : "uid://be41ixjkx7sj6",
 }
 var slot: Dictionary = {
 	"propeller_hat" : "head",
 	"metroidvania_hair" : "head",
+	"flower_hat" : "head",
 }
 
 var player: Player

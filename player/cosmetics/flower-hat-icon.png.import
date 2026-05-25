@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dpa8ejfres2h0"
-path="res://.godot/imported/metroidvania-hair-icon-48x48.png-28726da20ac456c529dfe42b4d3eb5be.ctex"
+uid="uid://dngyp1mkfg00q"
+path="res://.godot/imported/flower-hat-icon.png-7e22d22911d27a50967b54fbea3687d1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://player/cosmetics/metroidvania-hair-icon-48x48.png"
-dest_files=["res://.godot/imported/metroidvania-hair-icon-48x48.png-28726da20ac456c529dfe42b4d3eb5be.ctex"]
+source_file="res://player/cosmetics/flower-hat-icon.png"
+dest_files=["res://.godot/imported/flower-hat-icon.png-7e22d22911d27a50967b54fbea3687d1.ctex"]
 
 [params]
 

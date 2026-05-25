@@ -46,6 +46,8 @@ func save_game(current_scene: String = SceneManager.current_scene) -> void:
 	var zeroed_pos = player.global_position - SceneManager.level_offset
 	var persistent_scene = get_tree().get_first_node_in_group("PersistentScene")
 	persistent_scene = ResourceUID.path_to_uid(persistent_scene.scene_file_path)
+	persistent_data["owned_cosmetics"] = player.owned_cosmetics
+	persistent_data["equipped_cosmetics"] = player.equipped_cosmetics
 	save_data = {
 		"scene_path" : current_scene,
 		"persistent_scene_path" : persistent_scene,
@@ -93,7 +95,10 @@ func setup_player()-> void:
 	player.max_health = save_data.get("max_health", 3)
 	player.global_position = Vector2(save_data.get("x", 0),
 			save_data.get("y", 0))
-
+	player.owned_cosmetics = persistent_data.get("owned_cosmetics", [])
+	player.equipped_cosmetics = persistent_data.get("equipped_cosmetics", [])
+	for c in player.equipped_cosmetics:
+		player.cosmetics.get_node_or_null(c).visible = true
 	player.reset_flags()
 
 

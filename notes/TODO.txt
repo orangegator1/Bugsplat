@@ -3,9 +3,7 @@ grace fall, take no damage when switching scenes
   add special decoration to show a cushioned landing
 
 COSMETICS -willah
-  -link up cosmetics preview
-
-save equipped cosmetics to save file, load on startup
+ -tempo jersey
 
 tutorialize pause menu map functions
   -work out keybindings

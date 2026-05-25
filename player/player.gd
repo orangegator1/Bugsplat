@@ -50,8 +50,12 @@ var anims: Array[String] = [
 	"idle", "run", "jump", "falling", "ledge_climb",
 	"ledge_hang", "ledge_hang_small", "reset", "landing",
 ]
-var equipped_cosmetics: Array[String] = [ "propeller_hat", ]
-var owned_cosmetics: Array[String] = [ "propeller_hat", "metroidvania_hair" ]
+var equipped_cosmetics: Array = []
+var owned_cosmetics: Array = [
+	"propeller_hat",
+	"metroidvania_hair",
+	"flower_hat",
+]
 var items: Array[String] = []
 var inventory = {
 	"cosmetics" : owned_cosmetics,
