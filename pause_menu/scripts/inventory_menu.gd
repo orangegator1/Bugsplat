@@ -1,4 +1,3 @@
-@tool
 class_name InventoryMenu extends Control
 
 @onready var inventory_label: Label = %InventoryLabel
@@ -12,6 +11,15 @@ class_name InventoryMenu extends Control
 @onready var inventory_items: VBoxContainer = %InventoryItems
 
 var inventory_item = "uid://dm8vuumm2brxc"
+
+var icons: Dictionary = {
+	"propeller_hat" : "uid://bx4c8hpovj3vo",
+	"metroidvania_hair" : "uid://l8nift5jpxmk"
+}
+var slot: Dictionary = {
+	"propeller_hat" : "head",
+	"metroidvania_hair" : "head"
+}
 
 var player: Player
 var selected := false
@@ -28,13 +36,30 @@ func populate_inventory() -> void:
 		var item = load(inventory_item).instantiate()
 		inventory_items.add_child(item)
 		item.cosmetic_name = c
-		if player.equipped_cosmetics.has(c):
-			item.color_rect.visible = true
-			item.checkmark.visible = true
-		else:
-			item.color_rect.visible = false
-			item.checkmark.visible = false
+		item.icon.texture = load(icons[c])
+		item.item_selected.connect(on_item_selected)
+		item.checkmark.visible = player.equipped_cosmetics.has(c)
 
+
+func on_item_selected(i: InventoryItem) -> void:
+	if player.equipped_cosmetics.has(i.cosmetic_name):
+		unequip(i.cosmetic_name)
+		i.checkmark.visible = false
+	else:
+		# equip
+		for c in player.equipped_cosmetics:
+			if slot[c] == slot[i.cosmetic_name]:
+				unequip(c)
+		player.equipped_cosmetics.append(i.cosmetic_name)
+		player.cosmetics.get_node_or_null(i.cosmetic_name).visible = true
+		i.checkmark.visible = true
+
+func unequip(c: String) -> void:
+	player.cosmetics.get_node_or_null(c).visible = false
+	player.equipped_cosmetics.erase(c)
+	for i in inventory_items.get_children():
+		if i.cosmetic_name == c:
+			i.checkmark.visible = false
 
 func select() -> void:
 	inventory_label.visible = selected
@@ -45,6 +70,7 @@ func select() -> void:
 	inventory_overlay.visible = selected
 
 	inventory_full.visible = not selected
+	inventory_items.get_child(0).grab_focus()
 	selected = not selected
 
 	inventory_items.get_child(0).grab_focus()

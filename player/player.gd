@@ -1,6 +1,5 @@
 class_name Player extends CharacterBody2D
 
-@export var speed: float = 150.0
 @export var jump_velocity: float = -300.0
 @export var max_health := 3
 
@@ -8,6 +7,7 @@ signal health_changed(value: int)
 
 var height = 32
 var width = 11
+var speed := 150.0
 var ledge_climb_duration = 0.4
 var push_force := 80.0
 var friction := 500.0
@@ -51,7 +51,7 @@ var anims: Array[String] = [
 	"ledge_hang", "ledge_hang_small", "reset", "landing",
 ]
 var equipped_cosmetics: Array[String] = [ "propeller_hat", ]
-var owned_cosmetics: Array[String] = [ "propeller_hat", ]
+var owned_cosmetics: Array[String] = [ "propeller_hat", "metroidvania_hair" ]
 var items: Array[String] = []
 var inventory = {
 	"cosmetics" : owned_cosmetics,
@@ -88,8 +88,6 @@ func _ready() -> void:
 	if not get_parent() == get_tree().root:
 		self.reparent.call_deferred(get_tree().root)
 
-	#(animated_sprites.get_sprite_frames().set_animation_speed("ledge_climb", 13 / ledge_climb_duration))
-	speed = 150.0
 	health = max_health
 	health_changed.emit(health)
 

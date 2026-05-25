@@ -3,7 +3,8 @@ grace fall, take no damage when switching scenes
   add special decoration to show a cushioned landing
 
 COSMETICS -willah
-  -UV mapping all player sprites?
+  -link up cosmetics preview
+  -find a way to load icons
 
 spiky hazards
   -rethink level order, make orthogonal
