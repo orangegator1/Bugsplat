@@ -4,7 +4,12 @@ grace fall, take no damage when switching scenes
 
 COSMETICS -willah
   -link up cosmetics preview
-  -find a way to load icons
+
+save equipped cosmetics to save file, load on startup
+
+tutorialize pause menu map functions
+  -work out keybindings
+  -get feedback
 
 spiky hazards
   -rethink level order, make orthogonal

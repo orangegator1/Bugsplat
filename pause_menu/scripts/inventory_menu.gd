@@ -10,15 +10,23 @@ class_name InventoryMenu extends Control
 @onready var inventory_overlay: ColorRect = $InventoryOverlay
 @onready var inventory_items: VBoxContainer = %InventoryItems
 
+@onready var head_slot: TextureRect = %HeadSlot
+@onready var head_slot_full: TextureRect = %HeadSlotFull
+@onready var player_representation: Control = %PlayerRepresentation
+
 var inventory_item = "uid://dm8vuumm2brxc"
 
 var icons: Dictionary = {
 	"propeller_hat" : "uid://bx4c8hpovj3vo",
 	"metroidvania_hair" : "uid://l8nift5jpxmk"
 }
+var repr_icons: Dictionary = {
+	"propeller_hat" : "uid://d4381us58oj4",
+	"metroidvania_hair" : "uid://ckm4cfp3uap7s"
+}
 var slot: Dictionary = {
 	"propeller_hat" : "head",
-	"metroidvania_hair" : "head"
+	"metroidvania_hair" : "head",
 }
 
 var player: Player
@@ -29,6 +37,7 @@ func _ready() -> void:
 	player = await SceneManager.get_player()
 	inventory = player.inventory
 	populate_inventory()
+	populate_player_representation()
 
 
 func populate_inventory() -> void:
@@ -41,10 +50,22 @@ func populate_inventory() -> void:
 		item.checkmark.visible = player.equipped_cosmetics.has(c)
 
 
+func populate_player_representation() -> void:
+	for c in player.equipped_cosmetics:
+		match slot[c]:
+			"head":
+				head_slot_full.texture = load(repr_icons[c])
+				head_slot.texture = load(repr_icons[c])
+
+
 func on_item_selected(i: InventoryItem) -> void:
 	if player.equipped_cosmetics.has(i.cosmetic_name):
 		unequip(i.cosmetic_name)
 		i.checkmark.visible = false
+		match slot[i.cosmetic_name]:
+			"head":
+				head_slot_full.texture = null
+				head_slot.texture = null
 	else:
 		# equip
 		for c in player.equipped_cosmetics:
@@ -53,6 +74,8 @@ func on_item_selected(i: InventoryItem) -> void:
 		player.equipped_cosmetics.append(i.cosmetic_name)
 		player.cosmetics.get_node_or_null(i.cosmetic_name).visible = true
 		i.checkmark.visible = true
+		populate_player_representation()
+
 
 func unequip(c: String) -> void:
 	player.cosmetics.get_node_or_null(c).visible = false
@@ -61,6 +84,7 @@ func unequip(c: String) -> void:
 		if i.cosmetic_name == c:
 			i.checkmark.visible = false
 
+
 func select() -> void:
 	inventory_label.visible = selected
 	map.visible = selected
@@ -68,6 +92,7 @@ func select() -> void:
 	system_menu_button.visible = selected
 	back_button.visible = selected
 	inventory_overlay.visible = selected
+	player_representation.visible = selected
 
 	inventory_full.visible = not selected
 	inventory_items.get_child(0).grab_focus()
@@ -85,6 +110,7 @@ func unselect() -> void:
 	system_menu_button.visible = selected
 	back_button.visible = selected
 	inventory_overlay.visible = selected
+	player_representation.visible = selected
 
 	inventory_full.visible = not selected
 	selected = not selected
@@ -100,6 +126,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			select()
 	if selected:
 		if (event.is_action_pressed("ui_cancel")):
+			get_viewport().set_input_as_handled()
 			unselect()
 		elif event.is_action_pressed("interact"):
 			pass

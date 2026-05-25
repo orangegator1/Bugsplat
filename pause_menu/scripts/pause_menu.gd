@@ -23,7 +23,7 @@ class_name PauseMenu extends CanvasLayer
 var title_path := "res://title_screen/TitleScreen.tscn"
 var player: Player
 var map_selected: bool = false
-var inventory_selected: bool = false
+var inventory_focused: bool = false
 var initial_map_pos: Vector2
 var map_scroll_velocity: Vector2
 const SCROLL_V := 120.0
@@ -62,7 +62,7 @@ func inventory_on_focus_entered(entered = true):
 		inventory_overlay.modulate = Color("84ffee1a")
 	else:
 		inventory_overlay.modulate = Color(0.0, 0.0, 0.0, 0.0)
-	inventory_selected = entered
+	inventory_focused = entered
 	inventory_overlay.visible = entered
 
 
@@ -142,6 +142,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		elif (event.is_action_released("down")
 				or event.is_action_released("ui_up")):
 			map_scroll_velocity.y = 0
+	elif not inventory.selected and event.is_action_pressed("ui_cancel"):
+		unpause()
 
 
 func select_map() -> void:

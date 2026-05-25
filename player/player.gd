@@ -88,6 +88,10 @@ func _ready() -> void:
 	if not get_parent() == get_tree().root:
 		self.reparent.call_deferred(get_tree().root)
 
+	# turn on cosmetics if any
+	for c in equipped_cosmetics:
+		cosmetics.get_node_or_null(c).visible = true
+
 	health = max_health
 	health_changed.emit(health)
 

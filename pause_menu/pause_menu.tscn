@@ -10,9 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://0414246kjuvp" path="res://pause_menu/mini levels/4-tangled.png" id="7_cux0y"]
 [ext_resource type="AudioStream" uid="uid://dntq5lwfpst2y" path="res://0_global/audio/sfx/snd_splat.wav" id="9_aj446"]
 [ext_resource type="Script" uid="uid://b851ni85n5v2l" path="res://pause_menu/scripts/inventory_menu.gd" id="9_y6n36"]
-[ext_resource type="Texture2D" uid="uid://dxxnleamq5wm0" path="res://player/beetle, master-Sheet.png" id="10_xvc88"]
+[ext_resource type="Texture2D" uid="uid://b1g1h8shmxftd" path="res://pause_menu/player-idle-frame-0.png" id="10_xvc88"]
 [ext_resource type="AudioStream" uid="uid://0luclghebtcu" path="res://0_global/audio/sfx/plants growing 2.wav" id="10_y6n36"]
-[ext_resource type="Texture2D" uid="uid://bp0bw80m88smy" path="res://player/cosmetics/propeller-hat.png" id="11_5u3lt"]
 [ext_resource type="AudioStream" uid="uid://do66uc6f1rwqk" path="res://z_assets/sounds/impact-2.wav" id="11_xvc88"]
 [ext_resource type="AudioStream" uid="uid://582quqnrjakn" path="res://z_assets/sounds/dirt and leaves/dry-dirt-crumble-impact.wav" id="12_5u3lt"]
 [ext_resource type="AudioStream" uid="uid://cixbdrkipnpso" path="res://z_assets/sounds/hurt_quiet.wav" id="13_gm4du"]
@@ -448,6 +447,36 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="PlayerRepresentation" type="Control" parent="PauseScreen/Control/InventoryMenu" unique_id=1061812556]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 0)
+anchors_preset = 0
+offset_top = 24.0
+offset_right = 64.0
+offset_bottom = 24.0
+
+[node name="Player" type="TextureRect" parent="PauseScreen/Control/InventoryMenu/PlayerRepresentation" unique_id=885707923]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 48.0
+scale = Vector2(2, 2)
+texture = ExtResource("10_xvc88")
+stretch_mode = 3
+
+[node name="HeadSlot" type="TextureRect" parent="PauseScreen/Control/InventoryMenu/PlayerRepresentation" unique_id=1549567459]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_bottom = 48.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+
 [node name="InventoryFull" type="Control" parent="PauseScreen/Control/InventoryMenu" unique_id=1996355735]
 unique_name_in_owner = true
 anchors_preset = 0
@@ -466,25 +495,26 @@ offset_right = 170.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="PlayerRepresentation" type="Control" parent="PauseScreen/Control/InventoryMenu/InventoryFull/HBoxContainer" unique_id=892067548]
+[node name="PlayerRepresentationFull" type="Control" parent="PauseScreen/Control/InventoryMenu/InventoryFull/HBoxContainer" unique_id=892067548]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(96, 0)
 layout_mode = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="PauseScreen/Control/InventoryMenu/InventoryFull/HBoxContainer/PlayerRepresentation" unique_id=728543005]
-position = Vector2(0, 11.999996)
+[node name="Player" type="TextureRect" parent="PauseScreen/Control/InventoryMenu/InventoryFull/HBoxContainer/PlayerRepresentationFull" unique_id=307110230]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 48.0
 scale = Vector2(3, 3)
 texture = ExtResource("10_xvc88")
-centered = false
-hframes = 7
-vframes = 7
+stretch_mode = 3
 
-[node name="HatSlot" type="Sprite2D" parent="PauseScreen/Control/InventoryMenu/InventoryFull/HBoxContainer/PlayerRepresentation" unique_id=1120005260]
-position = Vector2(0, 12)
+[node name="HeadSlotFull" type="TextureRect" parent="PauseScreen/Control/InventoryMenu/InventoryFull/HBoxContainer/PlayerRepresentationFull" unique_id=1713101660]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 9.0
+offset_bottom = 5.0
 scale = Vector2(3, 3)
-texture = ExtResource("11_5u3lt")
-centered = false
-hframes = 7
-vframes = 11
+stretch_mode = 3
 
 [node name="InventoryItems" type="VBoxContainer" parent="PauseScreen/Control/InventoryMenu/InventoryFull/HBoxContainer" unique_id=514016766]
 unique_name_in_owner = true
