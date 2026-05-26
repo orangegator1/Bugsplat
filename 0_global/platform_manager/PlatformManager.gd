@@ -10,13 +10,15 @@ enum grow_mode { GEN, GROW, }
 const GROW_ANIMATION = preload("uid://dktop08srvo7l")
 
 func _ready() -> void:
-	SceneManager.scene_entered.connect(clear_layer)
+	if not Engine.is_editor_hint():
+		SceneManager.scene_entered.connect(clear_layer)
 
 
 func _process(_delta: float) -> void:
-	while not layer:
-		layer = get_tree().get_first_node_in_group("growable_tiles")
-		await get_tree().process_frame
+	if not Engine.is_editor_hint():
+		while not layer:
+			layer = get_tree().get_first_node_in_group("growable_tiles")
+			await get_tree().process_frame
 
 
 func set_layer(l: TileMapLayer) -> void:

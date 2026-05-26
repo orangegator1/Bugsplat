@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b1p6stt12ncsq"
-path="res://.godot/imported/map_node_icon.png-9d0d35f8b2e7b2a217110dac5be24696.ctex"
+uid="uid://bpawktex8o2sv"
+path="res://.godot/imported/Kb_buttons_standart_frame_white.png-41b5a65e6b05e7fe2824473a495830ce.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://pause_menu/map_node_icon.png"
-dest_files=["res://.godot/imported/map_node_icon.png-9d0d35f8b2e7b2a217110dac5be24696.ctex"]
+source_file="res://general/input_hint/Kb_buttons_standart_frame_white.png"
+dest_files=["res://.godot/imported/Kb_buttons_standart_frame_white.png-41b5a65e6b05e7fe2824473a495830ce.ctex"]
 
 [params]
 

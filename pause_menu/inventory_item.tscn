@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://buj5tu40lpacf" path="res://pause_menu/scripts/inventory_item.gd" id="1_kvxxx"]
 [ext_resource type="Texture2D" uid="uid://bx4c8hpovj3vo" path="res://player/cosmetics/propeller-hat-icon.png" id="2_7nl2c"]
-[ext_resource type="Texture2D" uid="uid://37pxekk0e7f" path="res://pause_menu/inventory selected checkmark.png" id="2_kvxxx"]
+[ext_resource type="Texture2D" uid="uid://37pxekk0e7f" path="res://pause_menu/assets/inventory selected checkmark.png" id="2_kvxxx"]
 
 [node name="InventoryItem" type="Control" unique_id=950769833]
 custom_minimum_size = Vector2(48, 48)

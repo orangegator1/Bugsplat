@@ -56,6 +56,27 @@ func _process(delta: float) -> void:
 		)
 	map.position += map_scroll_velocity * delta
 
+	if map_selected:
+		if (Input.is_action_pressed("ui_cancel")):
+			unselect_map()
+		elif Input.is_action_pressed("right"):
+			map_scroll_velocity.x =-SCROLL_V
+		elif Input.is_action_pressed("left") or Input.is_action_pressed("ui_left"):
+			map_scroll_velocity.x = SCROLL_V
+		elif Input.is_action_pressed("ui_up"):
+			map_scroll_velocity.y = SCROLL_V
+		elif Input.is_action_pressed("down"):
+			map_scroll_velocity.y = -SCROLL_V
+
+		if (Input.is_action_just_released("right")
+				or Input.is_action_just_released("left")):
+			print("horiz release registered")
+			map_scroll_velocity.x = 0
+		elif (Input.is_action_just_released("down")
+				or Input.is_action_just_released("ui_up")):
+			print("vert release registered")
+			map_scroll_velocity.y = 0
+
 
 func inventory_on_focus_entered(entered = true):
 	if entered:
@@ -76,6 +97,7 @@ func map_on_focus_entered(entered = true):
 
 func show_pause_screen() -> void:
 	pause_screen.visible = true
+	inventory.visible = true
 	system.visible = false
 	inventory_full.visible = false
 	map.grab_focus()
@@ -119,30 +141,18 @@ func _unhandled_input(event: InputEvent) -> void:
 
 	if map.has_focus():
 		if (event.is_action_pressed("ui_accept")):
+			get_viewport().set_input_as_handled()
 			select_map()
 
 	if map_selected:
-		if (event.is_action_pressed("ui_cancel")):
-			unselect_map()
-		elif event.is_action_pressed("right"):
-			map_scroll_velocity += Vector2(-SCROLL_V,0)
-		elif event.is_action_pressed("left"):
-			map_scroll_velocity += Vector2(SCROLL_V,0)
-		elif event.is_action_pressed("down"):
-			map_scroll_velocity += Vector2(0,-SCROLL_V)
-		elif event.is_action_pressed("ui_up"):
-			map_scroll_velocity += Vector2(0,SCROLL_V)
-		elif event.is_action_pressed("interact"):
+		if Input.is_action_pressed("zoom_in"):
+			get_viewport().set_input_as_handled()
 			zoom()
-		elif event.is_action_pressed("jump"):
+		elif Input.is_action_pressed("zoom_out"):
+			get_viewport().set_input_as_handled()
 			zoom(false)
-		elif (event.is_action_released("right")
-				or event.is_action_released("left")):
-			map_scroll_velocity.x = 0
-		elif (event.is_action_released("down")
-				or event.is_action_released("ui_up")):
-			map_scroll_velocity.y = 0
-	elif not inventory.selected and event.is_action_pressed("ui_cancel"):
+
+	if not map_selected and not inventory.selected and event.is_action_pressed("ui_cancel"):
 		unpause()
 
 
@@ -155,9 +165,12 @@ func select_map() -> void:
 		back_button.visible = false
 
 		Audio.play_ui_audio(Audio.ui_focus_audio)
-		map_selected = true
+		await get_tree().process_frame
 		map.grab_focus()
 		zoom()
+		map_selected = true
+
+		MessageBus.map_selected.emit(true)
 
 
 func unselect_map() -> void:
@@ -176,15 +189,17 @@ func unselect_map() -> void:
 		map_scroll_velocity = Vector2.ZERO
 		%PlayerIndicator.scale = Vector2.ONE
 
+		MessageBus.map_selected.emit(false)
+
 
 func zoom(zoom_in := true) -> void:
 	# TODO pivot instead on center of visible map
 	if zoom_in and map.scale.y < 16:
 		map.scale *= 2
-		map.pivot_offset = %PlayerIndicator.position
+		#map.pivot_offset = %PlayerIndicator.position
 	elif not zoom_in and map.scale.y > 1 / 2.0:
 		map.scale /= 2
-		map.pivot_offset = %PlayerIndicator.position
+		#map.pivot_offset = %PlayerIndicator.position
 	%PlayerIndicator.scale = Vector2.ONE / map.scale
 
 

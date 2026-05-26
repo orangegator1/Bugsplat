@@ -1,16 +1,18 @@
 [gd_scene format=3 uid="uid://b7x4dgp7d67dl"]
 
 [ext_resource type="Script" uid="uid://4ec0vu7phicx" path="res://pause_menu/scripts/pause_menu.gd" id="1_5hbt6"]
+[ext_resource type="Script" uid="uid://2y6bwd6crych" path="res://pause_menu/scripts/input_hint.gd" id="2_5u3lt"]
 [ext_resource type="PackedScene" uid="uid://bbn4ciobob4wn" path="res://pause_menu/map_node.tscn" id="2_rd7dy"]
+[ext_resource type="Texture2D" uid="uid://bbkimpaark8y5" path="res://general/input_hint/combined hints.png" id="3_gm4du"]
 [ext_resource type="Texture2D" uid="uid://c2uthh7oo08c0" path="res://pause_menu/mini levels/1-full-tangled.png" id="3_uwtdo"]
 [ext_resource type="PackedScene" uid="uid://co70v5wo02weh" path="res://pause_menu/mini levels/map_level_texture.tscn" id="3_wn31l"]
-[ext_resource type="Texture2D" uid="uid://bd6ph72kb7ihb" path="res://pause_menu/player_indicator.png" id="4_b4s0c"]
+[ext_resource type="Texture2D" uid="uid://bd6ph72kb7ihb" path="res://pause_menu/assets/player_indicator.png" id="4_b4s0c"]
 [ext_resource type="Texture2D" uid="uid://cynj3vrsjb5mt" path="res://pause_menu/mini levels/2-tangled.png" id="4_wn31l"]
 [ext_resource type="Texture2D" uid="uid://bv50p6ch6lyld" path="res://pause_menu/mini levels/3-tangled.png" id="5_b0obc"]
 [ext_resource type="Texture2D" uid="uid://0414246kjuvp" path="res://pause_menu/mini levels/4-tangled.png" id="7_cux0y"]
 [ext_resource type="AudioStream" uid="uid://dntq5lwfpst2y" path="res://0_global/audio/sfx/snd_splat.wav" id="9_aj446"]
 [ext_resource type="Script" uid="uid://b851ni85n5v2l" path="res://pause_menu/scripts/inventory_menu.gd" id="9_y6n36"]
-[ext_resource type="Texture2D" uid="uid://b1g1h8shmxftd" path="res://pause_menu/player-idle-frame-0.png" id="10_xvc88"]
+[ext_resource type="Texture2D" uid="uid://b1g1h8shmxftd" path="res://pause_menu/assets/player-idle-frame-0.png" id="10_xvc88"]
 [ext_resource type="AudioStream" uid="uid://0luclghebtcu" path="res://0_global/audio/sfx/plants growing 2.wav" id="10_y6n36"]
 [ext_resource type="AudioStream" uid="uid://do66uc6f1rwqk" path="res://z_assets/sounds/impact-2.wav" id="11_xvc88"]
 [ext_resource type="AudioStream" uid="uid://582quqnrjakn" path="res://z_assets/sounds/dirt and leaves/dry-dirt-crumble-impact.wav" id="12_5u3lt"]
@@ -24,6 +26,190 @@ baseline_offset = -0.05
 
 [sub_resource type="FontVariation" id="FontVariation_rd7dy"]
 baseline_offset = -0.05
+
+[sub_resource type="Animation" id="Animation_bpwrl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_dltoi"]
+resource_name = "fade_in"
+length = 0.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(2, 2),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3, 0.5),
+"transitions": PackedFloat32Array(2, 2),
+"update": 0,
+"values": [Vector2(0, 2), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_vsikh"]
+resource_name = "fade_out"
+length = 0.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(2, 2),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(2, 2),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 2)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dltoi"]
+_data = {
+&"RESET": SubResource("Animation_bpwrl"),
+&"fade_in": SubResource("Animation_dltoi"),
+&"fade_out": SubResource("Animation_vsikh")
+}
+
+[sub_resource type="Animation" id="Animation_5u3lt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -2)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_gm4du"]
+resource_name = "fade_in"
+length = 0.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.3, 0.5),
+"transitions": PackedFloat32Array(2, 2),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -2)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(2, 2),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_etxg4"]
+resource_name = "fade_out"
+length = 0.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(2, 2),
+"update": 0,
+"values": [Vector2(0, -2), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(2, 2),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nsdwt"]
+_data = {
+&"RESET": SubResource("Animation_5u3lt"),
+&"fade_in": SubResource("Animation_gm4du"),
+&"fade_out": SubResource("Animation_etxg4")
+}
 
 [sub_resource type="Animation" id="Animation_b4s0c"]
 length = 0.001
@@ -308,6 +494,109 @@ offset_top = 48.0
 offset_right = 136.0
 offset_bottom = 61.0
 text = "Map"
+
+[node name="MapInputHints" type="HBoxContainer" parent="PauseScreen" unique_id=74935162]
+layout_mode = 0
+offset_left = 145.0
+offset_top = 52.0
+offset_right = 185.0
+offset_bottom = 88.0
+
+[node name="InputHintZoomIn" type="Node2D" parent="PauseScreen/MapInputHints" unique_id=135935805]
+position = Vector2(-41, -36)
+script = ExtResource("2_5u3lt")
+action = "zoom_in"
+
+[node name="Sprite" type="Node2D" parent="PauseScreen/MapInputHints/InputHintZoomIn" unique_id=390392380]
+
+[node name="Sprite2D" type="Sprite2D" parent="PauseScreen/MapInputHints/InputHintZoomIn/Sprite" unique_id=94812308]
+position = Vector2(0, 2)
+texture = ExtResource("3_gm4du")
+hframes = 5
+vframes = 5
+frame = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PauseScreen/MapInputHints/InputHintZoomIn" unique_id=36755593]
+libraries/ = SubResource("AnimationLibrary_dltoi")
+
+[node name="InputHintText" type="Node2D" parent="PauseScreen/MapInputHints/InputHintZoomIn" unique_id=431939173]
+
+[node name="Label" type="Node2D" parent="PauseScreen/MapInputHints/InputHintZoomIn/InputHintText" unique_id=723848927]
+position = Vector2(0, -2)
+
+[node name="text" type="Label" parent="PauseScreen/MapInputHints/InputHintZoomIn/InputHintText/Label" unique_id=1813318100]
+offset_left = 10.0
+offset_top = -3.0
+offset_right = 50.0
+offset_bottom = 10.0
+text = "Zoom in"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PauseScreen/MapInputHints/InputHintZoomIn/InputHintText" unique_id=655267719]
+libraries/ = SubResource("AnimationLibrary_nsdwt")
+
+[node name="InputHintZoomOut" type="Node2D" parent="PauseScreen/MapInputHints" unique_id=198080550]
+position = Vector2(38, -36)
+script = ExtResource("2_5u3lt")
+action = "zoom_out"
+
+[node name="Sprite" type="Node2D" parent="PauseScreen/MapInputHints/InputHintZoomOut" unique_id=1593515047]
+
+[node name="Sprite2D" type="Sprite2D" parent="PauseScreen/MapInputHints/InputHintZoomOut/Sprite" unique_id=124787408]
+position = Vector2(0, 2)
+texture = ExtResource("3_gm4du")
+hframes = 5
+vframes = 5
+frame = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PauseScreen/MapInputHints/InputHintZoomOut" unique_id=916359899]
+libraries/ = SubResource("AnimationLibrary_dltoi")
+
+[node name="InputHintText" type="Node2D" parent="PauseScreen/MapInputHints/InputHintZoomOut" unique_id=1761031543]
+
+[node name="Label" type="Node2D" parent="PauseScreen/MapInputHints/InputHintZoomOut/InputHintText" unique_id=806962907]
+position = Vector2(0, -2)
+
+[node name="text" type="Label" parent="PauseScreen/MapInputHints/InputHintZoomOut/InputHintText/Label" unique_id=225030582]
+offset_left = 10.0
+offset_top = -3.0
+offset_right = 50.0
+offset_bottom = 10.0
+text = "Zoom out"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PauseScreen/MapInputHints/InputHintZoomOut/InputHintText" unique_id=1286904528]
+libraries/ = SubResource("AnimationLibrary_nsdwt")
+
+[node name="InputHintExit" type="Node2D" parent="PauseScreen/MapInputHints" unique_id=500898220]
+position = Vector2(124, -36)
+script = ExtResource("2_5u3lt")
+action = "cancel"
+
+[node name="Sprite" type="Node2D" parent="PauseScreen/MapInputHints/InputHintExit" unique_id=1126935574]
+
+[node name="Sprite2D" type="Sprite2D" parent="PauseScreen/MapInputHints/InputHintExit/Sprite" unique_id=1332713002]
+position = Vector2(0, 2)
+texture = ExtResource("3_gm4du")
+hframes = 5
+vframes = 5
+frame = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PauseScreen/MapInputHints/InputHintExit" unique_id=460491435]
+libraries/ = SubResource("AnimationLibrary_dltoi")
+
+[node name="InputHintText" type="Node2D" parent="PauseScreen/MapInputHints/InputHintExit" unique_id=1108062263]
+
+[node name="Label" type="Node2D" parent="PauseScreen/MapInputHints/InputHintExit/InputHintText" unique_id=889226529]
+position = Vector2(0, -2)
+
+[node name="text" type="Label" parent="PauseScreen/MapInputHints/InputHintExit/InputHintText/Label" unique_id=1948196133]
+offset_left = 10.0
+offset_top = -3.0
+offset_right = 50.0
+offset_bottom = 10.0
+text = "Exit"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PauseScreen/MapInputHints/InputHintExit/InputHintText" unique_id=1139381424]
+libraries/ = SubResource("AnimationLibrary_nsdwt")
 
 [node name="Control" type="Control" parent="PauseScreen" unique_id=1654695580]
 clip_children = 1
