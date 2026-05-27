@@ -2,6 +2,7 @@ extends Node
 
 const SLOTS: Array[String] = ["save_01", "save_02", "save_03", ]
 const CONFIG_FILE_PATH := "user://settings.cfg"
+const CHEAT_SAVE_PATH := "res://save_03.sav"
 
 var current_slot: int = 0
 var save_data: Dictionary
@@ -15,6 +16,15 @@ var new_game_scene: String = "uid://b5tobrceh3joe"
 func _ready() -> void:
 	load_config()
 	SceneManager.scene_entered.connect(on_scene_entered)
+
+	if FileAccess.file_exists(CHEAT_SAVE_PATH):
+		var dir = DirAccess.open("user://")
+		if dir:
+			# Copy the file from res:// to user://
+			dir.copy(CHEAT_SAVE_PATH, get_file_name(2))
+			UI.new_game = true
+			UI.visible = false
+			print("cheats loaded")
 
 
 func create_new_game_save(slot: int = current_slot) -> void:

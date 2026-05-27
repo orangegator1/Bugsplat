@@ -4,16 +4,17 @@
 [ext_resource type="Script" uid="uid://2y6bwd6crych" path="res://pause_menu/scripts/input_hint.gd" id="2_5u3lt"]
 [ext_resource type="PackedScene" uid="uid://bbn4ciobob4wn" path="res://pause_menu/map_node.tscn" id="2_rd7dy"]
 [ext_resource type="Texture2D" uid="uid://bbkimpaark8y5" path="res://general/input_hint/combined hints.png" id="3_gm4du"]
-[ext_resource type="Texture2D" uid="uid://c2uthh7oo08c0" path="res://pause_menu/mini levels/1-full-tangled.png" id="3_uwtdo"]
-[ext_resource type="PackedScene" uid="uid://co70v5wo02weh" path="res://pause_menu/mini levels/map_level_texture.tscn" id="3_wn31l"]
+[ext_resource type="Texture2D" uid="uid://c2uthh7oo08c0" path="res://pause_menu/assets/mini levels/1-full-tangled.png" id="3_uwtdo"]
+[ext_resource type="PackedScene" uid="uid://co70v5wo02weh" path="res://pause_menu/assets/mini levels/map_level_texture.tscn" id="3_wn31l"]
 [ext_resource type="Texture2D" uid="uid://bd6ph72kb7ihb" path="res://pause_menu/assets/player_indicator.png" id="4_b4s0c"]
-[ext_resource type="Texture2D" uid="uid://cynj3vrsjb5mt" path="res://pause_menu/mini levels/2-tangled.png" id="4_wn31l"]
-[ext_resource type="Texture2D" uid="uid://bv50p6ch6lyld" path="res://pause_menu/mini levels/3-tangled.png" id="5_b0obc"]
-[ext_resource type="Texture2D" uid="uid://0414246kjuvp" path="res://pause_menu/mini levels/4-tangled.png" id="7_cux0y"]
+[ext_resource type="Texture2D" uid="uid://cynj3vrsjb5mt" path="res://pause_menu/assets/mini levels/2-tangled.png" id="4_wn31l"]
+[ext_resource type="Texture2D" uid="uid://bv50p6ch6lyld" path="res://pause_menu/assets/mini levels/3-tangled.png" id="5_b0obc"]
+[ext_resource type="Texture2D" uid="uid://0414246kjuvp" path="res://pause_menu/assets/mini levels/4-tangled.png" id="7_cux0y"]
 [ext_resource type="AudioStream" uid="uid://dntq5lwfpst2y" path="res://0_global/audio/sfx/snd_splat.wav" id="9_aj446"]
 [ext_resource type="Script" uid="uid://b851ni85n5v2l" path="res://pause_menu/scripts/inventory_menu.gd" id="9_y6n36"]
 [ext_resource type="Texture2D" uid="uid://b1g1h8shmxftd" path="res://pause_menu/assets/player-idle-frame-0.png" id="10_xvc88"]
 [ext_resource type="AudioStream" uid="uid://0luclghebtcu" path="res://0_global/audio/sfx/plants growing 2.wav" id="10_y6n36"]
+[ext_resource type="Texture2D" uid="uid://dlfvyk73sc3hq" path="res://pause_menu/assets/map_cursor.png" id="11_gm4du"]
 [ext_resource type="AudioStream" uid="uid://do66uc6f1rwqk" path="res://z_assets/sounds/impact-2.wav" id="11_xvc88"]
 [ext_resource type="AudioStream" uid="uid://582quqnrjakn" path="res://z_assets/sounds/dirt and leaves/dry-dirt-crumble-impact.wav" id="12_5u3lt"]
 [ext_resource type="AudioStream" uid="uid://cixbdrkipnpso" path="res://z_assets/sounds/hurt_quiet.wav" id="13_gm4du"]
@@ -473,69 +474,37 @@ offset_top = 8.0
 offset_right = 79.0
 offset_bottom = 29.0
 focus_neighbor_right = NodePath("../SystemMenuButton")
-focus_neighbor_bottom = NodePath("../Control/InventoryMenu")
+focus_neighbor_bottom = NodePath("../FullscreenContainer/InventoryMenu")
 theme_override_fonts/font = SubResource("FontVariation_rd7dy")
 text = "Back"
 
 [node name="InventoryLabel" type="Label" parent="PauseScreen" unique_id=757733072]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 16.0
+offset_left = 15.0
 offset_top = 48.0
-offset_right = 68.0
+offset_right = 67.0
 offset_bottom = 61.0
 text = "Inventory"
 
 [node name="MapLabel" type="Label" parent="PauseScreen" unique_id=1540879402]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 96.0
+offset_left = 95.0
 offset_top = 48.0
-offset_right = 136.0
+offset_right = 135.0
 offset_bottom = 61.0
 text = "Map"
 
 [node name="MapInputHints" type="HBoxContainer" parent="PauseScreen" unique_id=74935162]
 layout_mode = 0
-offset_left = 145.0
+offset_left = 202.0
 offset_top = 52.0
-offset_right = 185.0
+offset_right = 242.0
 offset_bottom = 88.0
 
-[node name="InputHintZoomIn" type="Node2D" parent="PauseScreen/MapInputHints" unique_id=135935805]
-position = Vector2(-41, -36)
-script = ExtResource("2_5u3lt")
-action = "zoom_in"
-
-[node name="Sprite" type="Node2D" parent="PauseScreen/MapInputHints/InputHintZoomIn" unique_id=390392380]
-
-[node name="Sprite2D" type="Sprite2D" parent="PauseScreen/MapInputHints/InputHintZoomIn/Sprite" unique_id=94812308]
-position = Vector2(0, 2)
-texture = ExtResource("3_gm4du")
-hframes = 5
-vframes = 5
-frame = 4
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="PauseScreen/MapInputHints/InputHintZoomIn" unique_id=36755593]
-libraries/ = SubResource("AnimationLibrary_dltoi")
-
-[node name="InputHintText" type="Node2D" parent="PauseScreen/MapInputHints/InputHintZoomIn" unique_id=431939173]
-
-[node name="Label" type="Node2D" parent="PauseScreen/MapInputHints/InputHintZoomIn/InputHintText" unique_id=723848927]
-position = Vector2(0, -2)
-
-[node name="text" type="Label" parent="PauseScreen/MapInputHints/InputHintZoomIn/InputHintText/Label" unique_id=1813318100]
-offset_left = 10.0
-offset_top = -3.0
-offset_right = 50.0
-offset_bottom = 10.0
-text = "Zoom in"
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="PauseScreen/MapInputHints/InputHintZoomIn/InputHintText" unique_id=655267719]
-libraries/ = SubResource("AnimationLibrary_nsdwt")
-
 [node name="InputHintZoomOut" type="Node2D" parent="PauseScreen/MapInputHints" unique_id=198080550]
-position = Vector2(38, -36)
+position = Vector2(-41, -36)
 script = ExtResource("2_5u3lt")
 action = "zoom_out"
 
@@ -552,6 +521,7 @@ frame = 4
 libraries/ = SubResource("AnimationLibrary_dltoi")
 
 [node name="InputHintText" type="Node2D" parent="PauseScreen/MapInputHints/InputHintZoomOut" unique_id=1761031543]
+position = Vector2(3, 0)
 
 [node name="Label" type="Node2D" parent="PauseScreen/MapInputHints/InputHintZoomOut/InputHintText" unique_id=806962907]
 position = Vector2(0, -2)
@@ -559,15 +529,48 @@ position = Vector2(0, -2)
 [node name="text" type="Label" parent="PauseScreen/MapInputHints/InputHintZoomOut/InputHintText/Label" unique_id=225030582]
 offset_left = 10.0
 offset_top = -3.0
-offset_right = 50.0
+offset_right = 58.0
 offset_bottom = 10.0
 text = "Zoom out"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="PauseScreen/MapInputHints/InputHintZoomOut/InputHintText" unique_id=1286904528]
 libraries/ = SubResource("AnimationLibrary_nsdwt")
 
+[node name="InputHintZoomIn" type="Node2D" parent="PauseScreen/MapInputHints" unique_id=135935805]
+position = Vector2(38, -36)
+script = ExtResource("2_5u3lt")
+action = "zoom_in"
+
+[node name="Sprite" type="Node2D" parent="PauseScreen/MapInputHints/InputHintZoomIn" unique_id=390392380]
+
+[node name="Sprite2D" type="Sprite2D" parent="PauseScreen/MapInputHints/InputHintZoomIn/Sprite" unique_id=94812308]
+position = Vector2(0, 2)
+texture = ExtResource("3_gm4du")
+hframes = 5
+vframes = 5
+frame = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PauseScreen/MapInputHints/InputHintZoomIn" unique_id=36755593]
+libraries/ = SubResource("AnimationLibrary_dltoi")
+
+[node name="InputHintText" type="Node2D" parent="PauseScreen/MapInputHints/InputHintZoomIn" unique_id=431939173]
+position = Vector2(3, 0)
+
+[node name="Label" type="Node2D" parent="PauseScreen/MapInputHints/InputHintZoomIn/InputHintText" unique_id=723848927]
+position = Vector2(0, -2)
+
+[node name="text" type="Label" parent="PauseScreen/MapInputHints/InputHintZoomIn/InputHintText/Label" unique_id=1813318100]
+offset_left = 10.0
+offset_top = -3.0
+offset_right = 50.0
+offset_bottom = 10.0
+text = "Zoom in"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PauseScreen/MapInputHints/InputHintZoomIn/InputHintText" unique_id=655267719]
+libraries/ = SubResource("AnimationLibrary_nsdwt")
+
 [node name="InputHintExit" type="Node2D" parent="PauseScreen/MapInputHints" unique_id=500898220]
-position = Vector2(124, -36)
+position = Vector2(113, -36)
 script = ExtResource("2_5u3lt")
 action = "cancel"
 
@@ -584,6 +587,7 @@ frame = 4
 libraries/ = SubResource("AnimationLibrary_dltoi")
 
 [node name="InputHintText" type="Node2D" parent="PauseScreen/MapInputHints/InputHintExit" unique_id=1108062263]
+position = Vector2(3, 0)
 
 [node name="Label" type="Node2D" parent="PauseScreen/MapInputHints/InputHintExit/InputHintText" unique_id=889226529]
 position = Vector2(0, -2)
@@ -598,7 +602,7 @@ text = "Exit"
 [node name="AnimationPlayer" type="AnimationPlayer" parent="PauseScreen/MapInputHints/InputHintExit/InputHintText" unique_id=1139381424]
 libraries/ = SubResource("AnimationLibrary_nsdwt")
 
-[node name="Control" type="Control" parent="PauseScreen" unique_id=1654695580]
+[node name="FullscreenContainer" type="Control" parent="PauseScreen" unique_id=1654695580]
 clip_children = 1
 clip_contents = true
 anchors_preset = 0
@@ -606,94 +610,101 @@ offset_top = 36.0
 offset_right = 480.0
 offset_bottom = 270.0
 
-[node name="Map" type="Control" parent="PauseScreen/Control" unique_id=1035519575]
+[node name="Map" type="Control" parent="PauseScreen/FullscreenContainer" unique_id=1035519575]
 unique_name_in_owner = true
 anchors_preset = 0
 offset_left = 96.0
-offset_top = 32.0
-offset_right = 461.0
-offset_bottom = 218.0
+offset_top = 41.0
+offset_right = 465.0
+offset_bottom = 219.0
 focus_neighbor_left = NodePath("../InventoryMenu")
 focus_neighbor_top = NodePath("../../SystemMenuButton")
 focus_mode = 2
 
-[node name="MapNode" parent="PauseScreen/Control/Map" unique_id=794718223 instance=ExtResource("2_rd7dy")]
+[node name="MapNodes" type="Control" parent="PauseScreen/FullscreenContainer/Map" unique_id=1853849683]
+unique_name_in_owner = true
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MapNode" parent="PauseScreen/FullscreenContainer/Map/MapNodes" unique_id=794718223 instance=ExtResource("2_rd7dy")]
 layout_mode = 1
-offset_left = 8.0
-offset_top = 57.0
-offset_right = 150.0
-offset_bottom = 142.0
+offset_left = 87.0
+offset_top = 58.0
+offset_right = 229.0
+offset_bottom = 143.0
 linked_scene = "uid://b5tobrceh3joe"
 entrances_top = Array[Vector2]([Vector2(75.2, 4.4), Vector2(4, 60.4)])
 entrances_bottom = Array[Vector2]([Vector2(135.6, 43.8), Vector2(116.4, 2)])
 entrances_left = Array[Vector2]([Vector2(22, 53.8)])
 
-[node name="MapLevelTexture" parent="PauseScreen/Control/Map/MapNode" unique_id=1104475451 instance=ExtResource("3_wn31l")]
+[node name="MapLevelTexture" parent="PauseScreen/FullscreenContainer/Map/MapNodes/MapNode" unique_id=1104475451 instance=ExtResource("3_wn31l")]
 layout_mode = 1
 
-[node name="TextureRect" parent="PauseScreen/Control/Map/MapNode/MapLevelTexture" index="0" unique_id=942146988]
+[node name="TextureRect" parent="PauseScreen/FullscreenContainer/Map/MapNodes/MapNode/MapLevelTexture" index="0" unique_id=942146988]
 texture = ExtResource("3_uwtdo")
 
-[node name="MapNode2" parent="PauseScreen/Control/Map" unique_id=419053178 instance=ExtResource("2_rd7dy")]
+[node name="MapNode2" parent="PauseScreen/FullscreenContainer/Map/MapNodes" unique_id=419053178 instance=ExtResource("2_rd7dy")]
 layout_mode = 1
-offset_top = 2.0
-offset_right = 114.0
-offset_bottom = 56.0
+offset_left = 79.0
+offset_top = 3.0
+offset_right = 193.0
+offset_bottom = 57.0
 linked_scene = "uid://bsnvh00iswdjn"
 entrances_top = Array[Vector2]([Vector2(18, 4.4)])
 entrances_bottom = Array[Vector2]([Vector2(83.2, 29.6)])
 
-[node name="MapLevelTexture" parent="PauseScreen/Control/Map/MapNode2" unique_id=1070508890 instance=ExtResource("3_wn31l")]
+[node name="MapLevelTexture" parent="PauseScreen/FullscreenContainer/Map/MapNodes/MapNode2" unique_id=1070508890 instance=ExtResource("3_wn31l")]
 layout_mode = 1
 
-[node name="TextureRect" parent="PauseScreen/Control/Map/MapNode2/MapLevelTexture" index="0" unique_id=942146988]
+[node name="TextureRect" parent="PauseScreen/FullscreenContainer/Map/MapNodes/MapNode2/MapLevelTexture" index="0" unique_id=942146988]
 texture = ExtResource("4_wn31l")
 
-[node name="MapNode3" parent="PauseScreen/Control/Map" unique_id=2037800754 instance=ExtResource("2_rd7dy")]
+[node name="MapNode3" parent="PauseScreen/FullscreenContainer/Map/MapNodes" unique_id=2037800754 instance=ExtResource("2_rd7dy")]
 layout_mode = 1
-offset_left = 115.0
-offset_top = 10.0
-offset_right = 173.0
-offset_bottom = 56.0
+offset_left = 194.0
+offset_top = 11.0
+offset_right = 252.0
+offset_bottom = 57.0
 linked_scene = "uid://bsssooisi2b0i"
 entrances_top = Array[Vector2]([Vector2(10.8, 2)])
 entrances_right = Array[Vector2]([Vector2(51.4, 14.6)])
 entrances_bottom = Array[Vector2]([Vector2(31.6, 30.8)])
 
-[node name="MapLevelTexture" parent="PauseScreen/Control/Map/MapNode3" unique_id=1503012262 instance=ExtResource("3_wn31l")]
+[node name="MapLevelTexture" parent="PauseScreen/FullscreenContainer/Map/MapNodes/MapNode3" unique_id=1503012262 instance=ExtResource("3_wn31l")]
 layout_mode = 1
 
-[node name="TextureRect" parent="PauseScreen/Control/Map/MapNode3/MapLevelTexture" index="0" unique_id=942146988]
+[node name="TextureRect" parent="PauseScreen/FullscreenContainer/Map/MapNodes/MapNode3/MapLevelTexture" index="0" unique_id=942146988]
 texture = ExtResource("5_b0obc")
 
-[node name="MapNode4" parent="PauseScreen/Control/Map" unique_id=1952530402 instance=ExtResource("2_rd7dy")]
+[node name="MapNode4" parent="PauseScreen/FullscreenContainer/Map/MapNodes" unique_id=1952530402 instance=ExtResource("2_rd7dy")]
 layout_mode = 1
-offset_left = 151.0
-offset_top = 83.0
-offset_right = 203.0
-offset_bottom = 112.0
+offset_left = 230.0
+offset_top = 84.0
+offset_right = 282.0
+offset_bottom = 113.0
 linked_scene = "uid://xw5mdo4mn0on"
 entrances_top = Array[Vector2]([Vector2(20.8, 4.4)])
 entrances_right = Array[Vector2]([Vector2(44.4, 13.4)])
 entrances_bottom = Array[Vector2]([Vector2(19.2, 23.6)])
 entrances_left = Array[Vector2]([Vector2(13, 17)])
 
-[node name="MapLevelTexture" parent="PauseScreen/Control/Map/MapNode4" unique_id=1356217480 instance=ExtResource("3_wn31l")]
+[node name="MapLevelTexture" parent="PauseScreen/FullscreenContainer/Map/MapNodes/MapNode4" unique_id=1356217480 instance=ExtResource("3_wn31l")]
 layout_mode = 1
 
-[node name="TextureRect" parent="PauseScreen/Control/Map/MapNode4/MapLevelTexture" index="0" unique_id=942146988]
+[node name="TextureRect" parent="PauseScreen/FullscreenContainer/Map/MapNodes/MapNode4/MapLevelTexture" index="0" unique_id=942146988]
 texture = ExtResource("7_cux0y")
 
-[node name="PlayerIndicator" type="Control" parent="PauseScreen/Control/Map" unique_id=1660589971]
+[node name="PlayerIndicator" type="Control" parent="PauseScreen/FullscreenContainer/Map/MapNodes" unique_id=1660589971]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 0
-offset_left = 199.0
-offset_top = 33.0
-offset_right = 199.0
-offset_bottom = 33.0
+offset_left = 97.0
+offset_top = -14.0
+offset_right = 97.0
+offset_bottom = -14.0
 
-[node name="TextureRect" type="TextureRect" parent="PauseScreen/Control/Map/PlayerIndicator" unique_id=1754855087]
+[node name="TextureRect" type="TextureRect" parent="PauseScreen/FullscreenContainer/Map/MapNodes/PlayerIndicator" unique_id=1754855087]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = -3.0
@@ -702,11 +713,22 @@ offset_right = 3.0
 offset_bottom = 3.0
 texture = ExtResource("4_b4s0c")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="PauseScreen/Control/Map/PlayerIndicator" unique_id=288147317]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PauseScreen/FullscreenContainer/Map/MapNodes/PlayerIndicator" unique_id=288147317]
 libraries/ = SubResource("AnimationLibrary_wn31l")
 autoplay = &"default"
 
-[node name="MapOverlay" type="ColorRect" parent="PauseScreen/Control/Map" unique_id=1503242618]
+[node name="DebugPivotOffset" type="TextureRect" parent="PauseScreen/FullscreenContainer/Map/MapNodes" unique_id=56188889]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 78.0
+offset_top = -18.0
+offset_right = 85.0
+offset_bottom = -11.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("11_gm4du")
+
+[node name="MapOverlay" type="ColorRect" parent="PauseScreen/FullscreenContainer/Map" unique_id=1503242618]
+unique_name_in_owner = true
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -715,7 +737,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="InventoryMenu" type="Control" parent="PauseScreen/Control" unique_id=797705105]
+[node name="InventoryMenu" type="Control" parent="PauseScreen/FullscreenContainer" unique_id=797705105]
 unique_name_in_owner = true
 anchors_preset = 0
 offset_left = 14.0
@@ -727,16 +749,21 @@ focus_neighbor_right = NodePath("../Map")
 focus_mode = 2
 script = ExtResource("9_y6n36")
 
-[node name="InventoryOverlay" type="ColorRect" parent="PauseScreen/Control/InventoryMenu" unique_id=990802591]
+[node name="InventoryOverlay" type="ColorRect" parent="PauseScreen/FullscreenContainer/InventoryMenu" unique_id=990802591]
+unique_name_in_owner = true
 visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -2.0
+offset_top = 9.0
+offset_right = -3.0
+offset_bottom = 2.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="PlayerRepresentation" type="Control" parent="PauseScreen/Control/InventoryMenu" unique_id=1061812556]
+[node name="PlayerRepresentation" type="Control" parent="PauseScreen/FullscreenContainer/InventoryMenu" unique_id=1061812556]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(64, 0)
 anchors_preset = 0
@@ -744,7 +771,7 @@ offset_top = 24.0
 offset_right = 64.0
 offset_bottom = 24.0
 
-[node name="Player" type="TextureRect" parent="PauseScreen/Control/InventoryMenu/PlayerRepresentation" unique_id=885707923]
+[node name="Player" type="TextureRect" parent="PauseScreen/FullscreenContainer/InventoryMenu/PlayerRepresentation" unique_id=885707923]
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 48.0
@@ -752,7 +779,7 @@ scale = Vector2(2, 2)
 texture = ExtResource("10_xvc88")
 stretch_mode = 3
 
-[node name="HeadSlot" type="TextureRect" parent="PauseScreen/Control/InventoryMenu/PlayerRepresentation" unique_id=1549567459]
+[node name="HeadSlot" type="TextureRect" parent="PauseScreen/FullscreenContainer/InventoryMenu/PlayerRepresentation" unique_id=1549567459]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
@@ -766,14 +793,14 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(2, 2)
 
-[node name="InventoryFull" type="Control" parent="PauseScreen/Control/InventoryMenu" unique_id=1996355735]
+[node name="InventoryFull" type="Control" parent="PauseScreen/FullscreenContainer/InventoryMenu" unique_id=1996355735]
 unique_name_in_owner = true
 anchors_preset = 0
 offset_top = -18.0
 offset_right = 448.0
 offset_bottom = 185.0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PauseScreen/Control/InventoryMenu/InventoryFull" unique_id=936428860]
+[node name="HBoxContainer" type="HBoxContainer" parent="PauseScreen/FullscreenContainer/InventoryMenu/InventoryFull" unique_id=936428860]
 layout_mode = 1
 anchors_preset = 13
 anchor_left = 0.5
@@ -784,12 +811,12 @@ offset_right = 170.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="PlayerRepresentationFull" type="Control" parent="PauseScreen/Control/InventoryMenu/InventoryFull/HBoxContainer" unique_id=892067548]
+[node name="PlayerRepresentationFull" type="Control" parent="PauseScreen/FullscreenContainer/InventoryMenu/InventoryFull/HBoxContainer" unique_id=892067548]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(96, 0)
 layout_mode = 2
 
-[node name="Player" type="TextureRect" parent="PauseScreen/Control/InventoryMenu/InventoryFull/HBoxContainer/PlayerRepresentationFull" unique_id=307110230]
+[node name="Player" type="TextureRect" parent="PauseScreen/FullscreenContainer/InventoryMenu/InventoryFull/HBoxContainer/PlayerRepresentationFull" unique_id=307110230]
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 48.0
@@ -797,7 +824,7 @@ scale = Vector2(3, 3)
 texture = ExtResource("10_xvc88")
 stretch_mode = 3
 
-[node name="HeadSlotFull" type="TextureRect" parent="PauseScreen/Control/InventoryMenu/InventoryFull/HBoxContainer/PlayerRepresentationFull" unique_id=1713101660]
+[node name="HeadSlotFull" type="TextureRect" parent="PauseScreen/FullscreenContainer/InventoryMenu/InventoryFull/HBoxContainer/PlayerRepresentationFull" unique_id=1713101660]
 unique_name_in_owner = true
 layout_mode = 0
 offset_right = 9.0
@@ -805,7 +832,7 @@ offset_bottom = 5.0
 scale = Vector2(3, 3)
 stretch_mode = 3
 
-[node name="InventoryItems" type="VBoxContainer" parent="PauseScreen/Control/InventoryMenu/InventoryFull/HBoxContainer" unique_id=514016766]
+[node name="InventoryItems" type="VBoxContainer" parent="PauseScreen/FullscreenContainer/InventoryMenu/InventoryFull/HBoxContainer" unique_id=514016766]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -813,12 +840,12 @@ size_flags_horizontal = 3
 [node name="SystemMenuButton" type="Button" parent="PauseScreen" unique_id=1336105863]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 392.0
+offset_left = 394.0
 offset_top = 45.0
-offset_right = 463.0
+offset_right = 465.0
 offset_bottom = 66.0
 focus_neighbor_left = NodePath("../BackButton")
-focus_neighbor_bottom = NodePath("../Control/Map")
+focus_neighbor_bottom = NodePath("../FullscreenContainer/Map")
 theme_override_fonts/font = SubResource("FontVariation_rd7dy")
 text = "Settings"
 
@@ -930,7 +957,7 @@ max_value = 1.0
 step = 0.05
 value = 1.0
 
-[editable path="PauseScreen/Control/Map/MapNode/MapLevelTexture"]
-[editable path="PauseScreen/Control/Map/MapNode2/MapLevelTexture"]
-[editable path="PauseScreen/Control/Map/MapNode3/MapLevelTexture"]
-[editable path="PauseScreen/Control/Map/MapNode4/MapLevelTexture"]
+[editable path="PauseScreen/FullscreenContainer/Map/MapNodes/MapNode/MapLevelTexture"]
+[editable path="PauseScreen/FullscreenContainer/Map/MapNodes/MapNode2/MapLevelTexture"]
+[editable path="PauseScreen/FullscreenContainer/Map/MapNodes/MapNode3/MapLevelTexture"]
+[editable path="PauseScreen/FullscreenContainer/Map/MapNodes/MapNode4/MapLevelTexture"]

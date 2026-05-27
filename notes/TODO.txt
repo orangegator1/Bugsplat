@@ -5,10 +5,6 @@ grace fall, take no damage when switching scenes
 COSMETICS -willah
  -tempo jersey
 
-tutorialize pause menu map functions
-  -work out keybindings
-  -get feedback
-
 spiky hazards
   -rethink level order, make orthogonal
 

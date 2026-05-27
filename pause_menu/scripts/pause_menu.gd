@@ -6,12 +6,13 @@ class_name PauseMenu extends CanvasLayer
 @onready var back_button: Button = %BackButton
 @onready var system_menu_button: Button = %SystemMenuButton
 @onready var map: Control = %Map
-@onready var map_overlay: ColorRect = $PauseScreen/Control/Map/MapOverlay
+@onready var map_overlay: ColorRect = %MapOverlay
 @onready var inventory: Control = %InventoryMenu
 @onready var inventory_full: Control = %InventoryFull
-@onready var inventory_overlay: ColorRect = $PauseScreen/Control/InventoryMenu/InventoryOverlay
+@onready var inventory_overlay: ColorRect = %InventoryOverlay
 @onready var inventory_label: Label = %InventoryLabel
 @onready var map_label: Label = %MapLabel
+@onready var map_nodes: Control = %MapNodes
 
 @onready var system_back_button: Button = %SystemBackButton
 @onready var back_to_map_button: Button = %BackToMapButton
@@ -27,6 +28,11 @@ var inventory_focused: bool = false
 var initial_map_pos: Vector2
 var map_scroll_velocity: Vector2
 const SCROLL_V := 120.0
+const HALF_SCREEN := Vector2(240, 117)
+
+# debug zoom
+@onready var debug_pivot_offset_marker: TextureRect = %DebugPivotOffset
+
 
 func _ready() -> void:
 	player = await SceneManager.get_player()
@@ -34,12 +40,16 @@ func _ready() -> void:
 	system_menu_button.pressed.connect(show_system_menu)
 	back_button.pressed.connect(unpause)
 
-	# debug
 	inventory.focus_entered.connect(inventory_on_focus_entered)
 	inventory.focus_exited.connect(inventory_on_focus_entered.bind(false))
 	map.focus_entered.connect(map_on_focus_entered)
 	map.focus_exited.connect(map_on_focus_entered.bind(false))
 
+	# center fullscreen map on centered on player indicator
+	map.clip_contents = true
+	map_nodes.position = ((-%PlayerIndicator.position / map.scale)
+				+ HALF_SCREEN - Vector2(60, initial_map_pos.y))
+	debug_pivot_offset_marker.visible = false
 	show_pause_screen()
 
 	Audio.setup_button_audio_manual(map)
@@ -54,7 +64,14 @@ func _process(delta: float) -> void:
 			Vector2(-SCROLL_V, -SCROLL_V),
 			Vector2(SCROLL_V, SCROLL_V)
 		)
+	# TODO figure out clamps, depends on map scale
+	#var new_pos = map.position + (map_scroll_velocity * delta)
+	#var top_left = Vector2(96, 32) * map.scale
+	#var map_pos_clamped = new_pos.clamp(top_left, Vector2(10000, 10000))
+	#map.position = map_pos_clamped
+
 	map.position += map_scroll_velocity * delta
+	debug_pivot_offset_marker.position -= map_scroll_velocity * delta / map.scale
 
 	if map_selected:
 		if (Input.is_action_pressed("ui_cancel")):
@@ -70,11 +87,9 @@ func _process(delta: float) -> void:
 
 		if (Input.is_action_just_released("right")
 				or Input.is_action_just_released("left")):
-			print("horiz release registered")
 			map_scroll_velocity.x = 0
 		elif (Input.is_action_just_released("down")
 				or Input.is_action_just_released("ui_up")):
-			print("vert release registered")
 			map_scroll_velocity.y = 0
 
 
@@ -135,14 +150,16 @@ func on_back_to_title_pressed() -> void:
 	player.queue_free()
 
 
+func _input(event: InputEvent) -> void:
+	if (not map_selected and map.has_focus()
+			and event.is_action_pressed("ui_accept")):
+		select_map()
+		get_viewport().set_input_as_handled()
+
+
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause"):
 		unpause()
-
-	if map.has_focus():
-		if (event.is_action_pressed("ui_accept")):
-			get_viewport().set_input_as_handled()
-			select_map()
 
 	if map_selected:
 		if Input.is_action_pressed("zoom_in"):
@@ -167,8 +184,18 @@ func select_map() -> void:
 		Audio.play_ui_audio(Audio.ui_focus_audio)
 		await get_tree().process_frame
 		map.grab_focus()
-		zoom()
+
 		map_selected = true
+		map_overlay.visible = false
+		debug_pivot_offset_marker.visible = true
+
+		# center fullscreen map on centered on player indicator
+		map.clip_contents = false
+		map.position = (-%PlayerIndicator.position / map.scale) + HALF_SCREEN
+		map_nodes.position = Vector2.ZERO
+		# initialize map pivot offset position
+		debug_pivot_offset_marker.position = %PlayerIndicator.position
+		map.pivot_offset = %PlayerIndicator.position
 
 		MessageBus.map_selected.emit(true)
 
@@ -182,25 +209,35 @@ func unselect_map() -> void:
 		system_menu_button.visible = true
 		back_button.visible = true
 
+		# reset default values
 		map_selected = false
 		map.scale = Vector2.ONE
 		map.pivot_offset = Vector2.ZERO
-		map.position = initial_map_pos
 		map_scroll_velocity = Vector2.ZERO
 		%PlayerIndicator.scale = Vector2.ONE
+		debug_pivot_offset_marker.scale = Vector2.ONE
+		map_overlay.visible = true
+		map.clip_contents = true
+		map.position = initial_map_pos
+		debug_pivot_offset_marker.visible = false
+		map_nodes.position = ((-%PlayerIndicator.position / map.scale)
+				+ HALF_SCREEN - Vector2(60, initial_map_pos.y))
 
 		MessageBus.map_selected.emit(false)
 
 
 func zoom(zoom_in := true) -> void:
-	# TODO pivot instead on center of visible map
+	# TODO pivot on the center of the visible map is still buggy
 	if zoom_in and map.scale.y < 16:
 		map.scale *= 2
-		#map.pivot_offset = %PlayerIndicator.position
+		map.pivot_offset = debug_pivot_offset_marker.position
+
 	elif not zoom_in and map.scale.y > 1 / 2.0:
 		map.scale /= 2
-		#map.pivot_offset = %PlayerIndicator.position
+		map.pivot_offset = debug_pivot_offset_marker.position
+
 	%PlayerIndicator.scale = Vector2.ONE / map.scale
+	debug_pivot_offset_marker.scale = Vector2.ONE / map.scale
 
 
 func on_music_slider_changed(value: float) -> void:

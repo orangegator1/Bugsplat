@@ -55,7 +55,6 @@ func update_node() -> void:
 						new_size = PlatformManager.get_dimensions(c)
 						# offset representing the top-left corner position of the tilemaplayer
 						indicator_offset = PlatformManager.get_position(c) * c.tile_size
-						print("indicator_offset: " + str(indicator_offset))
 					elif c is LevelTransition:
 						transitions.append(c)
 				instance.queue_free()

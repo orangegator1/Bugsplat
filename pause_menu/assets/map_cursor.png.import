@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bv50p6ch6lyld"
-path="res://.godot/imported/3-tangled.png-d51c2b0fa2ca33c989c257aafd0f87d6.ctex"
+uid="uid://dlfvyk73sc3hq"
+path="res://.godot/imported/map_cursor.png-8e7dd5be3c33b7aec8dd27c441edc3f6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://pause_menu/mini levels/3-tangled.png"
-dest_files=["res://.godot/imported/3-tangled.png-d51c2b0fa2ca33c989c257aafd0f87d6.ctex"]
+source_file="res://pause_menu/assets/map_cursor.png"
+dest_files=["res://.godot/imported/map_cursor.png-8e7dd5be3c33b7aec8dd27c441edc3f6.ctex"]
 
 [params]
 

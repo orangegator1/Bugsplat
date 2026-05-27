@@ -76,7 +76,6 @@ func on_focus_entered(flag: bool) -> void:
 		on_input_hint_changed(action)
 	else:
 		on_input_hint_changed("")
-	print("signal received")
 
 
 func _input(event)-> void:
