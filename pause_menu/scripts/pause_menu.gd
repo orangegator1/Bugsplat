@@ -253,7 +253,7 @@ func on_sfx_slider_changed(value: float) -> void:
 
 func on_ui_slider_changed(value: float) -> void:
 	AudioServer.set_bus_volume_linear(4, value)
-	Audio.play_sound_global(Audio.bugsplat)
+	Audio.play_ui_audio(Audio.bugsplat)
 	SaveManager.save_config()
 
 
