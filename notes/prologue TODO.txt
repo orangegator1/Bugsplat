@@ -1,0 +1,21 @@
+grandma sprites
+differentiate NPCs
+new flora-friend npc sprite
+more decoration
+fix portrait switching
+add more chaos to the disco
+
+different music tracks
+  -can change them in bedroom by interacting with the piano
+musical flourish when first going outdoors
+
+redo dialogue border UI
+figure out how to pixelate menus for consistency
+    -ui theme
+flappy bird type flying
+
+drop the player into the platformer
+
+upon exiting party midway through flora is in the main room with a new NPC
+tear off dress at home
+clean up interactable logic

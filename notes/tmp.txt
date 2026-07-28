@@ -1,0 +1,36 @@
+func setup_new_dialog() -> void:
+	index = 0
+	for dialog in dialog_parent.get_children():
+		if index > new_dialog.size() - 1 and dialog is DialogItem:
+			dialog.queue_free()
+			print("queued freeing a DialogItem at index: %s" % [index])
+			index += 1
+		elif dialog is DialogItem:
+			var dialog_item = dialog_parent.dialog_items[index] as DialogItem
+			dialog_item.set_text(new_dialog[index])
+			dialog_item.npc_info = new_speaker_order[index]
+			print("%s: %s" % [new_speaker_order[index].npc_name,
+					 new_dialog[index]])
+			dialog_parent.dialog_items[index] = dialog_item
+			index += 1
+
+	await get_tree().process_frame
+
+	var j = 0
+	for i in range(dialog_parent.dialog_items.size() - 1, -1, -1):
+		if not is_instance_valid(dialog_parent.dialog_items[i]):
+			dialog_parent.dialog_items.remove_at(i)
+
+	#debug
+	var dialog_items: Array[DialogItem]
+	for c in dialog_parent.get_children():
+		if c is DialogItem:
+			dialog_items.append(c)
+			j += 1
+
+	print("dialog items found: %s, dialog_parent num children: %s" % [ j, dialog_parent.get_children().size() ])
+
+	DialogSystem.cleanup()
+	DialogSystem.setup_dialog(dialog_items)
+	print("dialog_parent.dialog_items : " + str(dialog_parent.dialog_items))
+	print("DialogSystem.dialog_items : " + str(DialogSystem.dialog_items))

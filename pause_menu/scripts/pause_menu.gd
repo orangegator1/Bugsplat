@@ -45,7 +45,7 @@ func _ready() -> void:
 	map.focus_entered.connect(map_on_focus_entered)
 	map.focus_exited.connect(map_on_focus_entered.bind(false))
 
-	# center fullscreen map on centered on player indicator
+	# center fullscreen map on player indicator
 	map.clip_contents = true
 	map_nodes.position = ((-%PlayerIndicator.position / map.scale)
 				+ HALF_SCREEN - Vector2(60, initial_map_pos.y))
@@ -60,37 +60,14 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	map_scroll_velocity = map_scroll_velocity.clamp(
-			Vector2(-SCROLL_V, -SCROLL_V),
-			Vector2(SCROLL_V, SCROLL_V)
-		)
+	map.position += map_scroll_velocity * delta
+	debug_pivot_offset_marker.position -= map_scroll_velocity * delta / map.scale
+
 	# TODO figure out clamps, depends on map scale
 	#var new_pos = map.position + (map_scroll_velocity * delta)
 	#var top_left = Vector2(96, 32) * map.scale
 	#var map_pos_clamped = new_pos.clamp(top_left, Vector2(10000, 10000))
 	#map.position = map_pos_clamped
-
-	map.position += map_scroll_velocity * delta
-	debug_pivot_offset_marker.position -= map_scroll_velocity * delta / map.scale
-
-	if map_selected:
-		if (Input.is_action_pressed("ui_cancel")):
-			unselect_map()
-		elif Input.is_action_pressed("right"):
-			map_scroll_velocity.x =-SCROLL_V
-		elif Input.is_action_pressed("left") or Input.is_action_pressed("ui_left"):
-			map_scroll_velocity.x = SCROLL_V
-		elif Input.is_action_pressed("ui_up"):
-			map_scroll_velocity.y = SCROLL_V
-		elif Input.is_action_pressed("down"):
-			map_scroll_velocity.y = -SCROLL_V
-
-		if (Input.is_action_just_released("right")
-				or Input.is_action_just_released("left")):
-			map_scroll_velocity.x = 0
-		elif (Input.is_action_just_released("down")
-				or Input.is_action_just_released("ui_up")):
-			map_scroll_velocity.y = 0
 
 
 func inventory_on_focus_entered(entered = true):
@@ -151,7 +128,25 @@ func on_back_to_title_pressed() -> void:
 
 
 func _input(event: InputEvent) -> void:
-	if (not map_selected and map.has_focus()
+	if map_selected:
+		if (Input.is_action_pressed("ui_cancel")):
+			unselect_map()
+		elif Input.is_action_pressed("right"):
+			map_scroll_velocity.x =-SCROLL_V
+		elif Input.is_action_pressed("left") or Input.is_action_pressed("ui_left"):
+			map_scroll_velocity.x = SCROLL_V
+		elif Input.is_action_pressed("ui_up"):
+			map_scroll_velocity.y = SCROLL_V
+		elif Input.is_action_pressed("down"):
+			map_scroll_velocity.y = -SCROLL_V
+
+		if (Input.is_action_just_released("right")
+				or Input.is_action_just_released("left")):
+			map_scroll_velocity.x = 0
+		elif (Input.is_action_just_released("down")
+				or Input.is_action_just_released("ui_up")):
+			map_scroll_velocity.y = 0
+	elif (not map_selected and map.has_focus()
 			and event.is_action_pressed("ui_accept")):
 		select_map()
 		get_viewport().set_input_as_handled()
